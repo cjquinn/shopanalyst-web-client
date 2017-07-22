@@ -5,10 +5,11 @@ const Button = styled.button`
     border: 0;
     border-radius: 15px;
     line-height: 30px;
-    ${({ theme }) => `
+    ${({ block, theme }) => `
         background: ${theme.atoms.Button.primary.background};
         color: ${theme.atoms.Button.default.colour};
         font-size: ${theme.atoms.Button.default.fontSize};
+        ${block && 'width: 100%;'}
     `}
 `;
 

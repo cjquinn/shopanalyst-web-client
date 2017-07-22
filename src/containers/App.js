@@ -5,8 +5,9 @@ import '../globalStyles';
 // Components
 import Button from '../components/atoms/Button';
 
+import ListCard from '../components/molecules/ListCard';
+
 import Header from '../components/organisms/Header';
-import ListCard from '../components/organisms/ListCard';
 import SubHeader from '../components/organisms/SubHeader';
 
 import Content from '../components/wrappers/Content';

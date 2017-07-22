@@ -1,9 +1,9 @@
+import ListCard from './ListCard';
 import ListItem from './ListItem';
-import ListProgress from './ListProgress';
 
 const molecules = {
-    ListItem,
-    ListProgress
+    ListCard,
+    ListItem
 };
 
 export default molecules;
