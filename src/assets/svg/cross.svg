@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="10px" viewBox="0 0 10 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>cross</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Quantity/Remove" transform="translate(-60.000000, -8.000000)" fill="#FFFFFF">
+            <polygon id="cross" transform="translate(65.000000, 13.000000) rotate(45.000000) translate(-65.000000, -13.000000) " points="63.995575 8.00131226 66 7.98422241 66 11.9842224 70 12.0013123 70 14.0013123 66 14.0013123 66 18.0157776 63.995575 18.0157776 63.995575 14.0013123 60 14.0013123 60 12.0013123 63.995575 12.0013123"></polygon>
+        </g>
+    </g>
+</svg>

@@ -1,12 +1,35 @@
 import React from 'react';
 
-// Screens
-import ExamplesScreen from '../screens/Example/ExamplesScreen';
+import '../globalStyles';
+
+// Components
+import Button from '../components/atoms/Button';
+
+import Header from '../components/organisms/Header';
+import ListCard from '../components/organisms/ListCard';
+import SubHeader from '../components/organisms/SubHeader';
+
+import Content from '../components/wrappers/Content';
+import List from '../components/wrappers/List';
 
 const App = () => (
     <div>
-        <h1>React Redux Example</h1>
-        <ExamplesScreen />
+        <Header />
+
+        <SubHeader />
+
+        <Content>
+            <List>
+                <ListCard />
+                <ListCard />
+                <ListCard />
+                <ListCard />
+                <ListCard />
+                <ListCard />
+            </List>
+
+            <Button block>Load more</Button>
+        </Content>
     </div>
 );
 

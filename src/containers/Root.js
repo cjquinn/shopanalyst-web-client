@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
 
 import App from './App';
+import theme from '../theme';
 
 class Root extends Component {
     render() {
@@ -10,7 +12,9 @@ class Root extends Component {
 
         return (
             <Provider store={store}>
-                <App />
+                <ThemeProvider theme={theme}>
+                    <App />
+                </ThemeProvider>
             </Provider>
         );
     }
