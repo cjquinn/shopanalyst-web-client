@@ -8,7 +8,13 @@ const Button = styled.button`
     ${({ block, theme }) => `
         background: ${theme.atoms.Button.primary.background};
         color: ${theme.atoms.Button.default.colour};
+        font-family: ${theme.base.fontFamily};
         font-size: ${theme.atoms.Button.default.fontSize};
+
+        :focus {
+            outline: none;
+        }
+        
         ${block && 'width: 100%;'}
     `}
 `;

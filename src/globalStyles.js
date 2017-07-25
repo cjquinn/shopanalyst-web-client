@@ -5,7 +5,7 @@ import 'reset.css/reset.css';
 
 import theme from './theme';
 injectGlobal`
-    body {
+    :root {
         background: ${theme.base.background};
         color: ${theme.base.colour};
         font: ${theme.base.fontSize} ${theme.base.fontFamily};

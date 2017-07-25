@@ -3,15 +3,13 @@ import React from 'react';
 import '../globalStyles';
 
 // Components
-import Button from '../components/atoms/Button';
-
-import ListCard from '../components/molecules/ListCard';
-
+import Overlay from '../components/atoms/Overlay';
+import CreateListForm from '../components/organisms/CreateListForm';
 import Header from '../components/organisms/Header';
+import ListStream from '../components/organisms/ListStream';
 import SubHeader from '../components/organisms/SubHeader';
 
 import Content from '../components/wrappers/Content';
-import List from '../components/wrappers/List';
 
 const App = () => (
     <div>
@@ -19,17 +17,12 @@ const App = () => (
 
         <SubHeader />
 
-        <Content>
-            <List>
-                <ListCard />
-                <ListCard />
-                <ListCard />
-                <ListCard />
-                <ListCard />
-                <ListCard />
-            </List>
+        <CreateListForm />
 
-            <Button block>Load more</Button>
+        <Overlay />
+
+        <Content>
+            <ListStream />
         </Content>
     </div>
 );

@@ -3,26 +3,24 @@ import styled from 'styled-components';
 
 // Components
 import Button from '../atoms/Button';
-import Heading from '../atoms/Heading';
+
+import LabeledInput from '../molecules/LabeledInput';
 
 const Container = styled.div`
     position: relative;
-    display: flex;
     z-index: 2;
-    align-items: center;
-    justify-content: space-between;
     ${({ theme }) => `
         padding: ${theme.base.spacing.double} ${theme.base.spacing.single};
-        background: ${theme.organisms.SubHeader.background};
+        background: ${theme.organisms.Form.background};
     `}
 `;
 
-const SubHeader = () => (
+const CreateListForm = () => (
     <Container>
-        <Heading>Lists</Heading>
+        <LabeledInput />
 
-        <Button>Create list</Button>
+        <Button block>Create list</Button>
     </Container>
 );
 
-export default SubHeader;
+export default CreateListForm;
