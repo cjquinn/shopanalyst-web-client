@@ -16,7 +16,7 @@ $iota-base-initialize-box-sizing: 'border-box';
  * Type: Boolean
  */
 
-$iota-base-initialize-heading-size: false;
+$iota-base-initialize-heading-size: true;
 
 
 /**
@@ -26,7 +26,7 @@ $iota-base-initialize-heading-size: false;
  * Type: Boolean
  */
 
-$iota-base-initialize-form-elements: false;
+$iota-base-initialize-form-elements: true;
 
 
 /**
@@ -36,7 +36,19 @@ $iota-base-initialize-form-elements: false;
  * Type: Boolean
  */
 
-$iota-base-initialize-html5-form-elements: false;
+$iota-base-initialize-html5-form-elements: true;
 
 
 @import 'node_modules/iotacss/base/initialize';
+
+html {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    color: $grey;
+    background-color: $lightGrey;
+}
+
+.app {
+    // The height of the tabs
+    padding-bottom: 62px;
+}

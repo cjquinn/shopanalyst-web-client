@@ -1,0 +1,13 @@
+$borderRadius: 15px;
+
+.o-button {
+    width: 100%;
+    padding: 0 $borderRadius * 2;
+    border: 0;
+    border-radius: $borderRadius;
+    line-height: $borderRadius * 2;
+
+    &:focus {
+        outline: none;
+    }
+}

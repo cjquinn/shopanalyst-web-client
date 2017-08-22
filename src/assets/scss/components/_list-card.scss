@@ -1,0 +1,32 @@
+$progressBorderRadius: 13px;
+
+.list-card {
+    border: 1px solid $paleGrey;
+    border-radius: 5px;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__progress {
+        padding: 0 $progressBorderRadius;
+        border-radius: $progressBorderRadius;
+        line-height: $progressBorderRadius * 2;
+
+        &--container {
+            position: relative;
+            border: 1px solid $paleGrey; 
+        }
+
+        &--inner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 20%;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+    }
+}

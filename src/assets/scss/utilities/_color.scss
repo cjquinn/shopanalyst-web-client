@@ -4,7 +4,11 @@
  * Type: Map
  */
 
-$iota-utils-color-names: ();
+$iota-utils-color-names: (
+    brown: $brown,
+    grey: $grey,
+    white: $white
+);
 
 
 /**

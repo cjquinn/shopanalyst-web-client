@@ -1,0 +1,15 @@
+.o-input {
+    width: 100%;
+    border: 0;
+    border-radius: 5px;
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 1px $green;
+    }
+
+    &::placeholder {
+        color: $bronze;
+        font-style: italic;
+    }
+}

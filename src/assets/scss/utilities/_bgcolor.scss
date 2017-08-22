@@ -4,7 +4,13 @@
  * Type: Map
  */
 
-$iota-utils-bgcolor-names: ();
+$iota-utils-bgcolor-names: (
+    green: $green,
+    off-white: $offWhite,
+    pale-green: $paleGreen,
+    pale-grey: $paleGrey,
+    white: $white
+);
 
 
 /**
