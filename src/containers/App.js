@@ -18,7 +18,7 @@ const App = () => (
         <Form>
             <LabeledInput />
 
-            <Button colour="green">Create List</Button>
+            <Button colour="green">Create list</Button>
         </Form>
 
         <Overlay />        
