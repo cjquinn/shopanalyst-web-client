@@ -54,3 +54,11 @@ $iota-utils-margin-horizontal-name  : 'h';
 
 
 @import 'node_modules/iotacss/utilities/margin';
+
+.u-space > * + * {
+    margin-top: $iota-global-gutter-default;
+}
+
+.u-space-2 > * + * {
+    margin-top: $iota-global-gutter-default * 2;
+}

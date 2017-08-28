@@ -1,0 +1,63 @@
+$itemBorderRadius: 18px;
+$buttonBorderRadius: 13px;
+
+.list-item {
+    &__checkbox:checked + &__label {
+        text-decoration: line-through;
+
+        .list-item__tick {
+            background-color: $green;
+        }
+    }
+
+    &__label {
+    	display: flex;
+    	align-items: center;
+    	height: $itemBorderRadius * 2;
+    	border: 1px solid $paleGrey;
+    	border-radius: $itemBorderRadius;
+    	cursor: pointer;
+    }
+
+	&__tick {
+        display: flex;
+		height: $iota-global-gutter-default * 2;
+		width: $iota-global-gutter-default * 2;
+		margin: 0 $iota-global-gutter-default;
+		border-radius: 100%;
+		background-color: $paleGrey;
+	}
+
+	&__actions, 
+	&__value {
+		margin: 0 $itemBorderRadius - $buttonBorderRadius 0 auto;
+	}
+
+	&__actions {
+        display: flex;
+
+		&__button,
+		&__input {
+			width: $buttonBorderRadius * 2;
+			height: $buttonBorderRadius * 2;
+			border: 0;
+		}
+
+		&__button {
+            display: flex;
+
+            &--decrease,
+            &--remove {
+				border-radius: 0 $buttonBorderRadius $buttonBorderRadius 0;
+            }
+
+            &--increase {
+                border-radius: $buttonBorderRadius 0 0 $buttonBorderRadius;
+			}
+		}
+	}
+
+	&__value {
+		width: $buttonBorderRadius * 6;
+	}
+}

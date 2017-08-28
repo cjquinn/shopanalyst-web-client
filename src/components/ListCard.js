@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ListCard = () => (
-    <div className="list-card u-p u-bgcolor-white">
+    <div className="list-card u-p u-bgcolor-white u-bradius-5">
         <div className="list-card__header u-mb">
             <h4 className="u-weight-normal">Weekly shop</h4>
             <span className="o-type-small u-color-brown">20th Jun</span>

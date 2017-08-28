@@ -1,0 +1,14 @@
+$clearBorderRadius: 10px;
+
+.labeled-input {
+    &__clear {
+        display: flex;
+        right: $iota-global-gutter-default;
+        top: 50%;
+        transform: translateY(-50%);
+        width: $clearBorderRadius * 2;
+        height: $clearBorderRadius * 2;
+        border: 0;
+        border-radius: $clearBorderRadius;
+    }
+}
