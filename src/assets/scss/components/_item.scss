@@ -1,0 +1,60 @@
+$itemBorderRadius: 18px;
+$buttonBorderRadius: 13px;
+
+.item {
+	display: flex;
+	align-items: center;
+	height: $itemBorderRadius * 2;
+	border: 1px solid $paleGrey;
+	border-radius: $itemBorderRadius;
+	cursor: pointer;
+
+	&:before {
+		content: '';
+		height: $iota-global-gutter-default * 2;
+		width: $iota-global-gutter-default * 2;
+		margin: 0 $iota-global-gutter-default;
+		border-radius: 100%;
+		background-color: $paleGrey;
+	}
+
+	&__actions, 
+	&__value {
+		margin: 0 $itemBorderRadius - $buttonBorderRadius 0 auto;
+	}
+
+	&__actions {
+		&__button,
+		&__input {
+			width: $buttonBorderRadius * 2;
+			height: $buttonBorderRadius * 2;
+			border: 0;
+		}
+
+		&__button {
+			&--decrease {
+				border-radius: $buttonBorderRadius 0 0 $buttonBorderRadius;
+			}
+
+			&--increase {
+				border-radius: 0 $buttonBorderRadius $buttonBorderRadius 0;
+			}
+		}
+
+		&__input {
+			border-radius: 0;
+		}
+	}
+
+	&__value {
+		width: $buttonBorderRadius * 6;
+	}
+}
+
+input:checked + .item {
+	text-decoration: line-through;
+
+	&:before {
+		background-color: $green;
+	}
+}

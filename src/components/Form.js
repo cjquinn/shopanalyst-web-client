@@ -2,8 +2,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const Form = ({ children }) => (
-    <div className="o-container u-bgcolor-white u-pv-2 u-z2">
-        {children}
+    <div className="u-bgcolor-white u-z2">
+        <div className="o-container u-pv-2">
+            {children}
+        </div>
     </div>
 );
 
