@@ -7,15 +7,15 @@ import Svg from '../components/Svg';
 // Sprites
 import cross from '../assets/svg/cross.svg';
 
-const LabeledInput = ({ inverted, label, placeholder, type }) => (
+const LabeledInput = ({ inverted, label, name, placeholder, type }) => (
     <div className="labeled-input">
-        <label htmlFor="input-name" className="u-block u-mb">{label}</label>
+        <label htmlFor={`input-${name}`} className="u-block u-mb">{label}</label>
         
         <div className="u-relative">
             <input
                 className={`o-input o-type-large u-block u-bgcolor-${inverted ? 'white' : 'pale-grey'} u-bradius-5 u-color-grey u-p`}
                 type={type}
-                id="input-name"
+                id={`input-${name}`}
                 placeholder={placeholder}
             />
 
@@ -32,6 +32,7 @@ const LabeledInput = ({ inverted, label, placeholder, type }) => (
 LabeledInput.propTypes = {
     inverted: PropTypes.bool,
     label: PropTypes.string,
+    name: PropTypes.string,
     placeholder: PropTypes.string,
     type: PropTypes.string
 };
