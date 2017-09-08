@@ -52,10 +52,10 @@ html {
     // The height of the tabs
     padding-bottom: 62px;
 
-    &--auth {
-        display: flex;
-        align-items: center;
+    &--unauthorised {
+        // display: flex;
+        // align-items: center;
         height: 100vh;
-        padding: 0;
+        // padding: 0;
     }
 }

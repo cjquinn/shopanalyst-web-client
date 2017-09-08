@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router } from 'react-router-dom';
 
-// Components
-import App from '../components/App';
+// Containers
+import App from './App';
 
 class Root extends Component {
     render() {
@@ -12,9 +11,7 @@ class Root extends Component {
 
         return (
             <Provider store={store}>
-                <Router>
-                    <App />
-                </Router>
+                <App />
             </Provider>
         );
     }
