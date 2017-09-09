@@ -1,12 +1,10 @@
 import { combineReducers } from 'redux';
 
 // Reducers
-import entities from './Entities/reducers';
-import example from './Example/reducers';
+import user from './User/reducers';
 
 const reducers = combineReducers({
-    entities,
-    example
+    user
 });
 
 export default reducers;

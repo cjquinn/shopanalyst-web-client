@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Endpoint exports
-export * from './Example/endpoints';
+export * from './User/endpoints';
 
 export const checkStatus = response => {
     if (response.status >= 200 &&
@@ -34,7 +34,17 @@ export const handleError = (dispatch, failure) => response => {
  * An instance of axios to use for all requests
  */
 export const instance = () => axios.create({
-    baseURL: 'http://localhost:9000',
-    headers: {},
+    baseURL: 'http://192.168.99.100',
+    headers: window.localStorage.getItem('jwt')
+     ? { Authorization: `Bearer ${window.localStorage.getItem('jwt')}` }
+     : {},
     validateStatus: () => true
 });
+
+export const setJwt = response => {
+    if (response.data.jwt) {
+        window.localStorage.setItem('jwt', response.data.jwt);
+    }
+
+    return response;
+};

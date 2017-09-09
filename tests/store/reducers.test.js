@@ -4,7 +4,6 @@ describe('initial state', () => {
     it('shape', () => {
         const state = reducers(undefined, {});
 
-        expect(state.entities).toBeDefined();
-        expect(state.example).toBeDefined();
+        expect(state.user).toBeDefined();
     });
 });
