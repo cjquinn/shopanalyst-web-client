@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Redirect, Switch } from 'react-router-dom';
+import { withRouter } from 'react-router';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
 // Components
-import Header from '../components/Header';
 import Nav from '../components/Nav';
 
 // Routes
@@ -19,10 +19,8 @@ import SettingsScreen from '../screens/SettingsScreen';
 import SignInScreen from '../screens/SignInScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 
-const AppLayout = ({ authorised }) => (
-    <div className={`app ${!authorised && 'app--unauthorised u-bgcolor-pale-green'}`}>
-        <Header />
-
+const AppLayout = ({ authorised, location }) => (
+    <div className={`app ${!authorised && 'app--unauthorised u-bgcolor-pale-green'} ${location.pathname.indexOf('edit') !== -1 && 'app--edit-list'}`}>
         <Switch>
             <Redirect exact from="/" to="/lists" />
 
@@ -43,7 +41,8 @@ const AppLayout = ({ authorised }) => (
 );
 
 AppLayout.propTypes = {
-    authorised: PropTypes.bool.isRequired
+    authorised: PropTypes.bool.isRequired,
+    location: PropTypes.object.isRequired
 };
 
-export default AppLayout;
+export default withRouter(AppLayout);

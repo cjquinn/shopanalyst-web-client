@@ -8,7 +8,7 @@ class App extends Component {
     render() {
         return (
             <Router>
-                <AppLayout authorised={true} />
+                <AppLayout authorised={false} />
             </Router>
         );
     }

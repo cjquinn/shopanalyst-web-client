@@ -7,8 +7,14 @@ import CreateListForm from '../components/CreateListForm';
 import Lists from '../components/Lists';
 import ScreenContainer from '../components/ScreenContainer';
 
-const ListsScreen = ({ match }) => (
+import Header from '../components/Header';
+
+const ListsScreen = ({ location, match }) => (
     <div>
+        <Header>
+            {location.pathname === `${match.url}/create` ? 'Create List' : 'Lists'}
+        </Header>
+
         <Route exact path={`${match.url}/create`} component={CreateListForm} />
 
         <ScreenContainer>
@@ -28,6 +34,7 @@ const ListsScreen = ({ match }) => (
 );
 
 ListsScreen.propTypes = {
+    location: PropTypes.object.isRequired,
     match: PropTypes.object.isRequired
 };
 
