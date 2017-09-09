@@ -55,43 +55,17 @@ $iota-global-flex: true;
 
 $iota-global-rtl: false;
 
-
 /**
- * Default global breakpoints map. These are the
- * default breakpoints map that will be shared across
- * all iotaCSS modules. You can change it also locally
- * to each module.
+ * Type sizes
  *
- * Type: Map
+ * Type: Number / List / Map
  */
 
-$iota-global-breakpoints: (
-  sm  : "screen and ( min-width: 768px )",
-  md  : "screen and ( min-width: 1000px )"
+$iota-type-sizes: (
+    small: 12px,
+    medium: 14px,
+    large: 16px,
+    xlarge: 24px
 );
-
-
-/**
- * Global breakpoint suffix naming setting. All breakpoint
- * specific styles have a '@breakpointName' suffix by default.
- * The \ character is used to escape the @ character.
- *
- * Type: String
- */
-
-$iota-global-breakpoint-separator: \@;
-
-
-/**
- * Global delimiter naming setting for Size, Push and Pull
- * utilities. By default it is '/' (.u-1/2) and you can change
- * it for example to 'of' so that the generated HTML class will be
- * 'u-1of2'.
- *
- * Type: String
- */
-
-$iota-global-delimiter: \/;
-
 
 @import 'node_modules/iotacss/settings/core';

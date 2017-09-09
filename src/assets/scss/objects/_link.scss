@@ -1,4 +1,10 @@
 .o-link {
     color: $green;
     text-decoration: none;
+
+    &--cancel {
+        color: $red;
+        top: $iota-global-gutter-default;
+        right: $iota-global-gutter-default;
+    }
 }

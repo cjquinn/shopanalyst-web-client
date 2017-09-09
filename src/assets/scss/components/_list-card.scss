@@ -15,12 +15,10 @@ $progressBorderRadius: 13px;
         line-height: $progressBorderRadius * 2;
 
         &--container {
-            position: relative;
             border: 1px solid $paleGrey; 
         }
 
         &--inner {
-            position: absolute;
             top: 0;
             left: 0;
             width: 20%;

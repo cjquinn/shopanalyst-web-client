@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // Components
-import Button from '../components/Button';
 import LabeledInput from '../components/LabeledInput';
 
 const SignInScreen = () => (
@@ -25,7 +24,7 @@ const SignInScreen = () => (
             type="password"
         />
 
-        <Button colour="green">Sign in</Button>
+        <button className="o-button" type="button">Sign in</button>
 
         <Link to="/forgotten-password" className="o-link u-float-right">
             Forgotten password?

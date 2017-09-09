@@ -1,16 +1,13 @@
-.cross,
-.minus,
-.plus,
-.tick {
+.o-svg {
     margin: auto;
-}
 
-.cross,
-.plus,
-.minus {
-    width: 10px;
-}
+    &--cross,
+    &--plus,
+    &--minus {
+        width: 10px;
+    }
 
-.tick {
-    width: 12px;
+    &--tick {
+        width: 12px;
+    }
 }

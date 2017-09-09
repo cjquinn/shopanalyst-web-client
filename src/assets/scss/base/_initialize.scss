@@ -40,22 +40,3 @@ $iota-base-initialize-html5-form-elements: true;
 
 
 @import 'node_modules/iotacss/base/initialize';
-
-html {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
-    color: $grey;
-    background-color: $lightGrey;
-}
-
-.app {
-    // The height of the tabs
-    padding-bottom: 62px;
-
-    &--unauthorised {
-        // display: flex;
-        // align-items: center;
-        height: 100vh;
-        // padding: 0;
-    }
-}

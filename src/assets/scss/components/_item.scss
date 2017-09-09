@@ -1,11 +1,11 @@
 $itemBorderRadius: 18px;
 $buttonBorderRadius: 13px;
 
-.list-item {
+.item {
     &__checkbox:checked + &__label {
         text-decoration: line-through;
 
-        .list-item__tick {
+        .item__tick {
             background-color: $green;
         }
     }

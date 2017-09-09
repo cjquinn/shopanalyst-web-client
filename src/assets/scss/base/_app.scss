@@ -1,0 +1,15 @@
+html {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    color: $grey;
+    background-color: $lightGrey;
+}
+
+.app {
+    // The height of the tabs
+    padding-bottom: 62px;
+
+    &--unauthorised {
+        height: 100vh;
+    }
+}
