@@ -3,10 +3,13 @@ import { Link } from 'react-router-dom';
 
 // Components
 import LabeledInput from '../components/LabeledInput';
+import ScreenContainer from '../components/ScreenContainer';
 
 const SignInScreen = () => (
-    <div className="o-container u-space-2">
-        <h1 className="o-type-xlarge u-color-green u-text-center u-weight-normal">Shopanalyst</h1>
+    <ScreenContainer>
+        <p className="u-color-brown u-text-center">
+            Sign in <i>or</i> <Link className="o-link" to="/sign-up">sign up</Link>
+        </p>
 
         <LabeledInput
             inverted
@@ -26,10 +29,10 @@ const SignInScreen = () => (
 
         <button className="o-button" type="button">Sign in</button>
 
-        <Link to="/forgotten-password" className="o-link u-float-right">
+        <Link to="/request-password-reset" className="o-link o-type-medium u-float-right">
             Forgotten password?
         </Link>
-    </div>
+    </ScreenContainer>
 );
 
 export default SignInScreen;

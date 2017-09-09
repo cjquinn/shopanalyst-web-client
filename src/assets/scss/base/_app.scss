@@ -6,10 +6,11 @@ html {
 }
 
 .app {
-    // The height of the tabs
-    padding-bottom: 62px;
+    // The height of the heading and tabs
+    padding: 39px 0 62px 0;
 
     &--unauthorised {
         height: 100vh;
+        padding-top: 79px;
     }
 }
