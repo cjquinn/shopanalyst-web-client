@@ -15,6 +15,7 @@ import ListsScreen from '../screens/ListsScreen';
 import ListScreen from '../screens/ListScreen';
 import RequestPasswordResetScreen from '../screens/RequestPasswordResetScreen';
 import ResetPasswordScreen from '../screens/ResetPasswordScreen';
+import SettingsScreen from '../screens/SettingsScreen';
 import SignInScreen from '../screens/SignInScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 
@@ -33,6 +34,8 @@ const AppLayout = ({ authorised }) => (
 
             <AuthorisedRoute path="/lists/:id(\d+)" component={ListScreen} />
             <AuthorisedRoute path="/lists" component={ListsScreen} />
+
+            <AuthorisedRoute exact path="/settings" component={SettingsScreen} />
         </Switch>
 
         {authorised && <Nav />}

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 // Component
 import Overlay from './Overlay';
 
-const Form = ({ children, cancelTo }) => (
+const Form = ({ children }) => (
     <div>
         <div className="u-bgcolor-white u-relative u-z-2">
             <Link
