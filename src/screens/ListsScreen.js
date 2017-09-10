@@ -5,7 +5,7 @@ import { Link, Route } from 'react-router-dom';
 // Components
 import CreateListForm from '../components/CreateListForm';
 import Lists from '../components/Lists';
-import ScreenContainer from '../components/ScreenContainer';
+import ScreenWrapper from '../components/ScreenWrapper';
 
 import Header from '../components/Header';
 
@@ -17,7 +17,7 @@ const ListsScreen = ({ location, match }) => (
 
         <Route exact path={`${match.url}/create`} component={CreateListForm} />
 
-        <ScreenContainer>
+        <ScreenWrapper>
             <Route exact path={match.url} render={() => (
                 <Link className="o-button" to={`${match.url}/create`}>
                     Create list
@@ -29,7 +29,7 @@ const ListsScreen = ({ location, match }) => (
             <button className="o-button" type="button">
                 Load more
             </button>
-        </ScreenContainer>
+        </ScreenWrapper>
     </div>
 );
 

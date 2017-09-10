@@ -8,7 +8,7 @@ import EditListForm from '../components/EditListForm';
 import Header from '../components/Header';
 import Items from '../components/Items';
 import ListMeta from '../components/ListMeta';
-import ScreenContainer from '../components/ScreenContainer';
+import ScreenWrapper from '../components/ScreenWrapper';
 
 const ListScreen = ({ location, match }) => (
     <div>
@@ -26,7 +26,7 @@ const ListScreen = ({ location, match }) => (
 
         <Route exact path={`${match.url}/add-items`} component={AddItemsForm} />
 
-        <ScreenContainer>
+        <ScreenWrapper>
             <Route exact path={match.url} render={() => (
                 <Link className="o-button" to={`${match.url}/add-items`}>
                     Add items
@@ -40,7 +40,7 @@ const ListScreen = ({ location, match }) => (
             <button className="o-button" type="button">
                 Duplicate list
             </button>
-        </ScreenContainer>
+        </ScreenWrapper>
     </div>
 );
 

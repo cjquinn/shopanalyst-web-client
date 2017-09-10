@@ -2,10 +2,10 @@ import React from 'react';
 
 // Components
 import LabeledInput from '../components/LabeledInput';
-import ScreenContainer from '../components/ScreenContainer';
+import ScreenWrapper from '../components/ScreenWrapper';
 
 const ResetPassword = () => (
-    <ScreenContainer>
+    <ScreenWrapper>
         <p className="u-color-brown u-text-center">
             Reset password
         </p>
@@ -19,7 +19,7 @@ const ResetPassword = () => (
         />
 
         <button className="o-button" type="button">Reset password</button>
-    </ScreenContainer>
+    </ScreenWrapper>
 );
 
 export default ResetPassword;

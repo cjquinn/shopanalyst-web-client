@@ -19,8 +19,8 @@ import SettingsScreen from '../screens/SettingsScreen';
 import SignInScreen from '../screens/SignInScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 
-const AppLayout = ({ authorised, location }) => (
-    <div className={`app ${!authorised && 'app--unauthorised u-bgcolor-pale-green'} ${location.pathname.indexOf('edit') !== -1 && 'app--edit-list'}`}>
+const AppLayout = ({ isAuthorised, location }) => (
+    <div className={`app ${!isAuthorised && 'app--unauthorised u-bgcolor-pale-green'} ${location.pathname.indexOf('edit') !== -1 && 'app--edit-list'}`}>
         <Switch>
             <Redirect exact from="/" to="/lists" />
 
@@ -36,12 +36,12 @@ const AppLayout = ({ authorised, location }) => (
             <AuthorisedRoute exact path="/settings" component={SettingsScreen} />
         </Switch>
 
-        {authorised && <Nav />}
+        {isAuthorised && <Nav />}
     </div>
 );
 
 AppLayout.propTypes = {
-    authorised: PropTypes.bool.isRequired,
+    isAuthorised: PropTypes.bool.isRequired,
     location: PropTypes.object.isRequired
 };
 

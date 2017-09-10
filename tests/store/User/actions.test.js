@@ -3,7 +3,7 @@ import MockAdapter from 'axios-mock-adapter';
 
 import * as actions from '../../../src/store/User/actions';
 
-describe('createUser', () => {
+describe('signUp', () => {
     const mock = new MockAdapter(axios);
 
     afterEach(() => mock.reset());
@@ -15,11 +15,11 @@ describe('createUser', () => {
             .onPost('/users.json')
             .reply(500);
 
-        return store.dispatch(actions.createUser())
+        return store.dispatch(actions.signUp())
             .then(() => {
                 const expected = [
-                    {type: actions.createUserRequest.toString()},
-                    {type: actions.createUserFailure.toString()}
+                    {type: actions.signUpRequest.toString()},
+                    {type: actions.signUpFailure.toString()}
                 ];
 
                 expect(store.getActions()).toEqual(expected);
@@ -36,12 +36,12 @@ describe('createUser', () => {
                 jwt: 'JWT_TOKEN'
             });
 
-        return store.dispatch(actions.createUser())
+        return store.dispatch(actions.signUp())
             .then(() => {
                 const expected = [
-                    {type: actions.createUserRequest.toString()},
+                    {type: actions.signUpRequest.toString()},
                     {
-                        type: actions.createUserSuccess.toString(),
+                        type: actions.signUpSuccess.toString(),
                         payload: {
                             id: 1,
                             email: 'christy@shopanalyst.com'

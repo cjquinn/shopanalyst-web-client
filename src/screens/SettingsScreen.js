@@ -3,13 +3,13 @@ import React from 'react';
 // Components
 import Header from '../components/Header';
 import LabeledInput from '../components/LabeledInput';
-import ScreenContainer from '../components/ScreenContainer';
+import ScreenWrapper from '../components/ScreenWrapper';
 
 const SettingsScreen = () => (
     <div>
         <Header>Settings</Header>
 
-        <ScreenContainer>
+        <ScreenWrapper>
             <h2 className="u-color-brown o-type-medium u-uppercase u-weight-normal">
                 Basic Info
             </h2>
@@ -43,7 +43,7 @@ const SettingsScreen = () => (
             />
 
             <button className="o-button" type="button">Save changes</button>
-        </ScreenContainer>
+        </ScreenWrapper>
     </div>
 );
 

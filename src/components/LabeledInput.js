@@ -7,19 +7,27 @@ import Svg from '../components/Svg';
 // Sprites
 import cross from '../assets/svg/cross.svg';
 
-const LabeledInput = ({ clear, inverted, label, name, placeholder, type }) => (
+const LabeledInput = ({ input, inverted, label, meta, name, placeholder, type, withClear }) => (
     <div className="labeled-input">
-        <label htmlFor={`input-${name}`} className="u-block u-mb">{label}</label>
+        <div className="labeled-input__header u-mb">
+            <label htmlFor={`input-${name}`} className="u-block">{label}</label>
+            {meta.error &&
+                <span className="o-type-medium u-color-red u-text-right">
+                    {meta.error}
+                </span>
+            }
+        </div>
         
         <div className="u-relative">
             <input
+                {...input}
                 className={`o-input o-type-large u-block u-bgcolor-${inverted ? 'white' : 'pale-grey'} u-bradius-5 u-color-grey u-p`}
                 type={type}
                 id={`input-${name}`}
                 placeholder={placeholder}
             />
 
-            {clear &&
+            {withClear &&
                 <button
                     type="button"
                     className="labeled-input__clear u-absolute u-bgcolor-red u-color-white"
@@ -32,12 +40,14 @@ const LabeledInput = ({ clear, inverted, label, name, placeholder, type }) => (
 );
 
 LabeledInput.propTypes = {
-    clear: PropTypes.bool,
+    input: PropTypes.object,
     inverted: PropTypes.bool,
     label: PropTypes.string,
+    meta: PropTypes.object.isRequired,
     name: PropTypes.string,
     placeholder: PropTypes.string,
-    type: PropTypes.string
+    type: PropTypes.string,
+    withClear: PropTypes.bool
 };
 
 export default LabeledInput;

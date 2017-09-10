@@ -1,28 +1,39 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 // Components
 import Header from '../components/Header';
 
+// Selectors
+import { getIsAuthorised } from '../store/User/selectors';
+
 class UnauthorisedRoute extends Component {
     render() {
-        const { component: Component, ...rest } = this.props;
+        const { component: Component, isAuthorised, ...rest } = this.props;
 
-        return (
-            <Route {...rest} render={matchProps => (
-                <div>
-                    <Header>Shopanalyst</Header>
-                    
-                    <Component {...matchProps} />
-                </div>
-            )} />
-        );
+        return isAuthorised
+            ? <Redirect exact to="/lists" />
+            : (
+                <Route {...rest} render={matchProps => (
+                    <div>
+                        <Header>Shopanalyst</Header>
+                        
+                        <Component {...matchProps} />
+                    </div>
+                )} />
+            );
     }
 }
 
 UnauthorisedRoute.propTypes = {
+    isAuthorised: PropTypes.bool.isRequired,
     component: PropTypes.func.isRequired
 };
 
-export default UnauthorisedRoute;
+const mapStateToProps = state => ({
+    isAuthorised: getIsAuthorised(state)
+});
+
+export default connect(mapStateToProps)(UnauthorisedRoute);

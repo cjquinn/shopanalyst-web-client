@@ -10,8 +10,8 @@ describe('initial state', () => {
     });
 });
 
-describe('createUser', () => {
-    it(actions.createUserSuccess.toString(), () => {
+describe('signUp', () => {
+    it(actions.signUpSuccess.toString(), () => {
         const state = {};
 
         const expected = {
@@ -24,6 +24,6 @@ describe('createUser', () => {
             email: 'christy@shopanalyst.com'  
         };
 
-        expect(reducers(state, actions.createUserSuccess(payload))).toEqual(expected);
+        expect(reducers(state, actions.signUpSuccess(payload))).toEqual(expected);
     });
 });

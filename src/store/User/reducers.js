@@ -2,7 +2,7 @@ import * as actions from './actions';
 
 const user = (state = {}, action) => {
     switch (action.type) {
-        case actions.createUserSuccess.toString():
+        case actions.signUpSuccess.toString():
             return action.payload;
 
         default:

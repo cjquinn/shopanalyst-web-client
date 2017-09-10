@@ -1,7 +1,27 @@
 import axios from 'axios';
+import { forIn, isPlainObject } from 'lodash';
+import { SubmissionError } from 'redux-form';
 
 // Endpoint exports
 export * from './User/endpoints';
+
+/**
+ * Function to flattern cakephp error format
+ */
+const formatErrors = errors => {
+    let formattedErrors = {};
+
+    forIn(errors, (error, key) => {
+        if (isPlainObject(error)) {
+            formattedErrors[key] = formatErrors(error);
+        } else {
+            // If multiple errors on one field take last error
+            formattedErrors = error;
+        }
+    });
+
+    return formattedErrors;
+};
 
 export const checkStatus = response => {
     if (response.status >= 200 &&
@@ -18,10 +38,7 @@ export const handleError = (dispatch, failure) => response => {
 
     switch (response.status) {
         case 400:
-            break;
-
-        case 401:
-            break;
+            throw new SubmissionError(formatErrors(response.data.errors));
 
         case 403:
             break;

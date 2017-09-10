@@ -1,6 +1,12 @@
 $clearBorderRadius: 10px;
 
 .labeled-input {
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
     &__clear {
         display: flex;
         right: $iota-global-gutter-default;

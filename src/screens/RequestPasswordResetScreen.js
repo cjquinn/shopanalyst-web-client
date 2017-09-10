@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 // Components
 import LabeledInput from '../components/LabeledInput';
-import ScreenContainer from '../components/ScreenContainer';
+import ScreenWrapper from '../components/ScreenWrapper';
 
 const RequestPasswordResetScreen = () => (
-    <ScreenContainer>
+    <ScreenWrapper>
         <p className="u-color-brown u-text-center">
             Request password reset
         </p>
@@ -24,7 +24,7 @@ const RequestPasswordResetScreen = () => (
         <Link to="/sign-in" className="o-link o-type-medium u-float-right">
             I remember my password
         </Link>
-    </ScreenContainer>
+    </ScreenWrapper>
 );
 
 export default RequestPasswordResetScreen;
