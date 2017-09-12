@@ -19,7 +19,7 @@ class UnauthorisedRoute extends Component {
                 <Route {...rest} render={matchProps => (
                     <div>
                         <Header>Shopanalyst</Header>
-                        
+
                         <Component {...matchProps} />
                     </div>
                 )} />

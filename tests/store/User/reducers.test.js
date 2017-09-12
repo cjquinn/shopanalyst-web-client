@@ -10,6 +10,24 @@ describe('initial state', () => {
     });
 });
 
+describe('signIn', () => {
+    it(actions.signInSuccess.toString(), () => {
+        const state = {};
+
+        const expected = {
+            id: 1,
+            email: 'christy@shopanalyst.com'
+        };
+
+        const payload = {
+            id: 1,
+            email: 'christy@shopanalyst.com'  
+        };
+
+        expect(reducers(state, actions.signUpSuccess(payload))).toEqual(expected);
+    });
+});
+
 describe('signUp', () => {
     it(actions.signUpSuccess.toString(), () => {
         const state = {};
