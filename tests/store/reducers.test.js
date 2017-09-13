@@ -4,6 +4,8 @@ describe('initial state', () => {
     it('shape', () => {
         const state = reducers(undefined, {});
 
-        expect(state.user).toBeDefined();
+        const expected = ['form', 'user'];
+
+        expect(Object.keys(state)).toEqual(expected);
     });
 });

@@ -5,9 +5,13 @@ import { connect } from 'react-redux';
 
 // Components
 import Header from '../components/Header';
+import Svg from '../components/Svg';
 
 // Selectors
 import { getIsAuthorised } from '../store/User/selectors';
+
+// Sprites
+import logo from '../assets/svg/logo.svg';
 
 class UnauthorisedRoute extends Component {
     render() {
@@ -19,6 +23,10 @@ class UnauthorisedRoute extends Component {
                 <Route {...rest} render={matchProps => (
                     <div>
                         <Header>Shopanalyst</Header>
+
+                        <div className="u-mb-2 u-text-center">
+                            <Svg sprite={logo} />
+                        </div>
 
                         <Component {...matchProps} />
                     </div>

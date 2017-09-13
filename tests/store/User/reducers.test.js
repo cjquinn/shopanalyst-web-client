@@ -24,7 +24,7 @@ describe('signIn', () => {
             email: 'christy@shopanalyst.com'  
         };
 
-        expect(reducers(state, actions.signUpSuccess(payload))).toEqual(expected);
+        expect(reducers(state, actions.signInSuccess(payload))).toEqual(expected);
     });
 });
 
