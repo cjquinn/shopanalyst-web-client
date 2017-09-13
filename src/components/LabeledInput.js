@@ -42,11 +42,11 @@ const LabeledInput = ({ input, inverted, label, meta, name, placeholder, type, w
 LabeledInput.propTypes = {
     input: PropTypes.object,
     inverted: PropTypes.bool,
-    label: PropTypes.string,
+    label: PropTypes.string.isRequired,
     meta: PropTypes.object.isRequired,
-    name: PropTypes.string,
-    placeholder: PropTypes.string,
-    type: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    placeholder: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
     withClear: PropTypes.bool
 };
 
