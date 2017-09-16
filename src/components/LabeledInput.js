@@ -7,10 +7,10 @@ import Svg from '../components/Svg';
 // Sprites
 import cross from '../assets/svg/cross.svg';
 
-const LabeledInput = ({ input, inverted, label, meta, name, placeholder, type, withClear }) => (
+const LabeledInput = ({ input, id, inverted, label, meta, placeholder, type, withClear }) => (
     <div className="labeled-input">
         <div className="labeled-input__header u-mb">
-            <label htmlFor={`input-${name}`} className="u-block">{label}</label>
+            <label htmlFor={id} className="u-block">{label}</label>
             {meta.error &&
                 <span className="o-type-medium u-color-red u-text-right">
                     {meta.error}
@@ -23,7 +23,7 @@ const LabeledInput = ({ input, inverted, label, meta, name, placeholder, type, w
                 {...input}
                 className={`o-input o-type-large u-block u-bgcolor-${inverted ? 'white' : 'pale-grey'} u-bradius-5 u-color-grey u-p`}
                 type={type}
-                id={`input-${name}`}
+                id={id}
                 placeholder={placeholder}
             />
 
@@ -42,9 +42,9 @@ const LabeledInput = ({ input, inverted, label, meta, name, placeholder, type, w
 LabeledInput.propTypes = {
     input: PropTypes.object,
     inverted: PropTypes.bool,
+    id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     meta: PropTypes.object.isRequired,
-    name: PropTypes.string.isRequired,
     placeholder: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     withClear: PropTypes.bool

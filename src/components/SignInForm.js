@@ -9,6 +9,7 @@ const SignInForm = ({ handleSubmit }) => (
     <form className="u-space-2" onSubmit={handleSubmit}>
         <Field
             component={LabeledInput}
+            id="email-input"
             inverted
             label="Email"
             name="email"
@@ -18,6 +19,7 @@ const SignInForm = ({ handleSubmit }) => (
 
         <Field
             component={LabeledInput}
+            id="password-input"
             inverted
             label="Password"
             name="password"

@@ -24,7 +24,7 @@ class UnauthorisedRoute extends Component {
                     <div>
                         <Header>Shopanalyst</Header>
 
-                        <div className="u-mb-2 u-text-center">
+                        <div className="u-mt-2 u-text-center">
                             <Svg sprite={logo} />
                         </div>
 
