@@ -12,6 +12,7 @@ import AuthorisedRoute from '../routes/AuthorisedRoute';
 import UnauthorisedRoute from '../routes/UnauthorisedRoute';
 
 // Screens
+import AnalyseScreen from '../screens/AnalyseScreen';
 import ListsScreen from '../screens/ListsScreen';
 import ListScreen from '../screens/ListScreen';
 import RequestPasswordResetScreen from '../screens/RequestPasswordResetScreen';
@@ -41,6 +42,8 @@ const AppLayout = ({ isAuthorised, isFetching, location }) => (
 
                 <UnauthorisedRoute exact path="/request-password-reset" component={RequestPasswordResetScreen} />
                 <UnauthorisedRoute exact path="/reset-password" component={ResetPasswordScreen} />
+
+                <AuthorisedRoute exact path="/analyse" component={AnalyseScreen} />
 
                 <AuthorisedRoute path="/lists/:id(\d+)" component={ListScreen} />
                 <AuthorisedRoute path="/lists" component={ListsScreen} />
