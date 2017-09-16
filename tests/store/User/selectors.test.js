@@ -1,4 +1,4 @@
-import { getIsAuthorised } from '../../../src/store/User/selectors';
+import { getIsAuthorised, getIsFetching } from '../../../src/store/User/selectors';
 
 describe('selectors', () => {
     it('getIsAuthorised', () => {
@@ -9,5 +9,11 @@ describe('selectors', () => {
         state = {user: {id: 1}};
 
         expect(getIsAuthorised(state)).toBe(true);
+    });
+
+    it('getIsFetching', () => {
+        let state = {user: {isFetching: false}};
+
+        expect(getIsFetching(state)).toBe(false);
     });
 });

@@ -11,7 +11,7 @@ import Svg from '../components/Svg';
 import { getIsAuthorised } from '../store/User/selectors';
 
 // Sprites
-import logo from '../assets/svg/logo.svg';
+import shop from '../assets/svg/shop.svg';
 
 class UnauthorisedRoute extends Component {
     render() {
@@ -25,7 +25,7 @@ class UnauthorisedRoute extends Component {
                         <Header>Shopanalyst</Header>
 
                         <div className="u-mt-2 u-text-center">
-                            <Svg sprite={logo} />
+                            <Svg sprite={shop} />
                         </div>
 
                         <Component {...matchProps} />

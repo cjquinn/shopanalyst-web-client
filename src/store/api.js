@@ -2,6 +2,9 @@ import axios from 'axios';
 import { forIn, isPlainObject } from 'lodash';
 import { SubmissionError } from 'redux-form';
 
+// Actions
+import { signOut } from './User/actions';
+
 // Endpoint exports
 export * from './User/endpoints';
 
@@ -41,7 +44,7 @@ export const handleError = (dispatch, failure) => response => {
             throw new SubmissionError(formatErrors(response.data.errors));
 
         case 403:
-            break;
+            return dispatch(signOut());
 
         default:
     }
@@ -52,16 +55,27 @@ export const handleError = (dispatch, failure) => response => {
  */
 export const instance = () => axios.create({
     baseURL: 'http://192.168.99.100',
-    headers: window.localStorage.getItem('jwt')
-     ? { Authorization: `Bearer ${window.localStorage.getItem('jwt')}` }
-     : {},
+    headers: {
+        'X-Requested-With': 'XMLHttpRequest',
+        ...(
+            getJwt()
+                ? {Authorization: `Bearer ${getJwt()}`}
+                : {}
+        )
+    },
     validateStatus: () => true
 });
 
+const JWT = 'jwt';
+
+export const getJwt = () => window.localStorage.getItem(JWT);
+
 export const setJwt = response => {
     if (response.data.jwt) {
-        window.localStorage.setItem('jwt', response.data.jwt);
+        window.localStorage.setItem(JWT, response.data.jwt);
     }
 
     return response;
 };
+
+export const removeJwt = () => window.localStorage.removeItem(JWT);

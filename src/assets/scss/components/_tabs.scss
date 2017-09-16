@@ -3,14 +3,26 @@
     list-style: none;
 
     &__tab {
+        flex-basis: percentage(1/3);
         flex-grow: 1;
+        padding: 5px 0;
 
         &--active {
             box-shadow: 0 -1px 5px 0 rgba($black, .1);
         }
 
+        &__icon {
+            display: block;
+            width: auto;
+            height: 30px;
+        }
+
         &__link {
             text-decoration: none;
         }
-    }   
+
+        & + .tabs__tab {
+            border-left: 1px solid $lightGrey;
+        }
+    }
 }

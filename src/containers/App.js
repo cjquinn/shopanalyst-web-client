@@ -3,30 +3,44 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+// Actions
+import { fetchCurrentUser } from '../store/User/actions';
+
 // Routes
 import AppLayout from '../layouts/AppLayout';
 
 // Selectors
-import { getIsAuthorised } from '../store/User/selectors';
+import { getIsAuthorised, getIsFetching } from '../store/User/selectors';
 
 class App extends Component {
+    componentDidMount() {
+        this.props.fetchCurrentUser();
+    }
+
     render() {
-        const { isAuthorised } = this.props;
+        const { isAuthorised, isFetching } = this.props;
 
         return (
             <Router>
-                <AppLayout isAuthorised={isAuthorised} />
+                <AppLayout isAuthorised={isAuthorised} isFetching={isFetching} />
             </Router>
         );
     }
 }
 
 App.propTypes = {
-    isAuthorised: PropTypes.bool.isRequired
+    fetchCurrentUser: PropTypes.func.isRequired,
+    isAuthorised: PropTypes.bool.isRequired,
+    isFetching: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = state => ({
-    isAuthorised: getIsAuthorised(state)
+    isAuthorised: getIsAuthorised(state),
+    isFetching: getIsFetching(state)
 });
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => ({
+    fetchCurrentUser: () => dispatch(fetchCurrentUser())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

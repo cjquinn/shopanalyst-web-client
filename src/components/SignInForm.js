@@ -5,7 +5,7 @@ import { Field, reduxForm } from 'redux-form';
 // Components
 import LabeledInput from './LabeledInput';
 
-const SignInForm = ({ handleSubmit }) => (
+const SignInForm = ({ handleSubmit, error }) => (
     <form className="u-space-2" onSubmit={handleSubmit}>
         <Field
             component={LabeledInput}
@@ -27,12 +27,17 @@ const SignInForm = ({ handleSubmit }) => (
             type="password"
         />
 
-        <button className="o-button" type="button">Sign in</button>
+        {error &&
+            <p className="o-type-medium u-color-red u-text-center">{error}</p>
+        }
+
+        <button className="o-button" type="submit">Sign in</button>
     </form>
 );
 
 SignInForm.propTypes = {
-    handleSubmit: PropTypes.func.isRequired
+    handleSubmit: PropTypes.func.isRequired,
+    error: PropTypes.string
 };
 
 export default reduxForm({ form: 'signIn' })(SignInForm);

@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withRouter } from 'react-router';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Redirect, Switch } from 'react-router-dom';
 
 // Components
 import Nav from '../components/Nav';
+import Svg from '../components/Svg';
 
 // Routes
 import AuthorisedRoute from '../routes/AuthorisedRoute';
@@ -19,22 +20,34 @@ import SettingsScreen from '../screens/SettingsScreen';
 import SignInScreen from '../screens/SignInScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 
-const AppLayout = ({ isAuthorised, location }) => (
-    <div className={`app ${!isAuthorised && 'app--unauthorised u-bgcolor-pale-green'} ${location.pathname.indexOf('edit') !== -1 && 'app--edit-list'}`}>
-        <Switch>
-            <Redirect exact from="/" to="/lists" />
+// Sprites
+import shop from '../assets/svg/shop.svg';
 
-            <UnauthorisedRoute exact path="/sign-in" component={SignInScreen} />
-            <UnauthorisedRoute exact path="/sign-up" component={SignUpScreen} />
+const AppLayout = ({ isAuthorised, isFetching, location }) => (
+    <div className={`app ${!isAuthorised && 'app--unauthorised u-bgcolor-pale-green'} ${isFetching && 'app--loading'} ${location.pathname.indexOf('edit') !== -1 && 'app--edit-list'}`}>
+        {isFetching &&
+            <div className="u-space u-text-center">
+                <Svg sprite={shop} />
+                <p>Loading...</p>
+            </div>
+        }
 
-            <UnauthorisedRoute exact path="/request-password-reset" component={RequestPasswordResetScreen} />
-            <UnauthorisedRoute exact path="/reset-password" component={ResetPasswordScreen} />
+        {!isFetching &&
+            <Switch>
+                <Redirect exact from="/" to="/lists" />
 
-            <AuthorisedRoute path="/lists/:id(\d+)" component={ListScreen} />
-            <AuthorisedRoute path="/lists" component={ListsScreen} />
+                <UnauthorisedRoute exact path="/sign-in" component={SignInScreen} />
+                <UnauthorisedRoute exact path="/sign-up" component={SignUpScreen} />
 
-            <AuthorisedRoute exact path="/settings" component={SettingsScreen} />
-        </Switch>
+                <UnauthorisedRoute exact path="/request-password-reset" component={RequestPasswordResetScreen} />
+                <UnauthorisedRoute exact path="/reset-password" component={ResetPasswordScreen} />
+
+                <AuthorisedRoute path="/lists/:id(\d+)" component={ListScreen} />
+                <AuthorisedRoute path="/lists" component={ListsScreen} />
+
+                <AuthorisedRoute exact path="/settings" component={SettingsScreen} />
+            </Switch>
+        }
 
         {isAuthorised && <Nav />}
     </div>
@@ -42,6 +55,7 @@ const AppLayout = ({ isAuthorised, location }) => (
 
 AppLayout.propTypes = {
     isAuthorised: PropTypes.bool.isRequired,
+    isFetching: PropTypes.bool.isRequired,
     location: PropTypes.object.isRequired
 };
 

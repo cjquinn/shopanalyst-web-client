@@ -9,11 +9,17 @@ html {
     // The height of the heading and tabs
     padding: 39px 0 62px 0;
 
-    &--unauthorised {
-        height: 100vh;
-    }
-
     &--edit-list {
         padding-top: 109px;
+    }
+
+    &--loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &--unauthorised {
+        height: 100vh;
     }
 }

@@ -1,5 +1,24 @@
 import { createAction } from 'redux-actions';
 
+/**
+ * Current User
+ */
+export const fetchCurrentUserRequest = createAction('FETCH_CURRENT_USER_REQUEST');
+export const fetchCurrentUserSuccess = createAction('FETCH_CURRENT_USER_SUCCESS');
+export const fetchCurrentUserFailure = createAction('FETCH_CURRENT_USER_FAILURE');
+
+export const fetchCurrentUser = () => (dispatch, getState, api) => {
+    dispatch(fetchCurrentUserRequest());
+
+    return api.fetchCurrentUser()
+        .then(api.checkStatus)
+        .then(response => dispatch(fetchCurrentUserSuccess(response.data.user)))
+        .catch(api.handleError(dispatch, fetchCurrentUserFailure));
+};
+
+/**
+ * Sign in
+ */
 export const signInRequest = createAction('SIGN_IN_REQUEST');
 export const signInSuccess = createAction('SIGN_IN_SUCCESS');
 export const signInFailure = createAction('SIGN_IN_FAILURE');
@@ -14,6 +33,14 @@ export const signIn = data => (dispatch, getState, api) => {
         .catch(api.handleError(dispatch, signInFailure));
 };
 
+/**
+ * Sign out
+ */
+export const signOut = createAction('SIGN_OUT');
+
+/**
+ * Sign up
+ */
 export const signUpRequest = createAction('SIGN_UP_REQUEST');
 export const signUpSuccess = createAction('SIGN_UP_SUCCESS');
 export const signUpFailure = createAction('SIGN_UP_FAILURE');
