@@ -13,10 +13,10 @@ import shop from '../assets/svg/shop.svg';
 
 const Nav = ({ location }) => (
     <nav className="nav u-fixed u-width-full">
-        <ul className="tabs u-bgcolor-pale-green u-uppercase u-text-center">
+        <ul className="tabs u-bgcolor-pale-green u-text-center">
             <li className={`tabs__tab ${location.pathname.indexOf('lists') !== -1 && 'tabs__tab--active u-bgcolor-off-white'}`}>
                 <Link
-                    className="tabs__tab__link o-type-medium u-color-grey"
+                    className="tabs__tab__link o-type-small u-color-grey"
                     to="/lists"
                 >
                     <Svg className="tabs__tab__icon" sprite={shop} />
@@ -26,7 +26,7 @@ const Nav = ({ location }) => (
 
             <li className={`tabs__tab ${location.pathname.indexOf('analyse') !== -1 && 'tabs__tab--active u-bgcolor-off-white'}`}>
                 <Link
-                    className="tabs__tab__link o-type-medium u-color-grey"
+                    className="tabs__tab__link o-type-small u-color-grey"
                     to="/analyse"
                 >
                     <Svg className="tabs__tab__icon" sprite={analyse} />
@@ -36,7 +36,7 @@ const Nav = ({ location }) => (
 
             <li className={`tabs__tab ${location.pathname.indexOf('settings') !== -1 && 'tabs__tab--active u-bgcolor-off-white'}`}>
                 <Link
-                    className="tabs__tab__link o-type-medium u-color-grey"
+                    className="tabs__tab__link o-type-small u-color-grey"
                     to="/settings"
                 >
                     <Svg className="tabs__tab__icon" sprite={settings} />
