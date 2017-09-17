@@ -6,7 +6,6 @@ import { Link, Route, Switch } from 'react-router-dom';
 import AddItemsForm from '../components/AddItemsForm';
 import EditListForm from '../components/EditListForm';
 import Header from '../components/Header';
-import ScreenWrapper from '../components/ScreenWrapper';
 
 // Containers
 import ListContainer from '../containers/ListContainer';
@@ -27,15 +26,7 @@ const ListScreen = ({ location, match }) => (
 
         <Route exact path={`${match.url}/add-items`} component={AddItemsForm} />
 
-        <ScreenWrapper>
-            <Route exact path={match.url} render={() => (
-                <Link className="o-button" to={`${match.url}/add-items`}>
-                    Add items
-                </Link>
-            )} />
-
-            <ListContainer />
-        </ScreenWrapper>
+        <ListContainer />
     </div>
 );
 

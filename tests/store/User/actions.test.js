@@ -1,8 +1,11 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 
+// Actions
 import * as actions from '../../../src/store/User/actions';
-import { getJwt } from '../../../src/store/api';
+
+// Api
+import { getJwt, setJwt } from '../../../src/store/api';
 
 const mock = new MockAdapter(axios);
 let store;
@@ -12,10 +15,27 @@ describe('fetchCurrentUser', () => {
 
     afterEach(() => mock.reset());
 
-    it('failure', () => {
+    it('failure no jwt', () => {
         mock
             .onGet('/auth/current-user.json')
             .reply(403);
+
+        store.dispatch(actions.fetchCurrentUser());
+
+        const expected = [
+            {type: actions.fetchCurrentUserRequest.toString()},
+            {type: actions.fetchCurrentUserFailure.toString()}
+        ];
+
+        expect(store.getActions()).toEqual(expected);
+    });
+
+    it('failure with jwt', () => {
+        mock
+            .onGet('/auth/current-user.json')
+            .reply(403);
+
+        setJwt({data: {jwt: 'JWT_TOKEN'}});
 
         return store.dispatch(actions.fetchCurrentUser())
             .then(() => {
@@ -35,6 +55,8 @@ describe('fetchCurrentUser', () => {
             .reply(200, {
                 user: {id: 1, email: 'christy@myshopanalyst.com'}
             });
+
+        setJwt({data: {jwt: 'JWT_TOKEN'}});
 
         return store.dispatch(actions.fetchCurrentUser())
             .then(() => {

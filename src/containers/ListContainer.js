@@ -14,11 +14,7 @@ import { getList } from '../store/List/selectors';
 
 class ListContainer extends Component {
     componentDidMount() {
-        this.props
-            .fetchList()
-            .catch(response => {
-                console.log(response);
-            });
+        this.props.fetchList();
     }
 
     render() {

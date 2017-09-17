@@ -1,16 +1,25 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withRouter } from 'react-router';
+import { Link, Route } from 'react-router-dom';
 
 // Components
 import Items from '../components/Items';
+import ScreenWrapper from '../components/ScreenWrapper';
 
-const List = ({ list }) => {
+const List = ({ list, match }) => {
     if (!list) {
-        return <h1>Not FOUND</h1>;
+        return <h1>Loading</h1>;
     }
 
     return (
-        <div>
+        <ScreenWrapper>
+            <Route exact path={match.url} render={() => (
+                <Link className="o-button" to={`${match.url}/add-items`}>
+                    Add items
+                </Link>
+            )} />
+
             <div className="list-meta">
                 <span className="o-type-small">
                     {list.itemsProgress}
@@ -26,12 +35,13 @@ const List = ({ list }) => {
             <button className="o-button" type="button">
                 Duplicate list
             </button>
-        </div>
+        </ScreenWrapper>
     );
 };
 
 List.propTypes = {
-    list: PropTypes.object
+    list: PropTypes.object,
+    match: PropTypes.object.isRequired
 };
 
-export default List;
+export default withRouter(List);

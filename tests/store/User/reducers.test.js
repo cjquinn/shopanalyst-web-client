@@ -4,7 +4,7 @@ import * as actions from '../../../src/store/User/actions';
 
 describe('initial state', () => {
     it('shape', () => {
-        const expected = {isFetching: false};
+        const expected = {isFetching: true};
 
         expect(reducers(undefined, {})).toEqual(expected);
     });
