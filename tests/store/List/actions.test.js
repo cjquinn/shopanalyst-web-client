@@ -60,6 +60,81 @@ describe('createList', () => {
     });
 });
 
+describe('fetchList', () => {
+    beforeEach(() => store = global.configureStore());
+
+    afterEach(() => mock.reset());
+
+    it('failure', () => {
+        mock
+            .onGet('/lists/1.json')
+            .reply(403);
+
+        return store.dispatch(actions.fetchList(1))
+            .then(() => {
+                const expected = [
+                    {type: actions.fetchListRequest.toString()},
+                    {type: actions.fetchListFailure.toString()},
+                    {type: signOut.toString()}
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+            });
+    });
+
+    it('success', () => {
+        mock
+            .onGet('/lists/1.json')
+            .reply(200, {
+                list: {
+                    id: 1,
+                    name: 'Weekly Shop',
+                    list_items: [{
+                        id: 2,
+                        item_id: 3,
+                        list_id: 1,
+                        quantity: 1,
+                        item: {
+                            id: 3,
+                            name: 'Potato Waffles'
+                        }
+                    }]
+                }
+            });
+
+        return store.dispatch(actions.fetchList(1))
+            .then(() => {
+                const expected = [
+                    {type: actions.fetchListRequest.toString()},
+                    {
+                        type: actions.fetchListSuccess.toString(),
+                        payload: {
+                            entities: {
+                                lists: {
+                                    1: {
+                                        id: 1,
+                                        name: 'Weekly Shop',
+                                        list_items: [{
+                                            id: 2,
+                                            item_id: 3,
+                                            list_id: 1,
+                                            quantity: 1,
+                                            item: 3
+                                        }]
+                                    }
+                                },
+                                items: {3: {id: 3, name: 'Potato Waffles'}}
+                            },
+                            result: 1
+                        }
+                    }
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+            });
+    });
+});
+
 describe('fetchLists', () => {
     beforeEach(() => store = global.configureStore({list: {page: 1}}));
 

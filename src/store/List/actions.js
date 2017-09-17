@@ -25,6 +25,23 @@ export const createList = data => (dispatch, getState, api) => {
 };
 
 /**
+ * Fetch List
+ */
+export const fetchListRequest = createAction('FETCH_LIST_REQUEST');
+export const fetchListSuccess = createAction('FETCH_LIST_SUCCESS');
+export const fetchListFailure = createAction('FETCH_LIST_FAILURE');
+
+export const fetchList = id => (dispatch, getState, api) => {
+    dispatch(fetchListRequest());
+
+    return api.fetchList(id)
+        .then(api.checkStatus)
+        .then(response => normalize(response.data.list, listSchema))
+        .then(normalizedData => dispatch(fetchListSuccess(normalizedData)))
+        .catch(api.handleError(dispatch, fetchListFailure));
+};
+
+/**
  * Fetch Lists
  */
 export const fetchListsRequest = createAction('FETCH_LISTS_REQUEST');
