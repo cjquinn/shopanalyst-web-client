@@ -5,6 +5,12 @@ import * as actions from './actions';
 
 const ids = (state = [], action) => {
     switch (action.type) {
+        case actions.createListSuccess.toString():
+            return [
+                action.payload.result,
+                ...state
+            ];
+
         case actions.fetchListsSuccess.toString():
             if (action.payload.page === 1) {
                 return action.payload.result;
@@ -46,6 +52,9 @@ const page = (state = 1, action) => {
 
 const total = (state = 0, action) => {
     switch (action.type) {
+        case actions.createListSuccess.toString():
+            return state + 1;
+
         case actions.fetchListsSuccess.toString():
             return action.payload.total;
 
