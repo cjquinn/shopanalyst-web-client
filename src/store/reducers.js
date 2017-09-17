@@ -8,10 +8,14 @@ import { removeJwt } from './api';
 import { signOut } from './User/actions';
 
 // Reducers
+import entities from './Entities/reducers';
+import list from './List/reducers';
 import user from './User/reducers';
 
 const app = combineReducers({
+    entities,
     form,
+    list,
     user
 });
 
@@ -20,6 +24,8 @@ const reducers = (state, action) => {
         removeJwt();
 
         // Only undefine state from this app
+        state.entities = undefined;
+        state.list = undefined;
         state.user = undefined;
     }
 

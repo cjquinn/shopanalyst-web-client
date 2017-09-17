@@ -1,3 +1,3 @@
 import { instance } from '../api';
 
-export const fetchLists = () => instance().get('/lists.json');
+export const fetchLists = page => instance().get(`/lists.json?page=${page}`);
