@@ -6,7 +6,7 @@ import { Link, withRouter } from 'react-router-dom';
 import ListCard from './ListCard';
 
 const Lists = ({ isFetching, fetchMoreLists, lists, match, total }) => (
-    <div>
+    <div className="u-space-2">
         {lists.length === 0 && !isFetching &&
             <p className="o-type-medium u-color-brown u-text-center">
                 Once you&#039;ve <Link className="o-link" to={`${match.url}/create`}>created a list</Link> it will show here
