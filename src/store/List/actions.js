@@ -17,7 +17,7 @@ export const fetchListsFailure = createAction('FETCH_LISTS_FAILURE');
 export const fetchLists = page => (dispatch, getState, api) => {
     dispatch(fetchListsRequest());
 
-    page = page || getPage(getState());
+    page = page || 1;
 
     return api.fetchLists(page)
         .then(api.checkStatus)

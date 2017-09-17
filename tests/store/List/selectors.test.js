@@ -1,8 +1,14 @@
-import { getLists, getPage, getTotal } from '../../../src/store/List/selectors';
+import { getIsFetching, getLists, getPage, getTotal } from '../../../src/store/List/selectors';
 
 describe('selectors', () => {
+    it('getIsFetching', () => {
+        const state = {list: {isFetching: true}};
+
+        expect(getIsFetching(state)).toEqual(true);
+    });
+
     it('getLists', () => {
-        let state = {
+        const state = {
             entities: {
                 lists: {
                     1: {
@@ -43,13 +49,13 @@ describe('selectors', () => {
     });
 
     it('getPage', () => {
-        let state = {list: {page: 1}};
+        const state = {list: {page: 1}};
 
         expect(getPage(state)).toEqual(1);
     });
 
     it('getTotal', () => {
-        let state = {list: {total: 1}};
+        const state = {list: {total: 1}};
 
         expect(getTotal(state)).toEqual(1);
     });

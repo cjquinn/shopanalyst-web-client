@@ -12,7 +12,7 @@ describe('selectors', () => {
     });
 
     it('getIsFetching', () => {
-        let state = {user: {isFetching: false}};
+        const state = {user: {isFetching: false}};
 
         expect(getIsFetching(state)).toBe(false);
     });

@@ -4,8 +4,10 @@ import { Link, Route } from 'react-router-dom';
 
 // Components
 import CreateListForm from '../components/CreateListForm';
-import Lists from '../components/Lists';
 import ScreenWrapper from '../components/ScreenWrapper';
+
+// Containers
+import ListsContainer from '../containers/ListsContainer';
 
 import Header from '../components/Header';
 
@@ -24,11 +26,7 @@ const ListsScreen = ({ location, match }) => (
                 </Link>
             )} />
 
-            <Lists />
-
-            <button className="o-button" type="button">
-                Load more
-            </button>
+            <ListsContainer />
         </ScreenWrapper>
     </div>
 );
