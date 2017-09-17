@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 // Component
 import Overlay from './Overlay';
 
-const Form = ({ cancelTo, children }) => (
+const FormWrapper = ({ cancelTo, children }) => (
     <div>
         <div className="u-bgcolor-white u-relative u-z-2">
             {cancelTo &&
@@ -17,7 +17,7 @@ const Form = ({ cancelTo, children }) => (
                 </Link>
             }
 
-            <div className="o-container u-pv-2 u-space-2">
+            <div className="o-container u-pv-2">
                 {children}
             </div>
         </div>
@@ -26,9 +26,9 @@ const Form = ({ cancelTo, children }) => (
     </div>
 );
 
-Form.propTypes = {
+FormWrapper.propTypes = {
     cancelTo: PropTypes.string,
     children: PropTypes.node.isRequired
 };
 
-export default Form;
+export default FormWrapper;

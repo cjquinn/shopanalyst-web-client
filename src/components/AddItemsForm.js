@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 // Components
-import Form from './Form';
+import FormWrapper from './FormWrapper';
 import LabeledInput from './LabeledInput';
 
 const AddItemsForm = ({ match }) => (
-    <Form cancelTo={match.url.replace('/add-items', '')}>
+    <FormWrapper cancelTo={match.url.replace('/add-items', '')}>
         <LabeledInput
             label="Search for items"
             name="items-search"
@@ -41,7 +41,7 @@ const AddItemsForm = ({ match }) => (
         >
             Add items
         </button>
-    </Form>
+    </FormWrapper>
 );
 
 AddItemsForm.propTypes = {

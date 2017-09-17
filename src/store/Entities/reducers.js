@@ -2,7 +2,6 @@ import { merge } from 'lodash';
 
 const initialState = {
     items: {},
-    list_items: {},
     lists: {}
 };
 

@@ -8,15 +8,8 @@ import Svg from '../components/Svg';
 import cross from '../assets/svg/cross.svg';
 
 const LabeledInput = ({ input, id, inverted, label, meta, placeholder, type, withClear }) => (
-    <div className="labeled-input">
-        <div className="labeled-input__header u-mb">
-            <label htmlFor={id} className="u-block">{label}</label>
-            {meta.error &&
-                <span className="o-type-medium u-color-red u-text-right">
-                    {meta.error}
-                </span>
-            }
-        </div>
+    <div className="labeled-input u-space">
+        <label htmlFor={id} className="u-block">{label}</label>
         
         <div className="u-relative">
             <input
@@ -36,6 +29,12 @@ const LabeledInput = ({ input, id, inverted, label, meta, placeholder, type, wit
                 </button>
             }
         </div>
+
+        {meta.error &&
+            <p className="o-type-medium u-color-red">
+                {meta.error}
+            </p>
+        }
     </div>
 );
 

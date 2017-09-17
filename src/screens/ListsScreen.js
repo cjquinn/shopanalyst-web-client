@@ -3,10 +3,10 @@ import React from 'react';
 import { Link, Route } from 'react-router-dom';
 
 // Components
-import CreateListForm from '../components/CreateListForm';
 import ScreenWrapper from '../components/ScreenWrapper';
 
 // Containers
+import CreateListFormContainer from '../containers/CreateListFormContainer';
 import ListsContainer from '../containers/ListsContainer';
 
 import Header from '../components/Header';
@@ -17,7 +17,7 @@ const ListsScreen = ({ location, match }) => (
             {location.pathname === `${match.url}/create` ? 'Create List' : 'Lists'}
         </Header>
 
-        <Route exact path={`${match.url}/create`} component={CreateListForm} />
+        <Route exact path={`${match.url}/create`} component={CreateListFormContainer} />
 
         <ScreenWrapper>
             <Route exact path={match.url} render={() => (

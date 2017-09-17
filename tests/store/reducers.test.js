@@ -19,8 +19,19 @@ describe('app', () => {
 
         const state = {
             entities: {
-                lists: {1: {id: 1, name: 'Weekly Shop'}},
-                list_items: {2: {id: 2, item_id: 3, list_id: 1, quantity: 1}},
+                lists: {
+                    1: {
+                        id: 1,
+                        name: 'Weekly Shop',
+                        list_items: [{
+                            id: 2,
+                            item_id: 3,
+                            list_id: 1,
+                            quantity: 1,
+                            item: 3
+                        }]
+                    }
+                },
                 items: {3: {id: 3, name: 'Potato Waffles'}}
             },
             list: {
@@ -39,7 +50,6 @@ describe('app', () => {
         const expected = {
             entities: {
                 items: {},
-                list_items: {},
                 lists: {}
             },
             list: {

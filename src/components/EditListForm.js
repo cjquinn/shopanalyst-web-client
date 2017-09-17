@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // Components
-import Form from './Form';
+import FormWrapper from './FormWrapper';
 
 class EditListForm extends Component {
     componentDidMount() {
@@ -18,9 +18,9 @@ class EditListForm extends Component {
                     ref={input => this.input = input} 
                 />
 
-                <Form>
+                <FormWrapper>
                     <button className="o-button" type="button">Save changes</button>
-                </Form>
+                </FormWrapper>
             </div>
         );
     }
