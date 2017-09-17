@@ -6,9 +6,10 @@ import { Link, Route, Switch } from 'react-router-dom';
 import AddItemsForm from '../components/AddItemsForm';
 import EditListForm from '../components/EditListForm';
 import Header from '../components/Header';
-import Items from '../components/Items';
-import ListMeta from '../components/ListMeta';
 import ScreenWrapper from '../components/ScreenWrapper';
+
+// Containers
+import ListContainer from '../containers/ListContainer';
 
 const ListScreen = ({ location, match }) => (
     <div>
@@ -33,13 +34,7 @@ const ListScreen = ({ location, match }) => (
                 </Link>
             )} />
 
-            <ListMeta />
-
-            <Items />
-
-            <button className="o-button" type="button">
-                Duplicate list
-            </button>
+            <ListContainer />
         </ScreenWrapper>
     </div>
 );

@@ -26,7 +26,7 @@ const reducers = (state, action) => {
         // Only undefine state from this app
         state.entities = undefined;
         state.list = undefined;
-        state.user = undefined;
+        state.user = {isFetching: false};
     }
 
     return app(state, action);

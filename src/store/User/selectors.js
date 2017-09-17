@@ -1,3 +1,11 @@
-export const getIsAuthorised = state => state.user.id !== undefined;
+import { createSelector } from 'reselect';
 
-export const getIsFetching = state => state.user.isFetching;
+export const getIsAuthorised = createSelector(
+    state => state.user.id,
+    id => id !== undefined
+);
+
+export const getIsFetching = createSelector(
+    state => state.user.isFetching,
+    isFetching => isFetching
+);

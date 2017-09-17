@@ -48,6 +48,7 @@ export const handleError = (dispatch, failure) => response => {
             return dispatch(signOut());
 
         default:
+            // 500 or any other thang
     }
 };
 

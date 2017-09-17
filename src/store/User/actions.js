@@ -10,6 +10,10 @@ export const fetchCurrentUserFailure = createAction('FETCH_CURRENT_USER_FAILURE'
 export const fetchCurrentUser = () => (dispatch, getState, api) => {
     dispatch(fetchCurrentUserRequest());
 
+    if (!api.getJwt()) {
+        return dispatch(fetchCurrentUserFailure());
+    }
+
     return api.fetchCurrentUser()
         .then(api.checkStatus)
         .then(response => dispatch(fetchCurrentUserSuccess(response.data.user)))

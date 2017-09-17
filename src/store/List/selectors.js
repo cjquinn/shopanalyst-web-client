@@ -4,35 +4,40 @@ import { createSelector } from 'reselect';
 // Schema
 import { list as listSchema } from '../schema';
 
-export const getIsFetching = state => state.list.isFetching;
+// Utilities
+import { withComputed } from './utilities';
+
+export const getIsFetching = createSelector(
+    state => state.list.isFetching,
+    isFetching => isFetching
+);
+
+export const getList = id => createSelector(
+    state => state.entities,
+    entities => {
+        const list = denormalize(id, listSchema, entities);
+
+        if (!list) {
+            return null;
+        }
+
+        return withComputed(list);
+    }
+);
 
 export const getLists = createSelector(
     state => state.list.ids,
     state => state.entities,
-    (ids, entities) => denormalize(ids, [listSchema], entities).map(list => {
-        let completeCount = 0;
-        let itemsProgress = '0/0 items';
-        let progress = 0;
-
-        if (list.list_items &&
-            list.list_items.length > 0
-        ) {
-            completeCount = list.list_items
-                .filter(listItem => listItem.isComplete)
-                .length;
-            itemsProgress = `${completeCount}/${list.list_items.length} items`;
-            progress = `${(completeCount / list.list_items.length) * 100}%`;
-        }
-
-        return {
-            ...list,
-            completeCount,
-            itemsProgress,
-            progress
-        };
-    })
+    (ids, entities) => denormalize(ids, [listSchema], entities)
+        .map(list => withComputed(list))
 );
 
-export const getPage = state => state.list.page;
+export const getPage = createSelector(
+    state => state.list.page,
+    page => page
+);
 
-export const getTotal = state => state.list.total;
+export const getTotal = createSelector(
+    state => state.list.total,
+    total => total
+);

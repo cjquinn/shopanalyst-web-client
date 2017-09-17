@@ -1,7 +1,7 @@
 // Actions
 import * as actions from './actions';
 
-const user = (state = {isFetching: false}, action) => {
+const user = (state = {isFetching: true}, action) => {
     switch (action.type) {
         case actions.fetchCurrentUserRequest.toString():
             return {
