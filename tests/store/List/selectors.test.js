@@ -33,6 +33,7 @@ describe('selectors', () => {
         const expected = [{
             id: 1,
             name: 'Weekly Shop',
+            completeCount: 0,
             list_items: [{
                 id: 2,
                 item_id: 3,
@@ -42,7 +43,9 @@ describe('selectors', () => {
                     id: 3,
                     name: 'Potato Waffles'
                 }
-            }]
+            }],
+            itemsProgress: '0/1 items',
+            progress: '0%'
         }];
 
         expect(getLists(state)).toEqual(expected);

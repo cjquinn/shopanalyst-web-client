@@ -42,17 +42,19 @@ describe('cache', () => {
         };
 
         const expected = {
-            lists: {1: {
-                id: 1,
-                name: 'Weekly Shop',
-                list_items: [{
-                    id: 2,
-                    item_id: 3,
-                    list_id: 1,
-                    quantity: 1,
-                    item: 3
-                }]
-            }},
+            lists: {
+                1: {
+                    id: 1,
+                    name: 'Weekly Shop',
+                    list_items: [{
+                        id: 2,
+                        item_id: 3,
+                        list_id: 1,
+                        quantity: 1,
+                        item: 3
+                    }]
+                }
+            },
             items: {3: {id: 3, name: 'Potato Waffles'}}
         };
 
