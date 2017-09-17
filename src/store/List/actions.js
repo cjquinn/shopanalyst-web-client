@@ -8,6 +8,23 @@ import { list as listSchema } from '../schema';
 import { getPage } from './selectors';
 
 /**
+ * Create List
+ */
+export const createListRequest = createAction('CREATE_LIST_REQUEST');
+export const createListSuccess = createAction('CREATE_LIST_SUCCESS');
+export const createListFailure = createAction('CREATE_LIST_FAILURE');
+
+export const createList = data => (dispatch, getState, api) => {
+    dispatch(createListRequest());
+
+    return api.createList(data)
+        .then(api.checkStatus)
+        .then(response => normalize(response.data.list, listSchema))
+        .then(normalizedData => dispatch(createListSuccess(normalizedData)))
+        .catch(api.handleError(dispatch, createListFailure));
+};
+
+/**
  * Fetch Lists
  */
 export const fetchListsRequest = createAction('FETCH_LISTS_REQUEST');

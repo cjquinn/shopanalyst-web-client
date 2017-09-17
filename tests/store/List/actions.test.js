@@ -8,6 +8,58 @@ import { signOut } from '../../../src/store/User/actions';
 const mock = new MockAdapter(axios);
 let store;
 
+describe('createList', () => {
+    beforeEach(() => store = global.configureStore());
+
+    afterEach(() => mock.reset());
+
+    it('failure', () => {
+        mock
+            .onPost('/lists.json')
+            .reply(403);
+
+        return store.dispatch(actions.createList())
+            .then(() => {
+                const expected = [
+                    {type: actions.createListRequest.toString()},
+                    {type: actions.createListFailure.toString()},
+                    {type: signOut.toString()}
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+            });
+    });
+
+    it('success', () => {
+        mock
+            .onPost('/lists.json')
+            .reply(200, {
+                list: {
+                    id: 1,
+                    name: 'Weekly Shop'
+                }
+            });
+
+        return store.dispatch(actions.createList())
+            .then(() => {
+                const expected = [
+                    {type: actions.createListRequest.toString()},
+                    {
+                        type: actions.createListSuccess.toString(),
+                        payload: {
+                            entities: {
+                                lists: {1: {id: 1, name: 'Weekly Shop'}}
+                            },
+                            result: 1
+                        }
+                    }
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+            });
+    });
+});
+
 describe('fetchLists', () => {
     beforeEach(() => store = global.configureStore({list: {page: 1}}));
 
