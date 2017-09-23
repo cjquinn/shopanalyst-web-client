@@ -47,6 +47,9 @@ export const handleError = (dispatch, failure) => response => {
         case 403:
             return dispatch(signOut());
 
+        case 404:
+            throw response;
+
         default:
             // 500 or any other thang
     }

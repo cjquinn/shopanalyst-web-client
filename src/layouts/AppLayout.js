@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withRouter } from 'react-router';
-import { Redirect, Switch } from 'react-router-dom';
+import { Route, Redirect, Switch } from 'react-router-dom';
 
 // Components
 import Nav from '../components/Nav';
-import Svg from '../components/Svg';
+import Splash from '../components/Splash';
 
 // Routes
 import AuthorisedRoute from '../routes/AuthorisedRoute';
@@ -15,23 +15,16 @@ import UnauthorisedRoute from '../routes/UnauthorisedRoute';
 import AnalyseScreen from '../screens/AnalyseScreen';
 import ListsScreen from '../screens/ListsScreen';
 import ListScreen from '../screens/ListScreen';
+import NotFoundScreen from '../screens/NotFoundScreen';
 import RequestPasswordResetScreen from '../screens/RequestPasswordResetScreen';
 import ResetPasswordScreen from '../screens/ResetPasswordScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import SignInScreen from '../screens/SignInScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 
-// Sprites
-import shop from '../assets/svg/shop.svg';
-
 const AppLayout = ({ isAuthorised, isFetching, location }) => (
-    <div className={`app ${!isAuthorised && 'app--unauthorised u-bgcolor-pale-green'} ${isFetching && 'app--loading'} ${location.pathname.indexOf('edit') !== -1 && 'app--edit-list'}`}>
-        {isFetching &&
-            <div className="u-space u-text-center">
-                <Svg sprite={shop} />
-                <p>Loading...</p>
-            </div>
-        }
+    <div className={`app ${!isAuthorised && 'app--unauthorised u-bgcolor-pale-green'} ${location.pathname.indexOf('edit') !== -1 && 'app--edit-list'}`}>
+        {isFetching && <Splash>Loading...</Splash>}
 
         {!isFetching &&
             <Switch>
@@ -49,6 +42,8 @@ const AppLayout = ({ isAuthorised, isFetching, location }) => (
                 <AuthorisedRoute path="/lists" component={ListsScreen} />
 
                 <AuthorisedRoute exact path="/settings" component={SettingsScreen} />
+
+                <Route component={NotFoundScreen} />
             </Switch>
         }
 

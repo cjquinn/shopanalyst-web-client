@@ -14,7 +14,9 @@ import { getList } from '../store/List/selectors';
 
 class ListContainer extends Component {
     componentDidMount() {
-        this.props.fetchList();
+        const { fetchList, history } = this.props;
+
+        fetchList().catch(() => history.replace('/not-found'));
     }
 
     render() {
@@ -26,6 +28,7 @@ class ListContainer extends Component {
 
 ListContainer.propTypes = {
     fetchList: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired,
     list: PropTypes.object
 };
 
