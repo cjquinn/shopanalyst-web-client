@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 // Components
@@ -9,7 +10,7 @@ import minus from '../assets/svg/minus.svg';
 import plus from '../assets/svg/plus.svg';
 import tick from '../assets/svg/tick.svg';
 
-const ListItem = () => (
+const ListItem = ({ listItem }) => (
     <li className="list-item o-list__item">
         <input
             id="item"
@@ -25,7 +26,7 @@ const ListItem = () => (
                 <Svg sprite={tick} />
             </span>
 
-            Item
+            {listItem.name}
 
             {/*<div className="list-item__actions">
                 <button
@@ -60,5 +61,9 @@ const ListItem = () => (
         </label>
     </li>
 );
+
+ListItem.propTypes = {
+    listItem: PropTypes.object.isRequired
+};
 
 export default ListItem;

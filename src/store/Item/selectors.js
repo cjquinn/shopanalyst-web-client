@@ -10,3 +10,26 @@ export const getItems = createSelector(
     state => state.entities.items,
     (ids, items) => ids.map(id => items[id])
 );
+
+export const getOptions = createSelector(
+    getItems,
+    state => state.item.search,
+    (items, search) => {
+        if (search.length === 0) {
+            return [];
+        }
+
+        if (items.length === 0) {
+            return [{name: search}];
+        }
+
+        if (items[0].name === search) {
+            return items;
+        }
+
+        return [
+            {name: search},
+            ...items
+        ];
+    }
+);

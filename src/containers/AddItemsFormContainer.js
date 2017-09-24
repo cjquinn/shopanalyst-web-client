@@ -1,3 +1,4 @@
+import { debounce } from 'lodash';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -8,32 +9,57 @@ import { fetchItems } from '../store/Item/actions';
 // Components
 import AddItemsForm from '../components/AddItemsForm';
 
+// Selectors
+import { getOptions } from '../store/Item/selectors';
+
 class AddItemsFormContainer extends Component {
     state = {search: ''};
 
-    handleClearInput = () => this.setState({search: ''});
+    handleClearInput = () => {
+        this.setSearch('');
 
-    handleSearch = event => {
-        this.setState({search: event.target.value});
+        this.searchInput.focus();
     };
 
+    handleSearch = event => this.setSearch(event.target.value);
+
+    setSearch = search => this.setState(
+        {search},
+        () => this.props.fetchItems(search)
+    );
+
+    setSearchInput = searchInput => this.searchInput = searchInput;
+
     render() {
+        const { options } = this.props;
+        const { search } = this.state;
+
         return (
             <AddItemsForm
                 handleClearInput={this.handleClearInput}
                 handleSearch={this.handleSearch}
-                search={this.state.search}
+                options={options}
+                search={search}
+                setSearchInput={this.setSearchInput}
             />
         );
     }
 }
 
 AddItemsFormContainer.propTypes = {
-    fetchItems: PropTypes.func.isRequired
+    fetchItems: PropTypes.func.isRequired,
+    options: PropTypes.array.isRequired
 };
 
-const mapDispatchToProps = dispatch => ({
-    fetchItems: search => dispatch(fetchItems(search))
+const mapStateToProps = state => ({
+    options: getOptions(state)
 });
 
-export default connect(null, mapDispatchToProps)(AddItemsFormContainer);
+const mapDispatchToProps = dispatch => ({
+    fetchItems: debounce(
+        search => dispatch(fetchItems(search)),
+        400
+    )
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddItemsFormContainer);

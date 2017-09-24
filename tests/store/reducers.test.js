@@ -36,7 +36,8 @@ describe('app', () => {
             },
             item: {
                 ids: [3],
-                isFetching: true
+                isFetching: true,
+                search: 'Testing'
             },
             list: {
                 ids: [1],
@@ -58,7 +59,8 @@ describe('app', () => {
             },
             item: {
                 ids: [],
-                isFetching: false
+                isFetching: false,
+                search: ''
             },
             list: {
                 ids: [],

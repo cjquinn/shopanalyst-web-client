@@ -48,7 +48,15 @@ const ListScreen = ({ list, location, match }) => (
                     </span>
                 </div>
 
-                <ListItems listItems={list.list_items} />
+                {list.list_items.length === 0 &&
+                    <p className="o-type-medium u-color-brown u-text-center">
+                        Once you&#039;ve <Link className="o-link" to={`${match.url}/add-items`}>added items</Link> they will show here
+                    </p>
+                }
+
+                {list.list_items.length > 0 &&
+                    <ListItems listItems={list.list_items} />
+                }
 
                 {list.list_items.length > 0 &&
                     <button className="o-button" type="button">

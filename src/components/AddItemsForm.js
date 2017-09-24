@@ -4,12 +4,13 @@ import { withRouter } from 'react-router-dom';
 
 // Components
 import FormWrapper from './FormWrapper';
+import ListItems from './ListItems';
 import Svg from './Svg';
 
 // Sprites
 import cross from '../assets/svg/cross.svg';
 
-const AddItemsForm = ({ handleClearInput, handleSearch, match, search }) => (
+const AddItemsForm = ({ handleClearInput, handleSearch, match, options, search, setSearchInput }) => (
     <FormWrapper cancelTo={match.url.replace('/add-items', '')}>
         <div className="u-space-2">
             <div className="labeled-input u-space">
@@ -24,6 +25,7 @@ const AddItemsForm = ({ handleClearInput, handleSearch, match, search }) => (
                         id="search-input"
                         placeholder="Start by typing..."
                         onChange={handleSearch}
+                        ref={setSearchInput}
                         value={search}
                     />
 
@@ -43,9 +45,13 @@ const AddItemsForm = ({ handleClearInput, handleSearch, match, search }) => (
                 <label className="u-block u-mb">Items</label>
 
                 <div className="u-bgcolor-light-grey u-bradius-5 u-ph u-pv-2">
-                    <p className="o-type-medium u-color-brown">
-                        No items
-                    </p>
+                    {options.length === 0 &&
+                        <p className="o-type-medium u-color-brown">
+                            No items
+                        </p>
+                    }
+
+                    {options.length > 0 && <ListItems listItems={options} />}
                 </div>
             </div>
 
@@ -74,7 +80,9 @@ AddItemsForm.propTypes = {
     handleClearInput: PropTypes.func.isRequired,
     handleSearch: PropTypes.func.isRequired,
     match: PropTypes.object.isRequired,
-    search: PropTypes.string.isRequired
+    options: PropTypes.array.isRequired,
+    search: PropTypes.string.isRequired,
+    setSearchInput: PropTypes.func.isRequired
 };
 
 export default withRouter(AddItemsForm);

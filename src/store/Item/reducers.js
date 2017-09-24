@@ -27,9 +27,20 @@ const isFetching = (state = false, action) => {
     }  
 };
 
+const search  = (state = '', action) => {
+    switch (action.type) {
+        case actions.setSearch.toString():
+            return action.payload;
+
+        default:
+            return state;
+    }
+};
+
 const reducers  = combineReducers({
     ids,
-    isFetching
+    isFetching,
+    search
 });
 
 export default reducers;
