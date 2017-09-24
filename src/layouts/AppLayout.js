@@ -7,6 +7,9 @@ import { Route, Redirect, Switch } from 'react-router-dom';
 import Nav from '../components/Nav';
 import Splash from '../components/Splash';
 
+// Containers
+import ListScreenContainer from '../containers/ListScreenContainer';
+
 // Routes
 import AuthorisedRoute from '../routes/AuthorisedRoute';
 import UnauthorisedRoute from '../routes/UnauthorisedRoute';
@@ -14,7 +17,6 @@ import UnauthorisedRoute from '../routes/UnauthorisedRoute';
 // Screens
 import AnalyseScreen from '../screens/AnalyseScreen';
 import ListsScreen from '../screens/ListsScreen';
-import ListScreen from '../screens/ListScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import RequestPasswordResetScreen from '../screens/RequestPasswordResetScreen';
 import ResetPasswordScreen from '../screens/ResetPasswordScreen';
@@ -38,7 +40,7 @@ const AppLayout = ({ isAuthorised, isFetching, location }) => (
 
                 <AuthorisedRoute exact path="/analyse" component={AnalyseScreen} />
 
-                <AuthorisedRoute path="/lists/:id(\d+)" component={ListScreen} />
+                <AuthorisedRoute path="/lists/:id(\d+)" component={ListScreenContainer} />
                 <AuthorisedRoute path="/lists" component={ListsScreen} />
 
                 <AuthorisedRoute exact path="/settings" component={SettingsScreen} />

@@ -1,18 +1,17 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
 
 // Actions
 import { fetchList } from '../store/List/actions';
 
-// Components
-import List from '../components/List';
+// Screens
+import ListScreen from '../screens/ListScreen';
 
 // Selectors
 import { getList } from '../store/List/selectors';
 
-class ListContainer extends Component {
+class ListScreenContainer extends Component {
     componentDidMount() {
         const { fetchList, history } = this.props;
 
@@ -20,16 +19,24 @@ class ListContainer extends Component {
     }
 
     render() {
-        const { list } = this.props;
+        const { list, location, match } = this.props;
 
-        return <List list={list} />;
+        return (
+            <ListScreen
+                list={list}
+                location={location}
+                match={match}
+            />
+        );
     }
 }
 
-ListContainer.propTypes = {
+ListScreenContainer.propTypes = {
     fetchList: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
-    list: PropTypes.object
+    list: PropTypes.object,
+    location: PropTypes.object.isRequired,
+    match: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => ({
@@ -40,6 +47,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     fetchList: () => dispatch(fetchList(ownProps.match.params.id))
 });
 
-export default withRouter(
-    connect(mapStateToProps, mapDispatchToProps)(ListContainer)
-);
+export default connect(mapStateToProps, mapDispatchToProps)(ListScreenContainer);

@@ -1,7 +1,7 @@
 $itemBorderRadius: 18px;
 $buttonBorderRadius: 13px;
 
-.item {
+.list-item {
     &__checkbox:checked + &__label {
         text-decoration: line-through;
 
