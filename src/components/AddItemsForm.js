@@ -1,21 +1,43 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 // Components
 import FormWrapper from './FormWrapper';
-import LabeledInput from './LabeledInput';
+import Svg from './Svg';
 
-const AddItemsForm = ({ match }) => (
+// Sprites
+import cross from '../assets/svg/cross.svg';
+
+const AddItemsForm = ({ handleClearInput, handleSearch, match, search }) => (
     <FormWrapper cancelTo={match.url.replace('/add-items', '')}>
         <div className="u-space-2">
-            <LabeledInput
-                id="search"
-                meta={{}}
-                label="Search for items"
-                name="items-search"
-                placeholder="Start by typing..."
-                type="text"
-            />
+            <div className="labeled-input u-space">
+                <label htmlFor="search-input" className="u-block">
+                    Search for items
+                </label>
+                
+                <div className="u-relative">
+                    <input
+                        className='o-input o-type-large u-block u-bgcolor-pale-grey u-bradius-5 u-color-grey u-p'
+                        type="text"
+                        id="search-input"
+                        placeholder="Start by typing..."
+                        onChange={handleSearch}
+                        value={search}
+                    />
+
+                    {search.length > 0 &&
+                        <button
+                            type="button"
+                            className="labeled-input__clear u-absolute u-bgcolor-red u-color-white"
+                            onClick={handleClearInput}
+                        >
+                            <Svg sprite={cross} />
+                        </button>
+                    }
+                </div>
+            </div>
 
             <div className="u-space">
                 <label className="u-block u-mb">Items</label>
@@ -49,7 +71,10 @@ const AddItemsForm = ({ match }) => (
 );
 
 AddItemsForm.propTypes = {
-    match: PropTypes.object.isRequired
+    handleClearInput: PropTypes.func.isRequired,
+    handleSearch: PropTypes.func.isRequired,
+    match: PropTypes.object.isRequired,
+    search: PropTypes.string.isRequired
 };
 
-export default AddItemsForm;
+export default withRouter(AddItemsForm);

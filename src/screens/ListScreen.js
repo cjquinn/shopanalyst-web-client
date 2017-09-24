@@ -3,12 +3,14 @@ import React from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 
 // Components
-import AddItemsForm from '../components/AddItemsForm';
 import EditListForm from '../components/EditListForm';
 import Header from '../components/Header';
 import ListItems from '../components/ListItems';
 import ScreenWrapper from '../components/ScreenWrapper';
 import Splash from '../components/Splash';
+
+// Containers
+import AddItemsFormContainer from '../containers/AddItemsFormContainer';
 
 const ListScreen = ({ list, location, match }) => (
     <div>
@@ -24,7 +26,7 @@ const ListScreen = ({ list, location, match }) => (
             )} />
         </Switch>
 
-        <Route exact path={`${match.url}/add-items`} component={AddItemsForm} />
+        <Route exact path={`${match.url}/add-items`} component={AddItemsFormContainer} />
 
         {!list && <Splash>Loading...</Splash>}
 

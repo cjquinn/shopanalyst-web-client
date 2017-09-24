@@ -1,13 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-// Components
-import Svg from '../components/Svg';
-
-// Sprites
-import cross from '../assets/svg/cross.svg';
-
-const LabeledInput = ({ input, id, inverted, label, meta, placeholder, type, withClear }) => (
+const LabeledInput = ({ input, id, inverted, label, meta, placeholder, type }) => (
     <div className="labeled-input u-space">
         <label htmlFor={id} className="u-block">{label}</label>
         
@@ -19,18 +13,9 @@ const LabeledInput = ({ input, id, inverted, label, meta, placeholder, type, wit
                 id={id}
                 placeholder={placeholder}
             />
-
-            {withClear &&
-                <button
-                    type="button"
-                    className="labeled-input__clear u-absolute u-bgcolor-red u-color-white"
-                >
-                    <Svg sprite={cross} />
-                </button>
-            }
         </div>
 
-        {meta.error &&
+        {meta && meta.error &&
             <p className="o-type-medium u-color-red">
                 {meta.error}
             </p>
@@ -39,14 +24,13 @@ const LabeledInput = ({ input, id, inverted, label, meta, placeholder, type, wit
 );
 
 LabeledInput.propTypes = {
-    input: PropTypes.object,
+    input: PropTypes.object.isRequired,
     inverted: PropTypes.bool,
     id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     meta: PropTypes.object.isRequired,
     placeholder: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    withClear: PropTypes.bool
+    type: PropTypes.string.isRequired
 };
 
 export default LabeledInput;
