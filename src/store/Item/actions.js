@@ -5,6 +5,12 @@ import { createAction } from 'redux-actions';
 import { item as itemSchema } from '../schema';
 
 /**
+ * Add Items
+ */
+export const deselectItem = createAction('DESELECT_ITEM');
+export const selectItem = createAction('SELECT_ITEM');
+
+/**
  * Fetch Lists
  */
 export const fetchItemsRequest = createAction('FETCH_ITEMS_REQUEST');

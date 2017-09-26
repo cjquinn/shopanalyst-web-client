@@ -37,10 +37,35 @@ const search  = (state = '', action) => {
     }
 };
 
+const selected = (state = [], action) => {
+    switch (action.type) {
+        case actions.deselectItem.toString():
+            return state.filter(
+                item => (item.name || item) !== (action.payload.id || action.payload.name)
+            );
+
+        case actions.selectItem.toString():
+            if (state.some(
+                item => (item.name || item) === (action.payload.id || action.payload.name)
+            )) {
+                return state;
+            }
+
+            return [
+                action.payload.id || action.payload,
+                ...state
+            ];
+
+        default:
+            return state;
+    }
+};
+
 const reducers  = combineReducers({
     ids,
     isFetching,
-    search
+    search,
+    selected
 });
 
 export default reducers;

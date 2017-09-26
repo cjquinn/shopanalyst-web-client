@@ -7,25 +7,28 @@ describe('initial state', () => {
         const expected = {
             ids: [],
             isFetching: false,
-            search: ''
+            search: '',
+            selected: []
         };
 
         expect(reducers(undefined, {})).toEqual(expected);
     });
 });
 
-describe('fetchLists', () => {
+describe('fetchItems', () => {
     it(actions.setSearch.toString(), () => {
         const state = {
             ids: [],
             isFetching: false,
-            search: ''
+            search: '',
+            selected: []
         };
 
         const expected = {
             ids: [],
             isFetching: false,
-            search: 'Potato Waffles'
+            search: 'Potato Waffles',
+            selected: []
         };
 
         expect(reducers(state, actions.setSearch('Potato Waffles'))).toEqual(expected);
@@ -35,13 +38,15 @@ describe('fetchLists', () => {
         const state = {
             ids: [],
             isFetching: false,
-            search: ''
+            search: '',
+            selected: []
         };
 
         const expected = {
             ids: [],
             isFetching: true,
-            search: ''
+            search: '',
+            selected: []
         };
 
         expect(reducers(state, actions.fetchItemsRequest())).toEqual(expected);
@@ -51,13 +56,15 @@ describe('fetchLists', () => {
         const state = {
             ids: [],
             isFetching: true,
-            search: ''
+            search: '',
+            selected: []
         };
 
         const expected = {
             ids: [],
             isFetching: false,
-            search: ''
+            search: '',
+            selected: []
         };
 
         expect(reducers(state, actions.fetchItemsFailure())).toEqual(expected);
@@ -67,17 +74,142 @@ describe('fetchLists', () => {
         const state = {
             ids: [],
             isFetching: true,
-            search: ''
+            search: '',
+            selected: []
         };
 
         const expected = {
             ids: [1],
             isFetching: false,
-            search: ''
+            search: '',
+            selected: []
         };
 
         const payload = {result: [1]};
 
         expect(reducers(state, actions.fetchItemsSuccess(payload))).toEqual(expected);
+    });
+});
+
+describe('addItems', () => {
+    it(actions.selectItem.toString(), () => {
+        let state = {
+            ids: [],
+            isFetching: false,
+            search: '',
+            selected: []
+        };
+
+        let expected = {
+            ids: [],
+            isFetching: false,
+            search: '',
+            selected: [{name: 'Potato Waffles'}]
+        };
+
+        let payload = {name: 'Potato Waffles'};
+
+        expect(reducers(state, actions.selectItem(payload))).toEqual(expected);
+
+        state = {
+            ids: [],
+            isFetching: false,
+            search: '',
+            selected: [{name: 'Potato Waffles'}]
+        };
+
+        expected = {
+            ids: [],
+            isFetching: false,
+            search: '',
+            selected: [
+                1,
+                {name: 'Potato Waffles'}
+            ]
+        };
+
+        payload = {id: 1};
+
+        expect(reducers(state, actions.selectItem(payload))).toEqual(expected);
+
+        state = {
+            ids: [],
+            isFetching: false,
+            search: '',
+            selected: [1]
+        };
+
+        expected = {
+            ids: [],
+            isFetching: false,
+            search: '',
+            selected: [1]
+        };
+
+        payload = {id: 1};
+
+        expect(reducers(state, actions.selectItem(payload))).toEqual(expected);
+
+        state = {
+            ids: [],
+            isFetching: false,
+            search: '',
+            selected: [{name: 'Potato Waffles'}]
+        };
+
+        expected = {
+            ids: [],
+            isFetching: false,
+            search: '',
+            selected: [{name: 'Potato Waffles'}]
+        };
+
+        payload = {name: 'Potato Waffles'};
+
+        expect(reducers(state, actions.selectItem(payload))).toEqual(expected);
+    });
+
+    it(actions.deselectItem.toString(), () => {
+        let state = {
+            ids: [],
+            isFetching: false,
+            search: '',
+            selected: [
+                {name: 'Potato Waffles'},
+                1
+            ]
+        };
+
+        let expected = {
+            ids: [],
+            isFetching: false,
+            search: '',
+            selected: [{name: 'Potato Waffles'}]
+        };
+
+        let payload = {id: 1};
+
+        expect(reducers(state, actions.deselectItem(payload))).toEqual(expected);
+
+        state = {
+            ids: [],
+            isFetching: false,
+            search: '',
+            selected: [
+                {name: 'Potato Waffles'},
+                1
+            ]
+        };
+
+        expected = {
+            ids: [],
+            isFetching: false,
+            search: '',
+            selected: [1]
+        };
+
+        payload = {name: 'Potato Waffles'};
+
+        expect(reducers(state, actions.deselectItem(payload))).toEqual(expected);
     });
 });
