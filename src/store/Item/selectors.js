@@ -7,8 +7,11 @@ export const getIsFetching = createSelector(
 
 export const getItems = createSelector(
     state => state.item.ids,
+    state => state.item.selected,
     state => state.entities.items,
-    (ids, items) => ids.map(id => items[id])
+    (ids, selected, items) => ids
+        .filter(id => selected.indexOf(id) === -1)
+        .map(id => items[id])
 );
 
 export const getOptions = createSelector(

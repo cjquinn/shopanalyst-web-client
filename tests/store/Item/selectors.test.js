@@ -1,4 +1,4 @@
-import { getIsFetching, getItems } from '../../../src/store/Item/selectors';
+import { getIsFetching, getItems, getOptions } from '../../../src/store/Item/selectors';
 
 describe('selectors', () => {
     it('getIsFetching', () => {
@@ -10,10 +10,14 @@ describe('selectors', () => {
     it('getItems', () => {
         const state = {
             entities: {
-                items: {3: {id: 3, name: 'Potato Waffles'}}
+                items: {
+                    3: {id: 3, name: 'Potato Waffles'},
+                    4: {id: 4, name: 'Eggs'}
+                }
             },
             item: {
-                ids: [3]
+                ids: [3, 4],
+                selected: [4]
             }
         };
 
@@ -23,5 +27,76 @@ describe('selectors', () => {
         }];
 
         expect(getItems(state)).toEqual(expected);
+    });
+
+    it('getOptions', () => {
+        let state = {
+            entities: {
+                items: {3: {id: 3, name: 'Potato Waffles'}}
+            },
+            item: {
+                ids: [3],
+                search: '',
+                selected: []
+            }
+        };
+
+        let expected = [];
+
+        expect(getOptions(state)).toEqual(expected);
+
+        state = {
+            entities: {
+                items: {3: {id: 3, name: 'Potato Waffles'}}
+            },
+            item: {
+                ids: [],
+                search: 'Eggs',
+                selected: []
+            }
+        };
+
+        expected = [{name: 'Eggs'}];
+
+        expect(getOptions(state)).toEqual(expected);
+
+        state = {
+            entities: {
+                items: {3: {id: 3, name: 'Potato Waffles'}}
+            },
+            item: {
+                ids: [3],
+                search: 'Potato Waffles',
+                selected: []
+            }
+        };
+
+        expected = [{
+            id: 3,
+            name: 'Potato Waffles'
+        }];
+
+        expect(getOptions(state)).toEqual(expected);
+
+        state = {
+            entities: {
+                items: {3: {id: 3, name: 'Potato Waffles'}}
+            },
+            item: {
+                ids: [3],
+                search: 'Eggs',
+                selected: []
+            }
+        };
+
+        expected = [
+            {name: 'Eggs'},
+            {
+                id: 3,
+                name: 'Potato Waffles'
+            }
+        ];
+
+        expect(getOptions(state)).toEqual(expected);
     });
 });
