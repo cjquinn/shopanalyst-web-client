@@ -4,7 +4,7 @@ import React from 'react';
 // Components
 import ListItem from './ListItem';
 
-const ListItems = ({ children, listItems }) => {
+const ListItems = ({ children, listItems, withActions = true }) => {
     if (listItems.length === 0) {
         return children;
     }
@@ -15,6 +15,7 @@ const ListItems = ({ children, listItems }) => {
                 <ListItem
                     key={index}
                     listItem={listItem}
+                    withActions={withActions}
                 />
             ))}
         </ul>
@@ -23,7 +24,8 @@ const ListItems = ({ children, listItems }) => {
 
 ListItems.propTypes = {
     children: PropTypes.node.isRequired,
-    listItems: PropTypes.array.isRequired
+    listItems: PropTypes.array.isRequired,
+    withActions: PropTypes.bool
 };
 
 export default ListItems;

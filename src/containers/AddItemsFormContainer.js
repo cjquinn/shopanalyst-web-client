@@ -10,7 +10,7 @@ import { fetchItems } from '../store/Item/actions';
 import AddItemsForm from '../components/AddItemsForm';
 
 // Selectors
-import { getOptions } from '../store/Item/selectors';
+import { getOptions, getSelected } from '../store/Item/selectors';
 
 class AddItemsFormContainer extends Component {
     state = {search: ''};
@@ -31,7 +31,7 @@ class AddItemsFormContainer extends Component {
     setSearchInput = searchInput => this.searchInput = searchInput;
 
     render() {
-        const { options } = this.props;
+        const { options, selected } = this.props;
         const { search } = this.state;
 
         return (
@@ -40,6 +40,7 @@ class AddItemsFormContainer extends Component {
                 handleSearch={this.handleSearch}
                 options={options}
                 search={search}
+                selected={selected}
                 setSearchInput={this.setSearchInput}
             />
         );
@@ -48,11 +49,13 @@ class AddItemsFormContainer extends Component {
 
 AddItemsFormContainer.propTypes = {
     fetchItems: PropTypes.func.isRequired,
-    options: PropTypes.array.isRequired
+    options: PropTypes.array.isRequired,
+    selected: PropTypes.array.isRequired
 };
 
 const mapStateToProps = state => ({
-    options: getOptions(state)
+    options: getOptions(state),
+    selected: getSelected(state)
 });
 
 const mapDispatchToProps = dispatch => ({

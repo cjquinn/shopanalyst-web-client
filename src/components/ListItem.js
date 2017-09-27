@@ -10,12 +10,13 @@ import minus from '../assets/svg/minus.svg';
 import plus from '../assets/svg/plus.svg';
 import tick from '../assets/svg/tick.svg';
 
-const ListItem = ({ listItem }) => (
+const ListItem = ({ listItem, withActions }) => (
     <li className="list-item o-list__item">
         <input
             id="item"
             type="checkbox"
             className="list-item__checkbox u-hidden"
+            checked={listItem.is_complete}
         />
 
         <label
@@ -26,44 +27,47 @@ const ListItem = ({ listItem }) => (
                 <Svg sprite={tick} />
             </span>
 
-            {listItem.name}
+            {listItem.item.name}
 
-            {/*<div className="list-item__actions">
-                <button
-                    type="button"
-                    className="list-item__actions__button list-item__actions__button--increase u-bgcolor-green u-color-white"
-                >
-                    <Svg sprite={plus} />
-                </button>
+            {withActions &&
+                <div className="list-item__actions">
+                    <button
+                        type="button"
+                        className="list-item__actions__button list-item__actions__button--increase u-bgcolor-green u-color-white"
+                    >
+                        <Svg sprite={plus} />
+                    </button>
 
-                <input
-                    type="number"
-                    className="list-item__actions__input o-input o-type-medium u-text-center u-bgcolor-pale-grey u-color-grey"
-                    value="2"
-                />
+                    <input
+                        type="number"
+                        className="list-item__actions__input o-input o-type-medium u-text-center u-bgcolor-pale-grey u-color-grey"
+                        value="2"
+                    />
 
-                <button
-                    type="button"
-                    className="list-item__actions__button list-item__actions__button--decrease u-bgcolor-green u-color-white"
-                >
-                    <Svg sprite={minus} />
-                </button>
+                    <button
+                        type="button"
+                        className="list-item__actions__button list-item__actions__button--decrease u-bgcolor-green u-color-white"
+                    >
+                        <Svg sprite={minus} />
+                    </button>
 
-                <button
-                    type="button"
-                    className="list-item__actions__button list-item__actions__button--remove u-bgcolor-red u-color-white"
-                >
-                    <Svg sprite={cross} />
-                </button>
-            </div>
+                    <button
+                        type="button"
+                        className="list-item__actions__button list-item__actions__button--remove u-bgcolor-red u-color-white"
+                    >
+                        <Svg sprite={cross} />
+                    </button>
+                </div>
+            }
 
-            <span className="list-item__value o-type-medium u-text-center">2</span>*/}
+            {withActions && <span className="list-item__value o-type-medium u-text-center">2</span>}
         </label>
     </li>
 );
 
 ListItem.propTypes = {
-    listItem: PropTypes.object.isRequired
+    listItem: PropTypes.object.isRequired,
+    withActions: PropTypes.bool.isRequired
 };
 
 export default ListItem;

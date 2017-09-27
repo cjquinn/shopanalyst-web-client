@@ -56,7 +56,10 @@ describe('selectors', () => {
             }
         };
 
-        expected = [{name: 'Eggs'}];
+        expected = [{
+            is_complete: false,
+            item: {name: 'Eggs'}
+        }];
 
         expect(getOptions(state)).toEqual(expected);
 
@@ -72,8 +75,11 @@ describe('selectors', () => {
         };
 
         expected = [{
-            id: 3,
-            name: 'Potato Waffles'
+            is_complete: false,
+            item: {
+                id: 3,
+                name: 'Potato Waffles'
+            }
         }];
 
         expect(getOptions(state)).toEqual(expected);
@@ -90,10 +96,16 @@ describe('selectors', () => {
         };
 
         expected = [
-            {name: 'Eggs'},
             {
-                id: 3,
-                name: 'Potato Waffles'
+                is_complete: false,
+                item: {name: 'Eggs'}
+            },
+            {
+                is_complete: false,
+                item: {
+                    id: 3,
+                    name: 'Potato Waffles'
+                }
             }
         ];
 
@@ -117,11 +129,15 @@ describe('selectors', () => {
 
         let expected = [
             {
-                id: 3,
-                name: 'Potato Waffles'
+                is_complete: true,
+                item: {
+                    id: 3,
+                    name: 'Potato Waffles'
+                }
             },
             {
-                name: 'Eggs'
+                is_complete: true,
+                item: {name: 'Eggs'}
             }
         ];
 

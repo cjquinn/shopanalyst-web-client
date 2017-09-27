@@ -14,6 +14,12 @@ export const getItems = createSelector(
         .map(id => items[id])
 );
 
+
+const listItem = (item, is_complete) => ({
+    is_complete,
+    item
+});
+
 export const getOptions = createSelector(
     state => state.item.search,
     getItems,
@@ -23,16 +29,16 @@ export const getOptions = createSelector(
         }
 
         if (items.length === 0) {
-            return [{name: search}];
+            return [listItem({name: search}, false)];
         }
 
         if (items[0].name === search) {
-            return items;
+            return items.map(item => listItem(item, false));
         }
 
         return [
-            {name: search},
-            ...items
+            listItem({name: search}, false),
+            ...items.map(item => listItem(item, false))
         ];
     }
 );
@@ -40,5 +46,5 @@ export const getOptions = createSelector(
 export const getSelected = createSelector(
     state => state.item.selected,
     state => state.entities.items,
-    (selected, items) => selected.map(item => item.name ? item : items[item])
+    (selected, items) => selected.map(item => listItem(item.name ? item : items[item], true))
 );
