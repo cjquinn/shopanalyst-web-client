@@ -4,7 +4,7 @@ import React from 'react';
 // Components
 import ListItem from './ListItem';
 
-const ListItems = ({ children, listItems, withActions = true }) => {
+const ListItems = ({ children, handleToggleComplete, listItems, withActions = true }) => {
     if (listItems.length === 0) {
         return children;
     }
@@ -13,6 +13,7 @@ const ListItems = ({ children, listItems, withActions = true }) => {
         <ul className="o-list o-list--block">
             {listItems.map((listItem, index) => (
                 <ListItem
+                    handleToggleComplete={handleToggleComplete}
                     key={index}
                     listItem={listItem}
                     withActions={withActions}
@@ -24,6 +25,7 @@ const ListItems = ({ children, listItems, withActions = true }) => {
 
 ListItems.propTypes = {
     children: PropTypes.node.isRequired,
+    handleToggleComplete: PropTypes.func.isRequired,
     listItems: PropTypes.array.isRequired,
     withActions: PropTypes.bool
 };

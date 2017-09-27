@@ -22,17 +22,30 @@ const listItem = (item, is_complete) => ({
 
 export const getOptions = createSelector(
     state => state.item.search,
+    state => state.item.selected,
     getItems,
-    (search, items) => {
+    (search, selected, items) => {
         if (search.length === 0) {
             return [];
         }
 
-        if (items.length === 0) {
-            return [listItem({name: search}, false)];
+        let newListItem;
+
+        if (!selected.some(item => item.name === search)) {
+            newListItem = listItem({name: search});
         }
 
-        if (items[0].name === search) {
+        if (items.length === 0) {
+            if (newListItem) {
+                return [listItem({name: search}, false)];
+            }
+
+            return [];
+        }
+
+        if (items[0].name === search ||
+            !newListItem
+        ) {
             return items.map(item => listItem(item, false));
         }
 

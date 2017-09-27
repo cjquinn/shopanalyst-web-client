@@ -10,13 +10,14 @@ import minus from '../assets/svg/minus.svg';
 import plus from '../assets/svg/plus.svg';
 import tick from '../assets/svg/tick.svg';
 
-const ListItem = ({ listItem, withActions }) => (
+const ListItem = ({ handleToggleComplete, listItem, withActions }) => (
     <li className="list-item o-list__item">
         <input
             id="item"
             type="checkbox"
             className="list-item__checkbox u-hidden"
             checked={listItem.is_complete}
+            onChange={() => handleToggleComplete(listItem)}
         />
 
         <label
@@ -66,6 +67,7 @@ const ListItem = ({ listItem, withActions }) => (
 );
 
 ListItem.propTypes = {
+    handleToggleComplete: PropTypes.func.isRequired,
     listItem: PropTypes.object.isRequired,
     withActions: PropTypes.bool.isRequired
 };

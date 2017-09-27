@@ -110,6 +110,44 @@ describe('selectors', () => {
         ];
 
         expect(getOptions(state)).toEqual(expected);
+
+        state = {
+            entities: {
+                items: {3: {id: 3, name: 'Potato Waffles'}}
+            },
+            item: {
+                ids: [],
+                search: 'Eggs',
+                selected: [{name: 'Eggs'}]
+            }
+        };
+
+        expected = [];
+
+        expect(getOptions(state)).toEqual(expected);
+
+        state = {
+            entities: {
+                items: {3: {id: 3, name: 'Potato Waffles'}}
+            },
+            item: {
+                ids: [3],
+                search: 'Eggs',
+                selected: [{name: 'Eggs'}]
+            }
+        };
+
+        expected = [
+            {
+                is_complete: false,
+                item: {
+                    id: 3,
+                    name: 'Potato Waffles'
+                }
+            }
+        ];
+
+        expect(getOptions(state)).toEqual(expected);
     });
 
     it('getSelected', () => {

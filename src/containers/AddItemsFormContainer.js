@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 // Actions
-import { fetchItems } from '../store/Item/actions';
+import { deselectItem, fetchItems, selectItem } from '../store/Item/actions';
 
 // Components
 import AddItemsForm from '../components/AddItemsForm';
@@ -23,6 +23,8 @@ class AddItemsFormContainer extends Component {
 
     handleSearch = event => this.setSearch(event.target.value);
 
+    handleToggleSelected = listItem => this.props[listItem.is_complete ? 'deselectItem' : 'selectItem'](listItem.item);
+
     setSearch = search => this.setState(
         {search},
         () => this.props.fetchItems(search)
@@ -38,6 +40,7 @@ class AddItemsFormContainer extends Component {
             <AddItemsForm
                 handleClearInput={this.handleClearInput}
                 handleSearch={this.handleSearch}
+                handleToggleSelected={this.handleToggleSelected}
                 options={options}
                 search={search}
                 selected={selected}
@@ -48,9 +51,11 @@ class AddItemsFormContainer extends Component {
 }
 
 AddItemsFormContainer.propTypes = {
+    deselectItem: PropTypes.func.isRequired,
     fetchItems: PropTypes.func.isRequired,
     options: PropTypes.array.isRequired,
-    selected: PropTypes.array.isRequired
+    selected: PropTypes.array.isRequired,
+    selectItem: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -59,10 +64,12 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+    deselectItem: item => dispatch(deselectItem(item)),
     fetchItems: debounce(
         search => dispatch(fetchItems(search)),
         400
-    )
+    ),
+    selectItem: item => dispatch(selectItem(item))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddItemsFormContainer);

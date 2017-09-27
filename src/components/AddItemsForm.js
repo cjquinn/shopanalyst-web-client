@@ -10,7 +10,7 @@ import Svg from './Svg';
 // Sprites
 import cross from '../assets/svg/cross.svg';
 
-const AddItemsForm = ({ handleClearInput, handleSearch, match, options, search, selected, setSearchInput }) => (
+const AddItemsForm = ({ handleClearInput, handleSearch, handleToggleSelected, match, options, search, selected, setSearchInput }) => (
     <FormWrapper cancelTo={match.url.replace('/add-items', '')}>
         <div className="u-space-2">
             <div className="labeled-input u-space">
@@ -45,8 +45,12 @@ const AddItemsForm = ({ handleClearInput, handleSearch, match, options, search, 
                 <label className="u-block u-mb">Items</label>
 
                 <div className="u-bgcolor-light-grey u-bradius-5 u-ph u-pv-2">
-                    <ListItems listItems={options} withActions={false}>
-                        <p className="o-type-medium u-color-brown">No items</p>
+                    <ListItems
+                        handleToggleComplete={handleToggleSelected}
+                        listItems={options} 
+                        withActions={false}
+                    >
+                        <p className="o-type-medium u-color-brown u-lh-36">No items</p>
                     </ListItems>
                 </div>
             </div>
@@ -55,10 +59,12 @@ const AddItemsForm = ({ handleClearInput, handleSearch, match, options, search, 
                 <label className="u-block u-mb">Selected</label>
 
                 <div className="u-bgcolor-light-grey u-bradius-5 u-ph u-pv-2">
-                    <ListItems listItems={selected} withActions={false}>
-                        <p className="o-type-medium u-color-brown">
-                            None selected
-                        </p>
+                    <ListItems
+                        handleToggleComplete={handleToggleSelected}
+                        listItems={selected} 
+                        withActions={false}
+                    >
+                        <p className="o-type-medium u-color-brown u-lh-36">None selected</p>
                     </ListItems>
                 </div>
             </div>
@@ -77,6 +83,7 @@ const AddItemsForm = ({ handleClearInput, handleSearch, match, options, search, 
 AddItemsForm.propTypes = {
     handleClearInput: PropTypes.func.isRequired,
     handleSearch: PropTypes.func.isRequired,
+    handleToggleSelected: PropTypes.func.isRequired,
     match: PropTypes.object.isRequired,
     options: PropTypes.array.isRequired,
     search: PropTypes.string.isRequired,
