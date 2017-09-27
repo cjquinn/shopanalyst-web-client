@@ -27,7 +27,7 @@ class AddItemsFormContainer extends Component {
 
     setSearch = search => this.setState(
         {search},
-        () => this.props.fetchItems(search)
+        () => this.props.fetchItems(search.trim())
     );
 
     setSearchInput = searchInput => this.searchInput = searchInput;

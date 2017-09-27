@@ -10,7 +10,7 @@ class EditListForm extends Component {
 
     render() {
         return (
-            <div className="header header--form u-fixed u-width-full">
+            <div className="header header--form u-fixed u-width-full u-z-2">
                 <input
                     className="o-input o-type-medium u-block u-bgcolor-pale-grey u-color-grey u-p u-relative u-text-center u-z-2"
                     type="text"
