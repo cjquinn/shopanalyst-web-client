@@ -15,9 +15,9 @@ export const getItems = createSelector(
 );
 
 export const getOptions = createSelector(
-    getItems,
     state => state.item.search,
-    (items, search) => {
+    getItems,
+    (search, items) => {
         if (search.length === 0) {
             return [];
         }
@@ -35,4 +35,10 @@ export const getOptions = createSelector(
             ...items
         ];
     }
+);
+
+export const getSelected = createSelector(
+    state => state.item.selected,
+    state => state.entities.items,
+    (selected, items) => selected.map(item => item.name ? item : items[item])
 );

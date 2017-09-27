@@ -1,4 +1,4 @@
-import { getIsFetching, getItems, getOptions } from '../../../src/store/Item/selectors';
+import { getIsFetching, getItems, getOptions, getSelected } from '../../../src/store/Item/selectors';
 
 describe('selectors', () => {
     it('getIsFetching', () => {
@@ -99,4 +99,32 @@ describe('selectors', () => {
 
         expect(getOptions(state)).toEqual(expected);
     });
+
+    it('getSelected', () => {
+        let state = {
+            entities: {
+                items: {3: {id: 3, name: 'Potato Waffles'}}
+            },
+            item: {
+                ids: [3],
+                search: '',
+                selected: [
+                    3,
+                    {name: 'Eggs'}
+                ]
+            }
+        };
+
+        let expected = [
+            {
+                id: 3,
+                name: 'Potato Waffles'
+            },
+            {
+                name: 'Eggs'
+            }
+        ];
+
+        expect(getSelected(state)).toEqual(expected);
+    });    
 });

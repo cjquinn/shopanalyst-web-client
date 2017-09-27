@@ -45,13 +45,9 @@ const AddItemsForm = ({ handleClearInput, handleSearch, match, options, search, 
                 <label className="u-block u-mb">Items</label>
 
                 <div className="u-bgcolor-light-grey u-bradius-5 u-ph u-pv-2">
-                    {options.length === 0 &&
-                        <p className="o-type-medium u-color-brown">
-                            No items
-                        </p>
-                    }
-
-                    {options.length > 0 && <ListItems listItems={options} />}
+                    <ListItems listItems={options}>
+                        <p className="o-type-medium u-color-brown">No items</p>
+                    </ListItems>
                 </div>
             </div>
 
