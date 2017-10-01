@@ -5,3 +5,4 @@ node_modules
 
 public/*
 !public/index.html
+!public/favicon.png
