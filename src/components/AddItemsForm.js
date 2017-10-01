@@ -10,7 +10,7 @@ import Svg from './Svg';
 // Sprites
 import cross from '../assets/svg/cross.svg';
 
-const AddItemsForm = ({ handleClearInput, handleSearch, handleToggleSelected, match, options, search, selected, setSearchInput }) => (
+const AddItemsForm = ({ handleClearInput, handleSearch, handleSubmit, handleToggleSelected, match, options, search, selected, setSearchInput }) => (
     <FormWrapper cancelTo={match.url.replace('/add-items', '')}>
         <div className="u-space-2">
             <div className="labeled-input u-space">
@@ -47,7 +47,8 @@ const AddItemsForm = ({ handleClearInput, handleSearch, handleToggleSelected, ma
                 <div className="u-bgcolor-light-grey u-bradius-5 u-ph u-pv-2">
                     <ListItems
                         handleToggleComplete={handleToggleSelected}
-                        listItems={options} 
+                        listItems={options}
+                        listName="options"
                         withActions={false}
                     >
                         <p className="o-type-medium u-color-brown u-lh-36">No items</p>
@@ -62,6 +63,7 @@ const AddItemsForm = ({ handleClearInput, handleSearch, handleToggleSelected, ma
                     <ListItems
                         handleToggleComplete={handleToggleSelected}
                         listItems={selected} 
+                        listName="selected"
                         withActions={false}
                     >
                         <p className="o-type-medium u-color-brown u-lh-36">None selected</p>
@@ -72,7 +74,8 @@ const AddItemsForm = ({ handleClearInput, handleSearch, handleToggleSelected, ma
             <button
                 className="o-button"
                 type="button"
-                disabled
+                disabled={selected.length === 0}
+                onClick={handleSubmit}
             >
                 Add items
             </button>
@@ -83,6 +86,7 @@ const AddItemsForm = ({ handleClearInput, handleSearch, handleToggleSelected, ma
 AddItemsForm.propTypes = {
     handleClearInput: PropTypes.func.isRequired,
     handleSearch: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
     handleToggleSelected: PropTypes.func.isRequired,
     match: PropTypes.object.isRequired,
     options: PropTypes.array.isRequired,

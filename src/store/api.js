@@ -52,6 +52,7 @@ export const handleError = (dispatch, failure) => response => {
             throw response;
 
         default:
+            console.log(response);
             // 500 or any other thang
     }
 };

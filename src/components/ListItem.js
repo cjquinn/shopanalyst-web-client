@@ -10,10 +10,10 @@ import minus from '../assets/svg/minus.svg';
 import plus from '../assets/svg/plus.svg';
 import tick from '../assets/svg/tick.svg';
 
-const ListItem = ({ handleToggleComplete, listItem, withActions }) => (
+const ListItem = ({ handleToggleComplete, id, listItem, withActions }) => (
     <li className="list-item o-list__item">
         <input
-            id="item"
+            id={id}
             type="checkbox"
             className="list-item__checkbox u-hidden"
             checked={listItem.is_complete}
@@ -21,7 +21,7 @@ const ListItem = ({ handleToggleComplete, listItem, withActions }) => (
         />
 
         <label
-            htmlFor="item"
+            htmlFor={id}
             className="list-item__label u-bgcolor-white"
         >
             <span className="list-item__tick">
@@ -42,32 +42,37 @@ const ListItem = ({ handleToggleComplete, listItem, withActions }) => (
                     <input
                         type="number"
                         className="list-item__actions__input o-input o-type-medium u-text-center u-bgcolor-pale-grey u-color-grey"
-                        value="2"
+                        defaultValue={listItem.quantity}
                     />
 
-                    <button
-                        type="button"
-                        className="list-item__actions__button list-item__actions__button--decrease u-bgcolor-green u-color-white"
-                    >
-                        <Svg sprite={minus} />
-                    </button>
+                    {listItem.quantity > 1 &&
+                        <button
+                            type="button"
+                            className="list-item__actions__button list-item__actions__button--decrease u-bgcolor-green u-color-white"
+                        >
+                            <Svg sprite={minus} />
+                        </button>
+                    }
 
-                    <button
-                        type="button"
-                        className="list-item__actions__button list-item__actions__button--remove u-bgcolor-red u-color-white"
-                    >
-                        <Svg sprite={cross} />
-                    </button>
+                    {listItem.quantity === 1 &&
+                        <button
+                            type="button"
+                            className="list-item__actions__button list-item__actions__button--remove u-bgcolor-red u-color-white"
+                        >
+                            <Svg sprite={cross} />
+                        </button>
+                    }
                 </div>
             }
 
-            {withActions && <span className="list-item__value o-type-medium u-text-center">2</span>}
+            {withActions && listItem.is_complete && <span className="list-item__value o-type-medium u-text-center">2</span>}
         </label>
     </li>
 );
 
 ListItem.propTypes = {
     handleToggleComplete: PropTypes.func.isRequired,
+    id: PropTypes.string.isRequired,
     listItem: PropTypes.object.isRequired,
     withActions: PropTypes.bool.isRequired
 };

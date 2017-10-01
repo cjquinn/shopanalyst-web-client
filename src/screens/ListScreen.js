@@ -26,7 +26,7 @@ const ListScreen = ({ list, location, match }) => (
             )} />
         </Switch>
 
-        <Route exact path={`${match.url}/add-items`} component={AddItemsFormContainer} />
+        <Route exact path={`${match.path}/add-items`} component={AddItemsFormContainer} />
 
         {!list && <Splash>Loading...</Splash>}
 
@@ -51,6 +51,7 @@ const ListScreen = ({ list, location, match }) => (
                 <ListItems
                     handleToggleComplete={() => {}}
                     listItems={list.list_items}
+                    listName="list-items"
                 >
                     <p className="o-type-medium u-color-brown u-text-center">
                         Once you&#039;ve <Link className="o-link" to={`${match.url}/add-items`}>added items</Link> they will show here

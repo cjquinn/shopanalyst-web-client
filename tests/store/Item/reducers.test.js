@@ -187,7 +187,10 @@ describe('addItems', () => {
             selected: [{name: 'Potato Waffles'}]
         };
 
-        let payload = {id: 1};
+        let payload = {
+            id: 1,
+            name: 'Potato'
+        };
 
         expect(reducers(state, actions.deselectItem(payload))).toEqual(expected);
 
