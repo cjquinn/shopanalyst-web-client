@@ -1,5 +1,15 @@
 import { createSelector } from 'reselect';
 
+export const getAddItemsData = createSelector(
+    state => state.item.selected,
+    selected => ({
+        list_items: selected.map(item => item.name
+            ? {item}
+            : {item_id: item}
+        )
+    })
+);
+
 export const getIsFetching = createSelector(
     state => state.item.isFetching,
     isFetching => isFetching

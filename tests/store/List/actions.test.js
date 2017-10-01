@@ -9,7 +9,7 @@ const mock = new MockAdapter(axios);
 let store;
 
 describe('addItems', () => {
-    beforeEach(() => store = global.configureStore());
+    beforeEach(() => store = global.configureStore({item: {selected: []}}));
 
     afterEach(() => mock.reset());
 

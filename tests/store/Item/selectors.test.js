@@ -1,6 +1,31 @@
-import { getIsFetching, getItems, getOptions, getSelected } from '../../../src/store/Item/selectors';
+import { getAddItemsData, getIsFetching, getItems, getOptions, getSelected } from '../../../src/store/Item/selectors';
 
 describe('selectors', () => {
+    it('getAddItemsData', () => {
+        let state = {
+            entities: {
+                items: {3: {id: 3, name: 'Potato Waffles'}}
+            },
+            item: {
+                ids: [3],
+                search: '',
+                selected: [
+                    3,
+                    {name: 'Eggs'}
+                ]
+            }
+        };
+
+        let expected = {
+            list_items: [
+                {item_id: 3},
+                {item: {name: 'Eggs'}}
+            ]
+        };
+
+        expect(getAddItemsData(state)).toEqual(expected);
+    });
+
     it('getIsFetching', () => {
         const state = {item: {isFetching: true}};
 
@@ -180,5 +205,5 @@ describe('selectors', () => {
         ];
 
         expect(getSelected(state)).toEqual(expected);
-    });    
+    });
 });

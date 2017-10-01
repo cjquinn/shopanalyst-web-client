@@ -5,6 +5,7 @@ import { createAction } from 'redux-actions';
 import { list as listSchema } from '../schema';
 
 // Selectors
+import { getAddItemsData } from '../Item/selectors';
 import { getPage } from './selectors';
 
 /**
@@ -14,10 +15,10 @@ export const addItemsRequest = createAction('ADD_ITEMS_REQUEST');
 export const addItemsSuccess = createAction('ADD_ITEMS_SUCCESS');
 export const addItemsFailure = createAction('ADD_ITEMS_FAILURE');
 
-export const addItems = (id, data) => (dispatch, getState, api) => {
+export const addItems = id => (dispatch, getState, api) => {
     dispatch(addItemsRequest());
 
-    return api.addItems(id, data)
+    return api.addItems(id, getAddItemsData(getState()))
         .then(api.checkStatus)
         .then(response => normalize(response.data.list, listSchema))
         .then(normalizedData => dispatch(addItemsSuccess(normalizedData)))
