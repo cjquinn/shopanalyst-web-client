@@ -166,13 +166,16 @@ describe('fetchList', () => {
                                     1: {
                                         id: 1,
                                         name: 'Weekly Shop',
-                                        list_items: [{
-                                            id: 2,
-                                            item_id: 3,
-                                            list_id: 1,
-                                            quantity: 1,
-                                            item: 3
-                                        }]
+                                        list_items: [2]
+                                    }
+                                },
+                                list_items: {
+                                    2: {
+                                        id: 2,
+                                        item_id: 3,
+                                        list_id: 1,
+                                        quantity: 1,
+                                        item: 3
                                     }
                                 },
                                 items: {3: {id: 3, name: 'Potato Waffles'}}
@@ -242,13 +245,16 @@ describe('fetchLists', () => {
                                     1: {
                                         id: 1,
                                         name: 'Weekly Shop',
-                                        list_items: [{
-                                            id: 2,
-                                            item_id: 3,
-                                            list_id: 1,
-                                            quantity: 1,
-                                            item: 3
-                                        }]
+                                        list_items: [2]
+                                    }
+                                },
+                                list_items: {
+                                    2: {
+                                        id: 2,
+                                        item_id: 3,
+                                        list_id: 1,
+                                        quantity: 1,
+                                        item: 3
                                     }
                                 },
                                 items: {3: {id: 3, name: 'Potato Waffles'}}
@@ -328,13 +334,16 @@ describe('fetchMoreLists', () => {
                                     2: {
                                         id: 2,
                                         name: 'Weekly Shop 2',
-                                        list_items: [{
-                                            id: 3,
-                                            item_id: 4,
-                                            list_id: 2,
-                                            quantity: 1,
-                                            item: 4
-                                        }]
+                                        list_items: [3]
+                                    }
+                                },
+                                list_items: {
+                                    3: {
+                                        id: 3,
+                                        item_id: 4,
+                                        list_id: 2,
+                                        quantity: 1,
+                                        item: 4
                                     }
                                 },
                                 items: {4: {id: 4, name: 'Yogurt'}}

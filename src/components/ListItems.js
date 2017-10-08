@@ -1,10 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-// Components
-import ListItem from './ListItem';
-
-const ListItems = ({ children, handleToggleComplete, listItems, listName, withActions = true }) => {
+const ListItems = ({ children, component: Component, listName, listItems, ...props }) => {
     if (listItems.length === 0) {
         return children;
     }
@@ -12,12 +9,11 @@ const ListItems = ({ children, handleToggleComplete, listItems, listName, withAc
     return (
         <ul className="o-list o-list--block">
             {listItems.map((listItem, index) => (
-                <ListItem
-                    handleToggleComplete={handleToggleComplete}
+                <Component
                     id={`${listName}-${index}`}
                     key={index}
                     listItem={listItem}
-                    withActions={withActions}
+                    {...props}
                 />
             ))}
         </ul>
@@ -26,10 +22,9 @@ const ListItems = ({ children, handleToggleComplete, listItems, listName, withAc
 
 ListItems.propTypes = {
     children: PropTypes.node.isRequired,
-    handleToggleComplete: PropTypes.func.isRequired,
-    listName: PropTypes.string.isRequired,
+    component: PropTypes.func.isRequired,
     listItems: PropTypes.array.isRequired,
-    withActions: PropTypes.bool
+    listName: PropTypes.string.isRequired
 };
 
 export default ListItems;

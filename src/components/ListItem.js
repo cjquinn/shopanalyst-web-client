@@ -10,7 +10,7 @@ import minus from '../assets/svg/minus.svg';
 import plus from '../assets/svg/plus.svg';
 import tick from '../assets/svg/tick.svg';
 
-const ListItem = ({ handleToggleComplete, id, listItem, withActions }) => (
+const ListItem = ({ handleToggleComplete, id, listItem }) => (
     <li className="list-item o-list__item">
         <input
             id={id}
@@ -30,7 +30,7 @@ const ListItem = ({ handleToggleComplete, id, listItem, withActions }) => (
 
             {listItem.item.name}
 
-            {withActions &&
+            {!listItem.is_complete &&
                 <div className="list-item__actions">
                     <button
                         type="button"
@@ -65,7 +65,7 @@ const ListItem = ({ handleToggleComplete, id, listItem, withActions }) => (
                 </div>
             }
 
-            {withActions && listItem.is_complete && <span className="list-item__value o-type-medium u-text-center">2</span>}
+            {listItem.is_complete && <span className="list-item__value o-type-medium u-text-center">2</span>}
         </label>
     </li>
 );
@@ -73,8 +73,7 @@ const ListItem = ({ handleToggleComplete, id, listItem, withActions }) => (
 ListItem.propTypes = {
     handleToggleComplete: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
-    listItem: PropTypes.object.isRequired,
-    withActions: PropTypes.bool.isRequired
+    listItem: PropTypes.object.isRequired
 };
 
 export default ListItem;

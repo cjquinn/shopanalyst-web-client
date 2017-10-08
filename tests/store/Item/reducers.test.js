@@ -93,6 +93,7 @@ describe('fetchItems', () => {
 
 describe('addItems', () => {
     it(actions.selectItem.toString(), () => {
+        // Select new item
         let state = {
             ids: [],
             isFetching: false,
@@ -111,6 +112,7 @@ describe('addItems', () => {
 
         expect(reducers(state, actions.selectItem(payload))).toEqual(expected);
 
+        // Select item
         state = {
             ids: [],
             isFetching: false,
@@ -129,42 +131,6 @@ describe('addItems', () => {
         };
 
         payload = {id: 1};
-
-        expect(reducers(state, actions.selectItem(payload))).toEqual(expected);
-
-        state = {
-            ids: [],
-            isFetching: false,
-            search: '',
-            selected: [1]
-        };
-
-        expected = {
-            ids: [],
-            isFetching: false,
-            search: '',
-            selected: [1]
-        };
-
-        payload = {id: 1};
-
-        expect(reducers(state, actions.selectItem(payload))).toEqual(expected);
-
-        state = {
-            ids: [],
-            isFetching: false,
-            search: '',
-            selected: [{name: 'Potato Waffles'}]
-        };
-
-        expected = {
-            ids: [],
-            isFetching: false,
-            search: '',
-            selected: [{name: 'Potato Waffles'}]
-        };
-
-        payload = {name: 'Potato Waffles'};
 
         expect(reducers(state, actions.selectItem(payload))).toEqual(expected);
     });

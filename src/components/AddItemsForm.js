@@ -5,6 +5,8 @@ import { withRouter } from 'react-router-dom';
 // Components
 import FormWrapper from './FormWrapper';
 import ListItems from './ListItems';
+import OptionItem from './OptionItem';
+import SelectedItem from './SelectedItem';
 import Svg from './Svg';
 
 // Sprites
@@ -46,10 +48,10 @@ const AddItemsForm = ({ handleClearInput, handleSearch, handleSubmit, handleTogg
 
                 <div className="u-bgcolor-light-grey u-bradius-5 u-ph u-pv-2">
                     <ListItems
+                        component={OptionItem}
                         handleToggleComplete={handleToggleSelected}
                         listItems={options}
                         listName="options"
-                        withActions={false}
                     >
                         <p className="o-type-medium u-color-brown u-lh-36">No items</p>
                     </ListItems>
@@ -61,10 +63,10 @@ const AddItemsForm = ({ handleClearInput, handleSearch, handleSubmit, handleTogg
 
                 <div className="u-bgcolor-light-grey u-bradius-5 u-ph u-pv-2">
                     <ListItems
+                        component={SelectedItem}
                         handleToggleComplete={handleToggleSelected}
                         listItems={selected} 
                         listName="selected"
-                        withActions={false}
                     >
                         <p className="o-type-medium u-color-brown u-lh-36">None selected</p>
                     </ListItems>

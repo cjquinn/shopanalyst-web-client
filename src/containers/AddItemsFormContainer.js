@@ -30,7 +30,13 @@ class AddItemsFormContainer extends Component {
             .push(this.props.match.url.replace('/add-items', ''))
         );
 
-    handleToggleSelected = listItem => this.props[listItem.is_complete ? 'deselectItem' : 'selectItem'](listItem.item);
+    handleToggleSelected = listItem => {
+        if (listItem.is_existing) {
+            return;
+        }
+
+        this.props[listItem.is_complete ? 'deselectItem' : 'selectItem'](listItem.item);
+    };
 
     setSearch = search => this.setState(
         {search},
@@ -69,8 +75,8 @@ AddItemsFormContainer.propTypes = {
     selectItem: PropTypes.func.isRequired
 };
 
-const mapStateToProps = state => ({
-    options: getOptions(state),
+const mapStateToProps = (state, ownProps) => ({
+    options: getOptions(ownProps.match.params.id)(state),
     selected: getSelected(state)
 });
 

@@ -1,4 +1,9 @@
+import React from 'react';
+import { sortBy } from 'lodash';
 import { createSelector } from 'reselect';
+
+// Selectors
+import { getList } from '../List/selectors';
 
 export const getAddItemsData = createSelector(
     state => state.item.selected,
@@ -24,50 +29,60 @@ export const getItems = createSelector(
         .map(id => items[id])
 );
 
-
-const listItem = (item, is_complete) => ({
-    is_complete,
-    item
+const createListItem = (item, isComplete, search, list) => ({
+    item,
+    is_complete: isComplete,
+    is_existing: list
+        ? list.list_items.some(listItem => listItem.item.id === item.id)
+        : false
 });
 
-export const getOptions = createSelector(
-    state => state.item.search,
+export const getSelected = createSelector(
     state => state.item.selected,
+    state => state.entities.items,
+    (selected, items) => selected.map(item => createListItem(item.name ? item : items[item], true))
+);
+
+export const getOptions = listId => createSelector(
+    state => state.item.search,
+    getSelected,
     getItems,
-    (search, selected, items) => {
+    getList(listId),
+    (search, selected, items, list) => {
+        // No search term
         if (search.length === 0) {
             return [];
         }
 
+        // Create new item if search term isn't already selected
         let newListItem;
-
-        if (!selected.some(item => item.name === search)) {
-            newListItem = listItem({name: search});
+        if (!selected.some(listItem => listItem.item.name === search)) {
+            newListItem = createListItem({name: search}, false, search);
         }
 
+        // Just return search term or empty if already selected
         if (items.length === 0) {
             if (newListItem) {
-                return [listItem({name: search}, false)];
+                return [newListItem];
             }
 
             return [];
         }
 
-        if (items[0].name === search ||
+        // Just returns item if search term is in items
+        if (items.some(item => item.name === search) ||
             !newListItem
         ) {
-            return items.map(item => listItem(item, false));
+            return items.map(item => createListItem(item, false, search, list));
         }
 
-        return [
-            listItem({name: search}, false),
-            ...items.map(item => listItem(item, false))
-        ];
+        // EVERYTHING AND SORT IT BABY
+        return sortBy(
+            [
+                newListItem,
+                ...items.map(item => createListItem(item, false, search, list))
+            ],
+            listItem => listItem.item.name
+        );
     }
-);
-
-export const getSelected = createSelector(
-    state => state.item.selected,
-    state => state.entities.items,
-    (selected, items) => selected.map(item => listItem(item.name ? item : items[item], true))
 );

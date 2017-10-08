@@ -5,6 +5,7 @@ import { Link, Route, Switch } from 'react-router-dom';
 // Components
 import EditListForm from '../components/EditListForm';
 import Header from '../components/Header';
+import ListItem from '../components/ListItem';
 import ListItems from '../components/ListItems';
 import ScreenWrapper from '../components/ScreenWrapper';
 import Splash from '../components/Splash';
@@ -49,6 +50,7 @@ const ListScreen = ({ list, location, match }) => (
                 </div>
 
                 <ListItems
+                    component={ListItem}
                     handleToggleComplete={() => {}}
                     listItems={list.list_items}
                     listName="list-items"

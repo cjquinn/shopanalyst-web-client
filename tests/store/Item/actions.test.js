@@ -66,4 +66,22 @@ describe('fetchItems', () => {
                 expect(store.getActions()).toEqual(expected);
             });
     });
+
+    it('empty search', () => {
+        store.dispatch(actions.fetchItems(''));
+
+        const expected = [
+            {
+                type: actions.setSearch.toString(),
+                payload: ''
+            },
+            {type: actions.fetchItemsRequest.toString()},
+            {
+                type: actions.fetchItemsSuccess.toString(),
+                payload: {result: []}
+            }
+        ];
+
+        expect(store.getActions()).toEqual(expected);
+    });
 });

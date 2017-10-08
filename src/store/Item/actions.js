@@ -23,6 +23,10 @@ export const fetchItems = search => (dispatch, getState, api) => {
     dispatch(setSearch(search));
     dispatch(fetchItemsRequest());
 
+    if (search === '') {
+        return dispatch(fetchItemsSuccess({result: []}));
+    }
+
     return api.fetchItems(search)
         .then(api.checkStatus)
         .then(response => normalize(response.data.items, [itemSchema]))
