@@ -34,10 +34,7 @@ describe('addItems', () => {
         mock
             .onPatch('/lists/1/add-items.json')
             .reply(200, {
-                list: {
-                    id: 1,
-                    name: 'Weekly Shop'
-                }
+                listItems: [{id: 1}]
             });
 
         return store.dispatch(actions.addItems(1))
@@ -48,9 +45,10 @@ describe('addItems', () => {
                         type: actions.addItemsSuccess.toString(),
                         payload: {
                             entities: {
-                                lists: {1: {id: 1, name: 'Weekly Shop'}}
+                                list_items: {1: {id: 1}}
                             },
-                            result: 1
+                            listId: 1,
+                            result: [1]
                         }
                     }
                 ];

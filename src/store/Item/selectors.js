@@ -82,7 +82,7 @@ export const getOptions = listId => createSelector(
                 newListItem,
                 ...items.map(item => createListItem(item, false, search, list))
             ],
-            listItem => listItem.item.name
+            listItem => listItem.item.name.toLowerCase()
         );
     }
 );

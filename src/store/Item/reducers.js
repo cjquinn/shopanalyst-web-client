@@ -61,7 +61,7 @@ const selected = (state = [], action) => {
     }
 };
 
-const reducers  = combineReducers({
+const reducers = combineReducers({
     ids,
     isFetching,
     search,

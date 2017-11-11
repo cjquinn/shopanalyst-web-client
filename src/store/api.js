@@ -8,6 +8,7 @@ import { signOut } from './User/actions';
 // Endpoint exports
 export * from './Item/endpoints';
 export * from './List/endpoints';
+export * from './ListItem/endpoints';
 export * from './User/endpoints';
 
 /**
@@ -52,7 +53,6 @@ export const handleError = (dispatch, failure) => response => {
             throw response;
 
         default:
-            console.log(response);
             // 500 or any other thang
     }
 };

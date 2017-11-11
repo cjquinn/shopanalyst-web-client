@@ -4,8 +4,8 @@ import { createSelector } from 'reselect';
 // Schema
 import { list as listSchema } from '../schema';
 
-// Utilities
-import { withComputed } from './utilities';
+// Utils
+import { withComputed } from './utils';
 
 export const getIsFetching = createSelector(
     state => state.list.isFetching,

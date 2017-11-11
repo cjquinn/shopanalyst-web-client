@@ -1,7 +1,16 @@
+import { normalize } from 'normalizr';
+
+// Actions
+import { signOut } from '../../src/store/User/actions';
+
+// Api
+import { getJwt, setJwt } from '../../src/store/api';
+
+// Reducers
 import reducers from '../../src/store/reducers';
 
-import { getJwt, setJwt } from '../../src/store/api';
-import { signOut } from '../../src/store/User/actions';
+// Schema
+import { list as listSchema } from '../../src/store/schema';
 
 describe('initial state', () => {
     it('shape', () => {
@@ -17,23 +26,25 @@ describe('app', () => {
     it(signOut.toString(), () => {
         setJwt({data: {jwt: 'JWT_TOKEN'}});
 
-        const state = {
-            entities: {
-                lists: {
-                    1: {
-                        id: 1,
-                        name: 'Weekly Shop',
-                        list_items: [{
-                            id: 2,
-                            item_id: 3,
-                            list_id: 1,
-                            quantity: 1,
-                            item: 3
-                        }]
+        const listData = {
+            id: 1,
+            name: 'Weekly Shop',
+            list_items: [
+                {
+                    id: 2,
+                    item_id: 3,
+                    list_id: 1,
+                    quantity: 1,
+                    item: {
+                        id: 3,
+                        name: 'Potato Waffles'
                     }
-                },
-                items: {3: {id: 3, name: 'Potato Waffles'}}
-            },
+                }
+            ]
+        };
+
+        const state = {
+            entities: normalize(listData, listSchema),
             item: {
                 ids: [3],
                 isFetching: true,
@@ -56,6 +67,7 @@ describe('app', () => {
         const expected = {
             entities: {
                 items: {},
+                list_items: {},
                 lists: {}
             },
             item: {
