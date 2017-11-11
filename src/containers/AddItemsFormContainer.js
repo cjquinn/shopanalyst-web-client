@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 // Actions
-import { deselectItem, fetchItems, selectItem } from '../store/Item/actions';
+import { deselectItem, fetchItems, resetAddItemsForm, selectItem } from '../store/Item/actions';
 import { addItems } from '../store/List/actions';
 
 // Components
@@ -45,6 +45,10 @@ class AddItemsFormContainer extends Component {
 
     setSearchInput = searchInput => this.searchInput = searchInput;
 
+    componentDidMount() {
+        this.props.resetAddItemsForm();
+    }
+
     render() {
         const { options, selected } = this.props;
         const { search } = this.state;
@@ -71,6 +75,7 @@ AddItemsFormContainer.propTypes = {
     history: PropTypes.object.isRequired,
     match: PropTypes.object.isRequired,
     options: PropTypes.array.isRequired,
+    resetAddItemsForm: PropTypes.func.isRequired,
     selected: PropTypes.array.isRequired,
     selectItem: PropTypes.func.isRequired
 };
@@ -87,6 +92,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
         search => dispatch(fetchItems(search)),
         400
     ),
+    resetAddItemsForm: () => dispatch(resetAddItemsForm()),
     selectItem: item => dispatch(selectItem(item))
 });
 

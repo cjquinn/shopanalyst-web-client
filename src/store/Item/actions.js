@@ -8,6 +8,7 @@ import { item as itemSchema } from '../schema';
  * Add Items
  */
 export const deselectItem = createAction('DESELECT_ITEM');
+export const resetAddItemsForm = createAction('RESET_ADD_ITEMS_FORM');
 export const selectItem = createAction('SELECT_ITEM');
 
 /**
@@ -23,7 +24,7 @@ export const fetchItems = search => (dispatch, getState, api) => {
     dispatch(setSearch(search));
     dispatch(fetchItemsRequest());
 
-    if (search === '') {
+    if (search.length < 2) {
         return dispatch(fetchItemsSuccess({result: []}));
     }
 
@@ -33,3 +34,4 @@ export const fetchItems = search => (dispatch, getState, api) => {
         .then(normalizedData => dispatch(fetchItemsSuccess(normalizedData)))
         .catch(api.handleError(dispatch, fetchItemsFailure));
 };
+

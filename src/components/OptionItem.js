@@ -19,13 +19,13 @@ const OptionItem = ({ handleToggleComplete, id, listItem }) => (
 
         <label
             htmlFor={id}
-            className={`list-item__label u-bgcolor-white ${listItem.is_existing && 'u-color-brown'}`}
+            className={`list-item__label u-bgcolor-white ${listItem.is_existing && 'u-color-bronze'}`}
         >
             <span className="list-item__tick">
                 <Svg sprite={tick} />
             </span>
 
-            {`${listItem.item.name}${listItem.is_existing ? ' (already added)' : ''}`}
+            {listItem.item.name}
         </label>
     </li>
 );

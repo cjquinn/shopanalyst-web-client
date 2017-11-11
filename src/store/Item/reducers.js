@@ -61,11 +61,19 @@ const selected = (state = [], action) => {
     }
 };
 
-const reducers = combineReducers({
+const item = combineReducers({
     ids,
     isFetching,
     search,
     selected
 });
+
+const reducers = (state, action) => {
+    if (action.type === actions.resetAddItemsForm.toString()) {
+        state = {};
+    }
+
+    return item(state, action);
+};
 
 export default reducers;
