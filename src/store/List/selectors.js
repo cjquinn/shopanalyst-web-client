@@ -2,7 +2,7 @@ import { denormalize } from 'normalizr';
 import { createSelector } from 'reselect';
 
 // Schema
-import { list as listSchema } from '../schema';
+import { list as listSchema, listItem as listItemSchema } from '../schema';
 
 // Utils
 import { withComputed } from './utils';
@@ -23,6 +23,13 @@ export const getList = id => createSelector(
 
         return withComputed(list);
     }
+);
+
+export const getListItems = id => createSelector(
+    state => state.entities.lists[id].list_items,
+    state => state.entities.items,
+    state => state.entities.list_items,
+    (listItemIds, items, list_items) => denormalize(listItemIds || [], [listItemSchema],{items, list_items})
 );
 
 export const getLists = createSelector(

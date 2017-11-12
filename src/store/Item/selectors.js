@@ -3,7 +3,7 @@ import { sortBy } from 'lodash';
 import { createSelector } from 'reselect';
 
 // Selectors
-import { getList } from '../List/selectors';
+import { getListItems } from '../List/selectors';
 
 export const getAddItemsData = createSelector(
     state => state.item.selected,
@@ -29,11 +29,11 @@ export const getItems = createSelector(
         .map(id => items[id])
 );
 
-const createListItem = (item, isComplete, search, list) => ({
+const createListItem = (item, isComplete, search, listItems) => ({
     item,
     is_complete: isComplete,
-    is_existing: list
-        ? list.list_items.some(listItem => listItem.item.id === item.id)
+    is_existing: listItems
+        ? listItems.some(listItem => listItem.item.id === item.id)
         : false
 });
 
@@ -47,8 +47,8 @@ export const getOptions = listId => createSelector(
     state => state.item.search,
     getSelected,
     getItems,
-    getList(listId),
-    (search, selected, items, list) => {
+    getListItems(listId),
+    (search, selected, items, listItems) => {
         // No search term
         if (search.length === 0) {
             return [];
@@ -73,14 +73,14 @@ export const getOptions = listId => createSelector(
         if (items.some(item => item.name === search) ||
             !newListItem
         ) {
-            return items.map(item => createListItem(item, false, search, list));
+            return items.map(item => createListItem(item, false, search, listItems));
         }
 
         // EVERYTHING AND SORT IT BABY
         return sortBy(
             [
                 newListItem,
-                ...items.map(item => createListItem(item, false, search, list))
+                ...items.map(item => createListItem(item, false, search, listItems))
             ],
             listItem => listItem.item.name.toLowerCase()
         );

@@ -1,4 +1,4 @@
-import { getIsFetching, getList, getLists, getPage, getTotal } from '../../../src/store/List/selectors';
+import { getIsFetching, getList, getListItems, getLists, getPage, getTotal } from '../../../src/store/List/selectors';
 
 describe('selectors', () => {
     it('getIsFetching', () => {
@@ -31,21 +31,45 @@ describe('selectors', () => {
             id: 1,
             name: 'Weekly Shop',
             completeCount: 0,
-            list_items: [{
-                id: 2,
-                item_id: 3,
-                list_id: 1,
-                quantity: 1,
-                item: {
-                    id: 3,
-                    name: 'Potato Waffles'
-                }
-            }],
             itemsProgress: '0/1 items',
             progress: '0%'
         };
 
         expect(getList(1)(state)).toEqual(expected);
+    });
+
+    it('getListItems', () => {
+        const state = {
+            entities: {
+                lists: {
+                    1: {
+                        id: 1,
+                        name: 'Weekly Shop',
+                        list_items: [{
+                            id: 2,
+                            item_id: 3,
+                            list_id: 1,
+                            quantity: 1,
+                            item: 3
+                        }]
+                    }
+                },
+                items: {3: {id: 3, name: 'Potato Waffles'}}
+            }
+        };
+
+        const expected = [{
+            id: 2,
+            item_id: 3,
+            list_id: 1,
+            quantity: 1,
+            item: {
+                id: 3,
+                name: 'Potato Waffles'
+            }
+        }];
+
+        expect(getListItems(1)(state)).toEqual(expected);
     });
 
     it('getLists', () => {
@@ -75,16 +99,6 @@ describe('selectors', () => {
             id: 1,
             name: 'Weekly Shop',
             completeCount: 0,
-            list_items: [{
-                id: 2,
-                item_id: 3,
-                list_id: 1,
-                quantity: 1,
-                item: {
-                    id: 3,
-                    name: 'Potato Waffles'
-                }
-            }],
             itemsProgress: '0/1 items',
             progress: '0%'
         }];

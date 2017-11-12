@@ -1,3 +1,5 @@
+import { omit } from 'lodash';
+
 export const withComputed = list => {
     let completeCount = 0;
     let itemsProgress = '0/0 items';
@@ -14,12 +16,9 @@ export const withComputed = list => {
     }
 
     return {
-        ...list,
+        ...omit(list, 'list_items'),
         completeCount,
         itemsProgress,
-        list_items: list.list_items
-            ? list.list_items
-            : [],
         progress
     };
 };
