@@ -15,6 +15,30 @@ describe('initial state', () => {
     });
 });
 
+describe('createList', () => {
+    it(actions.createListSuccess.toString(), () => {
+        const state = {
+            ids: [1],
+            isFetching: false,
+            page: 1,
+            total: 1
+        };
+
+        const expected = {
+            ids: [2, 1],
+            isFetching: false,
+            page: 1,
+            total: 2
+        };
+
+        const payload = {
+            result: 2
+        };
+
+        expect(reducers(state, actions.createListSuccess(payload))).toEqual(expected);
+    });
+});
+
 describe('fetchLists', () => {
     it(actions.fetchListsRequest.toString(), () => {
         const state = {

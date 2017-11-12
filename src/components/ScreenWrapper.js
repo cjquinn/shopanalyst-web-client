@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const ScreenWrapper = ({ children }) => (
-    <div className="o-container u-p-2 u-space-2">
+const ScreenWrapper = ({ children, ...props }) => (
+    <div
+        className="o-container u-p-2 u-space-2"
+        {...props}
+    >
         {children}
     </div>
 );

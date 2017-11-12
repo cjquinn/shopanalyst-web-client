@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { reduxForm } from 'redux-form';
 
 // Actions
 import { signIn } from '../store/User/actions';
@@ -12,7 +13,10 @@ class SignInFormContainer extends Component {
     handleSubmit = data => this.props.signIn(data);
 
     render() {
-        return <SignInForm onSubmit={this.handleSubmit} />;
+        return React.createElement(
+            reduxForm({form: 'signIn'})(SignInForm),
+            {onSubmit: this.handleSubmit}
+        );
     }
 }
 

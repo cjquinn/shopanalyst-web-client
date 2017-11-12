@@ -1,12 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 
 // Components
 import FormWrapper from './FormWrapper';
+import Item from './Item';
 import ListItems from './ListItems';
-import OptionItem from './OptionItem';
-import SelectedItem from './SelectedItem';
 import Svg from './Svg';
 
 // Sprites
@@ -48,8 +46,8 @@ const AddItemsForm = ({ handleClearInput, handleSearch, handleSubmit, handleTogg
 
                 <div className="u-bgcolor-light-grey u-bradius-5 u-ph u-pv-2">
                     <ListItems
-                        component={OptionItem}
-                        handleToggleComplete={handleToggleSelected}
+                        component={Item}
+                        handleToggleSelected={handleToggleSelected}
                         listItems={options}
                         listName="options"
                     >
@@ -63,8 +61,8 @@ const AddItemsForm = ({ handleClearInput, handleSearch, handleSubmit, handleTogg
 
                 <div className="u-bgcolor-light-grey u-bradius-5 u-ph u-pv-2">
                     <ListItems
-                        component={SelectedItem}
-                        handleToggleComplete={handleToggleSelected}
+                        component={Item}
+                        handleToggleSelected={handleToggleSelected}
                         listItems={selected} 
                         listName="selected"
                     >
@@ -97,4 +95,4 @@ AddItemsForm.propTypes = {
     setSearchInput: PropTypes.func.isRequired
 };
 
-export default withRouter(AddItemsForm);
+export default AddItemsForm;

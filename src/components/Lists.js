@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // Components
 import ListCard from './ListCard';
@@ -46,4 +46,4 @@ Lists.propTypes = {
     total: PropTypes.number.isRequired
 };
 
-export default withRouter(Lists);
+export default Lists;

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field } from 'redux-form';
 
 // Components
 import LabeledInput from './LabeledInput';
@@ -40,4 +40,4 @@ SignInForm.propTypes = {
     error: PropTypes.string
 };
 
-export default reduxForm({ form: 'signIn' })(SignInForm);
+export default SignInForm;

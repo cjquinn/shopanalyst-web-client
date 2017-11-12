@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
 // Actions
 import { fetchMoreLists, fetchLists } from '../store/List/actions';
@@ -17,13 +18,14 @@ class ListsContainer extends Component {
     }
 
     render() {
-        const { isFetching, fetchMoreLists, lists, total } = this.props;
+        const { isFetching, fetchMoreLists, lists, match, total } = this.props;
 
         return (
             <Lists
                 isFetching={isFetching}
                 fetchMoreLists={fetchMoreLists}
                 lists={lists}
+                match={match}
                 total={total}
             />
         );
@@ -35,6 +37,7 @@ ListsContainer.propTypes = {
     fetchMoreLists: PropTypes.func.isRequired,
     fetchLists: PropTypes.func.isRequired,
     lists: PropTypes.array.isRequired,
+    match: PropTypes.object.isRequired,
     total: PropTypes.number.isRequired
 };
 
@@ -49,4 +52,4 @@ const mapDispatchToProps = dispatch => ({
     fetchLists: () => dispatch(fetchLists())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListsContainer);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ListsContainer));

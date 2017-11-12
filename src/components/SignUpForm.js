@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field } from 'redux-form';
 
 // Components
 import LabeledInput from './LabeledInput';
@@ -35,4 +35,4 @@ SignUpForm.propTypes = {
     handleSubmit: PropTypes.func.isRequired
 };
 
-export default reduxForm({ form: 'signUp' })(SignUpForm);
+export default SignUpForm;

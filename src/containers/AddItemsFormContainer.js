@@ -50,7 +50,7 @@ class AddItemsFormContainer extends Component {
     }
 
     render() {
-        const { options, selected } = this.props;
+        const { match, options, selected } = this.props;
         const { search } = this.state;
 
         return (
@@ -59,6 +59,7 @@ class AddItemsFormContainer extends Component {
                 handleSearch={this.handleSearch}
                 handleSubmit={this.handleSubmit}
                 handleToggleSelected={this.handleToggleSelected}
+                match={match}
                 options={options}
                 search={search}
                 selected={selected}

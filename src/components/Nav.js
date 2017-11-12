@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 
 // Components
@@ -11,10 +10,10 @@ import analyse from '../assets/svg/analyse.svg';
 import settings from '../assets/svg/settings.svg';
 import shop from '../assets/svg/shop.svg';
 
-const Nav = ({ location }) => (
+const Nav = ({ getActiveClasses }) => (
     <nav className="nav u-fixed u-width-full">
         <ul className="tabs u-bgcolor-pale-green u-text-center">
-            <li className={`tabs__tab ${location.pathname.indexOf('lists') !== -1 && 'tabs__tab--active u-bgcolor-off-white'}`}>
+            <li className={`tabs__tab ${getActiveClasses('lists')}`}>
                 <Link
                     className="tabs__tab__link o-type-small u-color-grey"
                     to="/lists"
@@ -24,7 +23,7 @@ const Nav = ({ location }) => (
                 </Link>
             </li>
 
-            <li className={`tabs__tab ${location.pathname.indexOf('analyse') !== -1 && 'tabs__tab--active u-bgcolor-off-white'}`}>
+            <li className={`tabs__tab ${getActiveClasses('analyse')}`}>
                 <Link
                     className="tabs__tab__link o-type-small u-color-grey"
                     to="/analyse"
@@ -34,7 +33,7 @@ const Nav = ({ location }) => (
                 </Link>
             </li>
 
-            <li className={`tabs__tab ${location.pathname.indexOf('settings') !== -1 && 'tabs__tab--active u-bgcolor-off-white'}`}>
+            <li className={`tabs__tab ${getActiveClasses('settings')}`}>
                 <Link
                     className="tabs__tab__link o-type-small u-color-grey"
                     to="/settings"
@@ -48,7 +47,7 @@ const Nav = ({ location }) => (
 );
 
 Nav.propTypes = {
-    location: PropTypes.object.isRequired
+    getActiveClasses: PropTypes.func.isRequired
 };
 
-export default withRouter(Nav);
+export default Nav;

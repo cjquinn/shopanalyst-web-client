@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
-import { withRouter } from 'react-router';
+import { Field } from 'redux-form';
 
 // Components
 import FormWrapper from './FormWrapper';
@@ -29,4 +28,4 @@ CreateListForm.propTypes = {
     match: PropTypes.object.isRequired
 };
 
-export default withRouter(reduxForm({ form: 'createList' })(CreateListForm));
+export default CreateListForm;

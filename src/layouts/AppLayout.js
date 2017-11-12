@@ -1,14 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withRouter } from 'react-router';
 import { Route, Redirect, Switch } from 'react-router-dom';
 
 // Components
-import Nav from '../components/Nav';
 import Splash from '../components/Splash';
 
 // Containers
 import ListScreenContainer from '../containers/ListScreenContainer';
+import NavContainer from '../containers/NavContainer';
 
 // Routes
 import AuthorisedRoute from '../routes/AuthorisedRoute';
@@ -24,8 +23,8 @@ import SettingsScreen from '../screens/SettingsScreen';
 import SignInScreen from '../screens/SignInScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 
-const AppLayout = ({ isAuthorised, isFetching, location }) => (
-    <div className={`app ${!isAuthorised && 'app--unauthorised u-bgcolor-pale-green'} ${location.pathname.indexOf('edit') !== -1 && 'app--edit-list'}`}>
+const AppLayout = ({ isAuthorised, isFetching }) => (
+    <div className={`app ${!isAuthorised && 'app--unauthorised u-bgcolor-pale-green'}`}>
         {isFetching && <Splash>Loading...</Splash>}
 
         {!isFetching &&
@@ -49,14 +48,13 @@ const AppLayout = ({ isAuthorised, isFetching, location }) => (
             </Switch>
         }
 
-        {isAuthorised && <Nav />}
+        {isAuthorised && <NavContainer />}
     </div>
 );
 
 AppLayout.propTypes = {
     isAuthorised: PropTypes.bool.isRequired,
-    isFetching: PropTypes.bool.isRequired,
-    location: PropTypes.object.isRequired
+    isFetching: PropTypes.bool.isRequired
 };
 
-export default withRouter(AppLayout);
+export default AppLayout;

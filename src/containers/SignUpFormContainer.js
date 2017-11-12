@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { reduxForm } from 'redux-form';
 
 // Actions
 import { signUp } from '../store/User/actions';
@@ -12,7 +13,10 @@ class SignUpFormContainer extends Component {
     handleSubmit = data => this.props.signUp(data);
 
     render() {
-        return <SignUpForm onSubmit={this.handleSubmit} />;
+        return React.createElement(
+            reduxForm({form: 'signUp'})(SignUpForm),
+            {onSubmit: this.handleSubmit}
+        );
     }
 }
 
