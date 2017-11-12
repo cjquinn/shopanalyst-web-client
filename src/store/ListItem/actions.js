@@ -71,3 +71,20 @@ export const toggleCompleted = (listId, id) => (dispatch, getState, api) => {
         .then(normalizedData => dispatch(toggleCompletedSuccess(normalizedData)))
         .catch(api.handleError(dispatch, toggleCompletedFailure));
 };
+
+/**
+ * Update quantity
+ */
+export const updateQuantityRequest = createAction('UPDATE_QUANTITY_REQUEST');
+export const updateQuantitySuccess = createAction('UPDATE_QUANTITY_SUCCESS');
+export const updateQuantityFailure = createAction('UPDATE_QUANTITY_FAILURE');
+
+export const updateQuantity = (listId, id, quantity) => (dispatch, getState, api) => {
+    dispatch(updateQuantityRequest());
+
+    return api.updateQuantity(listId, id, quantity)
+        .then(api.checkStatus)
+        .then(response => normalize(response.data.listItem, listItemSchema))
+        .then(normalizedData => dispatch(updateQuantitySuccess(normalizedData)))
+        .catch(api.handleError(dispatch, updateQuantityFailure));
+};

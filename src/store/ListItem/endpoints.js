@@ -15,3 +15,9 @@ export const increaseQuantity = (listId, id) =>
 export const toggleCompleted = (listId, id) =>
     instance()
         .patch(`/lists/${listId}/list-items/${id}/toggle-completed.json`);
+
+export const updateQuantity = (listId, id, quantity) =>
+    instance()
+        .patch(`/lists/${listId}/list-items/${id}/update-quantity.json`, {
+            quantity
+        });

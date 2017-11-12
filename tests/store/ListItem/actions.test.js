@@ -203,3 +203,52 @@ describe('toggleCompleted', () => {
             });
     });
 });
+
+describe('updateQuantity', () => {
+    beforeEach(() => store = global.configureStore());
+
+    afterEach(() => mock.reset());
+
+    it('failure', () => {
+        mock
+            .onPatch('/lists/1/list-items/1/update-quantity.json')
+            .reply(403);
+
+        return store.dispatch(actions.updateQuantity(1, 1, 10))
+            .then(() => {
+                const expected = [
+                    {type: actions.updateQuantityRequest.toString()},
+                    {type: actions.updateQuantityFailure.toString()},
+                    {type: signOut.toString()}
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+            });
+    });
+
+    it('success', () => {
+        mock
+            .onPatch('/lists/1/list-items/1/update-quantity.json')
+            .reply(200, {
+                listItem: {id: 1}
+            });
+
+        return store.dispatch(actions.updateQuantity(1, 1, 10))
+            .then(() => {
+                const expected = [
+                    {type: actions.updateQuantityRequest.toString()},
+                    {
+                        type: actions.updateQuantitySuccess.toString(),
+                        payload: {
+                            entities: {
+                                list_items: {1: {id: 1}}
+                            },
+                            result: 1
+                        }
+                    }
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+            });
+    });
+});

@@ -10,7 +10,7 @@ import minus from '../assets/svg/minus.svg';
 import plus from '../assets/svg/plus.svg';
 import tick from '../assets/svg/tick.svg';
 
-const ListItem = ({ handleDecreaseQuantity, handleDeleteListItem, htmlFor, handleIncreaseQuantity, listItem, handleToggleCompleted }) => (
+const ListItem = ({ handleDecreaseQuantity, handleDeleteListItem, handleIncreaseQuantity, handleUpdateQuantity, htmlFor, listItem, handleToggleCompleted }) => (
     <div className="item item--list-item">
         <input
             id={htmlFor}
@@ -45,7 +45,7 @@ const ListItem = ({ handleDecreaseQuantity, handleDeleteListItem, htmlFor, handl
                         min="1"
                         className="item__actions__input o-input o-type-medium u-text-center u-bgcolor-pale-grey u-color-grey"
                         value={listItem.quantity}
-                        onChange={() => ({})}
+                        onChange={event => handleUpdateQuantity(listItem, event.target.value)}
                     />
 
                     <button
@@ -74,8 +74,9 @@ const ListItem = ({ handleDecreaseQuantity, handleDeleteListItem, htmlFor, handl
 ListItem.propTypes = {
     handleDecreaseQuantity: PropTypes.func.isRequired,
     handleDeleteListItem: PropTypes.func.isRequired,
-    htmlFor: PropTypes.string.isRequired,
     handleIncreaseQuantity: PropTypes.func.isRequired,
+    handleUpdateQuantity: PropTypes.func.isRequired,
+    htmlFor: PropTypes.string.isRequired,
     listItem: PropTypes.object.isRequired,
     handleToggleCompleted: PropTypes.func.isRequired
 };
