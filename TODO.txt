@@ -1,4 +1,4 @@
-- [ ] Update quantity action and reducer
+- [ ] Fix update quantity - controller inputes.!>!>!>!
 - [ ] Duplicate list
 - [ ] Delete list
 - [ ] If not items and search term clear search...

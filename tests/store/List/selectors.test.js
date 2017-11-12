@@ -30,9 +30,8 @@ describe('selectors', () => {
         const expected = {
             id: 1,
             name: 'Weekly Shop',
-            completeCount: 0,
             itemsProgress: '0/1 items',
-            progress: '0%'
+            progress: 0
         };
 
         expect(getList(1)(state)).toEqual(expected);
@@ -98,9 +97,8 @@ describe('selectors', () => {
         const expected = [{
             id: 1,
             name: 'Weekly Shop',
-            completeCount: 0,
             itemsProgress: '0/1 items',
-            progress: '0%'
+            progress: 0
         }];
 
         expect(getLists(state)).toEqual(expected);

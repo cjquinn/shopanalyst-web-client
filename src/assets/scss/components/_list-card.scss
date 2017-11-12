@@ -30,4 +30,8 @@ $progressBorderRadius: 13px;
             overflow: hidden;
         }
     }
+
+    &--complete * {
+        text-decoration: line-through;
+    }
 }
