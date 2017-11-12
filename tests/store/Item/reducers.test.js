@@ -182,14 +182,14 @@ describe('addItems', () => {
 
         // Select item
         state = {
-            ids: [],
+            ids: [1],
             isFetching: false,
             search: '',
             selected: [{name: 'Potato Waffles'}]
         };
 
         expected = {
-            ids: [],
+            ids: [1],
             isFetching: false,
             search: '',
             selected: [

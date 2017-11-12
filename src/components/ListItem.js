@@ -10,14 +10,14 @@ import minus from '../assets/svg/minus.svg';
 import plus from '../assets/svg/plus.svg';
 import tick from '../assets/svg/tick.svg';
 
-const ListItem = ({ decreaseQuantity, deleteListItem, htmlFor, increaseQuantity, listItem, toggleCompleted }) => (
+const ListItem = ({ handleDecreaseQuantity, handleDeleteListItem, htmlFor, handleIncreaseQuantity, listItem, handleToggleCompleted }) => (
     <div className="item item--list-item">
         <input
             id={htmlFor}
             type="checkbox"
             className="item__checkbox u-hidden"
             checked={listItem.is_complete}
-            onChange={() => toggleCompleted(listItem)}
+            onChange={() => handleToggleCompleted(listItem)}
         />
 
         <label
@@ -35,13 +35,14 @@ const ListItem = ({ decreaseQuantity, deleteListItem, htmlFor, increaseQuantity,
                     <button
                         type="button"
                         className="item__actions__button item__actions__button--increase u-bgcolor-green u-color-white"
-                        onClick={() => increaseQuantity(listItem)}
+                        onClick={() => handleIncreaseQuantity(listItem)}
                     >
                         <Svg sprite={plus} />
                     </button>
 
                     <input
                         type="number"
+                        min="1"
                         className="item__actions__input o-input o-type-medium u-text-center u-bgcolor-pale-grey u-color-grey"
                         value={listItem.quantity}
                         onChange={() => ({})}
@@ -52,8 +53,8 @@ const ListItem = ({ decreaseQuantity, deleteListItem, htmlFor, increaseQuantity,
                         className={`item__actions__button item__actions__button--${listItem.quantity === 1 ? 'remove u-bgcolor-red' : 'decrease u-bgcolor-green'} u-color-white`}
                         onClick={() =>
                             listItem.quantity === 1
-                                ? deleteListItem(listItem)
-                                : decreaseQuantity(listItem)
+                                ? handleDeleteListItem(listItem)
+                                : handleDecreaseQuantity(listItem)
                         }
                     >
                         <Svg sprite={listItem.quantity === 1 ? cross : minus} />
@@ -61,18 +62,22 @@ const ListItem = ({ decreaseQuantity, deleteListItem, htmlFor, increaseQuantity,
                 </div>
             }
 
-            {listItem.is_complete && <span className="item__value o-type-medium u-text-center">2</span>}
+            {listItem.is_complete &&
+                    <span className="item__value o-type-medium u-text-center">
+                        {listItem.quantity}
+                    </span>
+                }
         </label>
     </div>
 );
 
 ListItem.propTypes = {
-    decreaseQuantity: PropTypes.func.isRequired,
-    deleteListItem: PropTypes.func.isRequired,
+    handleDecreaseQuantity: PropTypes.func.isRequired,
+    handleDeleteListItem: PropTypes.func.isRequired,
     htmlFor: PropTypes.string.isRequired,
-    increaseQuantity: PropTypes.func.isRequired,
+    handleIncreaseQuantity: PropTypes.func.isRequired,
     listItem: PropTypes.object.isRequired,
-    toggleCompleted: PropTypes.func.isRequired
+    handleToggleCompleted: PropTypes.func.isRequired
 };
 
 export default ListItem;

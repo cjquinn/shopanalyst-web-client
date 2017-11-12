@@ -35,7 +35,7 @@ class AddItemsFormContainer extends Component {
             return;
         }
 
-        this.props[item.is_complete ? 'deselectItem' : 'selectItem'](item);
+        this.props[item.is_selected ? 'deselectItem' : 'selectItem'](item);
     };
 
     setSearch = search => this.setState(

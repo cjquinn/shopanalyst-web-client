@@ -14,7 +14,18 @@ import { getListItems } from '../store/List/selectors';
 
 class ListItemsContainer extends Component {
     render() {
-        return <ListItems {...this.props} />;
+        const { decreaseQuantity, deleteListItem, increaseQuantity, listItems, match, toggleCompleted } = this.props;
+
+        return (
+            <ListItems
+                handleDecreaseQuantity={decreaseQuantity}
+                handleDeleteListItem={deleteListItem}
+                handleIncreaseQuantity={increaseQuantity}
+                handleToggleCompleted={toggleCompleted}
+                listItems={listItems}
+                match={match}
+            />
+        );
     }
 }
 
