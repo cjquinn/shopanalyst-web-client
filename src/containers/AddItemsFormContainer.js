@@ -30,12 +30,12 @@ class AddItemsFormContainer extends Component {
             .push(this.props.match.url.replace('/add-items', ''))
         );
 
-    handleToggleSelected = listItem => {
-        if (listItem.is_existing) {
+    handleToggleSelected = item => {
+        if (item.is_existing) {
             return;
         }
 
-        this.props[listItem.is_complete ? 'deselectItem' : 'selectItem'](listItem.item);
+        this.props[item.is_complete ? 'deselectItem' : 'selectItem'](item);
     };
 
     setSearch = search => this.setState(

@@ -5,13 +5,12 @@ import { Link, Route, Switch } from 'react-router-dom';
 // Components
 import EditListForm from '../components/EditListForm';
 import Header from '../components/Header';
-import ListItem from '../components/ListItem';
-import ListItems from '../components/ListItems';
 import ScreenWrapper from '../components/ScreenWrapper';
 import Splash from '../components/Splash';
 
 // Containers
 import AddItemsFormContainer from '../containers/AddItemsFormContainer';
+import ListItemsContainer from '../containers/ListItemsContainer';
 
 const ListScreen = ({ list, location, match }) => (
     <div>
@@ -49,22 +48,11 @@ const ListScreen = ({ list, location, match }) => (
                     </span>
                 </div>
 
-                <ListItems
-                    component={ListItem}
-                    handleToggleComplete={() => {}}
-                    listItems={list.list_items}
-                    listName="list-items"
-                >
-                    <p className="o-type-medium u-color-brown u-text-center">
-                        Once you&#039;ve <Link className="o-link" to={`${match.url}/add-items`}>added items</Link> they will show here
-                    </p>
-                </ListItems>
+                <ListItemsContainer />
 
-                {list.list_items.length > 0 &&
-                    <button className="o-button" type="button">
-                        Duplicate list
-                    </button>
-                }
+                <button className="o-button" type="button">
+                    Duplicate list
+                </button>
             </ScreenWrapper>
         }
     </div>

@@ -26,10 +26,12 @@ export const getList = id => createSelector(
 );
 
 export const getListItems = id => createSelector(
-    state => state.entities.lists[id].list_items,
+    state => state.entities.lists[id],
     state => state.entities.items,
     state => state.entities.list_items,
-    (listItemIds, items, list_items) => denormalize(listItemIds || [], [listItemSchema],{items, list_items})
+    (list, items, list_items) => list
+        ? denormalize(list.list_items || [], [listItemSchema],{items, list_items})
+        : []
 );
 
 export const getLists = createSelector(

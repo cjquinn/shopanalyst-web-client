@@ -1,30 +1,37 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const ListItems = ({ children, component: Component, listName, listItems, ...props }) => {
+// Components
+import ListItem from './ListItem';
+
+const ListItems = ({ listItems, match, ...props }) => {
     if (listItems.length === 0) {
-        return children;
+        return (
+            <p className="o-type-medium u-color-brown u-text-center">
+                Once you&#039;ve <Link className="o-link" to={`${match.url}/add-items`}>added items</Link> they will show here
+            </p>
+        );
     }
 
     return (
         <ul className="o-list o-list--block">
             {listItems.map((listItem, index) => (
-                <Component
-                    id={`${listName}-${index}`}
-                    key={index}
-                    listItem={listItem}
-                    {...props}
-                />
+                <li className="o-list__item" key={index}>
+                    <ListItem
+                        htmlFor={`list-items-${index}`}
+                        listItem={listItem}
+                        {...props}
+                    />
+                </li>
             ))}
         </ul>
     );
 };
 
 ListItems.propTypes = {
-    children: PropTypes.node.isRequired,
-    component: PropTypes.func.isRequired,
     listItems: PropTypes.array.isRequired,
-    listName: PropTypes.string.isRequired
+    match: PropTypes.object.isRequired
 };
 
 export default ListItems;

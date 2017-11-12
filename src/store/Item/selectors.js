@@ -29,19 +29,26 @@ export const getItems = createSelector(
         .map(id => items[id])
 );
 
-const createListItem = (item, isComplete, search, listItems) => ({
-    item,
-    is_complete: isComplete,
+export const getSelected = createSelector(
+    state => state.item.selected,
+    state => state.entities.items,
+    (selected, items) => selected.map(selected => {
+        const item = selected.name ? selected : items[selected];
+
+        return {
+            ...item,
+            is_selected: true
+        };
+    })
+);
+
+const createOption = (item, search, listItems) => ({
+    ...item,
+    is_selected: false,
     is_existing: listItems
         ? listItems.some(listItem => listItem.item.id === item.id)
         : false
 });
-
-export const getSelected = createSelector(
-    state => state.item.selected,
-    state => state.entities.items,
-    (selected, items) => selected.map(item => createListItem(item.name ? item : items[item], true))
-);
 
 export const getOptions = listId => createSelector(
     state => state.item.search,
@@ -55,15 +62,15 @@ export const getOptions = listId => createSelector(
         }
 
         // Create new item if search term isn't already selected
-        let newListItem;
-        if (!selected.some(listItem => listItem.item.name === search)) {
-            newListItem = createListItem({name: search}, false, search);
+        let newOption;
+        if (!selected.some(item => item.name === search)) {
+            newOption = createOption({name: search}, search);
         }
 
         // Just return search term or empty if already selected
         if (items.length === 0) {
-            if (newListItem) {
-                return [newListItem];
+            if (newOption) {
+                return [newOption];
             }
 
             return [];
@@ -71,18 +78,18 @@ export const getOptions = listId => createSelector(
 
         // Just returns item if search term is in items
         if (items.some(item => item.name === search) ||
-            !newListItem
+            !newOption
         ) {
-            return items.map(item => createListItem(item, false, search, listItems));
+            return items.map(item => createOption(item, search, listItems));
         }
 
         // EVERYTHING AND SORT IT BABY
         return sortBy(
             [
-                newListItem,
-                ...items.map(item => createListItem(item, false, search, listItems))
+                newOption,
+                ...items.map(item => createOption(item, search, listItems))
             ],
-            listItem => listItem.item.name.toLowerCase()
+            item => item.name.toLowerCase()
         );
     }
 );

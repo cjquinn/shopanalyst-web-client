@@ -86,9 +86,9 @@ describe('selectors', () => {
         };
 
         expected = [{
-            is_complete: false,
-            is_existing: false,
-            item: {name: 'Eggs'}
+            name: 'Eggs',
+            is_selected: false,
+            is_existing: false
         }];
 
         expect(getOptions(1)(state)).toEqual(expected);
@@ -111,20 +111,16 @@ describe('selectors', () => {
 
         expected = [
             {
-                is_complete: false,
-                is_existing: false,
-                item: {
-                    id: 4,
-                    name: 'Eggs'
-                }
+                id: 4,
+                name: 'Eggs',
+                is_selected: false,
+                is_existing: false
             },
             {
-                is_complete: false,
-                is_existing: false,
-                item: {
-                    id: 3,
-                    name: 'Potato Waffles'
-                }
+                id: 3,
+                name: 'Potato Waffles',
+                is_selected: false,
+                is_existing: false
             }
         ];
 
@@ -145,17 +141,15 @@ describe('selectors', () => {
 
         expected = [
             {
-                is_complete: false,
-                is_existing: false,
-                item: {
-                    id: 3,
-                    name: 'Potato Waffles'
-                }
+                id: 3,
+                name: 'Potato Waffles',
+                is_selected: false,
+                is_existing: false
             },
             {
-                is_complete: false,
-                is_existing: false,
-                item: {name: 'White Flour'}
+                name: 'White Flour',
+                is_selected: false,
+                is_existing: false
             }
         ];
 
@@ -227,19 +221,15 @@ describe('selectors', () => {
 
         expected = [
             {
-                is_complete: false,
-                is_existing: false,
-                item: {
-                    name: 'Eggs'
-                }
+                name: 'Eggs',
+                is_selected: false,
+                is_existing: false
             },
             {
-                is_complete: false,
-                is_existing: true,
-                item: {
-                    id: 3,
-                    name: 'Potato Waffles'
-                }
+                id: 3,
+                name: 'Potato Waffles',
+                is_selected: false,
+                is_existing: true
             }
         ];
 
@@ -264,17 +254,13 @@ describe('selectors', () => {
 
         let expected = [
             {
-                is_complete: true,
-                is_existing: false,
-                item: {
-                    id: 3,
-                    name: 'Potato Waffles'
-                }
+                id: 3,
+                name: 'Potato Waffles',
+                is_selected: true
             },
             {
-                is_complete: true,
-                is_existing: false,
-                item: {name: 'Eggs'}
+                name: 'Eggs',
+                is_selected: true
             }
         ];
 

@@ -9,7 +9,7 @@ export const withComputed = list => {
         list.list_items.length > 0
     ) {
         completeCount = list.list_items
-            .filter(listItem => listItem.isComplete)
+            .filter(listItem => listItem.is_complete)
             .length;
         itemsProgress = `${completeCount}/${list.list_items.length} items`;
         progress = `${(completeCount / list.list_items.length) * 100}%`;

@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ListCard = ({ baseUrl, list }) => (
-    <li className="list-card o-list__item u-p u-bgcolor-white u-bradius-5">
-        <Link to={`${baseUrl}/${list.id}`}>
+const ListCard = ({ list, match }) => (
+    <div className="list-card u-p u-bgcolor-white u-bradius-5">
+        <Link to={`${match.url}/${list.id}`}>
             <div className="list-card__header u-mb">
                 <h4 className="u-weight-normal">{list.name}</h4>
                 <span className="o-type-small u-color-brown">{list.date}</span>
@@ -23,12 +23,12 @@ const ListCard = ({ baseUrl, list }) => (
                 }
             </div>
         </Link>
-    </li>
+    </div>
 );
 
 ListCard.propTypes = {
-    baseUrl: PropTypes.string.isRequired,
-    list: PropTypes.object.isRequired
+    list: PropTypes.object.isRequired,
+    match: PropTypes.object.isRequired
 };
 
 export default ListCard;

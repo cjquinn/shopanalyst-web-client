@@ -14,17 +14,7 @@ import { getListItems } from '../store/List/selectors';
 
 class ListItemsContainer extends Component {
     render() {
-        const { decreaseQuantity, deleteListItem, increaseQuantity, listItems, toggleCompleted } = this.props;
-
-        return (
-            <ListItems
-                decreaseQuantity={decreaseQuantity}
-                deleteListItem={deleteListItem}
-                increaseQuantity={increaseQuantity}
-                listItems={listItems}
-                toggleCompleted={toggleCompleted}
-            />
-        );
+        return <ListItems {...this.props} />;
     }
 }
 
@@ -42,10 +32,10 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    decreaseQuantity: id => dispatch(decreaseQuantity(ownProps.match.params.id, id)),
-    deleteListItem: id => dispatch(deleteListItem(ownProps.match.params.id, id)),
-    increaseQuantity: id => dispatch(increaseQuantity(ownProps.match.params.id, id)),
-    toggleCompleted: id => dispatch(toggleCompleted(ownProps.match.params.id, id))
+    decreaseQuantity: listItem => dispatch(decreaseQuantity(ownProps.match.params.id, listItem.id)),
+    deleteListItem: listItem => dispatch(deleteListItem(ownProps.match.params.id, listItem.id)),
+    increaseQuantity: listItem => dispatch(increaseQuantity(ownProps.match.params.id, listItem.id)),
+    toggleCompleted: listItem => dispatch(toggleCompleted(ownProps.match.params.id, listItem.id))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ListItemsContainer));

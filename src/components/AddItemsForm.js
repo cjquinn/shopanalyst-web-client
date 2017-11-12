@@ -3,8 +3,7 @@ import React from 'react';
 
 // Components
 import FormWrapper from './FormWrapper';
-import Item from './Item';
-import ListItems from './ListItems';
+import Items from './Items';
 import Svg from './Svg';
 
 // Sprites
@@ -41,35 +40,19 @@ const AddItemsForm = ({ handleClearInput, handleSearch, handleSubmit, handleTogg
                 </div>
             </div>
 
-            <div className="u-space">
-                <label className="u-block u-mb">Items</label>
+            <Items
+                empty="No items"
+                handleToggleSelected={handleToggleSelected}
+                items={options}
+                title="Items"
+            />
 
-                <div className="u-bgcolor-light-grey u-bradius-5 u-ph u-pv-2">
-                    <ListItems
-                        component={Item}
-                        handleToggleSelected={handleToggleSelected}
-                        listItems={options}
-                        listName="options"
-                    >
-                        <p className="o-type-medium u-color-brown u-lh-36">No items</p>
-                    </ListItems>
-                </div>
-            </div>
-
-            <div className="u-space">
-                <label className="u-block u-mb">Selected</label>
-
-                <div className="u-bgcolor-light-grey u-bradius-5 u-ph u-pv-2">
-                    <ListItems
-                        component={Item}
-                        handleToggleSelected={handleToggleSelected}
-                        listItems={selected} 
-                        listName="selected"
-                    >
-                        <p className="o-type-medium u-color-brown u-lh-36">None selected</p>
-                    </ListItems>
-                </div>
-            </div>
+            <Items
+                empty="None selected"
+                handleToggleSelected={handleToggleSelected}
+                items={selected}
+                title="Selected"
+            />
 
             <button
                 className="o-button"

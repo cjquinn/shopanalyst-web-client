@@ -7,33 +7,33 @@ import Svg from '../components/Svg';
 // Sprites
 import tick from '../assets/svg/tick.svg';
 
-const Item = ({ handleToggleSelected, id, listItem }) => (
-    <li className="list-item o-list__item">
+const Item = ({ handleToggleSelected, htmlFor, item }) => (
+    <div className="item">
         <input
-            id={id}
+            id={htmlFor}
             type="checkbox"
-            className="list-item__checkbox u-hidden"
-            checked={listItem.is_complete}
-            onChange={() => handleToggleSelected(listItem)}
+            className="item__checkbox u-hidden"
+            checked={item.is_selected}
+            onChange={() => handleToggleSelected(item)}
         />
 
         <label
-            htmlFor={id}
-            className={`list-item__label u-bgcolor-white ${listItem.is_existing && 'u-color-bronze'}`}
+            htmlFor={htmlFor}
+            className={`item__label u-bgcolor-white ${item.is_existing && 'u-color-bronze'}`}
         >
-            <span className="list-item__tick">
+            <span className="item__tick">
                 <Svg sprite={tick} />
             </span>
 
-            {listItem.item.name}
+            {item.name}
         </label>
-    </li>
+    </div>
 );
 
 Item.propTypes = {
     handleToggleSelected: PropTypes.func.isRequired,
-    id: PropTypes.string.isRequired,
-    listItem: PropTypes.object.isRequired
+    htmlFor: PropTypes.string.isRequired,
+    item: PropTypes.object.isRequired
 };
 
 export default Item;

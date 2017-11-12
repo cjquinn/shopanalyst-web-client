@@ -10,70 +10,69 @@ import minus from '../assets/svg/minus.svg';
 import plus from '../assets/svg/plus.svg';
 import tick from '../assets/svg/tick.svg';
 
-const ListItem = ({ handleToggleComplete, id, listItem }) => (
-    <li className="list-item o-list__item">
+const ListItem = ({ decreaseQuantity, deleteListItem, htmlFor, increaseQuantity, listItem, toggleCompleted }) => (
+    <div className="item item--list-item">
         <input
-            id={id}
+            id={htmlFor}
             type="checkbox"
-            className="list-item__checkbox u-hidden"
+            className="item__checkbox u-hidden"
             checked={listItem.is_complete}
-            onChange={() => handleToggleComplete(listItem)}
+            onChange={() => toggleCompleted(listItem)}
         />
 
         <label
-            htmlFor={id}
-            className="list-item__label u-bgcolor-white"
+            htmlFor={htmlFor}
+            className="item__label u-bgcolor-white"
         >
-            <span className="list-item__tick">
+            <span className="item__tick">
                 <Svg sprite={tick} />
             </span>
 
             {listItem.item.name}
 
             {!listItem.is_complete &&
-                <div className="list-item__actions">
+                <div className="item__actions">
                     <button
                         type="button"
-                        className="list-item__actions__button list-item__actions__button--increase u-bgcolor-green u-color-white"
+                        className="item__actions__button item__actions__button--increase u-bgcolor-green u-color-white"
+                        onClick={() => increaseQuantity(listItem)}
                     >
                         <Svg sprite={plus} />
                     </button>
 
                     <input
                         type="number"
-                        className="list-item__actions__input o-input o-type-medium u-text-center u-bgcolor-pale-grey u-color-grey"
-                        defaultValue={listItem.quantity}
+                        className="item__actions__input o-input o-type-medium u-text-center u-bgcolor-pale-grey u-color-grey"
+                        value={listItem.quantity}
+                        onChange={() => ({})}
                     />
 
-                    {listItem.quantity > 1 &&
-                        <button
-                            type="button"
-                            className="list-item__actions__button list-item__actions__button--decrease u-bgcolor-green u-color-white"
-                        >
-                            <Svg sprite={minus} />
-                        </button>
-                    }
-
-                    {listItem.quantity === 1 &&
-                        <button
-                            type="button"
-                            className="list-item__actions__button list-item__actions__button--remove u-bgcolor-red u-color-white"
-                        >
-                            <Svg sprite={cross} />
-                        </button>
-                    }
+                    <button
+                        type="button"
+                        className={`item__actions__button item__actions__button--${listItem.quantity === 1 ? 'remove u-bgcolor-red' : 'decrease u-bgcolor-green'} u-color-white`}
+                        onClick={() =>
+                            listItem.quantity === 1
+                                ? deleteListItem(listItem)
+                                : decreaseQuantity(listItem)
+                        }
+                    >
+                        <Svg sprite={listItem.quantity === 1 ? cross : minus} />
+                    </button>
                 </div>
             }
 
-            {listItem.is_complete && <span className="list-item__value o-type-medium u-text-center">2</span>}
+            {listItem.is_complete && <span className="item__value o-type-medium u-text-center">2</span>}
         </label>
-    </li>
+    </div>
 );
 
 ListItem.propTypes = {
-    handleToggleComplete: PropTypes.func.isRequired,
-    id: PropTypes.string.isRequired,
-    listItem: PropTypes.object.isRequired
+    decreaseQuantity: PropTypes.func.isRequired,
+    deleteListItem: PropTypes.func.isRequired,
+    htmlFor: PropTypes.string.isRequired,
+    increaseQuantity: PropTypes.func.isRequired,
+    listItem: PropTypes.object.isRequired,
+    toggleCompleted: PropTypes.func.isRequired
 };
 
 export default ListItem;

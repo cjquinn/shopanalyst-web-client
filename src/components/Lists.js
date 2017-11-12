@@ -16,11 +16,12 @@ const Lists = ({ isFetching, fetchMoreLists, lists, match, total }) => (
         {lists.length > 0 &&
             <ul className="o-list o-list--block">
                 {lists.map((list, index) => (
-                    <ListCard
-                        key={index}
-                        baseUrl={match.url}
-                        list={list}
-                    />
+                    <li className="o-list__item" key={index}>
+                        <ListCard
+                            list={list}
+                            match={match}
+                        />
+                    </li>
                 ))}
             </ul>
         }
