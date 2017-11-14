@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
 // Actions
-import { decreaseQuantity, deleteListItem, increaseQuantity, toggleCompleted, updateQuantity } from '../store/ListItem/actions';
+import { toggleCompleted } from '../store/ListItem/actions';
 
 // Components
 import ListItems from '../components/ListItems';
@@ -13,24 +13,12 @@ import ListItems from '../components/ListItems';
 import { getListItems } from '../store/List/selectors';
 
 class ListItemsContainer extends Component {
-    handleUpdateQuantity = (listItem, quantity) => {
-        if (quantity < 1) {
-            return;
-        }
-
-        this.props.updateQuantity(listItem, quantity);
-    };
-
     render() {
-        const { decreaseQuantity, deleteListItem, increaseQuantity, listItems, match, toggleCompleted } = this.props;
+        const { listItems, match, toggleCompleted } = this.props;
 
         return (
             <ListItems
-                handleDecreaseQuantity={decreaseQuantity}
-                handleDeleteListItem={deleteListItem}
-                handleIncreaseQuantity={increaseQuantity}
                 handleToggleCompleted={toggleCompleted}
-                handleUpdateQuantity={this.handleUpdateQuantity}
                 listItems={listItems}
                 match={match}
             />
@@ -39,13 +27,9 @@ class ListItemsContainer extends Component {
 }
 
 ListItemsContainer.propTypes = {
-    decreaseQuantity: PropTypes.func.isRequired,
-    deleteListItem: PropTypes.func.isRequired,
-    increaseQuantity: PropTypes.func.isRequired,
     listItems: PropTypes.array.isRequired,
     match: PropTypes.object.isRequired,
-    toggleCompleted: PropTypes.func.isRequired,
-    updateQuantity: PropTypes.func.isRequired
+    toggleCompleted: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => ({
@@ -53,11 +37,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    decreaseQuantity: listItem => dispatch(decreaseQuantity(ownProps.match.params.id, listItem.id)),
-    deleteListItem: listItem => dispatch(deleteListItem(ownProps.match.params.id, listItem.id)),
-    increaseQuantity: listItem => dispatch(increaseQuantity(ownProps.match.params.id, listItem.id)),
-    toggleCompleted: listItem => dispatch(toggleCompleted(ownProps.match.params.id, listItem.id)),
-    updateQuantity: (listItem, quantity) => dispatch(updateQuantity(ownProps.match.params.id, listItem.id, quantity)),
+    toggleCompleted: listItem => dispatch(toggleCompleted(ownProps.match.params.id, listItem.id))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ListItemsContainer));

@@ -61,7 +61,7 @@ export const handleError = (dispatch, failure) => response => {
  * An instance of axios to use for all requests
  */
 export const instance = () => axios.create({
-    baseURL: 'http://192.168.99.100',
+    baseURL: 'http://localhost',
     headers: {
         'X-Requested-With': 'XMLHttpRequest',
         ...(
