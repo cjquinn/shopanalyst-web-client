@@ -357,3 +357,55 @@ describe('fetchMoreLists', () => {
             });
     });
 });
+
+describe('updateList', () => {
+    beforeEach(() => store = global.configureStore());
+
+    afterEach(() => mock.reset());
+
+    it('failure', () => {
+        mock
+            .onPatch('/lists/1.json')
+            .reply(403);
+
+        return store.dispatch(actions.updateList(1))
+            .then(() => {
+                const expected = [
+                    {type: actions.updateListRequest.toString()},
+                    {type: actions.updateListFailure.toString()},
+                    {type: signOut.toString()}
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+            });
+    });
+
+    it('success', () => {
+        mock
+            .onPatch('/lists/1.json')
+            .reply(200, {
+                list: {
+                    id: 1,
+                    name: 'Weekly Shop'
+                }
+            });
+
+        return store.dispatch(actions.updateList(1))
+            .then(() => {
+                const expected = [
+                    {type: actions.updateListRequest.toString()},
+                    {
+                        type: actions.updateListSuccess.toString(),
+                        payload: {
+                            entities: {
+                                lists: {1: {id: 1, name: 'Weekly Shop'}}
+                            },
+                            result: 1
+                        }
+                    }
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+            });
+    });
+});

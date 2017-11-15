@@ -98,3 +98,20 @@ export const fetchMoreLists = () => (dispatch, getState) => {
     dispatch(updatePage(page));
     return dispatch(fetchLists(page));
 };
+
+/**
+ * Update List
+ */
+export const updateListRequest = createAction('UPDATE_LIST_REQUEST');
+export const updateListSuccess = createAction('UPDATE_LIST_SUCCESS');
+export const updateListFailure = createAction('UPDATE_LIST_FAILURE');
+
+export const updateList = (id, data) => (dispatch, getState, api) => {
+    dispatch(updateListRequest());
+
+    return api.updateList(id, data)
+        .then(api.checkStatus)
+        .then(response => normalize(response.data.list, listSchema))
+        .then(normalizedData => dispatch(updateListSuccess(normalizedData)))
+        .catch(api.handleError(dispatch, updateListFailure));
+};
