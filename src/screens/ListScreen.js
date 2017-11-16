@@ -3,7 +3,6 @@ import React from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 
 // Components
-import EditListForm from '../components/EditListForm';
 import Header from '../components/Header';
 import ScreenWrapper from '../components/ScreenWrapper';
 import Splash from '../components/Splash';
@@ -11,11 +10,12 @@ import Splash from '../components/Splash';
 // Containers
 import AddItemsFormContainer from '../containers/AddItemsFormContainer';
 import ListItemsContainer from '../containers/ListItemsContainer';
+import UpdateListFormContainer from '../containers/UpdateListFormContainer';
 
 const ListScreen = ({ list, location, match }) => (
     <div>
         <Switch>
-            <Route exact path={`${match.url}/edit`} component={EditListForm} />
+            <Route exact path={`${match.path}/edit`} component={UpdateListFormContainer} />
             <Route render={() => (
                 <Header>
                     {location.pathname === `${match.url}/add-items`

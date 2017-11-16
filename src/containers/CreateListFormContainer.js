@@ -9,6 +9,8 @@ import { createList } from '../store/List/actions';
 // Components
 import CreateListForm from '../components/CreateListForm';
 
+const CreateListReduxForm = reduxForm({form: 'createList'})(CreateListForm);
+
 class CreateListFormContainer extends Component {
     handleSubmit = data => this.props
         .createList(data)
@@ -17,9 +19,11 @@ class CreateListFormContainer extends Component {
     render() {
         const { match } = this.props;
 
-        return React.createElement(
-            reduxForm({form: 'createList'})(CreateListForm),
-            {match, onSubmit: this.handleSubmit}
+        return (
+            <CreateListReduxForm
+                match={match}
+                onSubmit={this.handleSubmit}
+            />
         );
     }
 }

@@ -9,26 +9,26 @@ import { updateList } from '../store/List/actions';
 // Components
 import UpdateListForm from '../components/UpdateListForm';
 
+const UpdateListReduxForm = reduxForm({form: 'updateList'})(UpdateListForm);
+
 class UpdateListFormContainer extends Component {
     handleSubmit = data => this.props
         .updateList(data)
         .then(response => this.props.history.push(`/lists/${response.payload.result}`));
 
-    setInputRef = input => this.inputRef = input;
+    setInputRef = inputRef => this.inputRef = inputRef;
 
     componentDidMount() {
-        this.inputRef.focus();
+        this.inputRef.getRenderedComponent().focus();
     }
 
     render() {
-        const { match } = this.props;
-
-        return React.createElement(
-            reduxForm({form: 'updateList'})(UpdateListForm),
-            {
-                onSubmit: this.handleSubmit,
-                setInputRef: this.setInputRef
-            }
+        console.log(this.props);
+        return (
+            <UpdateListReduxForm
+                onSubmit={this.handleSubmit}
+                setInputRef={this.setInputRef}
+            />
         );
     }
 }

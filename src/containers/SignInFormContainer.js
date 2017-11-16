@@ -9,14 +9,13 @@ import { signIn } from '../store/User/actions';
 // Components
 import SignInForm from '../components/SignInForm';
 
+const SignInReduxForm = reduxForm({form: 'signIn'})(SignInForm);
+
 class SignInFormContainer extends Component {
     handleSubmit = data => this.props.signIn(data);
 
     render() {
-        return React.createElement(
-            reduxForm({form: 'signIn'})(SignInForm),
-            {onSubmit: this.handleSubmit}
-        );
+        return <SignInReduxForm onSubmit={this.handleSubmit} />;
     }
 }
 
