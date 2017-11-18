@@ -7,6 +7,10 @@ import LabeledInput from './LabeledInput';
 
 const SignInForm = ({ handleSubmit, error }) => (
     <form className="u-space-2" onSubmit={handleSubmit}>
+        {error &&
+            <p className="o-type-medium u-color-red u-text-center">{error}</p>
+        }
+        
         <Field
             component={LabeledInput}
             id="email-input"
@@ -27,9 +31,6 @@ const SignInForm = ({ handleSubmit, error }) => (
             type="password"
         />
 
-        {error &&
-            <p className="o-type-medium u-color-red u-text-center">{error}</p>
-        }
 
         <button className="o-button" type="submit">Sign in</button>
     </form>

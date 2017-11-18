@@ -76,6 +76,44 @@ describe('fetchCurrentUser', () => {
     });
 });
 
+describe('requestPasswordReset', () => {
+    beforeEach(() => store = global.configureStore());
+
+    afterEach(() => mock.reset());
+
+    it('failure', () => {
+        mock
+            .onPost('/auth/request-password-reset.json')
+            .reply(500);
+
+        return store.dispatch(actions.requestPasswordReset())
+            .then(() => {
+                const expected = [
+                    {type: actions.requestPasswordResetRequest.toString()},
+                    {type: actions.requestPasswordResetFailure.toString()}
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+            });
+    });
+
+    it('success', () => {
+        mock
+            .onPost('/auth/request-password-reset.json')
+            .reply(200);
+
+        return store.dispatch(actions.requestPasswordReset())
+            .then(() => {
+                const expected = [
+                    {type: actions.requestPasswordResetRequest.toString()},
+                    {type: actions.requestPasswordResetSuccess.toString()}
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+            });
+    });
+});
+
 describe('signIn', () => {
     beforeEach(() => store = global.configureStore());
 

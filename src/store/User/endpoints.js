@@ -6,4 +6,6 @@ export const signIn = data => instance().post('/auth/login.json', data);
 
 export const signUp = data => instance().post('/users.json', data);
 
+export const requestPasswordReset = data => instance().post('/auth/request-password-reset.json', data);
+
 export const updateSettings = data => instance().patch('/users/settings.json', data);

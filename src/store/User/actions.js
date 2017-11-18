@@ -21,6 +21,22 @@ export const fetchCurrentUser = () => (dispatch, getState, api) => {
 };
 
 /**
+ * Request Password Reset
+ */
+export const requestPasswordResetRequest = createAction('REQUEST_PASSWORD_RESET_REQUEST');
+export const requestPasswordResetSuccess = createAction('REQUEST_PASSWORD_RESET_SUCCESS');
+export const requestPasswordResetFailure = createAction('REQUEST_PASSWORD_RESET_FAILURE');
+
+export const requestPasswordReset = data => (dispatch, getState, api) => {
+    dispatch(requestPasswordResetRequest());
+
+    return api.requestPasswordReset(data)
+        .then(api.checkStatus)
+        .then(() => dispatch(requestPasswordResetSuccess()))
+        .catch(api.handleError(dispatch, requestPasswordResetFailure));
+};
+
+/**
  * Sign in
  */
 export const signInRequest = createAction('SIGN_IN_REQUEST');

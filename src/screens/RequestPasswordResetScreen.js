@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // Components
-import LabeledInput from '../components/LabeledInput';
 import ScreenWrapper from '../components/ScreenWrapper';
+
+// Containers
+import RequestPasswordResetFormContainer from '../containers/RequestPasswordResetFormContainer';
 
 const RequestPasswordResetScreen = () => (
     <ScreenWrapper>
@@ -11,15 +13,7 @@ const RequestPasswordResetScreen = () => (
             Request password reset
         </p>
 
-        <LabeledInput
-            inverted
-            label="Email"
-            name="email"
-            placeholder="Enter your email..."
-            type="email"
-        />
-
-        <button className="o-button" type="button">Request password reset</button>
+        <RequestPasswordResetFormContainer />
 
         <Link to="/sign-in" className="o-link o-type-medium u-float-right">
             I remember my password
