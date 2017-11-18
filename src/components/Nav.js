@@ -10,10 +10,10 @@ import analyse from '../assets/svg/analyse.svg';
 import settings from '../assets/svg/settings.svg';
 import shop from '../assets/svg/shop.svg';
 
-const Nav = ({ getActiveClasses }) => (
+const Nav = ({ getClasses }) => (
     <nav className="nav u-fixed u-width-full">
         <ul className="tabs u-bgcolor-pale-green u-text-center">
-            <li className={`tabs__tab ${getActiveClasses('lists')}`}>
+            <li className={`tabs__tab ${getClasses('lists')}`}>
                 <Link
                     className="tabs__tab__link o-type-small u-color-grey"
                     to="/lists"
@@ -23,7 +23,7 @@ const Nav = ({ getActiveClasses }) => (
                 </Link>
             </li>
 
-            <li className={`tabs__tab ${getActiveClasses('analyse')}`}>
+            <li className={`tabs__tab ${getClasses('analyse')}`}>
                 <Link
                     className="tabs__tab__link o-type-small u-color-grey"
                     to="/analyse"
@@ -33,7 +33,7 @@ const Nav = ({ getActiveClasses }) => (
                 </Link>
             </li>
 
-            <li className={`tabs__tab ${getActiveClasses('settings')}`}>
+            <li className={`tabs__tab ${getClasses('settings')}`}>
                 <Link
                     className="tabs__tab__link o-type-small u-color-grey"
                     to="/settings"
@@ -47,7 +47,7 @@ const Nav = ({ getActiveClasses }) => (
 );
 
 Nav.propTypes = {
-    getActiveClasses: PropTypes.func.isRequired
+    getClasses: PropTypes.func.isRequired
 };
 
 export default Nav;

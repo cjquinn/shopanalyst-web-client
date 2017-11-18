@@ -13,7 +13,7 @@ const AddItemsForm = ({ handleClearInput, handleSearch, handleSubmit, handleTogg
     <FormWrapper cancelTo={match.url.replace('/add-items', '')}>
         <div className="u-space-2">
             <div className="labeled-input u-space">
-                <label htmlFor="search-input" className="u-block">
+                <label htmlFor="search-input" className="o-type-small u-block">
                     Search for items
                 </label>
                 

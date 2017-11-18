@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "build": "webpack",
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --host 0.0.0.0",
     "lint": "eslint src",
     "test": "jest",
     "test:watch": "npm test -- --watch"

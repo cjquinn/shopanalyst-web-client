@@ -1,4 +1,4 @@
-import { getIsFetching, getList, getListItems, getLists, getPage, getTotal } from '../../../src/store/List/selectors';
+import { getIsFetching, getList, getListItems, getListName, getLists, getPage, getTotal } from '../../../src/store/List/selectors';
 
 describe('selectors', () => {
     it('getIsFetching', () => {
@@ -69,6 +69,31 @@ describe('selectors', () => {
         }];
 
         expect(getListItems(1)(state)).toEqual(expected);
+    });
+
+    it('getListName', () => {
+        const state = {
+            entities: {
+                lists: {
+                    1: {
+                        id: 1,
+                        name: 'Weekly Shop',
+                        list_items: [{
+                            id: 2,
+                            item_id: 3,
+                            list_id: 1,
+                            quantity: 1,
+                            item: 3
+                        }]
+                    }
+                },
+                items: {3: {id: 3, name: 'Potato Waffles'}}
+            }
+        };
+
+        const expected = 'Weekly Shop';
+
+        expect(getListName(1)(state)).toEqual(expected);
     });
 
     it('getLists', () => {

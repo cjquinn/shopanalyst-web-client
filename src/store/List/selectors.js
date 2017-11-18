@@ -34,6 +34,11 @@ export const getListItems = id => createSelector(
         : []
 );
 
+export const getListName = id => createSelector(
+    state => state.entities.lists[id],
+    list => list.name
+);
+
 export const getLists = createSelector(
     state => state.list.ids,
     state => state.entities,

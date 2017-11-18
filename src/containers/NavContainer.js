@@ -6,12 +6,13 @@ import { withRouter } from 'react-router';
 import Nav from '../components/Nav';
 
 class NavContainer extends Component {
-    getActiveClasses = tab =>
-        this.props.location.pathname.indexOf(tab) !== -1 &&
-        'tabs__tab--active u-bgcolor-off-white';
+    getClasses = tab =>
+        this.props.location.pathname.indexOf(tab) !== -1
+            ? 'tabs__tab--active u-bgcolor-off-white'
+            : 'u-bgcolor-pale-grey';
 
     render() {
-        return <Nav getActiveClasses={this.getActiveClasses} />;
+        return <Nav getClasses={this.getClasses} />;
     }
 }
 

@@ -16,10 +16,9 @@ const ListItems = ({ listItems, match, ...props }) => {
 
     return (
         <ul className="o-list o-list--block">
-            {listItems.map((listItem, index) => (
-                <li className="o-list__item" key={index}>
+            {listItems.map(listItem => (
+                <li className="o-list__item" key={listItem.id}>
                     <ListItem
-                        htmlFor={`list-items-${index}`}
                         listItem={listItem}
                         {...props}
                     />

@@ -9,7 +9,7 @@ import cross from '../assets/svg/cross.svg';
 import minus from '../assets/svg/minus.svg';
 import plus from '../assets/svg/plus.svg';
 
-const ListItemActions = ({ handleBlurQuantity, handleChangeQuantity, handleDecreaseQuantity, handleDeleteListItem, handleIncreaseQuantity, quantity }) => (
+const ListItemActions = ({ handleBlurQuantity, handleChangeQuantity, handleDecreaseQuantity, handleDeleteListItem, handleIncreaseQuantity, quantity, quantityIsOne }) => (
     <div className="item__actions">
         <button
             type="button"
@@ -29,10 +29,10 @@ const ListItemActions = ({ handleBlurQuantity, handleChangeQuantity, handleDecre
 
         <button
             type="button"
-            className={`item__actions__button item__actions__button--${quantity === 1 ? 'remove u-bgcolor-red' : 'decrease u-bgcolor-green'} u-color-white`}
-            onClick={quantity === 1 ? handleDeleteListItem : handleDecreaseQuantity}
+            className={`item__actions__button item__actions__button--${quantityIsOne ? 'remove u-bgcolor-red' : 'decrease u-bgcolor-green'} u-color-white`}
+            onClick={quantityIsOne ? handleDeleteListItem : handleDecreaseQuantity}
         >
-            <Svg sprite={quantity === 1 ? cross : minus} />
+            <Svg sprite={quantityIsOne ? cross : minus} />
         </button>
     </div>
 );
@@ -43,7 +43,8 @@ ListItemActions.propTypes = {
     handleDecreaseQuantity: PropTypes.func.isRequired,
     handleDeleteListItem: PropTypes.func.isRequired,
     handleIncreaseQuantity: PropTypes.func.isRequired,
-    quantity: PropTypes.string
+    quantity: PropTypes.string,
+    quantityIsOne: PropTypes.bool.isRequired
 };
 
 export default ListItemActions;

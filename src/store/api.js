@@ -61,7 +61,7 @@ export const handleError = (dispatch, failure) => response => {
  * An instance of axios to use for all requests
  */
 export const instance = () => axios.create({
-    baseURL: 'http://localhost',
+    baseURL: `http://${window.location.hostname ? window.location.hostname : 'localhost'}`,
     headers: {
         'X-Requested-With': 'XMLHttpRequest',
         ...(

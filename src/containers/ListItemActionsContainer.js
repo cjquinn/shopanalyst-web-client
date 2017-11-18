@@ -43,6 +43,8 @@ class ListItemActionsContainer extends Component {
     }
 
     render() {
+        const quantityIsOne = this.props.listItem.quantity === 1;
+
         return (
             <ListItemActions
                 handleBlurQuantity={this.handleBlurQuantity}
@@ -51,6 +53,7 @@ class ListItemActionsContainer extends Component {
                 handleDeleteListItem={this.handleDeleteListItem}
                 handleQuantityUpdated={this.handleQuantityUpdated}
                 handleIncreaseQuantity={this.handleIncreaseQuantity}
+                quantityIsOne={quantityIsOne}
                 quantity={this.state.quantity}
             />
         );

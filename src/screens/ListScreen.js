@@ -14,19 +14,21 @@ import UpdateListFormContainer from '../containers/UpdateListFormContainer';
 
 const ListScreen = ({ list, location, match }) => (
     <div>
-        <Switch>
-            <Route exact path={`${match.path}/edit`} component={UpdateListFormContainer} />
-            <Route render={() => (
-                <Header>
-                    {location.pathname === `${match.url}/add-items`
-                        ? 'Add Items'
-                        : <Link className="o-link u-color-grey" to={`${match.url}/edit`}>{list ? list.name : 'Loading'}</Link>
-                    }
-                </Header>
-            )} />
-        </Switch>
+        {list &&
+            <Switch>
+                <Route exact path={`${match.path}/edit`} component={UpdateListFormContainer} />
+                <Route render={() => (
+                    <Header>
+                        {location.pathname === `${match.url}/add-items`
+                            ? 'Add Items'
+                            : <Link className="o-link u-color-grey" to={`${match.url}/edit`}>{list ? list.name : 'Loading'}</Link>
+                        }
+                    </Header>
+                )} />
+            </Switch>
+        }
 
-        <Route exact path={`${match.path}/add-items`} component={AddItemsFormContainer} />
+        {list && <Route exact path={`${match.path}/add-items`} component={AddItemsFormContainer} />}
 
         {!list && <Splash>Loading...</Splash>}
 

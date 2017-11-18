@@ -10,10 +10,10 @@ import ListItemActionsContainer from '../containers/ListItemActionsContainer';
 // Sprites
 import tick from '../assets/svg/tick.svg';
 
-const ListItem = ({ htmlFor, listItem, handleToggleCompleted }) => (
+const ListItem = ({ listItem, handleToggleCompleted }) => (
     <div className="item item--list-item">
         <input
-            id={htmlFor}
+            id={`list-items-${listItem.id}`}
             type="checkbox"
             className="item__checkbox u-hidden"
             checked={listItem.is_complete}
@@ -21,7 +21,7 @@ const ListItem = ({ htmlFor, listItem, handleToggleCompleted }) => (
         />
 
         <label
-            htmlFor={htmlFor}
+            htmlFor={`list-items-${listItem.id}`}
             className="item__label u-bgcolor-white"
         >
             <span className="item__tick">
@@ -42,7 +42,6 @@ const ListItem = ({ htmlFor, listItem, handleToggleCompleted }) => (
 );
 
 ListItem.propTypes = {
-    htmlFor: PropTypes.string.isRequired,
     listItem: PropTypes.object.isRequired,
     handleToggleCompleted: PropTypes.func.isRequired
 };

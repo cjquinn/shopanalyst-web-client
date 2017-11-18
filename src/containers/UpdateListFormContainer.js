@@ -9,6 +9,9 @@ import { updateList } from '../store/List/actions';
 // Components
 import UpdateListForm from '../components/UpdateListForm';
 
+// Selectors
+import { getListName } from '../store/List/selectors';
+
 const UpdateListReduxForm = reduxForm({form: 'updateList'})(UpdateListForm);
 
 class UpdateListFormContainer extends Component {
@@ -23,9 +26,9 @@ class UpdateListFormContainer extends Component {
     }
 
     render() {
-        console.log(this.props);
         return (
             <UpdateListReduxForm
+                initialValues={this.props.initialValues}
                 onSubmit={this.handleSubmit}
                 setInputRef={this.setInputRef}
             />
@@ -36,11 +39,18 @@ class UpdateListFormContainer extends Component {
 UpdateListFormContainer.propTypes = {
     updateList: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
+    initialValues: PropTypes.object.isRequired,
     match: PropTypes.object.isRequired
 };
+
+const mapStateToProps = (state, ownProps) => ({
+    initialValues: {
+        name: getListName(ownProps.match.params.id)(state)
+    }
+});
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     updateList: data => dispatch(updateList(ownProps.match.params.id, data))
 });
 
-export default connect(null, mapDispatchToProps)(UpdateListFormContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(UpdateListFormContainer);

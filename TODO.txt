@@ -1,5 +1,8 @@
-- [ ] Fix update quantity - controller inputes.!>!>!>!
+- [ ] Update list
 - [ ] Duplicate list
-- [ ] Delete list
-- [ ] If not items and search term clear search...
-- [ ] SASS review RE: responsive
+- [ ] User settings
+- [ ] Reset password?
+- [ ] Analyse
+- [ ] Add items improvements
+- [ ] Progressive web app
+- [ ] SASS review/interactions + transitions
