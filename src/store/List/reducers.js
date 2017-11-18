@@ -6,6 +6,7 @@ import * as actions from './actions';
 const ids = (state = [], action) => {
     switch (action.type) {
         case actions.createListSuccess.toString():
+        case actions.duplicateListSuccess.toString():
             return [
                 action.payload.result,
                 ...state
@@ -53,6 +54,7 @@ const page = (state = 1, action) => {
 const total = (state = 0, action) => {
     switch (action.type) {
         case actions.createListSuccess.toString():
+        case actions.duplicateListSuccess.toString():
             return state + 1;
 
         case actions.fetchListsSuccess.toString():

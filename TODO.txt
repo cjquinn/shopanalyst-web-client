@@ -1,4 +1,3 @@
-- [ ] Update list
 - [ ] Duplicate list
 - [ ] User settings
 - [ ] Reset password?

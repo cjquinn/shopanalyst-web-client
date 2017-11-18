@@ -46,6 +46,23 @@ export const createList = data => (dispatch, getState, api) => {
 };
 
 /**
+ * Duplicate List
+ */
+export const duplicateListRequest = createAction('DUPLICATE_LIST_REQUEST');
+export const duplicateListSuccess = createAction('DUPLICATE_LIST_SUCCESS');
+export const duplicateListFailure = createAction('DUPLICATE_LIST_FAILURE');
+
+export const duplicateList = id => (dispatch, getState, api) => {
+    dispatch(duplicateListRequest());
+
+    return api.duplicateList(id)
+        .then(api.checkStatus)
+        .then(response => normalize(response.data.list, listSchema))
+        .then(normalizedData => dispatch(duplicateListSuccess(normalizedData)))
+        .catch(api.handleError(dispatch, duplicateListFailure));
+};
+
+/**
  * Fetch List
  */
 export const fetchListRequest = createAction('FETCH_LIST_REQUEST');
