@@ -114,6 +114,44 @@ describe('requestPasswordReset', () => {
     });
 });
 
+describe('resetPassword', () => {
+    beforeEach(() => store = global.configureStore());
+
+    afterEach(() => mock.reset());
+
+    it('failure', () => {
+        mock
+            .onPatch('/auth/reset-password.json?token=123')
+            .reply(500);
+
+        return store.dispatch(actions.resetPassword(123))
+            .then(() => {
+                const expected = [
+                    {type: actions.resetPasswordRequest.toString()},
+                    {type: actions.resetPasswordFailure.toString()}
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+            });
+    });
+
+    it('success', () => {
+        mock
+            .onPatch('/auth/reset-password.json?token=123')
+            .reply(200);
+
+        return store.dispatch(actions.resetPassword(123))
+            .then(() => {
+                const expected = [
+                    {type: actions.resetPasswordRequest.toString()},
+                    {type: actions.resetPasswordSuccess.toString()}
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+            });
+    });
+});
+
 describe('signIn', () => {
     beforeEach(() => store = global.configureStore());
 
@@ -250,6 +288,44 @@ describe('updateSettings', () => {
                             email: 'christy@myshopanalyst.com'
                         }
                     }
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+            });
+    });
+});
+
+describe('validateToken', () => {
+    beforeEach(() => store = global.configureStore());
+
+    afterEach(() => mock.reset());
+
+    it('failure', () => {
+        mock
+            .onGet('/auth/reset-password.json?token=123')
+            .reply(500);
+
+        return store.dispatch(actions.validateToken(123))
+            .then(() => {
+                const expected = [
+                    {type: actions.validateTokenRequest.toString()},
+                    {type: actions.validateTokenFailure.toString()}
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+            });
+    });
+
+    it('success', () => {
+        mock
+            .onGet('/auth/reset-password.json?token=123')
+            .reply(200);
+
+        return store.dispatch(actions.validateToken(123))
+            .then(() => {
+                const expected = [
+                    {type: actions.validateTokenRequest.toString()},
+                    {type: actions.validateTokenSuccess.toString()}
                 ];
 
                 expect(store.getActions()).toEqual(expected);

@@ -37,6 +37,23 @@ export const requestPasswordReset = data => (dispatch, getState, api) => {
 };
 
 /**
+ * Reset Password
+ */
+export const resetPasswordRequest = createAction('RESET_PASSWORD_REQUEST');
+export const resetPasswordSuccess = createAction('RESET_PASSWORD_SUCCESS');
+export const resetPasswordFailure = createAction('RESET_PASSWORD_FAILURE');
+
+export const resetPassword = (token, data) => (dispatch, getState, api) => {
+    dispatch(resetPasswordRequest());
+
+    return api.resetPassword(token, data)
+        .then(api.checkStatus)
+        .then(() => dispatch(resetPasswordSuccess()))
+        .catch(api.handleError(dispatch, resetPasswordFailure));
+};
+
+
+/**
  * Sign in
  */
 export const signInRequest = createAction('SIGN_IN_REQUEST');
@@ -89,4 +106,20 @@ export const updateSettings = data => (dispatch, getState, api) => {
         .then(api.checkStatus)
         .then(response => dispatch(updateSettingsSuccess(response.data.user)))
         .catch(api.handleError(dispatch, updateSettingsFailure));
+};
+
+/**
+ * Validate Token
+ */
+export const validateTokenRequest = createAction('VALIDATE_TOKEN_REQUEST');
+export const validateTokenSuccess = createAction('VALIDATE_TOKEN_SUCCESS');
+export const validateTokenFailure = createAction('VALIDATE_TOKEN_FAILURE');
+
+export const validateToken = token => (dispatch, getState, api) => {
+    dispatch(validateTokenRequest());
+
+    return api.validateToken(token)
+        .then(api.checkStatus)
+        .then(() => dispatch(validateTokenSuccess()))
+        .catch(api.handleError(dispatch, validateTokenFailure));
 };
