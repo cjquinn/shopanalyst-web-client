@@ -171,3 +171,50 @@ describe('signUp', () => {
             });
     });
 });
+
+describe('updateSettings', () => {
+    beforeEach(() => store = global.configureStore());
+
+    afterEach(() => mock.reset());
+
+    it('failure', () => {
+        mock
+            .onPatch('/users/settings.json')
+            .reply(403);
+
+        return store.dispatch(actions.updateSettings())
+            .then(() => {
+                const expected = [
+                    {type: actions.updateSettingsRequest.toString()},
+                    {type: actions.updateSettingsFailure.toString()},
+                    {type: actions.signOut.toString()}
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+            });
+    });
+
+    it('success', () => {
+        mock
+            .onPatch('/users/settings.json')
+            .reply(200, {
+                user: {id: 1, email: 'christy@myshopanalyst.com'}
+            });
+
+        return store.dispatch(actions.updateSettings())
+            .then(() => {
+                const expected = [
+                    {type: actions.updateSettingsRequest.toString()},
+                    {
+                        type: actions.updateSettingsSuccess.toString(),
+                        payload: {
+                            id: 1,
+                            email: 'christy@myshopanalyst.com'
+                        }
+                    }
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+            });
+    });
+});

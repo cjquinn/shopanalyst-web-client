@@ -82,3 +82,26 @@ describe('signUp', () => {
         expect(reducers(state, actions.signUpSuccess(payload))).toEqual(expected);
     });
 });
+
+describe('updateSettings', () => {
+    it(actions.updateSettingsSuccess.toString(), () => {
+        const state = {
+            id: 1,
+            email: 'christy@myshopanalyst.com',
+            isFetching: false
+        };
+
+        const expected = {
+            id: 1,
+            email: 'christy@myshopanalyst.co.uk',
+            isFetching: false
+        };
+
+        const payload = {
+            id: 1,
+            email: 'christy@myshopanalyst.co.uk' 
+        };
+
+        expect(reducers(state, actions.updateSettingsSuccess(payload))).toEqual(expected);
+    });
+});

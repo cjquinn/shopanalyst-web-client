@@ -6,7 +6,7 @@ import Item from './Item';
 
 const Items = ({ empty, handleToggleSelected, items, title }) => (
     <div className="u-space">
-        <label className="o-type-small u-block">{title}</label>
+        <label className="u-block">{title}</label>
 
         <div className="u-bgcolor-light-grey u-bradius-5 u-ph u-pv-2">
             {items.length === 0

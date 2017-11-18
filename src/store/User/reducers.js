@@ -18,6 +18,7 @@ const user = (state = {isFetching: true}, action) => {
         case actions.fetchCurrentUserSuccess.toString():
         case actions.signInSuccess.toString():
         case actions.signUpSuccess.toString():
+        case actions.updateSettingsSuccess.toString():
             return {
                 ...action.payload,
                 isFetching: false

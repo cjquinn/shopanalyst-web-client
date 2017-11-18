@@ -58,3 +58,19 @@ export const signUp = data => (dispatch, getState, api) => {
         .then(response => dispatch(signUpSuccess(response.data.user)))
         .catch(api.handleError(dispatch, signUpFailure));
 };
+
+/**
+ * Update Settings
+ */
+export const updateSettingsRequest = createAction('UPDATE_SETTINGS_REQUEST');
+export const updateSettingsSuccess = createAction('UPDATE_SETTINGS_SUCCESS');
+export const updateSettingsFailure = createAction('UPDATE_SETTINGS_FAILURE');
+
+export const updateSettings = data => (dispatch, getState, api) => {
+    dispatch(updateSettingsRequest());
+
+    return api.updateSettings(data)
+        .then(api.checkStatus)
+        .then(response => dispatch(updateSettingsSuccess(response.data.user)))
+        .catch(api.handleError(dispatch, updateSettingsFailure));
+};
