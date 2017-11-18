@@ -9,6 +9,7 @@ import Splash from '../components/Splash';
 
 // Containers
 import AddItemsFormContainer from '../containers/AddItemsFormContainer';
+import DuplicateListButtonContainer from '../containers/DuplicateListButtonContainer';
 import ListItemsContainer from '../containers/ListItemsContainer';
 import UpdateListFormContainer from '../containers/UpdateListFormContainer';
 
@@ -52,9 +53,7 @@ const ListScreen = ({ list, location, match }) => (
 
                 <ListItemsContainer />
 
-                <button className="o-button" type="button">
-                    Duplicate list
-                </button>
+                <DuplicateListButtonContainer />
             </ScreenWrapper>
         }
     </div>
