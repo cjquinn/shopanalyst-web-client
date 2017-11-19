@@ -1,7 +1,7 @@
 $progressBorderRadius: 13px;
 
 .list-card {
-    border: 1px solid $paleGrey;
+    border: 1px solid $lightGrey;
 
     a {
         color: inherit;
@@ -20,7 +20,7 @@ $progressBorderRadius: 13px;
         line-height: $progressBorderRadius * 2;
 
         &--container {
-            border: 1px solid $paleGrey;
+            border: 1px solid $lightGrey;
         }
 
         &--inner {

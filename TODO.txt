@@ -1,5 +1,6 @@
 - [ ] Loading stuff
 - [ ] Flashes - reset password/request password reset updated settings duplicate list
+- [ ] List card completed state
 - [ ] Analyse
 - [ ] Add items improvements
 - [ ] Progressive web app

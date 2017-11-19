@@ -8,8 +8,8 @@ import Nav from '../components/Nav';
 class NavContainer extends Component {
     getClasses = tab =>
         this.props.location.pathname.indexOf(tab) !== -1
-            ? 'tabs__tab--active u-bgcolor-off-white'
-            : 'u-bgcolor-pale-grey';
+            ? 'tabs__tab--active u-bgcolor-white'
+            : 'u-bgcolor-off-white';
 
     render() {
         return <Nav getClasses={this.getClasses} />;

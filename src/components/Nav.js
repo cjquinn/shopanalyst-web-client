@@ -12,7 +12,7 @@ import shop from '../assets/svg/shop.svg';
 
 const Nav = ({ getClasses }) => (
     <nav className="nav u-fixed u-width-full">
-        <ul className="tabs u-bgcolor-pale-green u-text-center">
+        <ul className="tabs u-text-center">
             <li className={`tabs__tab ${getClasses('lists')}`}>
                 <Link
                     className="tabs__tab__link o-type-small u-color-grey"

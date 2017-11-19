@@ -2,6 +2,13 @@ $itemBorderRadius: 18px;
 $buttonBorderRadius: 13px;
 
 .item {
+    display: flex;
+    align-items: center;
+    height: $itemBorderRadius * 2;
+    border: 1px solid $lightGrey;
+    border-radius: $itemBorderRadius;
+    cursor: pointer;
+        
     &__checkbox:checked + &__label {
         .item__tick {
             background-color: $green;
@@ -10,11 +17,11 @@ $buttonBorderRadius: 13px;
 
     &__label {
     	display: flex;
-    	align-items: center;
-    	height: $itemBorderRadius * 2;
-    	border: 1px solid $paleGrey;
-    	border-radius: $itemBorderRadius;
-    	cursor: pointer;
+    	// align-items: center;
+    	// height: $itemBorderRadius * 2;
+    	// border: 1px solid $lightGrey;
+    	// border-radius: $itemBorderRadius;
+    	// cursor: pointer;
     }
 
 	&__tick {
@@ -23,7 +30,7 @@ $buttonBorderRadius: 13px;
 		width: $iota-global-gutter-default * 2;
 		margin: 0 $iota-global-gutter-default;
 		border-radius: 100%;
-		background-color: $paleGrey;
+		background-color: $lightGrey;
 	}
 
 	&__actions, 

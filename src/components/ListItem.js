@@ -11,7 +11,7 @@ import ListItemActionsContainer from '../containers/ListItemActionsContainer';
 import tick from '../assets/svg/tick.svg';
 
 const ListItem = ({ listItem, handleToggleCompleted }) => (
-    <div className="item item--list-item">
+    <div className={`item item--list-item u-bgcolor-${listItem.is_complete ? 'off-white' : 'white'}`}>
         <input
             id={`list-items-${listItem.id}`}
             type="checkbox"
@@ -22,7 +22,7 @@ const ListItem = ({ listItem, handleToggleCompleted }) => (
 
         <label
             htmlFor={`list-items-${listItem.id}`}
-            className="item__label u-bgcolor-white"
+            className="item__label"
         >
             <span className="item__tick">
                 <Svg sprite={tick} />
@@ -30,14 +30,15 @@ const ListItem = ({ listItem, handleToggleCompleted }) => (
 
             {listItem.item.name}
 
-            {!listItem.is_complete && <ListItemActionsContainer listItem={listItem} />}
-
-            {listItem.is_complete &&
-                    <span className="item__value o-type-medium u-text-center">
-                        {listItem.quantity}
-                    </span>
-                }
         </label>
+
+        {!listItem.is_complete && <ListItemActionsContainer listItem={listItem} />}
+
+        {listItem.is_complete &&
+                <span className="item__value o-type-medium u-text-center">
+                    {listItem.quantity}
+                </span>
+            }
     </div>
 );
 

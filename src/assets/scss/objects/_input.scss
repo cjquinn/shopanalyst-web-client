@@ -1,7 +1,7 @@
 .o-input {
     width: 100%;
     font-family: 'Open Sans', sans-serif;
-    border: 0;
+    border: 1px solid $lightGrey;
 
     &:focus {
         outline: none;

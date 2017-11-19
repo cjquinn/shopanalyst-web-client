@@ -6,12 +6,8 @@
         flex-basis: percentage(1/3);
         flex-grow: 1;
         padding: $iota-global-gutter-default / 2 0;
-        border-radius: 5px 5px 0 0 ;
-
-        &--active {
-            z-index: 1;
-            box-shadow: 0 0 $iota-global-gutter-default / 2 0 rgba($black, .1);
-        }
+        border-radius: 10px 10px 0 0 ;
+        box-shadow: inset 0 0 0 1px $lightGrey;
 
         &__icon {
             display: block;
@@ -21,10 +17,6 @@
 
         &__link {
             text-decoration: none;
-        }
-
-        & + .tabs__tab {
-            border-left: 1px solid $lightGrey;
         }
     }
 }
