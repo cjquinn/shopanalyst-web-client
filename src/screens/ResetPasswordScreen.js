@@ -1,8 +1,10 @@
 import React from 'react';
 
 // Components
-import LabeledInput from '../components/LabeledInput';
 import ScreenWrapper from '../components/ScreenWrapper';
+
+// Containers
+import ResetPasswordFormContainer from '../containers/ResetPasswordFormContainer';
 
 const ResetPassword = () => (
     <ScreenWrapper>
@@ -10,15 +12,7 @@ const ResetPassword = () => (
             Reset password
         </p>
 
-        <LabeledInput
-            inverted
-            label="Password"
-            name="password"
-            placeholder="Enter a password..."
-            type="password"
-        />
-
-        <button className="o-button" type="button">Reset password</button>
+        <ResetPasswordFormContainer />
     </ScreenWrapper>
 );
 

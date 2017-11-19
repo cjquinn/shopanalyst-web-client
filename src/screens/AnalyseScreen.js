@@ -2,7 +2,6 @@ import React from 'react';
 
 // Components
 import Header from '../components/Header';
-import ScreenWrapper from '../components/ScreenWrapper';
 import Svg from '../components/Svg';
 
 // Sprites
@@ -12,29 +11,12 @@ const AnalyseScreen = () => (
     <div>
         <Header>Analyse</Header>
 
-        <ScreenWrapper>
-            <div className="u-space-2 u-text-center">
-                <div className="u-space">
-                    <Svg sprite={analyse} />
-
-                    <p className="o-type-medium u-color-brown">
-                        Make use of all that data
-                    </p>
-                </div>
-
-                <p className="u-text-left">
-                    What is your milk to cereal ratio? Are you hitting your monthly hot sauce quota? Is there a pattern to your shopping?
-                </p>
-
-                <p className="u-text-left">
-                    Analysis is in the pipeline and we&#039;d like to get your input.
-                </p>
-
-                <button className="o-button" type="button">
-                    Show interest
-                </button>
+        <div className="splash u-absolute u-width-full">
+            <div className="u-space u-text-center">
+                <Svg sprite={analyse} />
+                <p>Nothing to see here...yet!</p>
             </div>
-        </ScreenWrapper>
+        </div>
     </div>
 );
 

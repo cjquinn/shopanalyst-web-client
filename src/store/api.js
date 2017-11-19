@@ -49,12 +49,17 @@ export const handleError = (dispatch, failure) => response => {
         case 403:
             return dispatch(signOut());
 
-        case 404:
-            throw response;
-
         default:
-            // 500 or any other thang
+            throw response;
     }
+};
+
+export const handle404 = history => response => {
+    if (response.status === 404) {
+        history.replace('/not-found');
+    }
+
+    throw response;
 };
 
 /**

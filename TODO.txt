@@ -1,5 +1,5 @@
-- [ ] Reset password
 - [ ] Loading stuff
+- [ ] Flashes - reset password/request password reset updated settings duplicate list
 - [ ] Analyse
 - [ ] Add items improvements
 - [ ] Progressive web app

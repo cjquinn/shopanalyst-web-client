@@ -87,7 +87,7 @@ describe('requestPasswordReset', () => {
             .reply(500);
 
         return store.dispatch(actions.requestPasswordReset())
-            .then(() => {
+            .catch(() => {
                 const expected = [
                     {type: actions.requestPasswordResetRequest.toString()},
                     {type: actions.requestPasswordResetFailure.toString()}
@@ -125,7 +125,7 @@ describe('resetPassword', () => {
             .reply(500);
 
         return store.dispatch(actions.resetPassword(123))
-            .then(() => {
+            .catch(() => {
                 const expected = [
                     {type: actions.resetPasswordRequest.toString()},
                     {type: actions.resetPasswordFailure.toString()}
@@ -163,7 +163,7 @@ describe('signIn', () => {
             .reply(500);
 
         return store.dispatch(actions.signIn())
-            .then(() => {
+            .catch(() => {
                 const expected = [
                     {type: actions.signInRequest.toString()},
                     {type: actions.signInFailure.toString()}
@@ -211,7 +211,7 @@ describe('signUp', () => {
             .reply(500);
 
         return store.dispatch(actions.signUp())
-            .then(() => {
+            .catch(() => {
                 const expected = [
                     {type: actions.signUpRequest.toString()},
                     {type: actions.signUpFailure.toString()}
@@ -306,7 +306,7 @@ describe('validateToken', () => {
             .reply(500);
 
         return store.dispatch(actions.validateToken(123))
-            .then(() => {
+            .catch(() => {
                 const expected = [
                     {type: actions.validateTokenRequest.toString()},
                     {type: actions.validateTokenFailure.toString()}

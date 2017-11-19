@@ -5,6 +5,9 @@ import { connect } from 'react-redux';
 // Actions
 import { fetchList } from '../store/List/actions';
 
+// Api
+import { handle404 } from '../store/api';
+
 // Screens
 import ListScreen from '../screens/ListScreen';
 
@@ -15,7 +18,7 @@ class ListScreenContainer extends Component {
     componentDidMount() {
         const { fetchList, history } = this.props;
 
-        fetchList().catch(() => history.replace('/not-found'));
+        fetchList().catch(handle404(history));
     }
 
     render() {
