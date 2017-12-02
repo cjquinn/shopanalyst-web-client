@@ -3,29 +3,24 @@ import React from 'react';
 import { Field } from 'redux-form';
 
 // Components
-import FormWrapper from './FormWrapper';
-import LabeledInput from './LabeledInput';
+import Input from './Input';
+import Button from './Button';
 
-const CreateListForm = ({ handleSubmit, match }) => (
-    <FormWrapper cancelTo={match.url.replace('/create', '')}>
-        <form className="u-space-2" onSubmit={handleSubmit}>
-            <Field
-                component={LabeledInput}
-                id="name-input"
-                label="Name"
-                name="name"
-                placeholder="Enter a name..."
-                type="text"
-            />
+const CreateListForm = ({ handleSubmit }) => (
+    <form className="u-space-x2" onSubmit={handleSubmit}>
+        <Field
+            component={Input}
+            name="name"
+            placeholder="Enter a name..."
+            type="text"
+        />
 
-            <button className="o-button" type="submit">Create list</button>
-        </form>
-    </FormWrapper>
+        <Button>Create list</Button>
+    </form>
 );
 
 CreateListForm.propTypes = {
-    handleSubmit: PropTypes.func.isRequired,
-    match: PropTypes.object.isRequired
+    handleSubmit: PropTypes.func.isRequired
 };
 
 export default CreateListForm;

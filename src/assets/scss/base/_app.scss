@@ -1,10 +1,11 @@
 :root {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1em;
-    color: $text;
-    background-color: $background;
+  background-color: $background;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1em;
+  color: $text;
 }
 
 .app {
-    padding-top: $baseLine-x3;
+  padding-top: $baseLine * 3;
+  padding-bottom: $baseLine * 6;
 }

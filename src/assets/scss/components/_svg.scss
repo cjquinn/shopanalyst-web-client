@@ -1,15 +1,19 @@
 .c-svg {
-    margin: auto;
+  margin: 0 auto;
 
-    &--cross,
-    &--plus,
-    &--minus,
-    &--tick {
-        width: $baseLine;
-    }
+  &--back {
+    height: $baseLine;
+    padding-right: 2px;
+  }
 
-    &--analyse,
-    &--shop {
-        width: $baseLine * 10;
-    }
+  &--cross,
+  &--plus,
+  &--tick {
+    width: $baseLine;
+  }
+
+  &--analyse,
+  &--shop {
+    width: $baseLine * 10;
+  }
 }

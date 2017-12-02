@@ -5,18 +5,19 @@
  */
 
 $iota-utils-color-names: (
-    // brown: $brown,
-    // bronze: $bronze,
-    // green: $green,
-    // grey: $grey,
-    // pale-grey: $paleGrey,
-    // red: $red,
-    // white: $white,
-    // Specific
-    foreground: $foreground,
-    help: $help,
-    success: $success,
-    warning: $warning
+  // brown: $brown,
+  // bronze: $bronze,
+  // green: $green,
+  // grey: $grey,
+  // pale-grey: $paleGrey,
+  // red: $red,
+  // white: $white,
+  // Specific
+  inherit: inherit,
+  foreground: $foreground,
+  help: $help,
+  success: $success,
+  warning: $warning
 );
 
 

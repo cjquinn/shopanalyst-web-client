@@ -11,38 +11,32 @@ import settings from '../assets/svg/settings.svg';
 import shop from '../assets/svg/shop.svg';
 
 const Nav = ({ getClasses }) => (
-    <nav className="nav u-fixed u-width-full">
-        <ul className="tabs u-text-center">
-            <li className={`tabs__tab ${getClasses('lists')}`}>
-                <Link
-                    className="tabs__tab__link o-type-small u-color-grey"
-                    to="/lists"
-                >
-                    <Svg className="tabs__tab__icon" sprite={shop} />
-                    Shop
-                </Link>
-            </li>
+    <nav className="c-nav u-fixed u-1/1 u-z">
+        <div className="c-tabs o-type-small u-flex u-baseline-x6">
+            <Link
+                className={`c-tabs__tab u-1/3 u-color-inherit u-flex u-fd-col u-jc-between u-ai-center ${getClasses('lists')}`}
+                to="/lists"
+            >
+                <Svg className="u-1/1 u-baseline-x3" sprite={shop} />
+                <span>Shop</span>
+            </Link>
 
-            <li className={`tabs__tab ${getClasses('analyse')}`}>
-                <Link
-                    className="tabs__tab__link o-type-small u-color-grey"
-                    to="/analyse"
-                >
-                    <Svg className="tabs__tab__icon" sprite={analyse} />
-                    Analyse
-                </Link>
-            </li>
+            <Link
+                className={`c-tabs__tab u-1/3 u-color-inherit u-flex u-fd-col u-jc-between u-ai-center ${getClasses('analyse')}`}
+                to="/analyse"
+            >
+                <Svg className="u-1/1 u-baseline-x3" sprite={analyse} />
+                <span>Analyse</span>
+            </Link>
 
-            <li className={`tabs__tab ${getClasses('settings')}`}>
-                <Link
-                    className="tabs__tab__link o-type-small u-color-grey"
-                    to="/settings"
-                >
-                    <Svg className="tabs__tab__icon" sprite={settings} />
-                    Settings
-                </Link>
-            </li>
-        </ul>
+            <Link
+                className={`c-tabs__tab u-1/3 u-color-inherit u-flex u-fd-col u-jc-between u-ai-center ${getClasses('settings')}`}
+                to="/settings"
+            >
+                <Svg className="u-1/1 u-baseline-x3" sprite={settings} />
+                <span>Settings</span>
+            </Link>
+        </div>
     </nav>
 );
 

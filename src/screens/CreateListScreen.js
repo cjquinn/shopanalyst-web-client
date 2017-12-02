@@ -9,28 +9,25 @@ import Svg from '../components/Svg';
 import Template from '../components/Template';
 
 // Containers
-import ListsContainer from '../containers/ListsContainer';
-import NavContainer from '../containers/NavContainer';
+import CreateListFormContainer from '../containers/CreateListFormContainer';
 
 // Sprites
-import plus from '../assets/svg/plus.svg';
+import back from '../assets/svg/back.svg';
 
-const ListsScreen = () => (
+const CreateListScreen = () => (
     <Template>
         <Header>
-            <HeaderTitle>Lists</HeaderTitle>
+            <HeaderTitle>Create List</HeaderTitle>
 
-            <HeaderLink side="right" to="/create-list">
-                <Svg sprite={plus} />
+            <HeaderLink side="left" to="/lists">
+                <Svg sprite={back} />
             </HeaderLink>
         </Header>
 
         <ScreenWrapper>
-            <ListsContainer />
+            <CreateListFormContainer />
         </ScreenWrapper>
-
-        <NavContainer />
     </Template>
 );
 
-export default ListsScreen;
+export default CreateListScreen;

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import { reduxForm } from 'redux-form';
 
 // Actions
@@ -17,25 +18,19 @@ class CreateListFormContainer extends Component {
         .then(response => this.props.history.push(`/lists/${response.payload.result}`));
 
     render() {
-        const { match } = this.props;
-
         return (
-            <CreateListReduxForm
-                match={match}
-                onSubmit={this.handleSubmit}
-            />
+            <CreateListReduxForm onSubmit={this.handleSubmit} />
         );
     }
 }
 
 CreateListFormContainer.propTypes = {
     createList: PropTypes.func.isRequired,
-    history: PropTypes.object.isRequired,
-    match: PropTypes.object.isRequired
+    history: PropTypes.object.isRequired
 };
 
 const mapDispatchToProps = dispatch => ({
     createList: data => dispatch(createList(data))
 });
 
-export default connect(null, mapDispatchToProps)(CreateListFormContainer);
+export default withRouter(connect(null, mapDispatchToProps)(CreateListFormContainer));

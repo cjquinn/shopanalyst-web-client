@@ -1,3 +1,5 @@
+@import 'settings/reset';
+
 @import 'settings/core';
 @import 'settings/colours';
 
@@ -17,6 +19,7 @@
 @import 'utilities/bradius';
 @import 'utilities/color';
 @import 'utilities/display';
+@import 'utilities/flex-direction';
 @import 'utilities/justify-content';
 @import 'utilities/margin';
 @import 'utilities/padding';
@@ -26,6 +29,7 @@
 @import 'utilities/text';
 @import 'utilities/transform';
 @import 'utilities/weight';
+@import 'utilities/zindex';
 
 @import 'components/button';
 @import 'components/header';

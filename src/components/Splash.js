@@ -8,7 +8,7 @@ import Svg from '../components/Svg';
 import shop from '../assets/svg/shop.svg';
 
 const Splash = ({ children }) => (
-    <div className="splash u-absolute u-1/1">
+    <div className="c-splash u-absolute u-1/1 u-flex u-jc-center u-ai-center">
         <div className="u-space u-text-center">
             <Svg sprite={shop} />
             <p>{children}</p>

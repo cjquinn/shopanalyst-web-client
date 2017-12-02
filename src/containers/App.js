@@ -10,7 +10,7 @@ import { fetchCurrentUser } from '../store/User/actions';
 import AppLayout from '../layouts/AppLayout';
 
 // Selectors
-import { getIsAuthorised, getIsFetching } from '../store/User/selectors';
+import { getIsFetching } from '../store/User/selectors';
 
 class App extends Component {
     componentDidMount() {
@@ -18,11 +18,11 @@ class App extends Component {
     }
 
     render() {
-        const { isAuthorised, isFetching } = this.props;
+        const { isFetching } = this.props;
 
         return (
             <Router>
-                <AppLayout isAuthorised={isAuthorised} isFetching={isFetching} />
+                <AppLayout isFetching={isFetching} />
             </Router>
         );
     }
@@ -30,12 +30,10 @@ class App extends Component {
 
 App.propTypes = {
     fetchCurrentUser: PropTypes.func.isRequired,
-    isAuthorised: PropTypes.bool.isRequired,
     isFetching: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = state => ({
-    isAuthorised: getIsAuthorised(state),
     isFetching: getIsFetching(state)
 });
 

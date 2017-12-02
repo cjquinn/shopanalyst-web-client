@@ -17,7 +17,7 @@ const ListCard = ({ list, match }) => (
 
             {list.progress > 0 &&
                 <div
-                    className="c-list-card__progress u-absolute u-flex u-ai-center u-bgcolor-success-background u-color-success u-bradius-x3"
+                    className="c-list-card__progress u-absolute u-flex u-ai-center u-bgcolor-success-background u-ph u-color-success u-bradius-x3"
                     style={{width: `${list.progress}%`}}
                 >
                     {list.itemsProgress}
