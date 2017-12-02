@@ -1,39 +1,33 @@
-import PropTypes from 'prop-types';
 import React from 'react';
-import { Link, Route } from 'react-router-dom';
 
 // Components
+import Header from '../components/Header';
+import HeaderLink from '../components/HeaderLink';
+import HeaderTitle from '../components/HeaderTitle';
 import ScreenWrapper from '../components/ScreenWrapper';
+import Svg from '../components/Svg';
+import Template from '../components/Template';
 
 // Containers
-import CreateListFormContainer from '../containers/CreateListFormContainer';
 import ListsContainer from '../containers/ListsContainer';
 
-import Header from '../components/Header';
+// Sprites
+import plus from '../assets/svg/plus.svg';
 
-const ListsScreen = ({ location, match }) => (
-    <div>
+const ListsScreen = () => (
+    <Template>
         <Header>
-            {location.pathname === `${match.url}/create` ? 'Create List' : 'Lists'}
+            <HeaderTitle>Lists</HeaderTitle>
+
+            <HeaderLink side="right" to="/create-list">
+                <Svg sprite={plus} />
+            </HeaderLink>
         </Header>
 
-        <Route exact path={`${match.url}/create`} component={CreateListFormContainer} />
-
         <ScreenWrapper>
-            <Route exact path={match.url} render={() => (
-                <Link className="o-button" to={`${match.url}/create`}>
-                    Create list
-                </Link>
-            )} />
-
             <ListsContainer />
         </ScreenWrapper>
-    </div>
+    </Template>
 );
-
-ListsScreen.propTypes = {
-    location: PropTypes.object.isRequired,
-    match: PropTypes.object.isRequired
-};
 
 export default ListsScreen;

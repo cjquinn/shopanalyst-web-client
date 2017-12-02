@@ -1,18 +1,15 @@
-.o-svg {
+.c-svg {
     margin: auto;
 
     &--cross,
     &--plus,
-    &--minus {
-        width: 10px;
-    }
-
+    &--minus,
     &--tick {
-        width: 12px;
+        width: $baseLine;
     }
 
     &--analyse,
     &--shop {
-        width: 100px;
+        width: $baseLine * 10;
     }
 }

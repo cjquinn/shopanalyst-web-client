@@ -7,7 +7,7 @@
  * Type: Unitless Number / List
  */
 
-$iota-global-columns: 2, 3, 6;
+$iota-global-columns: 1;
 
 
 /**
@@ -30,8 +30,10 @@ $iota-global-components-namespace : 'c-';
  *
  * Type: Number / List / Map
  */
-
-$iota-global-gutter-default: 10px;
+$baseLine: 12px / 16px * 1rem;
+$baseLine-x2: $baseLine * 2;
+$baseLine-x3: $baseLine * 3;
+$iota-global-gutter-default: $baseLine;
 
 
 /**
@@ -60,7 +62,6 @@ $iota-global-rtl: false;
  *
  * Type: Number / List / Map
  */
-
 $iota-type-sizes: (
     small: 12px,
     medium: 14px,

@@ -24,7 +24,7 @@ import SignInScreen from '../screens/SignInScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 
 const AppLayout = ({ isAuthorised, isFetching }) => (
-    <div className={`app ${!isAuthorised && 'app--unauthorised'}`}>
+    <div className="app">
         {isFetching && <Splash>Loading...</Splash>}
 
         {!isFetching &&

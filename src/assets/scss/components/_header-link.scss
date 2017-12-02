@@ -1,0 +1,23 @@
+.c-header-link {
+    top: -$baseLine / 4;
+    height: $baseLine * 2;
+    width: $baseLine * 2;
+    border-radius: 100%;
+    color: $success;
+    background-color: $successBackground;
+    transition: color .15s ease-in, background-color .15s ease-in;
+
+    &:hover,
+    &:focus {
+        color: $foreground;
+        background: $success;
+    }
+
+    &--left {
+        left: $baseLine;
+    }
+
+    &--right {
+        right: $baseLine;
+    }
+}

@@ -1,0 +1,9 @@
+.c-link {
+    color: $success;
+    text-decoration: none;
+    transition: color .15s ease-in;
+
+    &:hover {
+        color: darken($success, 10%);
+    }
+}

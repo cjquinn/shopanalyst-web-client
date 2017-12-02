@@ -2,23 +2,25 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // Components
-import ScreenWrapper from '../components/ScreenWrapper';
+import Template from '../components/Template';
 
 // Containers
 import RequestPasswordResetFormContainer from '../containers/RequestPasswordResetFormContainer';
 
 const RequestPasswordResetScreen = () => (
-    <ScreenWrapper>
-        <p className="u-color-brown u-text-center">
+    <Template>
+        <p className="u-color-help u-text-center">
             Request password reset
         </p>
 
         <RequestPasswordResetFormContainer />
 
-        <Link to="/sign-in" className="o-link o-type-medium u-float-right">
-            I remember my password
-        </Link>
-    </ScreenWrapper>
+        <div className="u-text-right">
+            <Link to="/sign-in" className="c-link o-type-medium">
+                I remember my password
+            </Link>
+        </div>
+    </Template>
 );
 
 export default RequestPasswordResetScreen;

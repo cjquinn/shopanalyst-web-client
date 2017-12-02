@@ -1,17 +1,10 @@
 :root {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
-    color: $grey;
-    background-color: $paleGrey;
-
-    transition: background-color .15s ease-in;
+    color: $text;
+    background-color: $background;
 }
 
 .app {
-    // The height of the heading and tabs
-    padding: 39px 0 62px 0;
-
-    &--unauthorised {
-        height: 100vh;
-    }
+    padding-top: $baseLine-x3;
 }

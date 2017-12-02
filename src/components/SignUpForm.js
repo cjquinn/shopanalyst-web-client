@@ -3,31 +3,28 @@ import React from 'react';
 import { Field } from 'redux-form';
 
 // Components
-import LabeledInput from './LabeledInput';
+import Button from './Button';
+import Input from './Input';
 
 const SignUpForm = ({ handleSubmit }) => (
-    <form className="u-space-2" onSubmit={handleSubmit}>
-        <Field
-            component={LabeledInput}
-            id="input-email"
-            inverted
-            label="Email"
-            name="email"
-            placeholder="Enter your email..."
-            type="email"
-        />
+    <form className="u-space-x2" onSubmit={handleSubmit}>
+        <div className="u-space">
+            <Field
+                component={Input}
+                name="email"
+                placeholder="Enter your email..."
+                type="email"
+            />
 
-        <Field
-            component={LabeledInput}
-            id="input-password"
-            inverted
-            label="Password"
-            name="password"
-            placeholder="Enter a password..."
-            type="password"
-        />
+            <Field
+                component={Input}
+                name="password"
+                placeholder="Enter a password..."
+                type="password"
+            />
+        </div>
 
-        <button className="o-button" type="submit">Sign up</button>
+        <Button>Sign up</Button>
     </form>
 );
 

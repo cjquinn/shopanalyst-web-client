@@ -3,23 +3,19 @@ import React from 'react';
 import { Field } from 'redux-form';
 
 // Components
-import LabeledInput from './LabeledInput';
+import Button from './Button';
+import Input from './Input';
 
 const RequestPasswordResetForm = ({ handleSubmit }) => (
-    <form className="u-space-2" onSubmit={handleSubmit}>
+    <form className="u-space-x2" onSubmit={handleSubmit}>
         <Field
-            component={LabeledInput}
-            id="input-email"
-            inverted
-            label="Email"
+            component={Input}
             name="email"
             placeholder="Enter your email..."
             type="email"
         />
 
-        <button className="o-button" type="submit">
-            Request password reset
-        </button>
+        <Button>Request password reset</Button>
     </form>
 );
 

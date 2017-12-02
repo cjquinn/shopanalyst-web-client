@@ -1,19 +1,19 @@
 import React from 'react';
 
 // Components
-import ScreenWrapper from '../components/ScreenWrapper';
+import Template from '../components/Template';
 
 // Containers
 import ResetPasswordFormContainer from '../containers/ResetPasswordFormContainer';
 
 const ResetPassword = () => (
-    <ScreenWrapper>
-        <p className="u-color-brown u-text-center">
+    <Template>
+        <p className="u-color-help u-text-center">
             Reset password
         </p>
 
         <ResetPasswordFormContainer />
-    </ScreenWrapper>
+    </Template>
 );
 
 export default ResetPassword;

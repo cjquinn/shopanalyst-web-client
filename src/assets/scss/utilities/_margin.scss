@@ -5,7 +5,7 @@
  * Type: Number / Map
  */
 
-$iota-utils-margin-default: $iota-global-gutter-default;
+$iota-utils-margin-default: $baseLine;
 
 
 /**
@@ -15,7 +15,6 @@ $iota-utils-margin-default: $iota-global-gutter-default;
  */
 
 $iota-utils-margin-extra: (
-    -2: $iota-utils-margin-default * 2
 );
 
 
@@ -54,11 +53,3 @@ $iota-utils-margin-horizontal-name  : 'h';
 
 
 @import 'node_modules/iotacss/utilities/margin';
-
-.u-space > * + * {
-    margin-top: $iota-global-gutter-default;
-}
-
-.u-space-2 > * + * {
-    margin-top: $iota-global-gutter-default * 2;
-}

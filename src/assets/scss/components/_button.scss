@@ -1,0 +1,14 @@
+.c-button {
+    height: $baseLine * 3;
+    border-radius: $baseLine * 1.5;
+    border: 0;
+    color: $success;
+    background-color: $successBackground;
+    transition: color .15s ease-in, background-color .15s ease-in;
+
+    &:hover,
+    &:focus {
+        color: $foreground;
+        background: $success;
+    }
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="8px" height="12px" viewBox="0 0 8 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>tick</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Home-v3" transform="translate(-19.000000, -12.000000)" fill="#91C98E">
+            <g id="Header">
+                <g id="Group-4" transform="translate(12.000000, 6.000000)">
+                    <g id="Group-5">
+                        <path d="M17.339697,8.93969696 L17.339697,14.939697 C17.339697,15.739697 16.939697,16.139697 16.139697,16.139697 C16.139697,16.139697 14.139697,16.139697 10.139697,16.139697 C9.33969696,16.139697 8.93969696,15.739697 8.93969696,14.939697 C8.93969696,14.139697 9.33969696,13.739697 10.139697,13.739697 L14.939697,13.739697 L14.939697,8.93969696 C14.939697,8.13969696 15.339697,7.73969696 16.139697,7.73969696 C16.939697,7.73969696 17.339697,8.13969696 17.339697,8.93969696 Z" id="tick" transform="translate(13.139697, 11.939697) rotate(135.000000) translate(-13.139697, -11.939697) "></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

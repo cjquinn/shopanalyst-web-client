@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="10px" height="12px" viewBox="0 0 10 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
-    <title>plus</title>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Path 2</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Quantity/Remove" transform="translate(-8.000000, -7.000000)" fill="#FFFFFF">
-            <polygon id="plus" points="11.995575 8.00131226 14 7.98422241 14 11.9842224 18 12.0013123 18 14.0013123 14 14.0013123 14 18.0157776 11.995575 18.0157776 11.995575 14.0013123 8 14.0013123 8 12.0013123 11.995575 12.0013123"></polygon>
+    <g id="Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Home-v3" transform="translate(-290.000000, -12.000000)" fill="currentColor">
+            <g id="Header">
+                <g id="Group-4" transform="translate(284.000000, 6.000000)">
+                    <path d="M12,6 C12.8,6 13.2,6.4 13.2,7.2 L13.2,10.7849012 L16.8,10.8 C17.6,10.8 18,11.2 18,12 C18,12.8 17.6,13.2 16.8,13.2 L13.2,13.197795 L13.2,16.8 C13.2,17.6 12.8,18 12,18 C11.2,18 10.79823,17.6 10.7946899,16.8 L10.7946899,13.197795 L7.2,13.2 C6.4,13.2 6,12.8 6,12 C6,11.2 6.4,10.8 7.2,10.8 L10.7946899,10.8053445 L10.7946899,7.2 C10.79823,6.4 11.2,6 12,6 Z" id="Path-2"></path>
+                </g>
+            </g>
         </g>
     </g>
 </svg>

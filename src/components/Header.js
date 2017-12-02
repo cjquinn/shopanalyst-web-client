@@ -2,15 +2,18 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const Header = ({ children }) => (
-    <div className="header u-bgcolor-white u-fixed u-pv u-width-full u-z-3">
-        <h1 className="o-type-medium u-text-center u-weight-normal">
+    <div className="c-header u-1/1 u-bgcolor-foreground u-fixed u-flex u-ai-center">
+        <div className="o-container u-relative u-1/1">
             {children}
-        </h1>
+        </div>
     </div>
 );
 
 Header.propTypes = {
-    children: PropTypes.node.isRequired
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node
+    ]).isRequired
 };
 
 export default Header;

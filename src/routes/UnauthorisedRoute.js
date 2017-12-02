@@ -5,13 +5,12 @@ import { connect } from 'react-redux';
 
 // Components
 import Header from '../components/Header';
-import Svg from '../components/Svg';
+import HeaderTitle from '../components/HeaderTitle';
+import Template from '../components/Template';
+import UnauthorisedScreenWrapper from '../components/UnauthorisedScreenWrapper';
 
 // Selectors
 import { getIsAuthorised } from '../store/User/selectors';
-
-// Sprites
-import shop from '../assets/svg/shop.svg';
 
 class UnauthorisedRoute extends Component {
     render() {
@@ -21,15 +20,15 @@ class UnauthorisedRoute extends Component {
             ? <Redirect exact to="/lists" />
             : (
                 <Route {...rest} render={matchProps => (
-                    <div>
-                        <Header>Shopanalyst</Header>
+                    <Template>
+                        <Header>
+                            <HeaderTitle>Shopanalyst</HeaderTitle>
+                        </Header>
 
-                        <div className="u-mt-2 u-text-center">
-                            <Svg sprite={shop} />
-                        </div>
-
-                        <Component {...matchProps} />
-                    </div>
+                        <UnauthorisedScreenWrapper>
+                            <Component {...matchProps} />
+                        </UnauthorisedScreenWrapper>
+                    </Template>
                 )} />
             );
     }

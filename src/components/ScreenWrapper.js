@@ -3,7 +3,7 @@ import React from 'react';
 
 const ScreenWrapper = ({ children, ...props }) => (
     <div
-        className="o-container u-pv-2 u-space-2"
+        className="o-container u-pv-x2 u-space-x2"
         {...props}
     >
         {children}

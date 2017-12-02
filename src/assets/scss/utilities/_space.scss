@@ -1,0 +1,7 @@
+.u-space > * + * {
+    margin-top: $baseLine;
+}
+
+.u-space-x2 > * + * {
+    margin-top: $baseLine * 2;
+}

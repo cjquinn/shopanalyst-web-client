@@ -2,19 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // Components
-import ScreenWrapper from '../components/ScreenWrapper';
+import Template from '../components/Template';
 
 // Containers
 import SignUpFormContainer from '../containers/SignUpFormContainer';
 
 const SignUpScreen = () => (
-    <ScreenWrapper>
-        <p className="u-color-brown u-text-center">
-            Sign up <i>or</i> <Link className="o-link" to="/sign-in">sign in</Link>
+    <Template>
+        <p className="u-color-help u-text-center">
+            Sign up <i>or</i> <Link className="c-link" to="/sign-in">sign in</Link>
         </p>
 
         <SignUpFormContainer />
-    </ScreenWrapper>
+    </Template>
 );
 
 export default SignUpScreen;

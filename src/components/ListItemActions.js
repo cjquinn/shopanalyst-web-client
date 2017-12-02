@@ -6,7 +6,6 @@ import Svg from '../components/Svg';
 
 // Sprites
 import cross from '../assets/svg/cross.svg';
-import minus from '../assets/svg/minus.svg';
 import plus from '../assets/svg/plus.svg';
 
 const ListItemActions = ({ handleBlurQuantity, handleChangeQuantity, handleDecreaseQuantity, handleDeleteListItem, handleIncreaseQuantity, quantity, quantityIsOne }) => (
@@ -32,7 +31,7 @@ const ListItemActions = ({ handleBlurQuantity, handleChangeQuantity, handleDecre
             className={`item__actions__button item__actions__button--${quantityIsOne ? 'remove u-bgcolor-red' : 'decrease u-bgcolor-green'} u-color-white`}
             onClick={quantityIsOne ? handleDeleteListItem : handleDecreaseQuantity}
         >
-            <Svg sprite={quantityIsOne ? cross : minus} />
+            <Svg sprite={cross} />
         </button>
     </div>
 );
