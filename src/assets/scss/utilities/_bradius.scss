@@ -1,3 +1,7 @@
 .u-bradius {
     border-radius: $baseLine;
 }
+
+.u-bradius-x3 {
+    border-radius: $baseLine * 1.5;
+}

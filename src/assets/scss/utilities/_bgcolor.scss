@@ -5,7 +5,11 @@
  */
 
 $iota-utils-bgcolor-names: (
-    foreground: $foreground
+    background: $background,
+    foreground: $foreground,
+    input: $input,
+    success: $success,
+    success-background: $successBackground
 );
 
 

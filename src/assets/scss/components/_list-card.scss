@@ -1,37 +1,37 @@
 $progressBorderRadius: 13px;
 
-.list-card {
-    border: 1px solid $lightGrey;
+.c-list-card {
+  color: inherit;
+  text-decoration: none;
 
-    a {
-        color: inherit;
-        text-decoration: none;
+  &__progress {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    background-color: $successBackground;
+    color: $success;
+    white-space: nowrap;
+    transition: color .15s ease-in, background-color .15s ease-in;
+    animation: growWidth .15s ease-in;
+  }
+
+  &:hover {
+    .c-list-card {
+      &__progress {
+        background: $success;
+        color: $foreground;
+      }
     }
+  }
+}
 
-    &__header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
+@keyframes growWidth {
+  0% {
+    max-width: 0;
+  }
 
-    &__progress {
-        padding: 0 $progressBorderRadius;
-        border-radius: $progressBorderRadius;
-        line-height: $progressBorderRadius * 2;
-
-        &--container {
-            border: 1px solid $lightGrey;
-        }
-
-        &--inner {
-            top: 0;
-            left: 0;
-            white-space: nowrap;
-            overflow: hidden;
-        }
-    }
-
-    &--complete * {
-        text-decoration: line-through;
-    }
+  100% {
+    max-width: 100%;
+  }
 }
