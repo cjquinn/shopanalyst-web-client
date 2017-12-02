@@ -2,12 +2,14 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const SignOutLink = ({ handleClick }) => (
-    <a
-        className="o-link o-type-medium u-float-right"
-        onClick={handleClick}
-    >
-        Sign out
-    </a>
+    <div className="u-text-right">
+        <a
+            className="c-link o-type-medium"
+            onClick={handleClick}
+        >
+            Sign out
+        </a>
+    </div>
 );
 
 SignOutLink.propTypes = {

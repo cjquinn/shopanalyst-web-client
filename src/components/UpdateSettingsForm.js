@@ -3,49 +3,39 @@ import React from 'react';
 import { Field } from 'redux-form';
 
 // Components
-import LabeledInput from './LabeledInput';
+import Button from './Button';
+import Input from './Input';
 
 const UpdateSettingsForm = ({ handleSubmit }) => (
-    <form className="u-space-2" onSubmit={handleSubmit}>
-        <h2 className="u-color-brown o-type-medium u-uppercase u-weight-normal">
-            Basic Info
-        </h2>
+    <form className="u-space-x2" onSubmit={handleSubmit}>
+        <p className="u-color-help o-type-medium">Basic Info</p>
 
         <Field
-            component={LabeledInput}
-            id="email-input"
-            inverted
-            label="Email"
+            component={Input}
             name="email"
             placeholder="Enter your email..."
             type="email"
         />
 
-        <h2 className="u-color-brown o-type-medium u-uppercase u-weight-normal">
-            Update Your Password
-        </h2>
+        <p className="u-color-help o-type-medium">Update Your Password</p>
 
-        <Field
-            component={LabeledInput}
-            id="current-password-input"
-            inverted
-            label="Current password"
-            name="current_password"
-            placeholder="Enter your current password..."
-            type="password"
-        />
+        <div className="u-space">
+            <Field
+                component={Input}
+                name="current_password"
+                placeholder="Enter your current password..."
+                type="password"
+            />
 
-        <Field
-            component={LabeledInput}
-            id="new-password-input"
-            inverted
-            label="New password"
-            name="new_password"
-            placeholder="Enter your new password..."
-            type="password"
-        />
+            <Field
+                component={Input}
+                name="new_password"
+                placeholder="Enter your new password..."
+                type="password"
+            />
+        </div>
 
-        <button className="o-button" type="submit">Save changes</button>
+        <Button>Save changes</Button>
     </form>
 );
 

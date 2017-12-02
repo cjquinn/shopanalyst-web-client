@@ -2,22 +2,25 @@ import React from 'react';
 
 // Components
 import Header from '../components/Header';
-import Svg from '../components/Svg';
+import HeaderTitle from '../components/HeaderTitle';
+import Splash from '../components/Splash';
+import Template from '../components/Template';
 
-// Sprites
-import analyse from '../assets/svg/analyse.svg';
+// Containers
+import NavContainer from '../containers/NavContainer';
 
 const AnalyseScreen = () => (
-    <div>
-        <Header>Analyse</Header>
+    <Template>
+        <Header>
+            <HeaderTitle>Analyse</HeaderTitle>
+        </Header>
 
-        <div className="splash u-absolute u-width-full">
-            <div className="u-space u-text-center">
-                <Svg sprite={analyse} />
-                <p>Nothing to see here...yet!</p>
-            </div>
-        </div>
-    </div>
+        <Splash>
+            Nothing to see here...yet...
+        </Splash>
+
+        <NavContainer />
+    </Template>
 );
 
 export default AnalyseScreen;
