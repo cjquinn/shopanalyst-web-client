@@ -9,20 +9,9 @@ $progressBorderRadius: 13px;
     bottom: 0;
     left: 0;
     overflow: hidden;
-    background-color: $successBackground;
-    color: $success;
+    padding: 0 $baseLine;
     white-space: nowrap;
-    transition: color .15s ease-in, background-color .15s ease-in;
-    animation: growWidth .15s ease-in;
-  }
-
-  &:hover {
-    .c-list-card {
-      &__progress {
-        background: $success;
-        color: $foreground;
-      }
-    }
+    animation: growWidth .15s ease-in-out;
   }
 }
 
