@@ -4,5 +4,6 @@
   &__tab {
     padding: $baseLine / 2;
     box-shadow: 0 0 0 1px $border;
+    transition: background-color .15s ease-in;
   }
 }
