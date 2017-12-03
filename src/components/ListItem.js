@@ -11,34 +11,30 @@ import ListItemActionsContainer from '../containers/ListItemActionsContainer';
 import tick from '../assets/svg/tick.svg';
 
 const ListItem = ({ listItem, handleToggleCompleted }) => (
-    <div className={`item item--list-item u-bgcolor-${listItem.is_complete ? 'off-white' : 'white'}`}>
+    <div className={`c-item u-flex u-ai-center u-jc-between u-b u-baseline-x3 u-bradius-x3 ${listItem.is_complete ? 'c-item--complete u-bgcolor-input u-color-hint' : 'u-bgcolor-foreground'}`}>
         <input
             id={`list-items-${listItem.id}`}
             type="checkbox"
-            className="item__checkbox u-hidden"
+            className="c-item__checkbox u-hidden"
             checked={listItem.is_complete}
             onChange={() => handleToggleCompleted(listItem)}
         />
 
         <label
             htmlFor={`list-items-${listItem.id}`}
-            className="item__label"
+            className="c-item__label u-flex u-ai-center"
         >
-            <span className="item__tick">
+            <div className="c-item__tick u-flex u-bradius-100">
                 <Svg sprite={tick} />
-            </span>
+            </div>
 
             {listItem.item.name}
-
         </label>
 
-        {!listItem.is_complete && <ListItemActionsContainer listItem={listItem} />}
-
-        {listItem.is_complete &&
-                <span className="item__value o-type-medium u-text-center">
-                    {listItem.quantity}
-                </span>
-            }
+        {listItem.is_complete
+            ? <div className="c-item__value u-text-center">{listItem.quantity}</div>
+            : <ListItemActionsContainer listItem={listItem} />
+        }
     </div>
 );
 

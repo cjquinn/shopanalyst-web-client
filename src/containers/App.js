@@ -10,7 +10,7 @@ import { fetchCurrentUser } from '../store/User/actions';
 import AppLayout from '../layouts/AppLayout';
 
 // Selectors
-import { getIsFetching } from '../store/User/selectors';
+import { getIsLoading } from '../store/User/selectors';
 
 class App extends Component {
     componentDidMount() {
@@ -18,11 +18,11 @@ class App extends Component {
     }
 
     render() {
-        const { isFetching } = this.props;
+        const { isLoading } = this.props;
 
         return (
             <Router>
-                <AppLayout isFetching={isFetching} />
+                <AppLayout isLoading={isLoading} />
             </Router>
         );
     }
@@ -30,11 +30,11 @@ class App extends Component {
 
 App.propTypes = {
     fetchCurrentUser: PropTypes.func.isRequired,
-    isFetching: PropTypes.bool.isRequired
+    isLoading: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = state => ({
-    isFetching: getIsFetching(state)
+    isLoading: getIsLoading(state)
 });
 
 const mapDispatchToProps = dispatch => ({

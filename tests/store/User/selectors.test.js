@@ -1,4 +1,4 @@
-import { getEmail, getIsAuthorised, getIsFetching } from '../../../src/store/User/selectors';
+import { getEmail, getIsAuthorised, getIsLoading } from '../../../src/store/User/selectors';
 
 describe('selectors', () => {
     it('getIsAuthorised', () => {
@@ -19,9 +19,9 @@ describe('selectors', () => {
         expect(getEmail(state)).toEqual(expected);
     });
 
-    it('getIsFetching', () => {
-        const state = {user: {isFetching: false}};
+    it('getIsLoading', () => {
+        const state = {user: {isLoading: false}};
 
-        expect(getIsFetching(state)).toBe(false);
+        expect(getIsLoading(state)).toBe(false);
     });
 });

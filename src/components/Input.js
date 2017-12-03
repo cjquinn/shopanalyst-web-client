@@ -5,7 +5,7 @@ const Input = ({ input, meta, placeholder, type }) => (
     <div className="u-space">
         <input
             {...input}
-            className="c-input o-type-large u-1/1 u-baseline-x3 u-b u-block u-bradius u-ph"
+            className="c-input u-1/1 u-baseline-x3 u-b u-block u-bradius u-ph"
             type={type}
             placeholder={placeholder}
         />

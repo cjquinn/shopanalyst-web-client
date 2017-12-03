@@ -4,7 +4,7 @@ import * as actions from '../../../src/store/User/actions';
 
 describe('initial state', () => {
     it('shape', () => {
-        const expected = {isFetching: true};
+        const expected = {isLoading: true};
 
         expect(reducers(undefined, {})).toEqual(expected);
     });
@@ -12,28 +12,28 @@ describe('initial state', () => {
 
 describe('fetchCurrentUser', () => {
     it(actions.fetchCurrentUserRequest.toString(), () => {
-        const state = {isFetching: false};
+        const state = {isLoading: false};
 
-        const expected = {isFetching: true};
+        const expected = {isLoading: true};
 
         expect(reducers(state, actions.fetchCurrentUserRequest())).toEqual(expected);
     });
 
     it(actions.fetchCurrentUserFailure.toString(), () => {
-        const state = {isFetching: true};
+        const state = {isLoading: true};
 
-        const expected = {isFetching: false};
+        const expected = {isLoading: false};
 
         expect(reducers(state, actions.fetchCurrentUserFailure())).toEqual(expected);
     });
 
     it(actions.fetchCurrentUserSuccess.toString(), () => {
-        const state = {isFetching: true};
+        const state = {isLoading: true};
 
         const expected = {
             id: 1,
             email: 'christy@myshopanalyst.com',
-            isFetching: false
+            isLoading: false
         };
 
         const payload = {
@@ -52,7 +52,7 @@ describe('signIn', () => {
         const expected = {
             id: 1,
             email: 'christy@myshopanalyst.com',
-            isFetching: false
+            isLoading: false
         };
 
         const payload = {
@@ -71,7 +71,7 @@ describe('signUp', () => {
         const expected = {
             id: 1,
             email: 'christy@myshopanalyst.com',
-            isFetching: false
+            isLoading: false
         };
 
         const payload = {
@@ -88,13 +88,13 @@ describe('updateSettings', () => {
         const state = {
             id: 1,
             email: 'christy@myshopanalyst.com',
-            isFetching: false
+            isLoading: false
         };
 
         const expected = {
             id: 1,
             email: 'christy@myshopanalyst.co.uk',
-            isFetching: false
+            isLoading: false
         };
 
         const payload = {

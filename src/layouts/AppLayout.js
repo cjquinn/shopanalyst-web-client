@@ -23,11 +23,11 @@ import SettingsScreen from '../screens/SettingsScreen';
 import SignInScreen from '../screens/SignInScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 
-const AppLayout = ({ isFetching }) => (
+const AppLayout = ({ isLoading }) => (
     <div className="app">
-        {isFetching && <Splash>Loading...</Splash>}
+        {isLoading && <Splash>Loading...</Splash>}
 
-        {!isFetching &&
+        {!isLoading &&
             <Switch>
                 <Redirect exact from="/" to="/lists" />
 
@@ -53,7 +53,7 @@ const AppLayout = ({ isFetching }) => (
 );
 
 AppLayout.propTypes = {
-    isFetching: PropTypes.bool.isRequired
+    isLoading: PropTypes.bool.isRequired
 };
 
 export default AppLayout;

@@ -7,6 +7,17 @@ ul {
   list-style: none;
 }
 
-input {
+input,
+button {
+  padding: 0;
+  background: none;
+  border: 0;
+  font: inherit;
   -webkit-appearance: none;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  margin: 0; 
+  -webkit-appearance: none; 
 }

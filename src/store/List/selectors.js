@@ -7,10 +7,7 @@ import { list as listSchema, listItem as listItemSchema } from '../schema';
 // Utils
 import { withComputed } from './utils';
 
-export const getIsFetching = createSelector(
-    state => state.list.isFetching,
-    isFetching => isFetching
-);
+export const getIsFetching = state => state.list.isFetching;
 
 export const getList = id => createSelector(
     state => state.entities,
@@ -46,12 +43,6 @@ export const getLists = createSelector(
         .map(list => withComputed(list))
 );
 
-export const getPage = createSelector(
-    state => state.list.page,
-    page => page
-);
+export const getPage = state => state.list.page;
 
-export const getTotal = createSelector(
-    state => state.list.total,
-    total => total
-);
+export const getTotal = state => state.list.total;

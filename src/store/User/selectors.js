@@ -7,7 +7,4 @@ export const getIsAuthorised = createSelector(
     id => id !== undefined
 );
 
-export const getIsFetching = createSelector(
-    state => state.user.isFetching,
-    isFetching => isFetching
-);
+export const getIsLoading = state => state.user.isLoading;

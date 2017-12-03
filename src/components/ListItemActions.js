@@ -6,21 +6,12 @@ import Svg from '../components/Svg';
 
 // Sprites
 import cross from '../assets/svg/cross.svg';
-import plus from '../assets/svg/plus.svg';
 
-const ListItemActions = ({ handleBlurQuantity, handleChangeQuantity, handleDecreaseQuantity, handleDeleteListItem, handleIncreaseQuantity, quantity, quantityIsOne }) => (
-    <div className="item__actions">
-        <button
-            type="button"
-            className="item__actions__button item__actions__button--increase u-bgcolor-green u-color-white"
-            onClick={handleIncreaseQuantity}
-        >
-            <Svg sprite={plus} />
-        </button>
-
+const ListItemActions = ({ handleBlurQuantity, handleChangeQuantity, handleDeleteListItem, quantity }) => (
+    <div className="c-item__actions u-flex u-ai-center">
         <input
             type="number"
-            className="item__actions__input o-input o-type-medium u-text-center u-bgcolor-pale-grey u-color-grey"
+            className="c-input c-item__input u-b u-baseline-x3 u-text-center"
             value={quantity}
             onBlur={handleBlurQuantity}
             onChange={handleChangeQuantity}
@@ -28,8 +19,8 @@ const ListItemActions = ({ handleBlurQuantity, handleChangeQuantity, handleDecre
 
         <button
             type="button"
-            className={`item__actions__button item__actions__button--${quantityIsOne ? 'remove u-bgcolor-red' : 'decrease u-bgcolor-green'} u-color-white`}
-            onClick={quantityIsOne ? handleDeleteListItem : handleDecreaseQuantity}
+            className="c-item__button u-baseline-x3"
+            onClick={handleDeleteListItem}
         >
             <Svg sprite={cross} />
         </button>
@@ -39,11 +30,8 @@ const ListItemActions = ({ handleBlurQuantity, handleChangeQuantity, handleDecre
 ListItemActions.propTypes = {
     handleBlurQuantity: PropTypes.func.isRequired,
     handleChangeQuantity: PropTypes.func.isRequired,
-    handleDecreaseQuantity: PropTypes.func.isRequired,
     handleDeleteListItem: PropTypes.func.isRequired,
-    handleIncreaseQuantity: PropTypes.func.isRequired,
-    quantity: PropTypes.string,
-    quantityIsOne: PropTypes.bool.isRequired
+    quantity: PropTypes.string
 };
 
 export default ListItemActions;

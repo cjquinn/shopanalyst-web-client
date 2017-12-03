@@ -1,18 +1,18 @@
 // Actions
 import * as actions from './actions';
 
-const user = (state = {isFetching: true}, action) => {
+const user = (state = {isLoading: true}, action) => {
     switch (action.type) {
         case actions.fetchCurrentUserRequest.toString():
             return {
                 ...state,
-                isFetching: true
+                isLoading: true
             };
 
         case actions.fetchCurrentUserFailure.toString():
             return {
                 ...state,
-                isFetching: false
+                isLoading: false
             };
 
         case actions.fetchCurrentUserSuccess.toString():
@@ -21,7 +21,7 @@ const user = (state = {isFetching: true}, action) => {
         case actions.updateSettingsSuccess.toString():
             return {
                 ...action.payload,
-                isFetching: false
+                isLoading: false
             };
 
         default:

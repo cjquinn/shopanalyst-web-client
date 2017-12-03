@@ -4,13 +4,17 @@ import { Link } from 'react-router-dom';
 
 // Components
 import ListCard from './ListCard';
+import Splash from '../components/Splash';
 
 const Lists = ({ isFetching, fetchMoreLists, lists, match, total }) => (
     <div className="u-space-2">
-        {lists.length === 0 && !isFetching &&
-            <p className="o-type-medium u-color-brown u-text-center">
-                Once you&#039;ve <Link className="o-link" to={`${match.url}/create`}>created a list</Link> it will show here
-            </p>
+        {lists.length === 0 &&
+            (isFetching
+                ? <Splash>Loading...</Splash>
+                : <p className="o-type-medium u-color-brown u-text-center">
+                    Once you&#039;ve <Link className="o-link" to={`${match.url}/create`}>created a list</Link> it will show here
+                </p>
+            )
         }
 
         {lists.length > 0 &&

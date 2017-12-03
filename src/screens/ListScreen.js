@@ -1,68 +1,60 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Link, Route, Switch } from 'react-router-dom';
 
 // Components
 import Header from '../components/Header';
+import HeaderLink from '../components/HeaderLink';
+import HeaderTitle from '../components/HeaderTitle';
 import ScreenWrapper from '../components/ScreenWrapper';
 import Splash from '../components/Splash';
+import Svg from '../components/Svg';
+import Template from '../components/Template';
 
 // Containers
-import AddItemsFormContainer from '../containers/AddItemsFormContainer';
-import DuplicateListButtonContainer from '../containers/DuplicateListButtonContainer';
 import ListItemsContainer from '../containers/ListItemsContainer';
-import UpdateListFormContainer from '../containers/UpdateListFormContainer';
 
-const ListScreen = ({ list, location, match }) => (
-    <div>
-        {list &&
-            <Switch>
-                <Route exact path={`${match.path}/edit`} component={UpdateListFormContainer} />
-                <Route render={() => (
-                    <Header>
-                        {location.pathname === `${match.url}/add-items`
-                            ? 'Add Items'
-                            : <Link className="o-link u-color-grey" to={`${match.url}/edit`}>{list ? list.name : 'Loading'}</Link>
-                        }
-                    </Header>
-                )} />
-            </Switch>
-        }
+// Sprites
+import back from '../assets/svg/back.svg';
+import ellipsis from '../assets/svg/ellipsis.svg';
 
-        {list && <Route exact path={`${match.path}/add-items`} component={AddItemsFormContainer} />}
-
+const ListScreen = ({ list }) => (
+    <Template>
         {!list && <Splash>Loading...</Splash>}
 
         {list &&
-            <ScreenWrapper>
-                <Route exact path={match.url} render={() => (
-                    <Link className="o-button" to={`${match.url}/add-items`}>
-                        Add items
-                    </Link>
-                )} />
+            <Template>
+                <Header>
+                    <HeaderLink side="left" to="/lists">
+                        <Svg sprite={back} />
+                    </HeaderLink>
 
-                <div className="list-meta">
-                    <span className="o-type-small">
-                        {list.itemsProgress}
-                    </span>
+                    <HeaderTitle>{list.name}</HeaderTitle>
 
-                    <span className="o-type-small u-color-brown">
-                        {list.date}
-                    </span>
-                </div>
+                    <HeaderLink side="right" to="/">
+                        <Svg sprite={ellipsis} />
+                    </HeaderLink>
+                </Header>
 
-                <ListItemsContainer />
+                <ScreenWrapper>
+                    <div className="o-type-medium u-flex u-jc-between u-ai-center">
+                        <span>
+                            {list.itemsProgress}
+                        </span>
 
-                <DuplicateListButtonContainer />
-            </ScreenWrapper>
+                        <span className="u-color-help">
+                            {list.date}
+                        </span>
+                    </div>
+
+                    <ListItemsContainer />
+                </ScreenWrapper>
+            </Template>
         }
-    </div>
+    </Template>
 );
 
 ListScreen.propTypes = {
-    list: PropTypes.object,
-    location: PropTypes.object.isRequired,
-    match: PropTypes.object.isRequired
+    list: PropTypes.object
 };
 
 export default ListScreen;
