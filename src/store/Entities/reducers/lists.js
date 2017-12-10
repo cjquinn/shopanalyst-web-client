@@ -1,6 +1,6 @@
 // Actions
 import { addItemsSuccess } from '../../List/actions';
-import { deleteListItemSuccess, toggleCompletedSuccess } from '../../ListItem/actions';
+import { deleteListItemSuccess } from '../../ListItem/actions';
 
 // Utils
 import { mergeEntities } from './utils';
@@ -35,22 +35,6 @@ const deleteListItem = (state, { payload }) => {
     };
 };
 
-const moveCompleted = (state, { payload }) => {
-    const listItem = payload.entities.list_items[payload.result];
-    const list = state[listItem.list_id];
-    
-    const listItems = list.list_items.filter(listItemId => listItemId !== listItem.id);
-    listItems.splice(listItem.is_complete ? listItems.length : 0, 0, listItem.id);
-
-    return {
-        ...state,
-        [listItem.list_id]: {
-            ...list,
-            list_items: listItems
-        }
-    };
-};
-
 const lists = (state = {}, action) => {
     switch (action.type) {
         case addItemsSuccess.toString():
@@ -58,9 +42,6 @@ const lists = (state = {}, action) => {
 
         case deleteListItemSuccess.toString():
             return deleteListItem(state, action);
-
-        case toggleCompletedSuccess.toString():
-            return moveCompleted(state, action);
 
         default:
             return mergeEntities('lists')(state, action);

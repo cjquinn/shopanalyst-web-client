@@ -21,13 +21,15 @@ class ListScreenContainer extends Component {
         fetchList().catch(handle404(history));
     }
 
+    handleFocusAddItems = () => this.props.history.push(`${this.props.match.url}/add-items`);
+
     render() {
-        const { list, location, match } = this.props;
+        const { list, match } = this.props;
 
         return (
             <ListScreen
+                handleFocusAddItems={this.handleFocusAddItems}
                 list={list}
-                location={location}
                 match={match}
             />
         );
@@ -38,7 +40,6 @@ ListScreenContainer.propTypes = {
     fetchList: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
     list: PropTypes.object,
-    location: PropTypes.object.isRequired,
     match: PropTypes.object.isRequired
 };
 

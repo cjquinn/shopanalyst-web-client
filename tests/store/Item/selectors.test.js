@@ -55,6 +55,14 @@ describe('selectors', () => {
     });
 
     it('getOptions', () => {
+        const props = {
+            match: {
+                params: {
+                    id: 1
+                }
+            }
+        };
+
         // Just existing item
         let state = {
             entities: {
@@ -70,7 +78,7 @@ describe('selectors', () => {
 
         let expected = [];
 
-        expect(getOptions(1)(state)).toEqual(expected);
+        expect(getOptions(state, props)).toEqual(expected);
 
         // Just search term
         state = {
@@ -91,7 +99,7 @@ describe('selectors', () => {
             is_existing: false
         }];
 
-        expect(getOptions(1)(state)).toEqual(expected);
+        expect(getOptions(state, props)).toEqual(expected);
 
         // Search term same as item
         state = {
@@ -124,7 +132,7 @@ describe('selectors', () => {
             }
         ];
 
-        expect(getOptions(1)(state)).toEqual(expected);
+        expect(getOptions(state, props)).toEqual(expected);
 
         // Search term and existing item
         state = {
@@ -153,7 +161,7 @@ describe('selectors', () => {
             }
         ];
 
-        expect(getOptions(1)(state)).toEqual(expected);
+        expect(getOptions(state, props)).toEqual(expected);
 
         // Search term already selected
         state = {
@@ -170,7 +178,7 @@ describe('selectors', () => {
 
         expected = [];
 
-        expect(getOptions(1)(state)).toEqual(expected);
+        expect(getOptions(state, props)).toEqual(expected);
 
         // Search term and item already selected
         state = {
@@ -187,7 +195,7 @@ describe('selectors', () => {
 
         expected = [];
 
-        expect(getOptions(1)(state)).toEqual(expected);
+        expect(getOptions(state, props)).toEqual(expected);
 
         // Search term is selected item
         state = {
@@ -204,7 +212,7 @@ describe('selectors', () => {
 
         expected = [];
 
-        expect(getOptions(1)(state)).toEqual(expected);
+        expect(getOptions(state, props)).toEqual(expected);
 
         // Existing on list
         state = {
@@ -233,7 +241,7 @@ describe('selectors', () => {
             }
         ];
 
-        expect(getOptions(1)(state)).toEqual(expected);
+        expect(getOptions(state, props)).toEqual(expected);
     });
 
     it('getSelected', () => {

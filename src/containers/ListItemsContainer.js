@@ -10,16 +10,16 @@ import { toggleCompleted } from '../store/ListItem/actions';
 import ListItems from '../components/ListItems';
 
 // Selectors
-import { getListItems } from '../store/List/selectors';
+import { getListItemsByCompleted } from '../store/List/selectors';
 
 class ListItemsContainer extends Component {
     render() {
-        const { listItems, match, toggleCompleted } = this.props;
+        const { listItemsByCompleted, match, toggleCompleted } = this.props;
 
         return (
             <ListItems
                 handleToggleCompleted={toggleCompleted}
-                listItems={listItems}
+                listItemsByCompleted={listItemsByCompleted}
                 match={match}
             />
         );
@@ -27,13 +27,13 @@ class ListItemsContainer extends Component {
 }
 
 ListItemsContainer.propTypes = {
-    listItems: PropTypes.array.isRequired,
+    listItemsByCompleted: PropTypes.object.isRequired,
     match: PropTypes.object.isRequired,
     toggleCompleted: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => ({
-    listItems: getListItems(ownProps.match.params.id)(state)
+    listItemsByCompleted: getListItemsByCompleted(state, ownProps)
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

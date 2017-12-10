@@ -50,11 +50,11 @@ const createOption = (item, search, listItems) => ({
         : false
 });
 
-export const getOptions = listId => createSelector(
+export const getOptions = createSelector(
     state => state.item.search,
     getSelected,
     getItems,
-    getListItems(listId),
+    getListItems,
     (search, selected, items, listItems) => {
         // No search term
         if (search.length === 0) {
