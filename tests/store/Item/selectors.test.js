@@ -1,4 +1,4 @@
-import { getIsFetching, getOptions } from '../../../src/store/Item/selectors';
+import { getIsFetching, getItemOptions } from '../../../src/store/Item/selectors';
 
 describe('selectors', () => {
     it('getIsFetching', () => {
@@ -7,7 +7,7 @@ describe('selectors', () => {
         expect(getIsFetching(state)).toEqual(true);
     });
 
-    it('getOptions', () => {
+    it('getItemOptions', () => {
         const props = {
             match: {
                 params: {
@@ -30,7 +30,7 @@ describe('selectors', () => {
 
         let expected = [];
 
-        expect(getOptions(state, props)).toEqual(expected);
+        expect(getItemOptions(state, props)).toEqual(expected);
 
         // Just search term
         state = {
@@ -49,7 +49,7 @@ describe('selectors', () => {
             is_existing: false
         }];
 
-        expect(getOptions(state, props)).toEqual(expected);
+        expect(getItemOptions(state, props)).toEqual(expected);
 
         // Search term same as item
         state = {
@@ -79,7 +79,7 @@ describe('selectors', () => {
             }
         ];
 
-        expect(getOptions(state, props)).toEqual(expected);
+        expect(getItemOptions(state, props)).toEqual(expected);
 
         // Search term and existing item
         state = {
@@ -105,7 +105,7 @@ describe('selectors', () => {
             }
         ];
 
-        expect(getOptions(state, props)).toEqual(expected);
+        expect(getItemOptions(state, props)).toEqual(expected);
 
         // Existing on list
         state = {
@@ -131,6 +131,6 @@ describe('selectors', () => {
             }
         ];
 
-        expect(getOptions(state, props)).toEqual(expected);
+        expect(getItemOptions(state, props)).toEqual(expected);
     });
 });

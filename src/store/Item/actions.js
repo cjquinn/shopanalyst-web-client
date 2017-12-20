@@ -14,16 +14,17 @@ export const fetchItemsSuccess = createAction('FETCH_ITEMS_SUCCESS');
 export const fetchItemsFailure = createAction('FETCH_ITEMS_FAILURE');
 
 export const fetchItems = search => (dispatch, getState, api) => {
-    dispatch(setSearch(search));
     dispatch(fetchItemsRequest());
 
-    if (search.length < 2) {
-        return dispatch(fetchItemsSuccess({result: []}));
+    if (search.length > 1) {
+        return api.fetchItems(search)
+            .then(api.checkStatus)
+            .then(response => normalize(response.data.items, [itemSchema]))
+            .then(normalizedData => dispatch(fetchItemsSuccess(normalizedData)))
+            .then(() => dispatch(setSearch(search)))
+            .catch(api.handleError(dispatch, fetchItemsFailure));
     }
 
-    return api.fetchItems(search)
-        .then(api.checkStatus)
-        .then(response => normalize(response.data.items, [itemSchema]))
-        .then(normalizedData => dispatch(fetchItemsSuccess(normalizedData)))
-        .catch(api.handleError(dispatch, fetchItemsFailure));
+    dispatch(fetchItemsSuccess({result: []}));
+    dispatch(setSearch(search));
 };

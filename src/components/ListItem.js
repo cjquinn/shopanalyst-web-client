@@ -22,7 +22,7 @@ const ListItem = ({ listItem, handleToggleCompleted }) => (
 
         <label
             htmlFor={`list-items-${listItem.id}`}
-            className="c-item__label u-flex u-ai-center"
+            className="c-item__label u-flex u-ai-center u-pointer"
         >
             <div className="c-item__tick u-flex u-bradius-100">
                 <Svg sprite={tick} />

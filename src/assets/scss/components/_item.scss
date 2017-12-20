@@ -5,6 +5,7 @@
     margin: 0  $baseLine 0 $baseLine / 2;
     background-color: $border;
     color: $foreground;
+    transition: color .15s ease-in, background-color .15s ease-in;
   }
 
   &__checkbox:checked + &__label {
@@ -26,5 +27,14 @@
 
   &--complete {
     text-decoration: line-through;
+  }
+
+  &__label {
+    &:hover {
+      .c-item__tick {
+        background-color: $paleGreen;
+        color: $successBackground;
+      }
+    }
   }
 }

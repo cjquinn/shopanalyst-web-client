@@ -21,10 +21,6 @@ describe('fetchItems', () => {
         return store.dispatch(actions.fetchItems('Potato Waffles'))
             .then(() => {
                 const expected = [
-                    {
-                        type: actions.setSearch.toString(),
-                        payload: 'Potato Waffles'
-                    },
                     {type: actions.fetchItemsRequest.toString()},
                     {type: actions.fetchItemsFailure.toString()},
                     {type: signOut.toString()}
@@ -47,10 +43,6 @@ describe('fetchItems', () => {
         return store.dispatch(actions.fetchItems('Potato Waffles'))
             .then(() => {
                 const expected = [
-                    {
-                        type: actions.setSearch.toString(),
-                        payload: 'Potato Waffles'
-                    },
                     {type: actions.fetchItemsRequest.toString()},
                     {
                         type: actions.fetchItemsSuccess.toString(),
@@ -60,6 +52,10 @@ describe('fetchItems', () => {
                             },
                             result: [3]
                         }
+                    },
+                    {
+                        type: actions.setSearch.toString(),
+                        payload: 'Potato Waffles'
                     }
                 ];
 
@@ -71,14 +67,14 @@ describe('fetchItems', () => {
         store.dispatch(actions.fetchItems(''));
 
         const expected = [
-            {
-                type: actions.setSearch.toString(),
-                payload: ''
-            },
             {type: actions.fetchItemsRequest.toString()},
             {
                 type: actions.fetchItemsSuccess.toString(),
                 payload: {result: []}
+            },
+            {
+                type: actions.setSearch.toString(),
+                payload: ''
             }
         ];
 

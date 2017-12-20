@@ -12,13 +12,15 @@ import Svg from '../components/Svg';
 import Template from '../components/Template';
 
 // Containers
+import AddItemsInputContainer from '../containers/AddItemsInputContainer';
+import ItemOptionsContainer from '../containers/ItemOptionsContainer';
 import ListItemsContainer from '../containers/ListItemsContainer';
 
 // Sprites
 import back from '../assets/svg/back.svg';
 import ellipsis from '../assets/svg/ellipsis.svg';
 
-const ListScreen = ({ handleFocusAddItems, list, match }) => (
+const ListScreen = ({ list, match }) => (
     <Template>
         {!list && <Splash>Loading...</Splash>}
 
@@ -60,27 +62,21 @@ const ListScreen = ({ handleFocusAddItems, list, match }) => (
                                 <ListItemsContainer {...matchProps} />
                             </Template>
                         } />
-                        <Route exact path={`${match.path}/add-items`} render={() => {
-                            return <p>Add items</p>;
-                        }} />
+                        <Route
+                            exact
+                            path={`${match.path}/add-items`}
+                            component={ItemOptionsContainer}
+                        />
                     </Switch>
                 </ScreenWrapper>
 
-                <div className="c-add-items-input u-1/1 u-bgcolor-foreground u-fixed u-p">
-                    <input
-                        className="c-input u-1/1 u-baseline-x3 u-b u-block u-bradius u-ph"
-                        type="text"
-                        placeholder="Add items..."
-                        onFocus={handleFocusAddItems}
-                    />
-                </div>
+                <AddItemsInputContainer />
             </Template>
         }
     </Template>
 );
 
 ListScreen.propTypes = {
-    handleFocusAddItems: PropTypes.func.isRequired,
     list: PropTypes.object,
     match: PropTypes.object.isRequired
 };

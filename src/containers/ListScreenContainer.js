@@ -21,14 +21,11 @@ class ListScreenContainer extends Component {
         fetchList().catch(handle404(history));
     }
 
-    handleFocusAddItems = () => this.props.history.push(`${this.props.match.url}/add-items`);
-
     render() {
         const { list, match } = this.props;
 
         return (
             <ListScreen
-                handleFocusAddItems={this.handleFocusAddItems}
                 list={list}
                 match={match}
             />
