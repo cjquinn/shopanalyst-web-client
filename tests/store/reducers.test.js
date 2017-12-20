@@ -73,8 +73,7 @@ describe('app', () => {
             item: {
                 ids: [],
                 isFetching: false,
-                search: '',
-                selected: []
+                search: ''
             },
             list: {
                 ids: [],

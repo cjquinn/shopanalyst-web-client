@@ -1,11 +1,10 @@
 // Actions
-import { addItemsSuccess } from '../../List/actions';
-import { deleteListItemSuccess } from '../../ListItem/actions';
+import { addListItemSuccess, deleteListItemSuccess } from '../../ListItem/actions';
 
 // Utils
 import { mergeEntities } from './utils';
 
-const addItems = (state, { payload }) => {
+const addItem = (state, { payload }) => {
     const { listId, result } = payload;
     const list = state[listId];
 
@@ -14,7 +13,7 @@ const addItems = (state, { payload }) => {
         [listId]: {
             ...list,
             list_items: [
-                ...result,
+                result,
                 ...list.list_items
             ]
         }
@@ -37,8 +36,8 @@ const deleteListItem = (state, { payload }) => {
 
 const lists = (state = {}, action) => {
     switch (action.type) {
-        case addItemsSuccess.toString():
-            return addItems(state, action);
+        case addListItemSuccess.toString():
+            return addItem(state, action);
 
         case deleteListItemSuccess.toString():
             return deleteListItem(state, action);

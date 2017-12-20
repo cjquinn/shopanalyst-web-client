@@ -2,31 +2,10 @@ import { normalize } from 'normalizr';
 import { createAction } from 'redux-actions';
 
 // Schema
-import { list as listSchema, listItem as listItemSchema } from '../schema';
+import { list as listSchema } from '../schema';
 
 // Selectors
-import { getAddItemsData } from '../Item/selectors';
 import { getPage } from './selectors';
-
-/**
- * Add Items
- */
-export const addItemsRequest = createAction('ADD_ITEMS_REQUEST');
-export const addItemsSuccess = createAction('ADD_ITEMS_SUCCESS');
-export const addItemsFailure = createAction('ADD_ITEMS_FAILURE');
-
-export const addItems = id => (dispatch, getState, api) => {
-    dispatch(addItemsRequest());
-
-    return api.addItems(id, getAddItemsData(getState()))
-        .then(api.checkStatus)
-        .then(response => normalize(response.data.listItems, [listItemSchema]))
-        .then(normalizedData => dispatch(addItemsSuccess({
-            ...normalizedData,
-            listId: id
-        })))
-        .catch(api.handleError(dispatch, addItemsFailure));
-};
 
 /**
  * Create List

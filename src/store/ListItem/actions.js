@@ -5,6 +5,23 @@ import { createAction } from 'redux-actions';
 import { listItem as listItemSchema } from '../schema';
 
 /**
+ * Add list item
+ */
+export const addListItemRequest = createAction('ADD_LIST_ITEM_REQUEST');
+export const addListItemSuccess = createAction('ADD_LIST_ITEM_SUCCESS');
+export const addListItemFailure = createAction('ADD_LIST_ITEM_FAILURE');
+
+export const addListItem = listId => (dispatch, getState, api) => {
+    dispatch(addListItemRequest());
+
+    return api.addListItem(listId)
+        .then(api.checkStatus)
+        .then(response => normalize(response.data.listItem, listItemSchema))
+        .then(normalizedData => dispatch(addListItemSuccess(normalizedData)))
+        .catch(api.handleError(dispatch, addListItemFailure));
+};
+
+/**
  * Delete list item
  */
 export const deleteListItemRequest = createAction('DELETE_LIST_ITEM_REQUEST');

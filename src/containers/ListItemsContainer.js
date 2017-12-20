@@ -10,7 +10,7 @@ import { toggleCompleted } from '../store/ListItem/actions';
 import ListItems from '../components/ListItems';
 
 // Selectors
-import { getListItemsByCompleted } from '../store/List/selectors';
+import { getListItemsByCompleted } from '../store/ListItem/selectors';
 
 class ListItemsContainer extends Component {
     render() {

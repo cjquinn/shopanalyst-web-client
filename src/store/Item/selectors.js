@@ -1,93 +1,53 @@
-import React from 'react';
 import { sortBy } from 'lodash';
 import { createSelector } from 'reselect';
 
 // Selectors
-import { getListItems } from '../List/selectors';
+import { getListItems } from '../ListItem/selectors';
 
-export const getAddItemsData = createSelector(
-    state => state.item.selected,
-    selected => ({
-        list_items: selected.map(item => item.name
-            ? {item}
-            : {item_id: item}
-        )
-    })
-);
-
-export const getIsFetching = createSelector(
-    state => state.item.isFetching,
-    isFetching => isFetching
-);
-
-export const getItems = createSelector(
-    state => state.item.ids,
-    state => state.item.selected,
-    state => state.entities.items,
-    (ids, selected, items) => ids
-        .filter(id => selected.indexOf(id) === -1)
-        .map(id => items[id])
-);
-
-export const getSelected = createSelector(
-    state => state.item.selected,
-    state => state.entities.items,
-    (selected, items) => selected.map(selected => {
-        const item = selected.name ? selected : items[selected];
-
-        return {
-            ...item,
-            is_selected: true
-        };
-    })
-);
-
-const createOption = (item, search, listItems) => ({
-    ...item,
-    is_selected: false,
-    is_existing: listItems
-        ? listItems.some(listItem => listItem.item.id === item.id)
-        : false
-});
+export const getIsFetching = state => state.item.isFetching;
 
 export const getOptions = createSelector(
     state => state.item.search,
-    getSelected,
-    getItems,
+    state => state.item.ids,
+    state => state.entities.items,
     getListItems,
-    (search, selected, items, listItems) => {
+    (search, ids, items, listItems) => {
         // No search term
         if (search.length === 0) {
             return [];
         }
 
-        // Create new item if search term isn't already selected
-        let newOption;
-        if (!selected.some(item => item.name === search)) {
-            newOption = createOption({name: search}, search);
+        // Create new item
+        const newOption = {
+            name: search,
+            is_existing: false
+        };
+
+        // Just return search term if no items
+        if (ids.length === 0) {
+            return [newOption];
         }
 
-        // Just return search term or empty if already selected
-        if (items.length === 0) {
-            if (newOption) {
-                return [newOption];
-            }
+        // Check is item is existing on list if there are list items
+        const options = ids.map(
+            id => ({
+                ...items[id],
+                is_existing: listItems
+                    ? listItems.some(listItem => listItem.item.id === id)
+                    : false
+            })
+        );
 
-            return [];
-        }
-
-        // Just returns item if search term is in items
-        if (items.some(item => item.name === search) ||
-            !newOption
-        ) {
-            return items.map(item => createOption(item, search, listItems));
+        // Just returns items if search term is in options
+        if (options.some(option => option.name === search)) {
+            return options;
         }
 
         // EVERYTHING AND SORT IT BABY
         return sortBy(
             [
                 newOption,
-                ...items.map(item => createOption(item, search, listItems))
+                ...options
             ],
             item => item.name.toLowerCase()
         );

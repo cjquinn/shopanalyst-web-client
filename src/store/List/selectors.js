@@ -1,71 +1,46 @@
-import { denormalize } from 'normalizr';
 import { createSelector } from 'reselect';
-
-// Schema
-import { list as listSchema, listItem as listItemSchema } from '../schema';
-
-// Utils
-import { withComputed } from './utils';
 
 export const getIsFetching = state => state.list.isFetching;
 
-export const getList = id => createSelector(
-    state => state.entities,
-    entities => {
-        const list = denormalize(id, listSchema, entities);
-
+export const makeGetList = () => createSelector(
+    (state, props) => state.entities.lists[props.match.params.id],
+    state => state.entities.list_items,
+    (list, listItems) => {
         if (!list) {
             return null;
         }
 
-        return withComputed(list);
+        const listsListItems = list.list_items.map(
+            listItemId => listItems[listItemId]
+        );
+        
+        let completeCount = 0;
+        let itemsProgress = '0/0 items';
+        let progress = 0;
+
+        if (listsListItems &&
+            listsListItems.length > 0
+        ) {
+            completeCount = listsListItems
+                .filter(listItem => listItem.is_complete)
+                .length;
+            itemsProgress = `${completeCount}/${listsListItems.length} item${completeCount !== 1 ? 's' : ''}`;
+            progress = (completeCount / listsListItems.length) * 100;
+        }
+
+        return {
+            ...list,
+            itemsProgress,
+            progress
+        };
     }
 );
 
-export const getListItems = createSelector(
-    (state, props) => state.entities.lists[props.match.params.id],
-    state => state.entities.items,
-    state => state.entities.list_items,
-    (list, items, list_items) => list
-        ? denormalize(list.list_items || [], [listItemSchema], {items, list_items})
-        : []
-);
-
-export const getListItemsByCompleted = createSelector(
-    getListItems,
-    listItems =>
-        listItems
-            .sort((a, b) => {
-                if (a.modified > b.modified) {
-                    return -1;
-                }
-
-                if (a.modified < b.modified) {
-                    return 1;
-                }
-
-                return 0;
-            })
-            .reduce((result, listItem) => ({
-                ...result,
-                [listItem.completed ? 'complete' : 'incomplete']: [
-                    ...result[listItem.completed ? 'complete' : 'incomplete'],
-                    listItem       
-                ]
-            }), {complete: [], incomplete: []})
-);
-
-export const getListName = id => createSelector(
-    state => state.entities.lists[id],
-    list => list.name
-);
-
-export const getLists = createSelector(
-    state => state.list.ids,
-    state => state.entities,
-    (ids, entities) => denormalize(ids, [listSchema], entities)
-        .map(list => withComputed(list))
-);
+export const getLists = state => state.list.ids.map(id => {
+    const getList = makeGetList();
+    
+    return getList(state, {match: {params: {id}}});
+});
 
 export const getPage = state => state.list.page;
 

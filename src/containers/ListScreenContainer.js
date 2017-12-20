@@ -12,7 +12,7 @@ import { handle404 } from '../store/api';
 import ListScreen from '../screens/ListScreen';
 
 // Selectors
-import { getList } from '../store/List/selectors';
+import { makeGetList } from '../store/List/selectors';
 
 class ListScreenContainer extends Component {
     componentDidMount() {
@@ -43,12 +43,16 @@ ListScreenContainer.propTypes = {
     match: PropTypes.object.isRequired
 };
 
-const mapStateToProps = (state, ownProps) => ({
-    list: getList(ownProps.match.params.id)(state)
-});
+const makeMapStateToProps = () => {
+    const getList = makeGetList();
+
+    return (state, ownProps) => ({
+        list: getList(state, ownProps)
+    });
+};
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     fetchList: () => dispatch(fetchList(ownProps.match.params.id))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListScreenContainer);
+export default connect(makeMapStateToProps, mapDispatchToProps)(ListScreenContainer);

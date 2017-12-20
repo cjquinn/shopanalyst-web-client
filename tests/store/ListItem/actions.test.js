@@ -8,6 +8,55 @@ import { signOut } from '../../../src/store/User/actions';
 const mock = new MockAdapter(axios);
 let store;
 
+describe('addListItem', () => {
+    beforeEach(() => store = global.configureStore());
+
+    afterEach(() => mock.reset());
+
+    it('failure', () => {
+        mock
+            .onPost('/lists/1/list-items.json')
+            .reply(403);
+
+        return store.dispatch(actions.addListItem(1))
+            .then(() => {
+                const expected = [
+                    {type: actions.addListItemRequest.toString()},
+                    {type: actions.addListItemFailure.toString()},
+                    {type: signOut.toString()}
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+            });
+    });
+
+    it('success', () => {
+        mock
+            .onPost('/lists/1/list-items.json')
+            .reply(200, {
+                listItem: {id: 1}
+            });
+
+        return store.dispatch(actions.addListItem(1))
+            .then(() => {
+                const expected = [
+                    {type: actions.addListItemRequest.toString()},
+                    {
+                        type: actions.addListItemSuccess.toString(),
+                        payload: {
+                            entities: {
+                                list_items: {1: {id: 1}}
+                            },
+                            result: 1
+                        }
+                    }
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+            });
+    });
+});
+
 describe('deleteListItem', () => {
     beforeEach(() => store = global.configureStore());
 

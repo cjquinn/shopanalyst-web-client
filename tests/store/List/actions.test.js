@@ -8,56 +8,6 @@ import { signOut } from '../../../src/store/User/actions';
 const mock = new MockAdapter(axios);
 let store;
 
-describe('addItems', () => {
-    beforeEach(() => store = global.configureStore({item: {selected: []}}));
-
-    afterEach(() => mock.reset());
-
-    it('failure', () => {
-        mock
-            .onPatch('/lists/1/add-items.json')
-            .reply(403);
-
-        return store.dispatch(actions.addItems(1))
-            .then(() => {
-                const expected = [
-                    {type: actions.addItemsRequest.toString()},
-                    {type: actions.addItemsFailure.toString()},
-                    {type: signOut.toString()}
-                ];
-
-                expect(store.getActions()).toEqual(expected);
-            });
-    });
-
-    it('success', () => {
-        mock
-            .onPatch('/lists/1/add-items.json')
-            .reply(200, {
-                listItems: [{id: 1}]
-            });
-
-        return store.dispatch(actions.addItems(1))
-            .then(() => {
-                const expected = [
-                    {type: actions.addItemsRequest.toString()},
-                    {
-                        type: actions.addItemsSuccess.toString(),
-                        payload: {
-                            entities: {
-                                list_items: {1: {id: 1}}
-                            },
-                            listId: 1,
-                            result: [1]
-                        }
-                    }
-                ];
-
-                expect(store.getActions()).toEqual(expected);
-            });
-    });
-});
-
 describe('createList', () => {
     beforeEach(() => store = global.configureStore());
 

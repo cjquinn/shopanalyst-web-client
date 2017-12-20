@@ -1,6 +1,6 @@
 // Actions
-import { addItemsSuccess } from '../../../../src/store/List/actions';
-import { deleteListItemSuccess, toggleCompletedSuccess } from '../../../../src/store/ListItem/actions';
+import { addListItemSuccess } from '../../../../src/store/ListItem/actions';
+import { deleteListItemSuccess } from '../../../../src/store/ListItem/actions';
 
 // Reducers
 import lists from '../../../../src/store/Entities/reducers/lists';
@@ -13,8 +13,8 @@ describe('initial state', () => {
     });
 });
 
-describe('addItems', () => {
-    it(addItemsSuccess.toString(), () => {
+describe('addListItem', () => {
+    it(addListItemSuccess.toString(), () => {
         const state = {
             1: {
                 id: 1,
@@ -33,10 +33,10 @@ describe('addItems', () => {
 
         const payload = {
             listId: 1,
-            result: [2]
+            result: 2
         };
 
-        expect(lists(state, addItemsSuccess(payload))).toEqual(expected);
+        expect(lists(state, addListItemSuccess(payload))).toEqual(expected);
     });
 });
 

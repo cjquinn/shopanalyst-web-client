@@ -4,12 +4,7 @@ import { createAction } from 'redux-actions';
 // Schema
 import { item as itemSchema } from '../schema';
 
-/**
- * Add Items
- */
-export const deselectItem = createAction('DESELECT_ITEM');
-export const resetAddItemsForm = createAction('RESET_ADD_ITEMS_FORM');
-export const selectItem = createAction('SELECT_ITEM');
+export const setSearch = createAction('SET_SEARCH');
 
 /**
  * Fetch Lists
@@ -17,8 +12,6 @@ export const selectItem = createAction('SELECT_ITEM');
 export const fetchItemsRequest = createAction('FETCH_ITEMS_REQUEST');
 export const fetchItemsSuccess = createAction('FETCH_ITEMS_SUCCESS');
 export const fetchItemsFailure = createAction('FETCH_ITEMS_FAILURE');
-
-export const setSearch = createAction('SET_SEARCH');
 
 export const fetchItems = search => (dispatch, getState, api) => {
     dispatch(setSearch(search));
@@ -34,4 +27,3 @@ export const fetchItems = search => (dispatch, getState, api) => {
         .then(normalizedData => dispatch(fetchItemsSuccess(normalizedData)))
         .catch(api.handleError(dispatch, fetchItemsFailure));
 };
-

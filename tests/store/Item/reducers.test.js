@@ -1,6 +1,5 @@
 // Actions
 import * as actions from '../../../src/store/Item/actions';
-import { addItemsSuccess } from '../../../src/store/List/actions';
 
 // Reducers
 import reducers from '../../../src/store/Item/reducers';
@@ -10,8 +9,7 @@ describe('initial state', () => {
         const expected = {
             ids: [],
             isFetching: false,
-            search: '',
-            selected: []
+            search: ''
         };
 
         expect(reducers(undefined, {})).toEqual(expected);
@@ -23,15 +21,13 @@ describe('fetchItems', () => {
         const state = {
             ids: [],
             isFetching: false,
-            search: '',
-            selected: []
+            search: ''
         };
 
         const expected = {
             ids: [],
             isFetching: false,
-            search: 'Potato Waffles',
-            selected: []
+            search: 'Potato Waffles'
         };
 
         expect(reducers(state, actions.setSearch('Potato Waffles'))).toEqual(expected);
@@ -41,15 +37,13 @@ describe('fetchItems', () => {
         const state = {
             ids: [],
             isFetching: false,
-            search: '',
-            selected: []
+            search: ''
         };
 
         const expected = {
             ids: [],
             isFetching: true,
-            search: '',
-            selected: []
+            search: ''
         };
 
         expect(reducers(state, actions.fetchItemsRequest())).toEqual(expected);
@@ -59,15 +53,13 @@ describe('fetchItems', () => {
         const state = {
             ids: [],
             isFetching: true,
-            search: '',
-            selected: []
+            search: ''
         };
 
         const expected = {
             ids: [],
             isFetching: false,
-            search: '',
-            selected: []
+            search: ''
         };
 
         expect(reducers(state, actions.fetchItemsFailure())).toEqual(expected);
@@ -77,129 +69,17 @@ describe('fetchItems', () => {
         const state = {
             ids: [],
             isFetching: true,
-            search: '',
-            selected: []
+            search: ''
         };
 
         const expected = {
             ids: [1],
             isFetching: false,
-            search: '',
-            selected: []
+            search: ''
         };
 
         const payload = {result: [1]};
 
         expect(reducers(state, actions.fetchItemsSuccess(payload))).toEqual(expected);
-    });
-});
-
-describe('addItems', () => {
-    it(actions.deselectItem.toString(), () => {
-        let state = {
-            ids: [],
-            isFetching: false,
-            search: '',
-            selected: [
-                {name: 'Potato Waffles'},
-                1
-            ]
-        };
-
-        let expected = {
-            ids: [],
-            isFetching: false,
-            search: '',
-            selected: [{name: 'Potato Waffles'}]
-        };
-
-        let payload = {
-            id: 1,
-            name: 'Potato'
-        };
-
-        expect(reducers(state, actions.deselectItem(payload))).toEqual(expected);
-
-        state = {
-            ids: [],
-            isFetching: false,
-            search: '',
-            selected: [
-                {name: 'Potato Waffles'},
-                1
-            ]
-        };
-
-        expected = {
-            ids: [],
-            isFetching: false,
-            search: '',
-            selected: [1]
-        };
-
-        payload = {name: 'Potato Waffles'};
-
-        expect(reducers(state, actions.deselectItem(payload))).toEqual(expected);
-    });
-
-    it(actions.resetAddItemsForm.toString(), () => {
-        let state = {
-            ids: [1],
-            isFetching: true,
-            search: 'Eggs',
-            selected: [1]
-        };
-
-        let expected = {
-            ids: [],
-            isFetching: false,
-            search: '',
-            selected: []
-        };
-
-        expect(reducers(state, actions.resetAddItemsForm())).toEqual(expected);
-    });
-
-    it(actions.selectItem.toString(), () => {
-        // Select new item
-        let state = {
-            ids: [],
-            isFetching: false,
-            search: '',
-            selected: []
-        };
-
-        let expected = {
-            ids: [],
-            isFetching: false,
-            search: '',
-            selected: [{name: 'Potato Waffles'}]
-        };
-
-        let payload = {name: 'Potato Waffles'};
-
-        expect(reducers(state, actions.selectItem(payload))).toEqual(expected);
-
-        // Select item
-        state = {
-            ids: [1],
-            isFetching: false,
-            search: '',
-            selected: [{name: 'Potato Waffles'}]
-        };
-
-        expected = {
-            ids: [1],
-            isFetching: false,
-            search: '',
-            selected: [
-                1,
-                {name: 'Potato Waffles'}
-            ]
-        };
-
-        payload = {id: 1};
-
-        expect(reducers(state, actions.selectItem(payload))).toEqual(expected);
     });
 });
