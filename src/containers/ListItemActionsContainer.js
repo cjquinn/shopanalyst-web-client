@@ -25,11 +25,7 @@ class ListItemActionsContainer extends Component {
 
     handleChangeQuantity = event => this.setState({quantity: event.target.value});
 
-    handleDecreaseQuantity = () => this.setQuantity(this.props.listItem.quantity - 1);
-
     handleDeleteListItem = () => this.props.deleteListItem(this.props.listItem);
-
-    handleIncreaseQuantity = () => this.setQuantity(this.props.listItem.quantity + 1);
 
     setQuantity = quantity => this.setState(
         {quantity: String(quantity)},
@@ -43,17 +39,11 @@ class ListItemActionsContainer extends Component {
     }
 
     render() {
-        const quantityIsOne = this.props.listItem.quantity === 1;
-
         return (
             <ListItemActions
                 handleBlurQuantity={this.handleBlurQuantity}
                 handleChangeQuantity={this.handleChangeQuantity}
-                handleDecreaseQuantity={this.handleDecreaseQuantity}
                 handleDeleteListItem={this.handleDeleteListItem}
-                handleQuantityUpdated={this.handleQuantityUpdated}
-                handleIncreaseQuantity={this.handleIncreaseQuantity}
-                quantityIsOne={quantityIsOne}
                 quantity={this.state.quantity}
             />
         );
