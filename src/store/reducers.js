@@ -29,7 +29,7 @@ const reducers = (state, action) => {
         state.entities = undefined;
         state.item = undefined;
         state.list = undefined;
-        state.user = {isFetching: false};
+        state.user = {isLoading: false};
     }
 
     return app(state, action);

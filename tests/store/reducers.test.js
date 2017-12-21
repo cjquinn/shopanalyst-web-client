@@ -81,7 +81,7 @@ describe('app', () => {
                 page: 1,
                 total: 0
             },
-            user: {isFetching: false}
+            user: {isLoading: false}
         };
 
         const updatedState = reducers(state, signOut());

@@ -8,19 +8,19 @@ import Template from '../components/Template';
 
 // Containers
 import NavContainer from '../containers/NavContainer';
-import SignOutLinkContainer from '../containers/SignOutLinkContainer';
+import SignOutHeaderLinkContainer from '../containers/SignOutHeaderLinkContainer';
 import UpdateSettingsFormContainer from '../containers/UpdateSettingsFormContainer';
 
 const SettingsScreen = () => (
     <Template>
         <Header>
             <HeaderTitle>Settings</HeaderTitle>
+
+            <SignOutHeaderLinkContainer />
         </Header>
 
         <ScreenWrapper>
             <UpdateSettingsFormContainer />
-
-            <SignOutLinkContainer />
         </ScreenWrapper>
 
         <NavContainer />

@@ -6,15 +6,15 @@ import { connect } from 'react-redux';
 import { signOut } from '../store/User/actions';
 
 // Components
-import SignOutLink from '../components/SignOutLink';
+import SignOutHeaderLink from '../components/SignOutHeaderLink';
 
-class SignOutLinkContainer extends Component {
+class SignOutHeaderLinkContainer extends Component {
     render() {
-        return <SignOutLink handleClick={this.props.signOut} />;
+        return <SignOutHeaderLink handleSignOut={this.props.signOut} />;
     }
 }
 
-SignOutLinkContainer.propTypes = {
+SignOutHeaderLinkContainer.propTypes = {
     signOut: PropTypes.func.isRequired
 };
 
@@ -22,4 +22,4 @@ const mapDispatchToProps = dispatch => ({
     signOut: () => dispatch(signOut())
 });
 
-export default connect(null, mapDispatchToProps)(SignOutLinkContainer);
+export default connect(null, mapDispatchToProps)(SignOutHeaderLinkContainer);
