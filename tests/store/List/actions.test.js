@@ -60,6 +60,58 @@ describe('createList', () => {
     });
 });
 
+describe('deleteList', () => {
+    beforeEach(() => store = global.configureStore());
+
+    afterEach(() => mock.reset());
+
+    it('failure', () => {
+        mock
+            .onDelete('/lists/1.json')
+            .reply(403);
+
+        return store.dispatch(actions.deleteList(1))
+            .then(() => {
+                const expected = [
+                    {type: actions.deleteListRequest.toString()},
+                    {type: actions.deleteListFailure.toString()},
+                    {type: signOut.toString()}
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+            });
+    });
+
+    it('success', () => {
+        mock
+            .onDelete('/lists/1.json')
+            .reply(200, {
+                list: {
+                    id: 1,
+                    name: 'Weekly Shop'
+                }
+            });
+
+        return store.dispatch(actions.deleteList(1))
+            .then(() => {
+                const expected = [
+                    {type: actions.deleteListRequest.toString()},
+                    {
+                        type: actions.deleteListSuccess.toString(),
+                        payload: {
+                            entities: {
+                                lists: {1: {id: 1, name: 'Weekly Shop'}}
+                            },
+                            result: 1
+                        }
+                    }
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+            });
+    });
+});
+
 describe('duplicateList', () => {
     beforeEach(() => store = global.configureStore());
 
@@ -289,6 +341,10 @@ describe('fetchLists', () => {
                             result: [1],
                             total: 1
                         }
+                    },
+                    {
+                        type: actions.updatePage.toString(),
+                        payload: 1
                     }
                 ];
 
@@ -310,10 +366,6 @@ describe('fetchMoreLists', () => {
         return store.dispatch(actions.fetchMoreLists())
             .then(() => {
                 const expected = [
-                    {
-                        type: actions.updatePage.toString(),
-                        payload: 2
-                    },
                     {type: actions.fetchListsRequest.toString()},
                     {type: actions.fetchListsFailure.toString()},
                     {type: signOut.toString()}
@@ -347,10 +399,6 @@ describe('fetchMoreLists', () => {
         return store.dispatch(actions.fetchMoreLists())
             .then(() => {
                 const expected = [
-                    {
-                        type: actions.updatePage.toString(),
-                        payload: 2
-                    },
                     {type: actions.fetchListsRequest.toString()},
                     {
                         type: actions.fetchListsSuccess.toString(),
@@ -378,6 +426,10 @@ describe('fetchMoreLists', () => {
                             result: [2],
                             total: 2
                         }
+                    },
+                    {
+                        type: actions.updatePage.toString(),
+                        payload: 2
                     }
                 ];
 

@@ -12,6 +12,9 @@ const ids = (state = [], action) => {
                 ...state
             ];
 
+        case actions.deleteListSuccess.toString():
+            return state.filter(id => id !== action.payload.result);
+
         case actions.fetchListsSuccess.toString():
             if (action.payload.page === 1) {
                 return action.payload.result;
@@ -56,6 +59,9 @@ const total = (state = 0, action) => {
         case actions.createListSuccess.toString():
         case actions.duplicateListSuccess.toString():
             return state + 1;
+
+        case actions.deleteListSuccess.toString():
+            return state - 1;
 
         case actions.fetchListsSuccess.toString():
             return action.payload.total;

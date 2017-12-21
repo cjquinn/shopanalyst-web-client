@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const SignOutLink = ({ handleClick }) => (
-    <div className="u-text-center">
+    <div className="u-text-right">
         <button
             className="c-link o-type-medium"
             type="button"

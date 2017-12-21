@@ -25,6 +25,24 @@ export const createList = data => (dispatch, getState, api) => {
 };
 
 /**
+ * Delete List
+ */
+export const deleteListRequest = createAction('DELETE_LIST_REQUEST');
+export const deleteListSuccess = createAction('DELETE_LIST_SUCCESS');
+export const deleteListFailure = createAction('DELETE_LIST_FAILURE');
+
+export const deleteList = id => (dispatch, getState, api) => {
+    dispatch(deleteListRequest());
+
+    return api.deleteList(id)
+        .then(api.checkStatus)
+        .then(response => normalize(response.data.list, listSchema))
+        .then(normalizedData => dispatch(deleteListSuccess(normalizedData)))
+        .catch(api.handleError(dispatch, deleteListFailure));
+};
+
+
+/**
  * Duplicate List
  */
 export const duplicateListRequest = createAction('DUPLICATE_LIST_REQUEST');
@@ -81,6 +99,7 @@ export const fetchLists = page => (dispatch, getState, api) => {
                 })
             )
         )
+        .then(() => dispatch(updatePage(page)))
         .catch(api.handleError(dispatch, fetchListsFailure));
 };
 
@@ -91,7 +110,6 @@ export const updatePage = createAction('UPDATE_PAGE');
 
 export const fetchMoreLists = () => (dispatch, getState) => {
     const page = getPage(getState()) + 1;
-    dispatch(updatePage(page));
     return dispatch(fetchLists(page));
 };
 

@@ -4,6 +4,8 @@ export const addItems = (id, data) => instance().patch(`/lists/${id}/add-items.j
 
 export const createList = data => instance().post('/lists.json', data);
 
+export const deleteList = id => instance().delete(`/lists/${id}.json`);
+
 export const duplicateList = id => instance().post(`/lists/${id}/duplicate.json`);
 
 export const fetchList = id => instance().get(`/lists/${id}.json`);

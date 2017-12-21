@@ -39,6 +39,30 @@ describe('createList', () => {
     });
 });
 
+describe('deleteList', () => {
+    it(actions.deleteListSuccess.toString(), () => {
+        const state = {
+            ids: [1],
+            isFetching: false,
+            page: 1,
+            total: 1
+        };
+
+        const expected = {
+            ids: [],
+            isFetching: false,
+            page: 1,
+            total: 0
+        };
+
+        const payload = {
+            result: 1
+        };
+
+        expect(reducers(state, actions.deleteListSuccess(payload))).toEqual(expected);
+    });
+});
+
 describe('duplicateList', () => {
     it(actions.duplicateListSuccess.toString(), () => {
         const state = {
