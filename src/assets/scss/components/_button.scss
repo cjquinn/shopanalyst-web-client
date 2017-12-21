@@ -1,12 +1,12 @@
 .c-button {
-    border: 0;
-    color: $success;
-    background-color: $successBackground;
-    transition: color .15s ease-in, background-color .15s ease-in;
+  background-color: $successBackground;
+  border: 0;
+  color: $success;
+  transition: color .15s ease-in, background-color .15s ease-in;
 
-    &:hover,
-    &:focus {
-        color: $foreground;
-        background: $success;
-    }
+  &:hover,
+  &:focus {
+    background: $success;
+    color: $foreground;
+  }
 }

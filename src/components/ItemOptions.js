@@ -11,7 +11,7 @@ import tick from '../assets/svg/tick.svg';
 const ItemOptions = ({ itemOptions }) => (
     <Template>
         {itemOptions.length === 0
-            ? <p className="o-type-medium u-color-help u-text-center">
+            ? <p className="o-type-medium u-color-help u-lh-x3 u-text-center">
                 Search for items
             </p>
             : <ul className="o-list o-list--block">

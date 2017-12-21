@@ -6,11 +6,14 @@
     padding-right: 2px;
   }
 
-  &--cross,
   &--ellipsis,
   &--plus,
   &--tick {
     width: $baseLine;
+  }
+
+  &--cross {
+    width: .625rem;
   }
 
   &--analyse,

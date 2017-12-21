@@ -19,7 +19,7 @@ const ListItemActions = ({ handleBlurQuantity, handleChangeQuantity, handleDelet
 
         <button
             type="button"
-            className="c-item__button u-baseline-x3"
+            className="c-item__button c-item__button--delete u-baseline-x3 u-color-warning"
             onClick={handleDeleteListItem}
         >
             <Svg sprite={cross} />
