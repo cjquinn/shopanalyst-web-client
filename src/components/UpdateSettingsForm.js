@@ -5,9 +5,16 @@ import { Field } from 'redux-form';
 // Components
 import Button from './Button';
 import Input from './Input';
+import Loading from './Loading';
 
-const UpdateSettingsForm = ({ handleSubmit }) => (
+const UpdateSettingsForm = ({ handleSubmit, submitting, submitSucceeded }) => (
     <form className="u-space-x2" onSubmit={handleSubmit}>
+        {!submitting && submitSucceeded &&
+            <p className="o-type-medium u-color-success u-text-center">
+                Settings updated
+            </p>
+        }
+
         <p className="u-color-help o-type-medium">Basic Info</p>
 
         <Field
@@ -35,12 +42,16 @@ const UpdateSettingsForm = ({ handleSubmit }) => (
             />
         </div>
 
-        <Button>Save changes</Button>
+        <Button>
+            {submitting ? <Loading /> : 'Save changes'}
+        </Button>
     </form>
 );
 
 UpdateSettingsForm.propTypes = {
-    handleSubmit: PropTypes.func.isRequired
+    handleSubmit: PropTypes.func.isRequired,
+    submitting: PropTypes.bool.isRequired,
+    submitSucceeded: PropTypes.bool.isRequired
 };
 
 export default UpdateSettingsForm;

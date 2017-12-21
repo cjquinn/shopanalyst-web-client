@@ -3,10 +3,11 @@ import React from 'react';
 import { Field } from 'redux-form';
 
 // Components
-import Input from './Input';
 import Button from './Button';
+import Input from './Input';
+import Loading from './Loading';
 
-const CreateListForm = ({ handleSubmit }) => (
+const CreateListForm = ({ handleSubmit, submitting }) => (
     <form className="u-space-x2" onSubmit={handleSubmit}>
         <Field
             component={Input}
@@ -15,12 +16,15 @@ const CreateListForm = ({ handleSubmit }) => (
             type="text"
         />
 
-        <Button>Create list</Button>
+        <Button>
+            {submitting ? <Loading /> : 'Create list'}
+        </Button>
     </form>
 );
 
 CreateListForm.propTypes = {
-    handleSubmit: PropTypes.func.isRequired
+    handleSubmit: PropTypes.func.isRequired,
+    submitting: PropTypes.bool.isRequired
 };
 
 export default CreateListForm;

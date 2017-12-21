@@ -4,6 +4,7 @@
   &__ball {
     width: 2px;
     height: 2px;
+    background-color: currentColor;
     animation: loading 1s ease infinite;
 
     &:nth-child(1) {

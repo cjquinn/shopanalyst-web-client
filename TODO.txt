@@ -3,7 +3,7 @@
 - [x] Add item
 - [x] Update list
 - [x] Load more
-- [ ] Delete list
+- [x] Delete list
 - [ ] List card completed state
 - [ ] Analyse
 - [ ] Flashes - reset password/request password reset updated settings, update list
