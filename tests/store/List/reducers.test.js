@@ -64,10 +64,50 @@ describe('deleteList', () => {
 });
 
 describe('duplicateList', () => {
-    it(actions.duplicateListSuccess.toString(), () => {
+    it(actions.duplicateListRequest.toString(), () => {
         const state = {
             ids: [1],
             isFetching: false,
+            page: 1,
+            total: 1
+        };
+
+        const expected = {
+            ids: [1],
+            isFetching: true,
+            page: 1,
+            total: 1
+        };
+
+        expect(reducers(state, actions.duplicateListRequest())).toEqual(expected);
+    });
+
+    it(actions.duplicateListFailure.toString(), () => {
+        const state = {
+            ids: [1],
+            isFetching: true,
+            page: 1,
+            total: 1
+        };
+
+        const expected = {
+            ids: [1],
+            isFetching: false,
+            page: 1,
+            total: 1
+        };
+
+        const payload = {
+            result: 2
+        };
+
+        expect(reducers(state, actions.duplicateListFailure(payload))).toEqual(expected);
+    });
+
+    it(actions.duplicateListSuccess.toString(), () => {
+        const state = {
+            ids: [1],
+            isFetching: true,
             page: 1,
             total: 1
         };

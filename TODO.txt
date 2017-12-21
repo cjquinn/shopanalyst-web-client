@@ -4,7 +4,7 @@
 - [x] Update list
 - [x] Load more
 - [x] Delete list
-- [ ] List card completed state
+- [x] List card completed state
 - [ ] Analyse
 - [ ] Flashes - reset password/request password reset updated settings, update list
 - [ ] Progressive web app

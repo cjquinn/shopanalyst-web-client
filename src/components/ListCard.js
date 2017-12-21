@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 const ListCard = ({ list, match }) => (
     <Link
         to={`${match.url}/${list.id}`}
-        className="c-list-card u-p u-bgcolor-foreground u-block u-b u-bradius"
+        className={`c-list-card ${list.progress === 100 ? 'c-list-card--complete u-bgcolor-input u-color-hint' : 'u-bgcolor-foreground'} u-block u-b u-bradius u-p`}
     >
         <div className="u-flex u-ai-center u-jc-between u-mb">
             <h4 className="u-weight-normal">{list.name}</h4>
-            <span className="o-type-medium u-color-help">{list.date}</span>
+            <span className={`o-type-medium ${list.progress === 100 ? 'u-color-hint' : 'u-color-help'}`}>{list.date}</span>
         </div>
 
         <div className="o-type-medium u-baseline-x3 u-bgcolor-input u-color-help u-relative u-flex u-ai-center u-ph u-bradius-x3 u-b">

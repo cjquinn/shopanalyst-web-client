@@ -3,15 +3,17 @@ import React from 'react';
 
 // Components
 import Button from './Button';
+import Loading from './Loading';
 
-const DuplicateListButton = ({ handleDuplicateList }) => (
+const DuplicateListButton = ({ handleDuplicateList, isFetching }) => (
     <Button onClick={handleDuplicateList}>
-        Duplicate list
+        {isFetching ? <Loading /> : 'Duplicate list'}
     </Button>
 );
 
 DuplicateListButton.propTypes = {
-    handleDuplicateList: PropTypes.func.isRequired
+    handleDuplicateList: PropTypes.func.isRequired,
+    isFetching: PropTypes.bool.isRequired
 };
 
 export default DuplicateListButton;

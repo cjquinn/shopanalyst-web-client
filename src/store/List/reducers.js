@@ -32,9 +32,12 @@ const ids = (state = [], action) => {
 
 const isFetching = (state = false, action) => {
     switch (action.type) {
+        case actions.duplicateListRequest.toString():
         case actions.fetchListsRequest.toString():
             return true;
 
+        case actions.duplicateListSuccess.toString():
+        case actions.duplicateListFailure.toString():
         case actions.fetchListsSuccess.toString():
         case actions.fetchListsFailure.toString():
             return false;
