@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import InfiniteScroll from 'react-infinite-scroller';
 import { Link } from 'react-router-dom';
 
 // Components
 import ListCard from './ListCard';
+import Loading from './Loading';
 import Splash from '../components/Splash';
 
-const Lists = ({ isFetching, fetchMoreLists, lists, match, total }) => (
+const Lists = ({ handleScrollLists, isFetching, lists, match, total }) => (
     <div className="u-space-2">
         {lists.length === 0 &&
             (isFetching
@@ -18,34 +20,35 @@ const Lists = ({ isFetching, fetchMoreLists, lists, match, total }) => (
         }
 
         {lists.length > 0 &&
-            <ul className="o-list o-list--block">
-                {lists.map(list => (
-                    <li className="o-list__item" key={list.id}>
-                        <ListCard
-                            list={list}
-                            match={match}
-                        />
-                    </li>
-                ))}
-            </ul>
-        }
-
-        {lists.length < total &&
-            <button
-                className="o-button"
-                type="button"
-                onClick={fetchMoreLists}
-                disabled={isFetching}
+            <InfiniteScroll
+                loadMore={handleScrollLists}
+                hasMore={lists.length < total}
+                initialLoad={false}
             >
-                Load more
-            </button>
+                <ul className="o-list o-list--block">
+                    {lists.map(list => (
+                        <li className="o-list__item" key={list.id}>
+                            <ListCard
+                                list={list}
+                                match={match}
+                            />
+                        </li>
+                    ))}
+                </ul>
+
+                {isFetching &&
+                    <div className="o-circle u-hover-success u-flex u-ai-center u-jc-center u-mt u-mh-auto">
+                        <Loading />
+                    </div>
+                }
+            </InfiniteScroll>
         }
     </div>
 );
 
 Lists.propTypes = {
+    handleScrollLists: PropTypes.func.isRequired,
     isFetching: PropTypes.bool.isRequired,
-    fetchMoreLists: PropTypes.func.isRequired,
     lists: PropTypes.array.isRequired,
     match: PropTypes.object.isRequired,
     total: PropTypes.number.isRequired

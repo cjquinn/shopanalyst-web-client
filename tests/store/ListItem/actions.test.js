@@ -18,7 +18,7 @@ describe('addListItem', () => {
             .onPost('/lists/1/list-items.json')
             .reply(403);
 
-        return store.dispatch(actions.addListItem(1))
+        return store.dispatch(actions.addListItem(1, {}))
             .then(() => {
                 const expected = [
                     {type: actions.addListItemRequest.toString()},
@@ -34,10 +34,13 @@ describe('addListItem', () => {
         mock
             .onPost('/lists/1/list-items.json')
             .reply(200, {
-                listItem: {id: 1}
+                listItem: {
+                    id: 1,
+                    item_id: 1
+                }
             });
 
-        return store.dispatch(actions.addListItem(1))
+        return store.dispatch(actions.addListItem(1, {}))
             .then(() => {
                 const expected = [
                     {type: actions.addListItemRequest.toString()},
@@ -45,9 +48,17 @@ describe('addListItem', () => {
                         type: actions.addListItemSuccess.toString(),
                         payload: {
                             entities: {
-                                list_items: {1: {id: 1}}
+                                list_items: {
+                                    1: {
+                                        id: 1,
+                                        item_id: 1,
+                                        item: 1,
+                                        quantity: 1
+                                    }
+                                }
                             },
-                            result: 1
+                            result: 1,
+                            listId: 1
                         }
                     }
                 ];
@@ -83,7 +94,10 @@ describe('deleteListItem', () => {
         mock
             .onDelete('/lists/1/list-items/1.json')
             .reply(200, {
-                listItem: {id: 1}
+                listItem: {
+                    id: 1,
+                    item_id: 1
+                }
             });
 
         return store.dispatch(actions.deleteListItem(1, 1))
@@ -94,7 +108,14 @@ describe('deleteListItem', () => {
                         type: actions.deleteListItemSuccess.toString(),
                         payload: {
                             entities: {
-                                list_items: {1: {id: 1}}
+                                list_items: {
+                                    1: {
+                                        id: 1,
+                                        item_id: 1,
+                                        item: 1,
+                                        quantity: 1
+                                    }
+                                }
                             },
                             result: 1
                         }
@@ -132,7 +153,10 @@ describe('toggleCompleted', () => {
         mock
             .onPatch('/lists/1/list-items/1/toggle-completed.json')
             .reply(200, {
-                listItem: {id: 1}
+                listItem: {
+                    id: 1,
+                    item_id: 1
+                }
             });
 
         return store.dispatch(actions.toggleCompleted(1, 1))
@@ -143,7 +167,14 @@ describe('toggleCompleted', () => {
                         type: actions.toggleCompletedSuccess.toString(),
                         payload: {
                             entities: {
-                                list_items: {1: {id: 1}}
+                                list_items: {
+                                    1: {
+                                        id: 1,
+                                        item_id: 1,
+                                        item: 1,
+                                        quantity: 1
+                                    }
+                                }
                             },
                             result: 1
                         }
@@ -181,7 +212,10 @@ describe('updateQuantity', () => {
         mock
             .onPatch('/lists/1/list-items/1/update-quantity.json')
             .reply(200, {
-                listItem: {id: 1}
+                listItem: {
+                    id: 1,
+                    item_id: 1
+                }
             });
 
         return store.dispatch(actions.updateQuantity(1, 1, 10))
@@ -192,7 +226,14 @@ describe('updateQuantity', () => {
                         type: actions.updateQuantitySuccess.toString(),
                         payload: {
                             entities: {
-                                list_items: {1: {id: 1}}
+                                list_items: {
+                                    1: {
+                                        id: 1,
+                                        item_id: 1,
+                                        item: 1,
+                                        quantity: 1
+                                    }
+                                }
                             },
                             result: 1
                         }

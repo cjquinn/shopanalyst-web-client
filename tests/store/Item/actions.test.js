@@ -62,22 +62,4 @@ describe('fetchItems', () => {
                 expect(store.getActions()).toEqual(expected);
             });
     });
-
-    it('empty search', () => {
-        store.dispatch(actions.fetchItems(''));
-
-        const expected = [
-            {type: actions.fetchItemsRequest.toString()},
-            {
-                type: actions.fetchItemsSuccess.toString(),
-                payload: {result: []}
-            },
-            {
-                type: actions.setSearch.toString(),
-                payload: ''
-            }
-        ];
-
-        expect(store.getActions()).toEqual(expected);
-    });
 });

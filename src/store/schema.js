@@ -3,16 +3,11 @@ import { schema } from 'normalizr';
 export const item = new schema.Entity('items');
 
 export const listItem = new schema.Entity('list_items', {item}, {
-    processStrategy: entity => {
-        if (entity.item) {
-            return entity;
-        }
-
-        return {
-            ...entity,
-            item: entity.item_id
-        };
-    }
+    processStrategy: entity => ({
+        ...entity,
+        item: entity.item || entity.item_id,
+        quantity: entity.quantity || 1
+    })
 });
 
 export const list = new schema.Entity('lists', {

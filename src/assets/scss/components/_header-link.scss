@@ -1,16 +1,6 @@
 .c-header-link {
   top: -$baseLine / 4;
-  width: $baseLine * 2;
-  height: $baseLine * 2;
-  background-color: $successBackground;
-  color: $success;
   transition: color .15s ease-in, background-color .15s ease-in;
-
-  &:hover,
-  &:focus {
-    background: $success;
-    color: $foreground;
-  }
 
   &--left {
     left: $baseLine;

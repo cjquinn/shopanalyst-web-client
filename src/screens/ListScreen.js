@@ -7,14 +7,16 @@ import Header from '../components/Header';
 import HeaderLink from '../components/HeaderLink';
 import HeaderTitle from '../components/HeaderTitle';
 import ScreenWrapper from '../components/ScreenWrapper';
-import Splash from '../components/Splash';
 import Svg from '../components/Svg';
 import Template from '../components/Template';
 
 // Containers
 import AddItemsInputContainer from '../containers/AddItemsInputContainer';
-import ItemOptionsContainer from '../containers/ItemOptionsContainer';
+import ItemsContainer from '../containers/ItemsContainer';
 import ListItemsContainer from '../containers/ListItemsContainer';
+
+// Higher order components
+import withList from '../hocs/withList';
 
 // Sprites
 import back from '../assets/svg/back.svg';
@@ -22,62 +24,56 @@ import ellipsis from '../assets/svg/ellipsis.svg';
 
 const ListScreen = ({ list, match }) => (
     <Template>
-        {!list && <Splash>Loading...</Splash>}
+        <Header>
+            <HeaderLink side="left" to={match.isExact ? '/lists' : match.url}>
+                <Svg sprite={back} />
+            </HeaderLink>
 
-        {list &&
-            <Template>
-                <Header>
-                    <HeaderLink side="left" to={match.isExact ? '/lists' : match.url}>
-                        <Svg sprite={back} />
-                    </HeaderLink>
+            <HeaderTitle>
+                <Switch>
+                    <Route exact path={match.path} render={() => list.name} />
+                    <Route exact path={`${match.path}/add-items`} render={() => 'Add Items'} />
+                </Switch>
+            </HeaderTitle>
 
-                    <HeaderTitle>
-                        <Switch>
-                            <Route exact path={match.path} render={() => list.name} />
-                            <Route exact path={`${match.path}/add-items`} render={() => 'Add Items'} />
-                        </Switch>
-                    </HeaderTitle>
+            {match.isExact &&
+                <HeaderLink side="right" to={`${match.url}/update`}>
+                    <Svg sprite={ellipsis} />
+                </HeaderLink>
+            }
+        </Header>
 
-                    {match.isExact &&
-                        <HeaderLink side="right" to="/">
-                            <Svg sprite={ellipsis} />
-                        </HeaderLink>
-                    }
-                </Header>
+        <ScreenWrapper>
+            <Switch>
+                <Route exact path={match.path} render={matchProps =>
+                    <Template>
+                        <div className="o-type-medium u-flex u-jc-between u-ai-center u-color-help">
+                            <span>
+                                {list.itemsProgress}
+                            </span>
 
-                <ScreenWrapper>
-                    <Switch>
-                        <Route exact path={match.path} render={matchProps =>
-                            <Template>
-                                <div className="o-type-medium u-flex u-jc-between u-ai-center u-color-help">
-                                    <span>
-                                        {list.itemsProgress}
-                                    </span>
+                            <span>
+                                {list.date}
+                            </span>
+                        </div>
 
-                                    <span>
-                                        {list.date}
-                                    </span>
-                                </div>
+                        <ListItemsContainer {...matchProps} />
+                    </Template>
+                } />
+                <Route
+                    exact
+                    path={`${match.path}/add-items`}
+                    component={ItemsContainer}
+                />
+            </Switch>
+        </ScreenWrapper>
 
-                                <ListItemsContainer {...matchProps} />
-                            </Template>
-                        } />
-                        <Route
-                            exact
-                            path={`${match.path}/add-items`}
-                            component={ItemOptionsContainer}
-                        />
-                    </Switch>
-                </ScreenWrapper>
-
-                <AddItemsInputContainer />
-            </Template>
-        }
+        <AddItemsInputContainer />
     </Template>
 );
 
 ListScreen.propTypes = {
-    list: PropTypes.object,
+    list: PropTypes.object.isRequired,
     match: PropTypes.object.isRequired
 };
 

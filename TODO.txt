@@ -1,8 +1,11 @@
-- [ ] Add item
-- [ ] Clear search
-- [ ] Search loading
+- [x] Clear search
+- [x] Search loading
+- [x] Add item
+- [x] Update list
+- [x] Load more
+- [ ] Delete list
 - [ ] List card completed state
 - [ ] Analyse
-- [ ] Flashes - reset password/request password reset updated settings duplicate list
+- [ ] Flashes - reset password/request password reset updated settings, update list
 - [ ] Progressive web app
 - [ ] SASS review/interactions + transitions

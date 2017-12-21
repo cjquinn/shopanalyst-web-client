@@ -1,0 +1,29 @@
+%u-hover {
+  transition: color .15s ease-in, background-color .15s ease-in;
+}
+
+.u-hover-success {
+  @extend %u-hover;
+
+  background: $successBackground;
+  color: $success;
+
+  &:hover,
+  &:focus {
+    background: $success;
+    color: $foreground;
+  }
+}
+
+.u-hover-warning {
+  @extend %u-hover;
+  
+  background-color: $warningBackground;
+  color: $warning;
+
+  &:hover,
+  &:focus {
+    background: $warning;
+    color: $foreground;
+  }
+}

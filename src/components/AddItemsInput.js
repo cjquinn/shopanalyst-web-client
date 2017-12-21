@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 // Components
+import Loading from './Loading';
 import Svg from './Svg';
 
 // Sprites
@@ -22,20 +23,16 @@ const AddItemsInput = ({ handleChangeSearch, handleClearInput, handleFocusAddIte
 
             {isFetching &&
                 <button
-                    className="c-input-button c-input-button--loading u-absolute u-flex u-ai-center u-jc-around u-bradius-100"
+                    className="c-add-items-input__button o-circle u-hover-success u-absolute u-flex u-ai-center u-jc-around u-bradius-100"
                     type="button"
                 >
-                    <div className="c-loading u-flex u-ai-center u-jc-between">
-                        <div className="c-loading__ball u-bgcolor-success u-bradius-100" />
-                        <div className="c-loading__ball u-bgcolor-success u-bradius-100" />
-                        <div className="c-loading__ball u-bgcolor-success u-bradius-100" />
-                    </div>
+                    <Loading />
                 </button>
             }
 
             {!isFetching && search.length > 0 &&
                 <button
-                    className="c-input-button c-input-button--clear u-absolute u-flex u-ai-center u-jc-center u-bradius-100"
+                    className="c-add-items-input__button o-circle u-hover-warning u-absolute u-flex u-ai-center u-jc-center u-bradius-100"
                     type="button"
                     onClick={handleClearInput}
                 >

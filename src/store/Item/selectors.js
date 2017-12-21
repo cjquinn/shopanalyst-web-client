@@ -6,7 +6,7 @@ import { getListItems } from '../ListItem/selectors';
 
 export const getIsFetching = state => state.item.isFetching;
 
-export const getItemOptions = createSelector(
+export const getItems = createSelector(
     state => state.item.search,
     state => state.item.ids,
     state => state.entities.items,

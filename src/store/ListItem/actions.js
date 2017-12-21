@@ -11,13 +11,22 @@ export const addListItemRequest = createAction('ADD_LIST_ITEM_REQUEST');
 export const addListItemSuccess = createAction('ADD_LIST_ITEM_SUCCESS');
 export const addListItemFailure = createAction('ADD_LIST_ITEM_FAILURE');
 
-export const addListItem = listId => (dispatch, getState, api) => {
+export const addListItem = (listId, item) => (dispatch, getState, api) => {
     dispatch(addListItemRequest());
 
-    return api.addListItem(listId)
+    const data = item.id
+        ? {item_id: item.id}
+        : {item};
+
+    return api.addListItem(listId, data)
         .then(api.checkStatus)
         .then(response => normalize(response.data.listItem, listItemSchema))
-        .then(normalizedData => dispatch(addListItemSuccess(normalizedData)))
+        .then(normalizedData =>
+            dispatch(addListItemSuccess({
+                ...normalizedData,
+                listId
+            }))
+        )
         .catch(api.handleError(dispatch, addListItemFailure));
 };
 

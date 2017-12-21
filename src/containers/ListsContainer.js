@@ -13,17 +13,19 @@ import Lists from '../components/Lists';
 import { getIsFetching, getLists, getTotal } from '../store/List/selectors';
 
 class ListsContainer extends Component {
+    handleScrollLists = () => !this.props.isFetching && this.props.fetchMoreLists();
+
     componentDidMount() {
         this.props.fetchLists();
     }
 
     render() {
-        const { isFetching, fetchMoreLists, lists, match, total } = this.props;
+        const { isFetching, lists, match, total } = this.props;
 
         return (
             <Lists
                 isFetching={isFetching}
-                fetchMoreLists={fetchMoreLists}
+                handleScrollLists={this.handleScrollLists}
                 lists={lists}
                 match={match}
                 total={total}

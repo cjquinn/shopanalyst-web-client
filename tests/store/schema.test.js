@@ -16,7 +16,8 @@ describe('listItemSchema', () => {
                     1: {
                         id: 1,
                         item_id: 1,
-                        item: 1
+                        item: 1,
+                        quantity: 1
                     }
                 }
             },

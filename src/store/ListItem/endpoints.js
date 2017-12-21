@@ -1,8 +1,8 @@
 import { instance } from '../api';
 
-export const addListItem = listId =>
+export const addListItem = (listId, data) =>
     instance()
-        .post(`/lists/${listId}/list-items.json`);
+        .post(`/lists/${listId}/list-items.json`, data);
 
 export const deleteListItem = (listId, id) =>
     instance()

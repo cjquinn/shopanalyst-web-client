@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { Redirect, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Redirect, Route } from 'react-router-dom';
 
 // Selectors
 import { getIsAuthorised } from '../store/User/selectors';

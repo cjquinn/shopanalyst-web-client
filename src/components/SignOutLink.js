@@ -2,13 +2,14 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const SignOutLink = ({ handleClick }) => (
-    <div className="u-text-right">
-        <a
+    <div className="u-text-center">
+        <button
             className="c-link o-type-medium"
+            type="button"
             onClick={handleClick}
         >
             Sign out
-        </a>
+        </button>
     </div>
 );
 

@@ -2,6 +2,10 @@ import { createSelector } from 'reselect';
 
 export const getIsFetching = state => state.list.isFetching;
 
+export const getListName = (state, props) => state.entities.lists[props.match.params.id]
+    ? state.entities.lists[props.match.params.id].name
+    : '';
+
 export const makeGetList = () => createSelector(
     (state, props) => state.entities.lists[props.match.params.id],
     state => state.entities.list_items,

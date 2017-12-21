@@ -5,8 +5,8 @@ import { Route, Redirect, Switch } from 'react-router-dom';
 // Components
 import Splash from '../components/Splash';
 
-// Containers
-import ListScreenContainer from '../containers/ListScreenContainer';
+// Higher order components
+import withList from '../hocs/withList';
 
 // Routes
 import AuthorisedRoute from '../routes/AuthorisedRoute';
@@ -15,6 +15,7 @@ import UnauthorisedRoute from '../routes/UnauthorisedRoute';
 // Screens
 import AnalyseScreen from '../screens/AnalyseScreen';
 import CreateListScreen from '../screens/CreateListScreen';
+import ListScreen from '../screens/ListScreen';
 import ListsScreen from '../screens/ListsScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import RequestPasswordResetScreen from '../screens/RequestPasswordResetScreen';
@@ -22,6 +23,11 @@ import ResetPasswordScreen from '../screens/ResetPasswordScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import SignInScreen from '../screens/SignInScreen';
 import SignUpScreen from '../screens/SignUpScreen';
+import UpdateListScreen from '../screens/UpdateListScreen';
+
+// With List
+const ListScreenWithList = withList(ListScreen);
+const UpdateListScreenWithList = withList(UpdateListScreen);
 
 const AppLayout = ({ isLoading }) => (
     <div className="app">
@@ -42,7 +48,9 @@ const AppLayout = ({ isLoading }) => (
                 <AuthorisedRoute exact path="/lists" component={ListsScreen} />
                 <AuthorisedRoute exact path="/create-list" component={CreateListScreen} />
 
-                <AuthorisedRoute path="/lists/:id(\d+)" component={ListScreenContainer} />
+                <AuthorisedRoute exact path="/lists/:id(\d+)/update" component={UpdateListScreenWithList} />
+                
+                <AuthorisedRoute path="/lists/:id(\d+)" component={ListScreenWithList} />
 
                 <AuthorisedRoute exact path="/settings" component={SettingsScreen} />
 
