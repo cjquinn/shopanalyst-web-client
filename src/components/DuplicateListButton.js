@@ -1,16 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+// Components
+import Button from './Button';
+
 const DuplicateListButton = ({ handleDuplicateList }) => (
-    <div className="u-text-center">
-        <button
-            className="c-link o-type-medium"
-            type="button"
-            onClick={handleDuplicateList}
-        >
-            Duplicate list
-        </button>
-    </div>
+    <Button onClick={handleDuplicateList}>
+        Duplicate list
+    </Button>
 );
 
 DuplicateListButton.propTypes = {

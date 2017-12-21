@@ -12,11 +12,9 @@ import Template from '../components/Template';
 
 // Containers
 import AddItemsInputContainer from '../containers/AddItemsInputContainer';
+import DuplicateListButtonContainer from '../containers/DuplicateListButtonContainer';
 import ItemsContainer from '../containers/ItemsContainer';
 import ListItemsContainer from '../containers/ListItemsContainer';
-
-// Higher order components
-import withList from '../hocs/withList';
 
 // Sprites
 import back from '../assets/svg/back.svg';
@@ -58,6 +56,8 @@ const ListScreen = ({ list, match }) => (
                         </div>
 
                         <ListItemsContainer {...matchProps} />
+
+                        <DuplicateListButtonContainer />
                     </Template>
                 } />
                 <Route

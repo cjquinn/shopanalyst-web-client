@@ -10,7 +10,7 @@ import Svg from '../components/Svg';
 import Template from '../components/Template';
 
 // Containers
-import DuplicateListButtonContainer from '../containers/DuplicateListButtonContainer';
+import DeleteListHeaderLinkContainer from '../containers/DeleteListHeaderLinkContainer';
 import UpdateListFormContainer from '../containers/UpdateListFormContainer';
 
 // Sprites
@@ -24,12 +24,12 @@ const UpdateListScreen = ({ list }) => (
             <HeaderLink side="left" to={`/lists/${list.id}`}>
                 <Svg sprite={back} />
             </HeaderLink>
+
+            <DeleteListHeaderLinkContainer />
         </Header>
 
         <ScreenWrapper>
             <UpdateListFormContainer />
-
-            <DuplicateListButtonContainer />
         </ScreenWrapper>
     </Template>
 );
