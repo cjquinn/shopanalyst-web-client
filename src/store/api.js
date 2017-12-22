@@ -66,7 +66,7 @@ export const handle404 = history => response => {
  * An instance of axios to use for all requests
  */
 export const instance = () => axios.create({
-    baseURL: `http://${window.location.hostname ? window.location.hostname : 'localhost'}`,
+    baseURL: 'https://api.myshopanalyst.com',
     headers: {
         'X-Requested-With': 'XMLHttpRequest',
         ...(

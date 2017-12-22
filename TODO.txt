@@ -5,7 +5,5 @@
 - [x] Load more
 - [x] Delete list
 - [x] List card completed state
-- [ ] Analyse
-- [ ] Flashes - reset password/request password reset updated settings, update list
 - [ ] Progressive web app
 - [ ] SASS review/interactions + transitions
