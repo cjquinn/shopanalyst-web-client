@@ -66,6 +66,14 @@ module.exports = {
             filename: 'service-worker.js',
             minify: true,
             navigateFallback: 'https://myshopanalyst.com/index.html',
+            mergeStaticsConfig: true,
+            staticFileGlobs: [
+                'webroot/img/**.*',
+                'webroot/favicon.png',
+                'webroot/index.html',
+                'webroot/manifest.json'
+            ],
+            verbose: true
         })
     ],
 };
