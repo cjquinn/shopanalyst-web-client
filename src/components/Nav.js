@@ -14,31 +14,33 @@ import shop from '../assets/svg/shop.svg';
 const Nav = ({ getClasses }) => (
     <Template>
         <div className="u-baseline-x6" />
-        <nav className="c-nav u-fixed u-1/1 u-z">
-            <div className="c-tabs o-type-small u-flex u-baseline-x6">
-                <Link
-                    className={`c-tabs__tab u-1/3 u-color-inherit u-flex u-fd-col u-jc-between u-ai-center ${getClasses('lists')}`}
-                    to="/lists"
-                >
-                    <Svg className="u-1/1 u-baseline-x3" sprite={shop} />
-                    <span>Shop</span>
-                </Link>
+        <nav className="c-nav u-fixed u-1/1 u-z u-bgcolor-input">
+            <div className="o-container">
+                <div className="c-tabs o-type-small u-flex u-baseline-x6">
+                    <Link
+                        className={`c-tabs__tab u-1/3 u-color-inherit u-flex u-fd-col u-jc-between u-ai-center ${getClasses('lists')}`}
+                        to="/lists"
+                    >
+                        <Svg className="u-1/1 u-baseline-x3" sprite={shop} />
+                        <span>Shop</span>
+                    </Link>
 
-                <Link
-                    className={`c-tabs__tab u-1/3 u-color-inherit u-flex u-fd-col u-jc-between u-ai-center ${getClasses('analyse')}`}
-                    to="/analyse"
-                >
-                    <Svg className="u-1/1 u-baseline-x3" sprite={analyse} />
-                    <span>Analyse</span>
-                </Link>
+                    <Link
+                        className={`c-tabs__tab u-1/3 u-color-inherit u-flex u-fd-col u-jc-between u-ai-center ${getClasses('analyse')}`}
+                        to="/analyse"
+                    >
+                        <Svg className="u-1/1 u-baseline-x3" sprite={analyse} />
+                        <span>Analyse</span>
+                    </Link>
 
-                <Link
-                    className={`c-tabs__tab u-1/3 u-color-inherit u-flex u-fd-col u-jc-between u-ai-center ${getClasses('settings')}`}
-                    to="/settings"
-                >
-                    <Svg className="u-1/1 u-baseline-x3" sprite={settings} />
-                    <span>Settings</span>
-                </Link>
+                    <Link
+                        className={`c-tabs__tab u-1/3 u-color-inherit u-flex u-fd-col u-jc-between u-ai-center ${getClasses('settings')}`}
+                        to="/settings"
+                    >
+                        <Svg className="u-1/1 u-baseline-x3" sprite={settings} />
+                        <span>Settings</span>
+                    </Link>
+                </div>
             </div>
         </nav>
     </Template>
