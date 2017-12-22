@@ -26,7 +26,7 @@ describe('addListItem', () => {
         };
 
         let expected = {
-            ids: [1],
+            ids: [2],
             isFetching: false,
             search: 'Eggs'
         };
@@ -34,9 +34,14 @@ describe('addListItem', () => {
         const payload = {
             entities: {
                 items: {
-                    1: {
-                        id: 1,
+                    2: {
+                        id: 2,
                         name: 'Eggs'
+                    }
+                },
+                list_items: {
+                    1: {
+                        item_id: 2
                     }
                 }
             },
@@ -46,13 +51,13 @@ describe('addListItem', () => {
         expect(reducers(state, addListItemSuccess(payload))).toEqual(expected);
 
         state = {
-            ids: [1],
+            ids: [2],
             isFetching: false,
             search: 'Eggs'
         };
 
         expected = {
-            ids: [1],
+            ids: [2],
             isFetching: false,
             search: 'Eggs'
         };
@@ -60,13 +65,13 @@ describe('addListItem', () => {
         expect(reducers(state, addListItemSuccess(payload))).toEqual(expected);
 
         state = {
-            ids: [1, 2],
+            ids: [1],
             isFetching: false,
             search: 'Eggs'
         };
 
         expected = {
-            ids: [1, 2],
+            ids: [2, 1],
             isFetching: false,
             search: 'Eggs'
         };

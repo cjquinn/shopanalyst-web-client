@@ -7,7 +7,10 @@ import { addListItemSuccess } from '../ListItem/actions';
 const ids = (state = [], action) => {
     switch (action.type) {
         case addListItemSuccess.toString():
-            return [action.payload.result, ...state].filter((id, index, self) =>
+            return [
+                action.payload.entities.list_items[action.payload.result].item_id,
+                ...state
+            ].filter((id, index, self) =>
                 index === self.indexOf(id)
             );
 
