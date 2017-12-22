@@ -71,8 +71,7 @@ module.exports = {
                 'webroot/img/**.*',
                 'webroot/favicon.png',
                 'webroot/index.html',
-                'webroot/manifest.json',
-                'webroot/service-worker.js'
+                'webroot/manifest.json'
             ],
             stripPrefix: 'webroot/',
             verbose: true
