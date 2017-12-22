@@ -12,7 +12,6 @@ import Template from '../components/Template';
 
 // Containers
 import AddItemsInputContainer from '../containers/AddItemsInputContainer';
-import DuplicateListButtonContainer from '../containers/DuplicateListButtonContainer';
 import ItemsContainer from '../containers/ItemsContainer';
 import ListItemsContainer from '../containers/ListItemsContainer';
 
@@ -56,8 +55,6 @@ const ListScreen = ({ list, match }) => (
                         </div>
 
                         <ListItemsContainer {...matchProps} />
-
-                        <DuplicateListButtonContainer />
                     </Template>
                 } />
                 <Route

@@ -2,9 +2,15 @@ import { combineReducers } from 'redux';
 
 // Actions
 import * as actions from './actions';
+import { addListItemSuccess } from '../ListItem/actions';
 
 const ids = (state = [], action) => {
     switch (action.type) {
+        case addListItemSuccess.toString():
+            return [action.payload.result, ...state].filter((id, index, self) =>
+                index === self.indexOf(id)
+            );
+
         case actions.fetchItemsSuccess.toString():
             return action.payload.result;
 

@@ -48,7 +48,13 @@ describe('createList', () => {
                         type: actions.createListSuccess.toString(),
                         payload: {
                             entities: {
-                                lists: {1: {id: 1, name: 'Weekly Shop'}}
+                                lists: {
+                                    1: {
+                                        id: 1,
+                                        name: 'Weekly Shop',
+                                        list_items: []
+                                    }
+                                }
                             },
                             result: 1
                         }
@@ -100,7 +106,13 @@ describe('deleteList', () => {
                         type: actions.deleteListSuccess.toString(),
                         payload: {
                             entities: {
-                                lists: {1: {id: 1, name: 'Weekly Shop'}}
+                                lists: {
+                                    1: {
+                                        id: 1,
+                                        name: 'Weekly Shop',
+                                        list_items: []
+                                    }
+                                }
                             },
                             result: 1
                         }
@@ -478,7 +490,13 @@ describe('updateList', () => {
                         type: actions.updateListSuccess.toString(),
                         payload: {
                             entities: {
-                                lists: {1: {id: 1, name: 'Weekly Shop'}}
+                                lists: {
+                                    1: {
+                                        id: 1,
+                                        name: 'Weekly Shop',
+                                        list_items: []
+                                    }
+                                }
                             },
                             result: 1
                         }

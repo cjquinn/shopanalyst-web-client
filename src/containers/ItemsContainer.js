@@ -12,13 +12,13 @@ import Items from '../components/Items';
 import { getItems } from '../store/Item/selectors';
 
 class ItemsContainer extends Component {
-    render() {
-        const { addListItem, items } = this.props;
+    handleAddItem = item => !item.is_existing && this.props.addListItem(item);
 
+    render() {
         return (
             <Items
-                addListItem={addListItem}
-                items={items}
+                handleAddItem={this.handleAddItem}
+                items={this.props.items}
             />
         );
     }

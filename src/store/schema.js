@@ -10,6 +10,9 @@ export const listItem = new schema.Entity('list_items', {item}, {
     })
 });
 
-export const list = new schema.Entity('lists', {
-    list_items: [listItem]
+export const list = new schema.Entity('lists', {list_items: [listItem]}, {
+    processStrategy: entity => ({
+        ...entity,
+        list_items: entity.list_items || [],
+    })
 });

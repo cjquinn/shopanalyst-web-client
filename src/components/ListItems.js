@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom';
 // Components
 import ListItem from './ListItem';
 
+// Containers
+import DuplicateListButtonContainer from '../containers/DuplicateListButtonContainer';
+
 const ListItems = ({ listItemsByCompleted, match, ...props }) => {
     if (listItemsByCompleted.complete.length === 0 &&
         listItemsByCompleted.incomplete.length === 0
@@ -43,6 +46,8 @@ const ListItems = ({ listItemsByCompleted, match, ...props }) => {
                     ))}
                 </ul>
             }
+
+            <DuplicateListButtonContainer />
         </div>
     );
 };
