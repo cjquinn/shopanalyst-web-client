@@ -1,5 +1,6 @@
 const { resolve } = require('path');
 const webpack = require('webpack');
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 
 module.exports = {
     context: resolve(__dirname, 'src'),
@@ -58,6 +59,13 @@ module.exports = {
                 screw_ie8: true
             },
             comments: false
+        }),
+        new SWPrecacheWebpackPlugin({
+            cacheId: 'myshopanalyst',
+            dontCacheBustUrlsMatching: /\.\w{8}\./,
+            filename: 'service-worker.js',
+            minify: true,
+            navigateFallback: 'https://myshopanalyst.com/index.html',
         })
     ],
 };

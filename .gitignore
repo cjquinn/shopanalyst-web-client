@@ -3,6 +3,4 @@
 npm-debug.log
 node_modules
 
-webroot/*
-!webroot/index.html
-!webroot/favicon.png
+webroot/bundle.js
