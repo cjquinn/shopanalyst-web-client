@@ -65,13 +65,15 @@ module.exports = {
             dontCacheBustUrlsMatching: /\.\w{8}\./,
             filename: 'service-worker.js',
             minify: true,
+            navigateFallback: 'https://myshopanalyst.com',
             mergeStaticsConfig: true,
             staticFileGlobs: [
-                '/img/**.*',
-                '/favicon.png',
-                '/index.html',
-                '/manifest.json'
+                'webroot/img/**.*',
+                'webroot/favicon.png',
+                'webroot/index.html',
+                'webroot/manifest.json'
             ],
+            stripPrefix: 'webroot/',
             verbose: true
         })
     ],
