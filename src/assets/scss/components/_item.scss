@@ -1,19 +1,19 @@
 .c-item {
-  &__tick {
-    width: $baseLine * 2;
-    height: $baseLine * 2;
-    margin: 0  $baseLine 0 $baseLine / 2;
-    background-color: $border;
-    color: $foreground;
-    transition: color .15s ease-in, background-color .15s ease-in;
-  }
+  // &__tick {
+  //   width: $baseLine * 2;
+  //   height: $baseLine * 2;
+  //   margin: 0  $baseLine 0 $baseLine / 2;
+  //   background-color: $border;
+  //   color: $foreground;
+  //   transition: color .15s ease-in, background-color .15s ease-in;
+  // }
 
-  &__checkbox:checked + &__label {
-    .c-item__tick {
-      background-color: $successBackground;
-      color: $success;
-    }
-  }
+  // &__checkbox:checked + &__label {
+  //   .c-item__tick {
+  //     background-color: $successBackground;
+  //     color: $success;
+  //   }
+  // }
 
   &__input,
   &__button,
@@ -36,11 +36,11 @@
   &__label {
     width: calc(100% - #{$baseLine * 6});
 
-    &:hover {
-      .c-item__tick {
-        background-color: $paleGreen;
-        color: $successBackground;
-      }
-    }
+    // &:hover {
+    //   .c-item__tick {
+    //     background-color: $paleGreen;
+    //     color: $successBackground;
+    //   }
+    // }
   }
 }

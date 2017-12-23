@@ -1,0 +1,19 @@
+.slide-up {
+  &-enter {
+    transform: translateY(100vh);
+
+    &-active {
+      transform: translateY(0);
+      transition: 1000ms ease-in;    
+    }
+  }
+
+  &-exit {
+    transform: translateY(0);
+
+    &-active {
+      transform: translateY(100vh);
+      transition: 800ms ease-in;    
+    }
+  }
+}
