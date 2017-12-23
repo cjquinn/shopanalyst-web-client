@@ -10,8 +10,8 @@ import Loading from './Loading';
 const Lists = ({ handleScrollLists, isFetching, lists, match, total }) => (
     <div className="u-space-2">
         {lists.length === 0 && !isFetching &&
-            <p className="o-type-medium u-color-brown u-text-center">
-                Once you&#039;ve <Link className="o-link" to={`${match.url}/create`}>created a list</Link> it will show here
+            <p className="o-type-medium u-color-hint u-text-center">
+                Once you&#039;ve <Link className="c-link" to="/create-list">created a list</Link> it will show here
             </p>
         }
 
