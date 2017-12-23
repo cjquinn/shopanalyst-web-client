@@ -22,7 +22,7 @@ const Items = ({ handleAddItem, items }) => (
                             className={`c-item u-flex u-ai-center u-b u-baseline-x3 u-bradius-x3 u-1/1 ${item.is_existing ? 'u-bgcolor-input u-color-hint' : 'u-bgcolor-foreground'} u-text-left`}
                             onClick={() => handleAddItem(item)}
                         >
-                            <div className={`o-circle u-flex u-bradius-100 u-mh-demi ${item.is_existing ? 'u-color-foreground u-bgcolor-border' : 'u-hover-success'}`}>
+                            <div className={`o-circle u-flex u-mh-demi ${item.is_existing ? 'u-color-foreground u-bgcolor-border' : 'u-hover-success'}`}>
                                 <Svg sprite={item.is_existing ? tick : plus} />
                             </div>
 

@@ -15,7 +15,7 @@ $iota-utils-margin-default: $baseLine;
  */
 
 $iota-utils-margin-extra: (
-  -auto: auto,
+  -auto: null null null null null null auto,
   -demi: $baseLine / 2
 );
 
