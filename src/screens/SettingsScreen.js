@@ -19,7 +19,7 @@ const SettingsScreen = () => (
             <SignOutHeaderLinkContainer />
         </Header>
 
-        <ScreenWrapper>
+        <ScreenWrapper modifier="with-nav">
             <UpdateSettingsFormContainer />
         </ScreenWrapper>
 

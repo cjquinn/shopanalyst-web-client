@@ -25,7 +25,7 @@ const ListsScreen = () => (
             </HeaderLink>
         </Header>
 
-        <ScreenWrapper>
+        <ScreenWrapper modifier="with-nav">
             <ListsContainer />
         </ScreenWrapper>
 

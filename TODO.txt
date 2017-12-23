@@ -5,5 +5,5 @@
 - [x] Load more
 - [x] Delete list
 - [x] List card completed state
-- [ ] Progressive web app
+- [x] Progressive web app
 - [ ] SASS review/interactions + transitions

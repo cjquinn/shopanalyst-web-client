@@ -40,7 +40,9 @@ const ListScreen = ({ list, match }) => (
             }
         </Header>
 
-        <ScreenWrapper>
+        <AddItemsInputContainer />
+
+        <ScreenWrapper modifier="with-add-items">
             <Switch>
                 <Route exact path={match.path} render={matchProps =>
                     <Template>
@@ -64,8 +66,6 @@ const ListScreen = ({ list, match }) => (
                 />
             </Switch>
         </ScreenWrapper>
-
-        <AddItemsInputContainer />
     </Template>
 );
 

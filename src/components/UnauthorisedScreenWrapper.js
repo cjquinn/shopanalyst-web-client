@@ -8,8 +8,8 @@ import Svg from '../components/Svg';
 // Sprites
 import shop from '../assets/svg/shop.svg';
 
-const UnauthorisedScreenWrapper = ({ children, ...props }) => (
-    <ScreenWrapper {...props}>
+const UnauthorisedScreenWrapper = ({ children }) => (
+    <ScreenWrapper>
         <Svg className="u-block" sprite={shop} />
 
         {children}

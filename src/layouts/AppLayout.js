@@ -4,6 +4,7 @@ import { Route, Redirect, Switch } from 'react-router-dom';
 
 // Components
 import Splash from '../components/Splash';
+import Template from '../components/Template';
 
 // Higher order components
 import withList from '../hocs/withList';
@@ -30,8 +31,10 @@ const ListScreenWithList = withList(ListScreen);
 const UpdateListScreenWithList = withList(UpdateListScreen);
 
 const AppLayout = ({ isLoading }) => (
-    <div className="app">
-        {isLoading && <Splash>Loading...</Splash>}
+    <Template>
+        {isLoading &&
+            <Splash>Loading...</Splash>
+        }
 
         {!isLoading &&
             <Switch>
@@ -57,7 +60,7 @@ const AppLayout = ({ isLoading }) => (
                 <Route component={NotFoundScreen} />
             </Switch>
         }
-    </div>
+    </Template>
 );
 
 AppLayout.propTypes = {

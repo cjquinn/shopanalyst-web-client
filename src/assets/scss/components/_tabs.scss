@@ -1,4 +1,7 @@
 .c-tabs {
+  max-width: 486px;
+  margin: 0 auto;
+
   &__tab {
     padding: $baseLine / 2;
     box-shadow: 0 0 0 1px $border;

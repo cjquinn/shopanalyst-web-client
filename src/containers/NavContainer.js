@@ -9,7 +9,7 @@ class NavContainer extends Component {
     getClasses = tab =>
         this.props.location.pathname.indexOf(tab) !== -1
             ? 'u-bgcolor-foreground'
-            : 'u-bgcolor-input';
+            : 'u-bgcolor-background';
 
     render() {
         return <Nav getClasses={this.getClasses} />;

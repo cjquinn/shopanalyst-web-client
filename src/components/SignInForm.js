@@ -5,8 +5,9 @@ import { Field } from 'redux-form';
 // Components
 import Button from './Button';
 import Input from './Input';
+import Loading from './Loading';
 
-const SignInForm = ({ handleSubmit, error }) => (
+const SignInForm = ({ handleSubmit, error, submitting }) => (
     <form className="u-space-x2" onSubmit={handleSubmit}>
         {error &&
             <p className="o-type-medium u-color-warning u-text-center">{error}</p>
@@ -28,13 +29,16 @@ const SignInForm = ({ handleSubmit, error }) => (
             />
         </div>
 
-        <Button>Sign in</Button>
+        <Button>
+            {submitting ? <Loading /> : 'Sign in'}
+        </Button>
     </form>
 );
 
 SignInForm.propTypes = {
     handleSubmit: PropTypes.func.isRequired,
-    error: PropTypes.string
+    error: PropTypes.string,
+    submitting: PropTypes.bool.isRequired
 };
 
 export default SignInForm;

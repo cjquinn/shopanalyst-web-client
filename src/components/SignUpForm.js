@@ -5,8 +5,9 @@ import { Field } from 'redux-form';
 // Components
 import Button from './Button';
 import Input from './Input';
+import Loading from './Loading';
 
-const SignUpForm = ({ handleSubmit }) => (
+const SignUpForm = ({ handleSubmit, submitting }) => (
     <form className="u-space-x2" onSubmit={handleSubmit}>
         <div className="u-space">
             <Field
@@ -24,12 +25,15 @@ const SignUpForm = ({ handleSubmit }) => (
             />
         </div>
 
-        <Button>Sign up</Button>
+        <Button>
+            {submitting ? <Loading /> : 'Sign up'}
+        </Button>
     </form>
 );
 
 SignUpForm.propTypes = {
-    handleSubmit: PropTypes.func.isRequired
+    handleSubmit: PropTypes.func.isRequired,
+    submitting: PropTypes.bool.isRequired
 };
 
 export default SignUpForm;

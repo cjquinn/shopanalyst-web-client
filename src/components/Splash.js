@@ -11,7 +11,7 @@ const Splash = ({ children }) => (
     <div className="c-splash u-absolute u-flex u-jc-center u-ai-center">
         <div className="u-space u-text-center">
             <Svg sprite={shop} />
-            <p className="u-color-help">{children}</p>
+            <p className="u-color-hint">{children}</p>
         </div>
     </div>
 );

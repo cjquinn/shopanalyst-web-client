@@ -3,6 +3,7 @@ import React from 'react';
 // Components
 import Header from '../components/Header';
 import HeaderTitle from '../components/HeaderTitle';
+import ScreenWrapper from '../components/ScreenWrapper';
 import Splash from '../components/Splash';
 import Template from '../components/Template';
 
@@ -15,9 +16,11 @@ const AnalyseScreen = () => (
             <HeaderTitle>Analyse</HeaderTitle>
         </Header>
 
-        <Splash>
-            Nothing to see here...yet...
-        </Splash>
+        <ScreenWrapper modifier="with-nav">
+            <Splash>
+                Nothing to see here...yet...
+            </Splash>
+        </ScreenWrapper>
 
         <NavContainer />
     </Template>

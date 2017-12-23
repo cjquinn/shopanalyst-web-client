@@ -9,7 +9,7 @@ import Svg from './Svg';
 import cross from '../assets/svg/cross.svg';
 
 const AddItemsInput = ({ handleChangeSearch, handleClearInput, handleFocusAddItems, isFetching, search, setInputRef }) => (
-    <div className="c-add-items-input u-1/1 u-bgcolor-foreground u-fixed u-pv">
+    <div className="c-add-items-input u-1/1 u-bgcolor-foreground u-absolute u-baseline-x4">
         <div className="o-container u-relative">
             <input
                 className="c-input u-1/1 u-baseline-x3 u-b u-block u-bradius u-ph"
