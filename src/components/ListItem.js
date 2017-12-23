@@ -28,7 +28,7 @@ const ListItem = ({ listItem, handleToggleCompleted }) => (
                 <Svg sprite={tick} />
             </div>
 
-            {listItem.item.name}
+            <span className="c-item__text u-overflow-truncate">{listItem.item.name}</span>
         </label>
 
         {listItem.is_complete

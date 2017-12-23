@@ -14,7 +14,8 @@ $iota-utils-padding-default: $baseLine;
  * Type: Map
  */
 $iota-utils-padding-extra: (
-    -x2: $baseLine-x2
+  -x2: $baseLine * 2,
+  -x3: $baseLine * 3
 );
 
 

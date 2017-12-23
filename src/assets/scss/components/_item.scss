@@ -29,7 +29,13 @@
     text-decoration: line-through;
   }
 
+  &__text {
+    width: calc(100% - #{$baseLine * 3.5});
+  }
+
   &__label {
+    width: calc(100% - #{$baseLine * 6});
+
     &:hover {
       .c-item__tick {
         background-color: $paleGreen;

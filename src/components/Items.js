@@ -18,14 +18,14 @@ const Items = ({ handleAddItem, items }) => (
                 {items.map((item, i) =>
                     <li className="o-list__item" key={i}>
                         <button
-                            className={`c-item u-flex u-ai-center u-b u-baseline-x3 u-bradius-x3 u-1/1 ${item.is_existing ? 'u-bgcolor-input u-color-hint' : 'u-bgcolor-foreground'}`}
+                            className={`c-item u-flex u-ai-center u-b u-baseline-x3 u-bradius-x3 u-1/1 ${item.is_existing ? 'u-bgcolor-input u-color-hint' : 'u-bgcolor-foreground'} u-text-left`}
                             onClick={() => handleAddItem(item)}
                         >
                             <div className="c-item__tick u-flex u-bradius-100">
                                 <Svg sprite={tick} />
                             </div>
 
-                            {item.name}
+                            <span className="c-item__text u-overflow-truncate u-pr">{item.name}</span>
                         </button>
                     </li>
                 )}
