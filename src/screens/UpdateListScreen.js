@@ -2,23 +2,23 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 // Components
-import Header from '../components/Header';
-import HeaderLink from '../components/HeaderLink';
-import HeaderTitle from '../components/HeaderTitle';
-import ScreenWrapper from '../components/ScreenWrapper';
-import Svg from '../components/Svg';
-import Template from '../components/Template';
+import HeaderLink from '../components/Header/HeaderLink';
+import HeaderTitle from '../components/Header/HeaderTitle';
+import HeaderWrapper from '../components/Header/HeaderWrapper';
+import ScreenWrapper from '../components/shared/ScreenWrapper';
+import Svg from '../components/shared/Svg';
+import Template from '../components/shared/Template';
 
 // Containers
-import DeleteListHeaderLinkContainer from '../containers/DeleteListHeaderLinkContainer';
-import UpdateListFormContainer from '../containers/UpdateListFormContainer';
+import DeleteListHeaderLinkContainer from '../containers/Header/DeleteListHeaderLinkContainer';
+import UpdateListFormContainer from '../containers/Form/UpdateListFormContainer';
 
 // Sprites
 import back from '../assets/svg/back.svg';
 
 const UpdateListScreen = ({ list }) => (
     <Template>
-        <Header>
+        <HeaderWrapper>
             <HeaderTitle>Update List</HeaderTitle>
 
             <HeaderLink side="left" to={`/lists/${list.id}`}>
@@ -26,7 +26,7 @@ const UpdateListScreen = ({ list }) => (
             </HeaderLink>
 
             <DeleteListHeaderLinkContainer />
-        </Header>
+        </HeaderWrapper>
 
         <ScreenWrapper>
             <UpdateListFormContainer />

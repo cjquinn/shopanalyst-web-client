@@ -9,7 +9,7 @@ import { fetchList } from '../store/List/actions';
 import { handle404 } from '../store/api';
 
 // Components
-import Splash from '../components/Splash';
+import Splash from '../components/shared/Splash';
 
 // Selectors
 import { makeGetList } from '../store/List/selectors';

@@ -1,18 +1,18 @@
 import React from 'react';
 
 // Components
-import Header from '../components/Header';
-import HeaderTitle from '../components/HeaderTitle';
-import Splash from '../components/Splash';
-import Template from '../components/Template';
+import HeaderTitle from '../components/Header/HeaderTitle';
+import HeaderWrapper from '../components/Header/HeaderWrapper';
+import Splash from '../components/shared/Splash';
+import Template from '../components/shared/Template';
 
 const NotFoundScreen = () => (
     <Template>
-        <Header>
+        <HeaderWrapper>
             <HeaderTitle>
                 Not Found
             </HeaderTitle>
-        </Header>
+        </HeaderWrapper>
 
         <Splash>
             Oops, looks like you&#039;re lost!

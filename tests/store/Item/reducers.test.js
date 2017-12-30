@@ -82,19 +82,33 @@ describe('addListItem', () => {
 
 describe('fetchItems', () => {
     it(actions.setSearch.toString(), () => {
-        const state = {
+        let state = {
             ids: [],
             isFetching: false,
             search: ''
         };
 
-        const expected = {
+        let expected = {
             ids: [],
             isFetching: false,
             search: 'Potato Waffles'
         };
 
         expect(reducers(state, actions.setSearch('Potato Waffles'))).toEqual(expected);
+
+        state = {
+            ids: [1],
+            isFetching: false,
+            search: 'Potato Waffles'
+        };
+
+        expected = {
+            ids: [],
+            isFetching: false,
+            search: ''
+        };
+
+        expect(reducers(state, actions.setSearch(''))).toEqual(expected);
     });
 
     it(actions.fetchItemsRequest.toString(), () => {

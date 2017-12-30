@@ -1,12 +1,12 @@
 import React from 'react';
 
 // Components
-import Template from '../components/Template';
+import Template from '../components/shared/Template';
 
 // Containers
-import ResetPasswordFormContainer from '../containers/ResetPasswordFormContainer';
+import ResetPasswordFormContainer from '../containers/Form/ResetPasswordFormContainer';
 
-const ResetPassword = () => (
+const ResetPasswordScreen = () => (
     <Template>
         <p className="u-color-help u-text-center">
             Reset password
@@ -16,4 +16,4 @@ const ResetPassword = () => (
     </Template>
 );
 
-export default ResetPassword;
+export default ResetPasswordScreen;

@@ -4,10 +4,10 @@ import { Redirect, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 // Components
-import Header from '../components/Header';
-import HeaderTitle from '../components/HeaderTitle';
-import Template from '../components/Template';
-import UnauthorisedScreenWrapper from '../components/UnauthorisedScreenWrapper';
+import HeaderTitle from '../components/Header/HeaderTitle';
+import HeaderWrapper from '../components/Header/HeaderWrapper';
+import Template from '../components/shared/Template';
+import UnauthorisedScreenWrapper from '../components/shared/UnauthorisedScreenWrapper';
 
 // Selectors
 import { getIsAuthorised } from '../store/User/selectors';
@@ -21,9 +21,9 @@ class UnauthorisedRoute extends Component {
             : (
                 <Route {...rest} render={matchProps => (
                     <Template>
-                        <Header>
+                        <HeaderWrapper>
                             <HeaderTitle>Shopanalyst</HeaderTitle>
-                        </Header>
+                        </HeaderWrapper>
 
                         <UnauthorisedScreenWrapper>
                             <Component {...matchProps} />

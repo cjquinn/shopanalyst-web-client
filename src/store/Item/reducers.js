@@ -17,6 +17,9 @@ const ids = (state = [], action) => {
         case actions.fetchItemsSuccess.toString():
             return action.payload.result;
 
+        case actions.setSearch.toString():
+            return action.payload.length === 0 ? [] : state;
+
         default:
             return state;
     }

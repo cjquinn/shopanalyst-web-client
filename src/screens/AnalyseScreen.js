@@ -1,20 +1,20 @@
 import React from 'react';
 
 // Components
-import Header from '../components/Header';
-import HeaderTitle from '../components/HeaderTitle';
-import ScreenWrapper from '../components/ScreenWrapper';
-import Splash from '../components/Splash';
-import Template from '../components/Template';
+import HeaderTitle from '../components/Header/HeaderTitle';
+import HeaderWrapper from '../components/Header/HeaderWrapper';
+import ScreenWrapper from '../components/shared/ScreenWrapper';
+import Splash from '../components/shared/Splash';
+import Template from '../components/shared/Template';
 
 // Containers
-import NavContainer from '../containers/NavContainer';
+import NavContainer from '../containers/shared/NavContainer';
 
 const AnalyseScreen = () => (
     <Template>
-        <Header>
+        <HeaderWrapper>
             <HeaderTitle>Analyse</HeaderTitle>
-        </Header>
+        </HeaderWrapper>
 
         <ScreenWrapper modifier="with-nav">
             <Splash>

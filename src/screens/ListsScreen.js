@@ -1,29 +1,29 @@
 import React from 'react';
 
 // Components
-import Header from '../components/Header';
-import HeaderLink from '../components/HeaderLink';
-import HeaderTitle from '../components/HeaderTitle';
-import ScreenWrapper from '../components/ScreenWrapper';
-import Svg from '../components/Svg';
-import Template from '../components/Template';
+import HeaderLink from '../components/Header/HeaderLink';
+import HeaderTitle from '../components/Header/HeaderTitle';
+import HeaderWrapper from '../components/Header/HeaderWrapper';
+import ScreenWrapper from '../components/shared/ScreenWrapper';
+import Svg from '../components/shared/Svg';
+import Template from '../components/shared/Template';
 
 // Containers
-import ListsContainer from '../containers/ListsContainer';
-import NavContainer from '../containers/NavContainer';
+import ListsContainer from '../containers/List/ListsContainer';
+import NavContainer from '../containers/shared/NavContainer';
 
 // Sprites
 import plus from '../assets/svg/plus.svg';
 
 const ListsScreen = () => (
     <Template>
-        <Header>
+        <HeaderWrapper>
             <HeaderTitle>Lists</HeaderTitle>
 
             <HeaderLink side="right" to="/create-list">
                 <Svg sprite={plus} />
             </HeaderLink>
-        </Header>
+        </HeaderWrapper>
 
         <ScreenWrapper modifier="with-nav">
             <ListsContainer />

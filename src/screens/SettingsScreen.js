@@ -1,23 +1,23 @@
 import React from 'react';
 
 // Components
-import Header from '../components/Header';
-import HeaderTitle from '../components/HeaderTitle';
-import ScreenWrapper from '../components/ScreenWrapper';
-import Template from '../components/Template';
+import HeaderTitle from '../components/Header/HeaderTitle';
+import HeaderWrapper from '../components/Header/HeaderWrapper';
+import ScreenWrapper from '../components/shared/ScreenWrapper';
+import Template from '../components/shared/Template';
 
 // Containers
-import NavContainer from '../containers/NavContainer';
-import SignOutHeaderLinkContainer from '../containers/SignOutHeaderLinkContainer';
-import UpdateSettingsFormContainer from '../containers/UpdateSettingsFormContainer';
+import NavContainer from '../containers/shared/NavContainer';
+import SignOutHeaderLinkContainer from '../containers/Header/SignOutHeaderLinkContainer';
+import UpdateSettingsFormContainer from '../containers/Form/UpdateSettingsFormContainer';
 
 const SettingsScreen = () => (
     <Template>
-        <Header>
+        <HeaderWrapper>
             <HeaderTitle>Settings</HeaderTitle>
 
             <SignOutHeaderLinkContainer />
-        </Header>
+        </HeaderWrapper>
 
         <ScreenWrapper modifier="with-nav">
             <UpdateSettingsFormContainer />

@@ -3,17 +3,17 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 // Components
-import Header from '../components/Header';
-import HeaderLink from '../components/HeaderLink';
-import HeaderTitle from '../components/HeaderTitle';
-import ScreenWrapper from '../components/ScreenWrapper';
-import Svg from '../components/Svg';
-import Template from '../components/Template';
+import HeaderLink from '../components/Header/HeaderLink';
+import HeaderTitle from '../components/Header/HeaderTitle';
+import HeaderWrapper from '../components/Header/HeaderWrapper';
+import ScreenWrapper from '../components/shared/ScreenWrapper';
+import Svg from '../components/shared/Svg';
+import Template from '../components/shared/Template';
 
 // Containers
-import AddItemsInputContainer from '../containers/AddItemsInputContainer';
-import ItemsContainer from '../containers/ItemsContainer';
-import ListItemsContainer from '../containers/ListItemsContainer';
+import AddItemsInputContainer from '../containers/Item/AddItemsInputContainer';
+import ItemsContainer from '../containers/Item/ItemsContainer';
+import ListItemsContainer from '../containers/ListItem/ListItemsContainer';
 
 // Sprites
 import back from '../assets/svg/back.svg';
@@ -21,7 +21,7 @@ import ellipsis from '../assets/svg/ellipsis.svg';
 
 const ListScreen = ({ list, match }) => (
     <Template>
-        <Header>
+        <HeaderWrapper>
             <HeaderLink side="left" to={match.isExact ? '/lists' : match.url}>
                 <Svg sprite={back} />
             </HeaderLink>
@@ -38,7 +38,7 @@ const ListScreen = ({ list, match }) => (
                     <Svg sprite={ellipsis} />
                 </HeaderLink>
             }
-        </Header>
+        </HeaderWrapper>
 
         <AddItemsInputContainer />
 

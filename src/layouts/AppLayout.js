@@ -3,8 +3,8 @@ import React from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 
 // Components
-import Splash from '../components/Splash';
-import Template from '../components/Template';
+import Splash from '../components/shared/Splash';
+import Template from '../components/shared/Template';
 
 // Higher order components
 import withList from '../hocs/withList';

@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // Components
-import Template from '../components/Template';
+import Template from '../components/shared/Template';
 
 // Containers
-import SignUpFormContainer from '../containers/SignUpFormContainer';
+import SignUpFormContainer from '../containers/Form/SignUpFormContainer';
 
 const SignUpScreen = () => (
     <Template>
