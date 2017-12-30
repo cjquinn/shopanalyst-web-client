@@ -9,16 +9,19 @@ import { addListItem } from '../../store/ListItem/actions';
 import Items from '../../components/Item/Items';
 
 // Selectors
-import { getItems } from '../../store/Item/selectors';
+import { getItems, getLastAddedItem } from '../../store/Item/selectors';
 
 class ItemsContainer extends Component {
     handleAddItem = item => !item.is_existing && this.props.addListItem(item);
 
     render() {
+        const { items, lastAddedItem } = this.props;
+
         return (
             <Items
                 handleAddItem={this.handleAddItem}
-                items={this.props.items}
+                items={items}
+                lastAddedItem={lastAddedItem}
             />
         );
     }
@@ -26,11 +29,13 @@ class ItemsContainer extends Component {
 
 ItemsContainer.propTypes = {
     addListItem: PropTypes.func.isRequired,
-    items: PropTypes.array.isRequired
+    items: PropTypes.array.isRequired,
+    lastAddedItem: PropTypes.object
 };
 
 const mapStateToProps = (state, ownPros) => ({
-    items: getItems(state, ownPros)
+    items: getItems(state, ownPros),
+    lastAddedItem: getLastAddedItem(state)
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

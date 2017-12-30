@@ -6,14 +6,6 @@ import { addListItemSuccess } from '../ListItem/actions';
 
 const ids = (state = [], action) => {
     switch (action.type) {
-        case addListItemSuccess.toString():
-            return [
-                action.payload.entities.list_items[action.payload.result].item_id,
-                ...state
-            ].filter((id, index, self) =>
-                index === self.indexOf(id)
-            );
-
         case actions.fetchItemsSuccess.toString():
             return action.payload.result;
 
@@ -36,11 +28,27 @@ const isFetching = (state = false, action) => {
 
         default:
             return state;
-    }  
+    }
+};
+
+const lastAddedId = (state = null, action) => {
+    switch (action.type) {
+        case addListItemSuccess.toString():
+            return action.payload.entities.list_items[action.payload.result].item_id;
+
+        case actions.setSearch.toString():
+            return null;
+
+        default:
+            return state;
+    }
 };
 
 const search  = (state = '', action) => {
     switch (action.type) {
+        case addListItemSuccess.toString():
+            return '';
+
         case actions.setSearch.toString():
             return action.payload;
 
@@ -52,6 +60,7 @@ const search  = (state = '', action) => {
 const reducers = combineReducers({
     ids,
     isFetching,
+    lastAddedId,
     search
 });
 

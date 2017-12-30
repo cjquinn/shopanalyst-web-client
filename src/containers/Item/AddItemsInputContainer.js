@@ -11,7 +11,8 @@ import { setSearch, fetchItems } from '../../store/Item/actions';
 import AddItemsInput from '../../components/Item/AddItemsInput';
 
 // Selectors
-import { getIsFetching } from '../../store/Item/selectors';
+import { getIsFetching, getSearch } from '../../store/Item/selectors';
+import { getIsAdding } from '../../store/ListItem/selectors';
 
 class AddItemsInputContainer extends Component {
     state = {search: ''};
@@ -38,6 +39,23 @@ class AddItemsInputContainer extends Component {
         this.props.setSearch(this.state.search);
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.search === '' &&
+            nextProps.search !== this.props.search
+        ) {
+            this.setState({search: ''});
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.isAdding &&
+            !this.props.isAdding &&
+            this.props.search === ''
+        ) {
+            this.inputRef.focus();
+        }
+    }
+
     render() {
         return (
             <AddItemsInput
@@ -55,13 +73,17 @@ class AddItemsInputContainer extends Component {
 AddItemsInputContainer.propTypes = {
     fetchItems: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
+    isAdding: PropTypes.bool.isRequired,
     isFetching: PropTypes.bool.isRequired,
     match: PropTypes.object.isRequired,
+    search: PropTypes.string.isRequired,
     setSearch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
+    isAdding: getIsAdding(state),
     isFetching: getIsFetching(state),
+    search: getSearch(state)
 });
 
 const mapDispatchToProps = dispatch => ({

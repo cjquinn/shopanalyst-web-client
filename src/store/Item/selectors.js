@@ -53,3 +53,8 @@ export const getItems = createSelector(
         );
     }
 );
+
+export const getLastAddedItem = state =>
+    state.entities.items[state.item.lastAddedId];
+
+export const getSearch = state => state.item.search;

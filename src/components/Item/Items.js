@@ -9,12 +9,12 @@ import Template from '../shared/Template';
 import plus from '../../assets/svg/plus.svg';
 import tick from '../../assets/svg/tick.svg';
 
-const Items = ({ handleAddItem, items }) => (
+const Items = ({ handleAddItem, items, lastAddedItem }) => (
     <Template>
         {items.length === 0
             ? (
-                <p className="o-type-medium u-color-hint u-lh-x3 u-text-center">
-                    Search for items
+                <p className={`o-type-medium u-color-${lastAddedItem ? 'success' : 'hint'} u-lh-x3 u-text-center`}>
+                    {lastAddedItem ? `${lastAddedItem.name} added to list` : 'Search for items'}
                 </p>
             )
             : (
@@ -43,7 +43,8 @@ const Items = ({ handleAddItem, items }) => (
 
 Items.propTypes = {
     handleAddItem: PropTypes.func.isRequired,
-    items: PropTypes.array.isRequired
+    items: PropTypes.array.isRequired,
+    lastAddedItem: PropTypes.object
 };
 
 export default Items;

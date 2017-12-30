@@ -1,6 +1,16 @@
-import { getListItems, getListItemsByCompleted } from '../../../src/store/ListItem/selectors';
+import { getIsAdding, getListItems, getListItemsByCompleted } from '../../../src/store/ListItem/selectors';
 
 describe('selectors', () => {
+    it('getIsAdding', () => {
+        const state = {
+            listItem: {
+                isAdding: false
+            }
+        };
+
+        expect(getIsAdding(state)).toEqual(false);
+    });
+
     it('getListItems', () => {
         const state = {
             entities: {

@@ -10,6 +10,7 @@ describe('initial state', () => {
         const expected = {
             ids: [],
             isFetching: false,
+            lastAddedId: null,
             search: ''
         };
 
@@ -19,16 +20,18 @@ describe('initial state', () => {
 
 describe('addListItem', () => {
     it(addListItemSuccess.toString(), () => {
-        let state = {
-            ids: [],
+        const state = {
+            ids: [1],
             isFetching: false,
+            lastAddedId: null,
             search: 'Eggs'
         };
 
-        let expected = {
-            ids: [2],
+        const expected = {
+            ids: [1],
             isFetching: false,
-            search: 'Eggs'
+            lastAddedId: 2,
+            search: ''
         };
 
         const payload = {
@@ -49,34 +52,6 @@ describe('addListItem', () => {
         };
 
         expect(reducers(state, addListItemSuccess(payload))).toEqual(expected);
-
-        state = {
-            ids: [2],
-            isFetching: false,
-            search: 'Eggs'
-        };
-
-        expected = {
-            ids: [2],
-            isFetching: false,
-            search: 'Eggs'
-        };
-
-        expect(reducers(state, addListItemSuccess(payload))).toEqual(expected);
-
-        state = {
-            ids: [1],
-            isFetching: false,
-            search: 'Eggs'
-        };
-
-        expected = {
-            ids: [2, 1],
-            isFetching: false,
-            search: 'Eggs'
-        };
-
-        expect(reducers(state, addListItemSuccess(payload))).toEqual(expected);
     });
 });
 
@@ -85,12 +60,14 @@ describe('fetchItems', () => {
         let state = {
             ids: [],
             isFetching: false,
+            lastAddedId: 1,
             search: ''
         };
 
         let expected = {
             ids: [],
             isFetching: false,
+            lastAddedId: null,
             search: 'Potato Waffles'
         };
 
@@ -99,12 +76,14 @@ describe('fetchItems', () => {
         state = {
             ids: [1],
             isFetching: false,
+            lastAddedId: 1,
             search: 'Potato Waffles'
         };
 
         expected = {
             ids: [],
             isFetching: false,
+            lastAddedId: null,
             search: ''
         };
 
@@ -115,12 +94,14 @@ describe('fetchItems', () => {
         const state = {
             ids: [],
             isFetching: false,
+            lastAddedId: null,
             search: ''
         };
 
         const expected = {
             ids: [],
             isFetching: true,
+            lastAddedId: null,
             search: ''
         };
 
@@ -131,12 +112,14 @@ describe('fetchItems', () => {
         const state = {
             ids: [],
             isFetching: true,
+            lastAddedId: null,
             search: ''
         };
 
         const expected = {
             ids: [],
             isFetching: false,
+            lastAddedId: null,
             search: ''
         };
 
@@ -147,12 +130,14 @@ describe('fetchItems', () => {
         const state = {
             ids: [],
             isFetching: true,
+            lastAddedId: null,
             search: ''
         };
 
         const expected = {
             ids: [1],
             isFetching: false,
+            lastAddedId: null,
             search: ''
         };
 

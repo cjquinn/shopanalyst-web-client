@@ -16,7 +16,7 @@ describe('initial state', () => {
     it('shape', () => {
         const state = reducers(undefined, {});
 
-        const expected = ['entities', 'form', 'item', 'list', 'user'];
+        const expected = ['entities', 'form', 'item', 'list', 'listItem', 'user'];
 
         expect(Object.keys(state)).toEqual(expected);
     });
@@ -48,14 +48,17 @@ describe('app', () => {
             item: {
                 ids: [3],
                 isFetching: true,
-                search: 'Testing',
-                selected: [3]
+                lastAddedId: 3,
+                search: 'Testing'
             },
             list: {
                 ids: [1],
                 isFetching: true,
                 page: 2,
                 total: 2
+            },
+            listItem: {
+                isAdding: true
             },
             user: {
                 id: 1,
@@ -73,6 +76,7 @@ describe('app', () => {
             item: {
                 ids: [],
                 isFetching: false,
+                lastAddedId: null,
                 search: ''
             },
             list: {
@@ -80,6 +84,9 @@ describe('app', () => {
                 isFetching: false,
                 page: 1,
                 total: 0
+            },
+            listItem: {
+                isAdding: false
             },
             user: {isLoading: false}
         };

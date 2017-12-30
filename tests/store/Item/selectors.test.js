@@ -1,4 +1,4 @@
-import { getIsFetching, getItems } from '../../../src/store/Item/selectors';
+import { getIsFetching, getItems, getLastAddedItem } from '../../../src/store/Item/selectors';
 
 describe('selectors', () => {
     it('getIsFetching', () => {
@@ -132,5 +132,23 @@ describe('selectors', () => {
         ];
 
         expect(getItems(state, props)).toEqual(expected);
+    });
+
+    it('getLastAddedItem', () => {
+        const state = {
+            entities: {
+                items: {3: {id: 3, name: 'Potato Waffles'}}
+            },
+            item: {
+                lastAddedId: 3
+            }
+        };
+
+        const expected = {
+            id: 3,
+            name: 'Potato Waffles'
+        };
+
+        expect(getLastAddedItem(state)).toEqual(expected);
     });
 });

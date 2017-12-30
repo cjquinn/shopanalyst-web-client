@@ -11,6 +11,7 @@ import { signOut } from './User/actions';
 import entities from './Entities/reducers';
 import item from './Item/reducers';
 import list from './List/reducers';
+import listItem from './ListItem/reducers';
 import user from './User/reducers';
 
 const app = combineReducers({
@@ -18,6 +19,7 @@ const app = combineReducers({
     form,
     item,
     list,
+    listItem,
     user
 });
 
@@ -29,6 +31,7 @@ const reducers = (state, action) => {
         state.entities = undefined;
         state.item = undefined;
         state.list = undefined;
+        state.listItem = undefined;
         state.user = {isLoading: false};
     }
 

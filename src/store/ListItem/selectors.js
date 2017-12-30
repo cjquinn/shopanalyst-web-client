@@ -4,6 +4,8 @@ import { createSelector } from 'reselect';
 // Schema
 import { listItem as listItemSchema } from '../schema';
 
+export const getIsAdding = state => state.listItem.isAdding;
+
 export const getListItems = createSelector(
     (state, props) => state.entities.lists[props.match.params.id],
     state => state.entities.items,
