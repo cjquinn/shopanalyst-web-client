@@ -1,5 +1,7 @@
 .c-add-items-input {
   top: $baseLine * 3;
+  margin-top: -1px;
+  border-top: 1px solid $foreground;
 
   &__button {
     top: 50%;
